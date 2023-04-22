@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox prefHeight="347.0" prefWidth="448.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="347.0" prefWidth="448.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.RegistrationPageController">
     <children>
         <HBox alignment="TOP_CENTER">
             <children>
@@ -25,47 +25,47 @@
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <Label text="Username" />
-                        <TextField />
+                        <TextField fx:id="RegistrationPageUsername" />
                     </children>
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <Label text="Password" />
-                        <PasswordField />
+                        <PasswordField fx:id="RegistrationPagePassword" />
                     </children>
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <Label text="Confirm Password" />
-                        <PasswordField />
+                        <PasswordField fx:id="RegistrationPageConfirmPassword" />
                     </children>
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <Label text="Full Name" />
-                        <TextField />
+                        <TextField fx:id="RegistrationPageFullName" />
                     </children>
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <Label text="Phone Number" />
-                        <TextField />
+                        <TextField fx:id="RegistrationPagePhoneNumber" />
                     </children>
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <Label text="Address" />
-                        <TextField />
+                        <TextField fx:id="RegistrationPageAddress" />
                     </children>
                 </HBox>
             </children>
         </VBox>
         <Region />
-        <HBox prefHeight="100.0" prefWidth="200.0">
+        <HBox>
             <children>
-                <Button alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" text="Cancel" />
+                <Button alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onCancelButtonClick" text="Cancel" />
                 <Region prefHeight="58.0" prefWidth="312.0" />
-                <Button mnemonicParsing="false" text="Create" />
+                <Button mnemonicParsing="false" onAction="#onCreateButtonClick" text="Create" />
             </children>
         </HBox>
     </children>

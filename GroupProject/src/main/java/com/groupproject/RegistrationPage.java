@@ -12,7 +12,7 @@ public class RegistrationPage extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RegistrationPage.class.getResource("RegistrationPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 450, 357);
-        stage.setTitle("Hello!");
+        stage.setTitle("Registration Page");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
