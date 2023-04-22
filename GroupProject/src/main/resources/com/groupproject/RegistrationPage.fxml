@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox prefHeight="347.0" prefWidth="448.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox alignment="TOP_CENTER">
+            <children>
+                <Label text="User Registration Page">
+                    <font>
+                        <Font name="Arial Bold" size="19.0" />
+                    </font></Label>
+            </children>
+        </HBox>
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label text="Username" />
+                        <TextField />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label text="Password" />
+                        <PasswordField />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label text="Confirm Password" />
+                        <PasswordField />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label text="Full Name" />
+                        <TextField />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label text="Phone Number" />
+                        <TextField />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label text="Address" />
+                        <TextField />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <Region />
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" text="Cancel" />
+                <Region prefHeight="58.0" prefWidth="312.0" />
+                <Button mnemonicParsing="false" text="Create" />
+            </children>
+        </HBox>
+    </children>
+    <opaqueInsets>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </opaqueInsets>
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+</VBox>
