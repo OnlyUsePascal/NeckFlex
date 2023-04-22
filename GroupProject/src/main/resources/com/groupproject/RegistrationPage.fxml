@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -10,69 +11,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox prefHeight="347.0" prefWidth="448.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.RegistrationPageController">
-    <children>
-        <HBox alignment="TOP_CENTER">
-            <children>
-                <Label text="User Registration Page">
-                    <font>
-                        <Font name="Arial Bold" size="19.0" />
-                    </font></Label>
-            </children>
-        </HBox>
-        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-            <children>
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                    <children>
-                        <Label text="Username" />
-                        <TextField fx:id="RegistrationPageUsername" />
-                    </children>
-                </HBox>
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                    <children>
-                        <Label text="Password" />
-                        <PasswordField fx:id="RegistrationPagePassword" />
-                    </children>
-                </HBox>
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                    <children>
-                        <Label text="Confirm Password" />
-                        <PasswordField fx:id="RegistrationPageConfirmPassword" />
-                    </children>
-                </HBox>
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                    <children>
-                        <Label text="Full Name" />
-                        <TextField fx:id="RegistrationPageFullName" />
-                    </children>
-                </HBox>
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                    <children>
-                        <Label text="Phone Number" />
-                        <TextField fx:id="RegistrationPagePhoneNumber" />
-                    </children>
-                </HBox>
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                    <children>
-                        <Label text="Address" />
-                        <TextField fx:id="RegistrationPageAddress" />
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
-        <Region />
-        <HBox>
-            <children>
-                <Button alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onCancelButtonClick" text="Cancel" />
-                <Region prefHeight="58.0" prefWidth="312.0" />
-                <Button mnemonicParsing="false" onAction="#onCreateButtonClick" text="Create" />
-            </children>
-        </HBox>
-    </children>
-    <opaqueInsets>
-        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-    </opaqueInsets>
-    <padding>
-        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-    </padding>
-</VBox>
+<AnchorPane prefHeight="401.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.RegistrationPageController">
+   <children>
+      <TextField fx:id="RegistrationPageUsername" layoutX="104.0" layoutY="66.0" prefHeight="29.0" prefWidth="238.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+      <PasswordField fx:id="RegistrationPagePassword1" layoutX="104.0" layoutY="110.0" prefHeight="31.0" prefWidth="238.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+      <PasswordField fx:id="RegistrationPageConfirmPassword" layoutX="104.0" layoutY="157.0" prefHeight="31.0" prefWidth="238.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="RegistrationPageFullName" layoutX="104.0" layoutY="202.0" prefHeight="31.0" prefWidth="238.0" promptText="Full Name" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="RegistrationPagePhoneNumber" layoutX="104.0" layoutY="245.0" prefHeight="29.0" prefWidth="238.0" promptText="Phone Number" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="RegistrationPageAddress" layoutX="104.0" layoutY="286.0" prefHeight="29.0" prefWidth="238.0" promptText="Address" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+      <Button alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="22.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCancelButtonClick" style="-fx-background-color: blue;" text="Cancel" textFill="WHITE" />
+      <Button layoutX="363.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCreateButtonClick" style="-fx-background-color: blue;" text="Create" textFill="WHITE" />
+      <Label layoutX="105.0" layoutY="14.0" text="User Registration" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="RegistrationPageMessage" layoutX="101.0" layoutY="334.0" prefHeight="19.0" prefWidth="238.0" textAlignment="CENTER">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,15 +1,18 @@
 package com.groupproject;
 
 
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.paint.Color;
 
-public class RegistrationPageController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class RegistrationPageController implements Initializable {
 
     @FXML
     TextField RegistrationPageUsername = new TextField();
@@ -29,16 +32,17 @@ public class RegistrationPageController {
     @FXML
     TextField RegistrationPageAddress = new TextField();
 
+    @FXML
+    Label RegistrationPageMessage = new Label();
+
     boolean checkingPhoneNumber(String phoneNumber){
         try {
             Integer phoneNumberInteger = Integer.parseInt(phoneNumber);
         }catch (NumberFormatException e){
             return false;
         }
-
         return  true;
     }
-
 
     public void onCancelButtonClick(){
         Platform.exit();
@@ -59,21 +63,29 @@ public class RegistrationPageController {
 
         int errorCounter = 0;
         //Checking Password
-        if(password.equals(confirmPassword) == false){
-            System.out.println("Password doesn't match!");
-            errorCounter++;
-        }
+//        if(password.compareTo(confirmPassword) != 0){
+//            System.out.println("Password doesn't match!");
+//            RegistrationPageMessage.setText("Password doesn't match!");
+//            RegistrationPageMessage.setTextFill(Color.RED);
+//            return;
+//        }
 
         if(checkingPhoneNumber(phoneNumber) == false){
-            System.out.println("Invalid phone number");
-            errorCounter++;
+            RegistrationPageMessage.setText("Invalid Phone Number");
+            RegistrationPageMessage.setTextFill(Color.RED);
+            return;
         }
 
         if(errorCounter == 0){
-            System.out.println("Register sucessfully!");
+            RegistrationPageMessage.setText("Register successfully!");
+            RegistrationPageMessage.setTextFill(Color.GREEN);
             Platform.exit();
         }
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

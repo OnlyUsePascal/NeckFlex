@@ -11,7 +11,7 @@ public class RegistrationPage extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RegistrationPage.class.getResource("RegistrationPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 450, 357);
+        Scene scene = new Scene(fxmlLoader.load(), 450 , 402);
         stage.setTitle("Registration Page");
         stage.setScene(scene);
         stage.setResizable(false);
