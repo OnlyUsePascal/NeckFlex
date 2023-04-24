@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.groupproject.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.HelloController">
+   <children>
+      <Pane layoutX="109.0" layoutY="43.0" prefHeight="315.0" prefWidth="382.0" style="-fx-background-color: #A69D9A;">
+         <children>
+            <Button fx:id="button" layoutX="150.0" layoutY="236.0" mnemonicParsing="false" onAction="#userLogin" text="Sign in" />
+            <TextField fx:id="username" layoutX="54.0" layoutY="96.0" prefHeight="40.0" prefWidth="245.0" promptText="Username" />
+            <Label fx:id="wronglogin" layoutX="54.0" layoutY="208.0" prefHeight="19.0" prefWidth="245.0" textFill="RED" />
+            <PasswordField fx:id="password" layoutX="54.0" layoutY="158.0" prefHeight="40.0" prefWidth="245.0" promptText="Password" />
+            <Label fx:id="titlte" alignment="CENTER" layoutX="55.0" layoutY="29.0" text="ADDITECH SHOP" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
