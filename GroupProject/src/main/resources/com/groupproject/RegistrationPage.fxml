@@ -11,25 +11,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<AnchorPane prefHeight="401.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.RegistrationPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.RegistrationPageController">
    <children>
-      <TextField fx:id="RegistrationPageUsername" layoutX="104.0" layoutY="66.0" prefHeight="29.0" prefWidth="238.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <PasswordField fx:id="RegistrationPagePassword1" layoutX="104.0" layoutY="110.0" prefHeight="31.0" prefWidth="238.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <PasswordField fx:id="RegistrationPageConfirmPassword" layoutX="104.0" layoutY="157.0" prefHeight="31.0" prefWidth="238.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="RegistrationPageFullName" layoutX="104.0" layoutY="202.0" prefHeight="31.0" prefWidth="238.0" promptText="Full Name" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="RegistrationPagePhoneNumber" layoutX="104.0" layoutY="245.0" prefHeight="29.0" prefWidth="238.0" promptText="Phone Number" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="RegistrationPageAddress" layoutX="104.0" layoutY="286.0" prefHeight="29.0" prefWidth="238.0" promptText="Address" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="22.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCancelButtonClick" style="-fx-background-color: blue;" text="Cancel" textFill="WHITE" />
-      <Button layoutX="363.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCreateButtonClick" style="-fx-background-color: blue;" text="Create" textFill="WHITE" />
-      <Label layoutX="105.0" layoutY="14.0" text="User Registration" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="27.0" />
-         </font>
-      </Label>
-      <Label fx:id="RegistrationPageMessage" layoutX="101.0" layoutY="334.0" prefHeight="19.0" prefWidth="238.0" textAlignment="CENTER">
-         <font>
-            <Font size="12.0" />
-         </font>
-      </Label>
+      <AnchorPane layoutX="577.0" layoutY="250.0" prefHeight="401.0" prefWidth="447.0" style="-fx-background-color: yellow;">
+         <children>
+            <TextField fx:id="RegistrationPageUsername" layoutX="104.0" layoutY="66.0" prefHeight="29.0" prefWidth="238.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="RegistrationPagePassword" layoutX="104.0" layoutY="110.0" prefHeight="31.0" prefWidth="238.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="RegistrationPageConfirmPassword" layoutX="104.0" layoutY="157.0" prefHeight="31.0" prefWidth="238.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="RegistrationPageFullName" layoutX="104.0" layoutY="202.0" prefHeight="31.0" prefWidth="238.0" promptText="Full Name" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="RegistrationPagePhoneNumber" layoutX="104.0" layoutY="245.0" prefHeight="29.0" prefWidth="238.0" promptText="Phone Number" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="RegistrationPageAddress" layoutX="104.0" layoutY="286.0" prefHeight="29.0" prefWidth="238.0" promptText="Address" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="22.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCancelButtonClick" style="-fx-background-color: blue;" text="Cancel" textFill="WHITE" />
+            <Button layoutX="363.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCreateButtonClick" style="-fx-background-color: blue;" text="Create" textFill="WHITE" />
+            <Label layoutX="105.0" layoutY="14.0" text="User Registration" textAlignment="CENTER" textFill="#366cc9">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="RegistrationPageMessage" layoutX="104.0" layoutY="337.0" prefHeight="19.0" prefWidth="238.0" textAlignment="CENTER">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="requiredUsername" layoutX="105.0" layoutY="97.0" text="*required" textFill="RED" visible="false">
+               <font>
+                  <Font name="System Italic" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="requiredPassword" layoutX="105.0" layoutY="140.0" text="*required" textFill="RED" visible="false">
+               <font>
+                  <Font name="System Italic" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="requiredConfirmPassword" layoutX="108.0" layoutY="188.0" text="*required" textFill="RED" visible="false">
+               <font>
+                  <Font name="System Italic" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="requiredFullName" layoutX="107.0" layoutY="233.0" text="*required" visible="false">
+               <font>
+                  <Font name="System Italic" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="requiredPhoneNumber" layoutX="106.0" layoutY="273.0" text="*required" textFill="RED" visible="false">
+               <font>
+                  <Font name="System Italic" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="requiredAddress" layoutX="107.0" layoutY="317.0" text="*required" textFill="RED" visible="false">
+               <font>
+                  <Font name="System Italic" size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
