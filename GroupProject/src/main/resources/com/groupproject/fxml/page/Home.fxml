@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.HomeController">
+    <children>
+        <AnchorPane fx:id="pageContent" layoutX="1171.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+        <AnchorPane layoutX="454.0" layoutY="23.0" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #0A4D68;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <AnchorPane fx:id="menuPane" layoutY="72.0" prefHeight="840.0" prefWidth="290.0" style="-fx-background-color: #FEE8B0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
+            <children>
+                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="101.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+                    <children>
+                        <ImageView fitHeight="444.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../media/image/house-solid.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="75.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../media/image/shop-solid.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="75.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../media/image/list-solid.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                    <children>
+                        <Button fx:id="ItemTrending" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#changeContent" prefHeight="50.0" prefWidth="173.0" style="-fx-background-color: transparent;" text="Home" textAlignment="CENTER">
+                            <font>
+                                <Font size="28.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="ItemAll" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#changeContent" prefHeight="50.0" prefWidth="173.0" style="-fx-background-color: transparent;" text="Items" textAlignment="CENTER">
+                            <font>
+                                <Font size="28.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="SidePanel3" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#changeContent" prefHeight="50.0" prefWidth="173.0" style="-fx-background-color: transparent;" text="Inventory" textAlignment="CENTER">
+                            <font>
+                                <Font size="28.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <Button layoutX="375.0" layoutY="239.0" mnemonicParsing="false" onAction="#menuActive" scaleX="0.2" scaleY="0.2" snapToPixel="false" style="-fx-background-color: transparent;">
+            <graphic>
+                <SVGPath content="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" style="-fx-fill: white;" />
+            </graphic>
+        </Button>
+    </children>
+</AnchorPane>
