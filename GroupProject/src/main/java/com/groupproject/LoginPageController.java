@@ -11,18 +11,20 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.security.ProtectionDomain;
 import java.util.Objects;
 
 
-public class HelloController{
+public class LoginPageController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public HelloController(){}
+    public LoginPageController(){}
 
     @FXML
     private Button button;
+
+    @FXML
+    private Button LoginPageRegister;
     @FXML
     private Label wronglogin;
     @FXML
@@ -38,8 +40,8 @@ public class HelloController{
 
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
             root = loader.load();
-            AfterLogin afterLogin = loader.getController();
-            afterLogin.setHellobox(username.getText());
+//            AfterLogin afterLogin = loader.getController();
+//            afterLogin.setHellobox(username.getText());
             stage = (Stage) button.getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -51,5 +53,10 @@ public class HelloController{
         else{
             wronglogin.setText("Wrong username or password");
         }
+    }
+
+    public void userRegister(ActionEvent event) throws IOException {
+        RegistrationPage registrationPage = new RegistrationPage();
+        registrationPage.start(new Stage());
     }
 }
