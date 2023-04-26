@@ -1,17 +1,17 @@
 package com.groupproject;
 
-import com.groupproject.toolkit.PathGetter;
+import com.groupproject.toolkit.GetterPath;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class ShopApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathGetter.getLoginMain()));
+        String pageFile = GetterPath.getHome();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageFile));
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
 
         stage.setTitle("Hello!");

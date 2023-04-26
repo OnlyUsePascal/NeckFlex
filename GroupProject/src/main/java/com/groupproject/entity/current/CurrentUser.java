@@ -3,13 +3,14 @@ package com.groupproject.entity.current;
 import com.groupproject.entity.generic.Account;
 
 public class CurrentUser {
-    private static Account currentAcc;
+    private static Account currentUser;
 
-    public static void setCurrentAcc(Account acc) {
-        currentAcc = acc;
+    public static void setCurrentUser(Account acc) {
+        currentUser = acc;
     }
 
-    public static Account getCurrentAcc() {
-        return currentAcc;
+    public static Account getCurrentUser() {
+        return currentUser;
     }
+
 }

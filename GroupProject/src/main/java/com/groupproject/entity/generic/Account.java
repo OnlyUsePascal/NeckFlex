@@ -1,5 +1,7 @@
 package com.groupproject.entity.generic;
 
+import com.groupproject.toolkit.Constant.ConstantUser;
+
 public class Account {
     protected String _id;
     protected String username;
@@ -8,6 +10,10 @@ public class Account {
     protected String lastName;
     protected String address;
     protected String phone;
+    protected ConstantUser accountType;
 
+    public ConstantUser getAccountType() {
+        return accountType;
+    }
 
 }

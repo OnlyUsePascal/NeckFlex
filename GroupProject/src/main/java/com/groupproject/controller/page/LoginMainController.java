@@ -1,6 +1,6 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.toolkit.PathGetter;
+import com.groupproject.toolkit.GetterPath;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class LoginMainController {
     private Stage stage;
@@ -41,7 +40,7 @@ public class LoginMainController {
         if(true){
         // if(username.getText().equals("dat") && password.getText().equals("123")){
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathGetter.getHome()));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(GetterPath.getHome()));
             root = loader.load();
 //            AfterLogin afterLogin = loader.getController();
 //            afterLogin.setHellobox(username.getText());

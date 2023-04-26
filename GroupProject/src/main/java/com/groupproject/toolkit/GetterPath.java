@@ -1,6 +1,6 @@
 package com.groupproject.toolkit;
 
-public class PathGetter {
+public class GetterPath {
     final static String pageRoot = "/com/groupproject/fxml/page/";
     final static String componentRoot = "/com/groupproject/fxml/component/";
     final static String imgRoot = "/com/groupproject/media/image/";
@@ -18,4 +18,17 @@ public class PathGetter {
     static public String getItemTrending(){
         return pageRoot + "ItemTrending.fxml";
     }
+
+    static public String getSidebar(){
+        // Account currentUser = CurrentUser.getCurrentUser();
+        // if (currentUser.getAccountType() == ConstantUser.ADMIN){
+        //     System.out.println("is admin");
+        //     return componentRoot + "SidebarAdmin.fxml";
+        // }
+        //
+        // System.out.println("is customer");
+        return componentRoot + "SidebarCustomer.fxml";
+    }
+
+
 }

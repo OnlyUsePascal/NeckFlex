@@ -19,4 +19,7 @@ module com.groupproject {
 
     opens com.groupproject.toolkit to javafx.fxml;
     exports com.groupproject.toolkit;
+
+    exports com.groupproject.toolkit.Constant;
+    opens com.groupproject.toolkit.Constant to javafx.fxml;
 }
