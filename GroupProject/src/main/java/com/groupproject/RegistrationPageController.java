@@ -67,7 +67,7 @@ public class RegistrationPageController implements Initializable {
     }
 
     public void onCancelButtonClick(){
-        Platform.exit();
+        closeWindow();
     }
 
     public void onCreateButtonClick() throws InterruptedException {
@@ -88,6 +88,11 @@ public class RegistrationPageController implements Initializable {
             errorCounter++;
         }else{
             requiredUsername.setVisible(false);
+            if (username.contains("|")){
+                RegistrationPageMessage.setText("Username cannot contain '|'");
+                RegistrationPageMessage.setTextFill(Color.RED);
+                return;
+            }
         }
 
         if(password.isBlank()){
@@ -95,6 +100,11 @@ public class RegistrationPageController implements Initializable {
             errorCounter++;
         }else{
             requiredPassword.setVisible(false);
+            if (password.contains("|")){
+                RegistrationPageMessage.setText("Password cannot contain '|'");
+                RegistrationPageMessage.setTextFill(Color.RED);
+                return;
+            }
         }
 
         if(confirmPassword.isBlank()){
@@ -102,6 +112,11 @@ public class RegistrationPageController implements Initializable {
             errorCounter++;
         }else{
             requiredConfirmPassword.setVisible(false);
+            if (confirmPassword.contains("|")){
+                RegistrationPageMessage.setText("Confirm Password cannot contain '|'");
+                RegistrationPageMessage.setTextFill(Color.RED);
+                return;
+            }
         }
 
         if(firstName.isBlank()){
@@ -109,6 +124,11 @@ public class RegistrationPageController implements Initializable {
             errorCounter++;
         }else{
             requiredFirstName.setVisible(false);
+            if (firstName.contains("|")){
+                RegistrationPageMessage.setText("First Name cannot contain '|'");
+                RegistrationPageMessage.setTextFill(Color.RED);
+                return;
+            }
         }
 
         if(lastName.isBlank()){
@@ -116,6 +136,11 @@ public class RegistrationPageController implements Initializable {
             errorCounter++;
         }else {
             requiredLastName.setVisible(false);
+            if (lastName.contains("|")){
+                RegistrationPageMessage.setText("Last Name cannot contain '|'");
+                RegistrationPageMessage.setTextFill(Color.RED);
+                return;
+            }
         }
 
         if(phoneNumber.isBlank()){
@@ -130,6 +155,11 @@ public class RegistrationPageController implements Initializable {
             errorCounter++;
         }else{
             requiredAddress.setVisible(false);
+            if (address.contains("|")){
+                RegistrationPageMessage.setText("Address cannot contain '|'");
+                RegistrationPageMessage.setTextFill(Color.RED);
+                return;
+            }
         }
 
         //ERROR CHECKING
