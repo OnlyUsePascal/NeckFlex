@@ -1,6 +1,8 @@
 package com.groupproject;
 
 
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +29,9 @@ public class RegistrationPageController implements Initializable {
     PasswordField RegistrationPageConfirmPassword = new PasswordField();
 
     @FXML
-    TextField RegistrationPageFullName = new TextField();
+    TextField RegistrationPageFirstName = new TextField();
+    @FXML
+    TextField RegistrationPageLastName = new TextField();
 
     @FXML
     TextField RegistrationPagePhoneNumber = new TextField();
@@ -44,7 +49,9 @@ public class RegistrationPageController implements Initializable {
     @FXML
     Label requiredConfirmPassword = new Label();
     @FXML
-    Label requiredFullName = new Label();
+    Label requiredFirstName = new Label();
+    @FXML
+    Label requiredLastName = new Label();
     @FXML
     Label requiredPhoneNumber = new Label();
     @FXML
@@ -68,10 +75,12 @@ public class RegistrationPageController implements Initializable {
         String username = RegistrationPageUsername.getText();
         String password = RegistrationPagePassword.getText();
         String confirmPassword = RegistrationPageConfirmPassword.getText();
-        String fullName = RegistrationPageFullName.getText();
+        String firstName = RegistrationPageFirstName.getText();
+        String lastName = RegistrationPageLastName.getText();
         String phoneNumber = RegistrationPagePhoneNumber.getText();
         String address = RegistrationPageAddress.getText();
-
+        System.out.println(firstName);
+        System.out.printf(lastName);
         int errorCounter = 0;
 
         if(username.isBlank()){
@@ -95,11 +104,18 @@ public class RegistrationPageController implements Initializable {
             requiredConfirmPassword.setVisible(false);
         }
 
-        if(fullName.isBlank()){
-            requiredFullName.setVisible(true);
+        if(firstName.isBlank()){
+            requiredFirstName.setVisible(true);
             errorCounter++;
         }else{
-            requiredFullName.setVisible(false);
+            requiredFirstName.setVisible(false);
+        }
+
+        if(lastName.isBlank()){
+            requiredLastName.setVisible(true);
+            errorCounter++;
+        }else {
+            requiredLastName.setVisible(false);
         }
 
         if(phoneNumber.isBlank()){
@@ -128,7 +144,7 @@ public class RegistrationPageController implements Initializable {
             return;
         }
 
-        if(checkingPhoneNumber(phoneNumber) == false){
+        if(checkingPhoneNumber(phoneNumber) == false && phoneNumber.isBlank() == false){
             RegistrationPageMessage.setText("Invalid Phone Number");
             RegistrationPageMessage.setTextFill(Color.RED);
             return;
@@ -138,11 +154,12 @@ public class RegistrationPageController implements Initializable {
             RegistrationPageMessage.setText("Register successfully!");
             RegistrationPageMessage.setTextFill(Color.GREEN);
 //            sleep(3000);
-            Platform.exit();
+//            Platform.exit();
+            PauseTransition pause = new PauseTransition(Duration.millis(3000));
+            pause.setOnFinished(event -> System.exit(0));
+            pause.play();
         }
-
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
