@@ -5,6 +5,7 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 enum  CustomerID {
@@ -20,32 +21,45 @@ enum  CustomerID {
 public class IOStream {
     static void loadData() throws IOException {
 
-        InputStream inputStream = IOStream.class.getResourceAsStream("/data/Customer.txt");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        String filePath = new File("GroupProject/src/main/resources/data/Customer.txt").getAbsolutePath();
+        File myfile = new File(filePath);
+        System.out.println(myfile);
+        if (myfile.exists()) {
+//            System.out.println("File name: " + myfile.getName());
+//            System.out.println("Absolute path: " + myfile.getAbsolutePath());
+//            System.out.println("Writeable: " + myfile.canWrite());
+//            System.out.println("Readable " + myfile.canRead());
+//            System.out.println("File size in bytes " + myfile.length());
 
-        String data;
-        while ((data = reader.readLine()) != null) {
-            // Process each line of data here
-//            System.out.println(data);
-
-            StringTokenizer st = new StringTokenizer(data, "|");
-            ArrayList<String> list = new ArrayList<>();
-            while (st.hasMoreTokens()) {
-                list.add(st.nextToken());
+            // Read file
+            try {
+                Scanner my_reader = new Scanner(myfile);
+                while(my_reader.hasNextLine()){
+                    String data = my_reader.nextLine();
+                    StringTokenizer st = new StringTokenizer(data, "|");
+                    ArrayList<String> list = new ArrayList<>();
+                    while (st.hasMoreTokens()) {
+                        list.add(st.nextToken());
+                    }
+                    Account account = new Account(
+                            list.get(CustomerID.ID.ordinal()),
+                            list.get(CustomerID.USERNAME.ordinal()),
+                            list.get(CustomerID.PASSWORD.ordinal()),
+                            list.get(CustomerID.FIRSTNAME.ordinal()),
+                            list.get(CustomerID.LASTNAME.ordinal()),
+                            list.get(CustomerID.ADDRESS.ordinal()),
+                            list.get(CustomerID.PHONE.ordinal())
+                    );
+                    SystemShop.addAccount(account);
+                    Account.customerID++;
+                }
+            } catch(FileNotFoundException e){
+                System.out.println("File not Found!");
             }
-//            System.out.println(list.size());
-            Account account = new Account(
-                    list.get(CustomerID.ID.ordinal()),
-                    list.get(CustomerID.USERNAME.ordinal()),
-                    list.get(CustomerID.PASSWORD.ordinal()),
-                    list.get(CustomerID.FIRSTNAME.ordinal()),
-                    list.get(CustomerID.LASTNAME.ordinal()),
-                    list.get(CustomerID.ADDRESS.ordinal()),
-                    list.get(CustomerID.PHONE.ordinal())
-            );
-            SystemShop.addAccount(account);
+        } else {
+            System.out.println("The file does not exist.");
         }
-        reader.close();
+
     }
 
     static void saveData() throws IOException {
@@ -62,6 +76,7 @@ public class IOStream {
                 printWriter.println(account.Account2Str());
             }
             printWriter.close();
+            System.out.println("Save data successfully!");
 
         }catch(IOException e2){
             System.out.println("An error occurred.");

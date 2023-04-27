@@ -1,17 +1,19 @@
 package com.groupproject;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.Objects;
 
 
 public class LoginPageController {
@@ -26,7 +28,7 @@ public class LoginPageController {
     @FXML
     private Button LoginPageRegister;
     @FXML
-    private Label wronglogin;
+    private Label loginMessage;
     @FXML
     private TextField username;
     @FXML
@@ -34,25 +36,48 @@ public class LoginPageController {
     public void userLogin(ActionEvent event) throws IOException {
         checkLogin();
     }
+
+
     public void checkLogin() throws IOException {
 
-        if(username.getText().equals("dat") && password.getText().equals("123")){
+        if(username.getText().isEmpty() || password.getText().isEmpty()){
+            loginMessage.setText("Please enter your username and password!");
+            loginMessage.setTextFill(Color.RED);
+            return;
+        }
 
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
-            root = loader.load();
-//            AfterLogin afterLogin = loader.getController();
-//            afterLogin.setHellobox(username.getText());
-            stage = (Stage) button.getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        System.out.println(SystemShop.getAccountLists().size());
+
+        for(Account account : SystemShop.getAccountLists()){
+            System.out.println(account.Account2Str());
+
+            if( username.getText().equals(account.getUsername()) &&
+                password.getText().equals(account.getPassword()) ){
+                SystemShop.loginAccount = account;
+                loginMessage.setText("Signing in...");
+                loginMessage.setTextFill(Color.GREEN);
+                PauseTransition pause = new PauseTransition(Duration.millis(3000));
+                pause.setOnFinished(event -> {
+                    HomeScreen homeScreen = new HomeScreen();
+                    try {
+                        homeScreen.start(new Stage());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    closeWindow();
+                });
+                pause.play();
+                return;
+            }
         }
-        else if(username.getText().isEmpty() && password.getText().isEmpty()){
-            wronglogin.setText("Please enter username and password");
-        }
-        else{
-            wronglogin.setText("Wrong username or password");
-        }
+
+        loginMessage.setText("Wrong username or password!");
+        loginMessage.setTextFill(Color.RED);
+
+    }
+
+    public void closeWindow() {
+        LoginPage.window.close();
     }
 
     public void userRegister(ActionEvent event) throws IOException {

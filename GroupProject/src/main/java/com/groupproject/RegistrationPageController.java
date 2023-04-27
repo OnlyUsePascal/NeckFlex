@@ -79,8 +79,8 @@ public class RegistrationPageController implements Initializable {
         String lastName = RegistrationPageLastName.getText();
         String phoneNumber = RegistrationPagePhoneNumber.getText();
         String address = RegistrationPageAddress.getText();
-        System.out.println(firstName);
-        System.out.printf(lastName);
+//        System.out.println(firstName);
+//        System.out.printf(lastName);
         int errorCounter = 0;
 
         if(username.isBlank()){
@@ -134,6 +134,11 @@ public class RegistrationPageController implements Initializable {
 
         //ERROR CHECKING
         //Checking username
+        if(SystemShop.checkUsername(username) == true){
+            RegistrationPageMessage.setText("Username already exists!");
+            RegistrationPageMessage.setTextFill(Color.RED);
+            return;
+        }
 
 
         //Checking Password
@@ -153,13 +158,18 @@ public class RegistrationPageController implements Initializable {
         if(errorCounter == 0){
             RegistrationPageMessage.setText("Register successfully!");
             RegistrationPageMessage.setTextFill(Color.GREEN);
-//            sleep(3000);
-//            Platform.exit();
+            Account newAccount = Account.registerCustomer(username, password, firstName, lastName, phoneNumber, address);
+            SystemShop.addAccount(newAccount);
             PauseTransition pause = new PauseTransition(Duration.millis(3000));
-            pause.setOnFinished(event -> System.exit(0));
+            pause.setOnFinished(event -> closeWindow());
             pause.play();
         }
     }
+
+    public void closeWindow() {
+        RegistrationPage.window.close();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
