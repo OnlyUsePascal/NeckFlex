@@ -153,8 +153,6 @@ public class RegistrationPageController implements Initializable {
         if(errorCounter == 0){
             RegistrationPageMessage.setText("Register successfully!");
             RegistrationPageMessage.setTextFill(Color.GREEN);
-//            sleep(3000);
-//            Platform.exit();
             PauseTransition pause = new PauseTransition(Duration.millis(5000));
             pause.setOnFinished(event -> System.exit(0));
             pause.play();
@@ -162,6 +160,5 @@ public class RegistrationPageController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }
