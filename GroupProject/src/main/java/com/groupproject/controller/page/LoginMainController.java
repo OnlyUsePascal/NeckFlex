@@ -40,7 +40,7 @@ public class LoginMainController {
         if(true){
         // if(username.getText().equals("dat") && password.getText().equals("123")){
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(GetterPath.getHome()));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(GetterPath.getPageHome()));
             root = loader.load();
 //            AfterLogin afterLogin = loader.getController();
 //            afterLogin.setHellobox(username.getText());

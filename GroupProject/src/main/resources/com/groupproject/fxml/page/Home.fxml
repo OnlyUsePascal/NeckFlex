@@ -6,10 +6,10 @@
 
 <AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.HomeController">
     <children>
-        <AnchorPane fx:id="pageContent" layoutX="-1.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="80.0" />
+        <AnchorPane fx:id="pageContent" layoutX="-1.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
         <AnchorPane layoutX="454.0" layoutY="23.0" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #0A4D68;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <AnchorPane fx:id="sidebarPanel" layoutY="72.0" prefHeight="840.0" prefWidth="290.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0" />
-        <Button layoutX="375.0" layoutY="239.0" mnemonicParsing="false" onAction="#menuActive" scaleX="0.2" scaleY="0.2" snapToPixel="false" style="-fx-background-color: transparent;">
+        <Button layoutX="375.0" layoutY="239.0" mnemonicParsing="false" onAction="#menuActive" scaleX="0.15" scaleY="0.15" snapToPixel="false" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="-156.0" AnchorPane.topAnchor="-156.0">
             <graphic>
                 <SVGPath content="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" style="-fx-fill: white;" />
             </graphic>

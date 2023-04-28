@@ -1,26 +1,15 @@
 package com.groupproject.toolkit;
 
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
 public class SetterFile {
-    public static void setAnchorPane(AnchorPane frame, String url){
-        AnchorPane pageResult = GetterFile.getAnchorPane(url);
-
-        if (true) {
-        // if (frame.getChildren().size() == 0) {
-            frame.getChildren().add(pageResult);
+    public static void setAnchorPane(AnchorPane frame, Node node){
+        // if (true) {
+        if (frame.getChildren().size() == 0) {
+            frame.getChildren().add(node);
         } else {
-            frame.getChildren().set(0, pageResult);
+            frame.getChildren().set(0, node);
         }
     }
-
-    // public static void setAnchorPane(AnchorPane frame, Controller String url){
-    //     AnchorPane pageResult = GetterFile.getAnchorPane(url);
-    //
-    //     if (frame.getChildren().isEmpty()) {
-    //         frame.getChildren().add(pageResult);
-    //     } else {
-    //         frame.getChildren().set(0, pageResult);
-    //     }
-    // }
 }

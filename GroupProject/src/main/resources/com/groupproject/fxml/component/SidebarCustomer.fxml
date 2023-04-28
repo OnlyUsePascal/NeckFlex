@@ -7,11 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.skin.SplitPaneSkin.Content?>
-<AnchorPane fx:id="menuPane" prefHeight="840.0" prefWidth="290.0" style="-fx-background-color: #FEE8B0;" fx:controller="com.groupproject.controller.component.SidebarCustomerController" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <userData>
-      <fx:reference source="controller"/>
-   </userData>
+<AnchorPane fx:id="menuPane" prefHeight="840.0" prefWidth="290.0" style="-fx-background-color: #FEE8B0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.SidebarCustomerController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="101.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
          <children>
@@ -44,7 +40,7 @@
                   <Font size="28.0" />
                </font>
             </Button>
-            <Button fx:id="SidePanel3" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#changeContent" prefHeight="50.0" prefWidth="173.0" style="-fx-background-color: transparent;" text="Inventory" textAlignment="CENTER">
+            <Button fx:id="UserRecord" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#changeContent" prefHeight="50.0" prefWidth="173.0" style="-fx-background-color: transparent;" text="Record" textAlignment="CENTER">
                <font>
                   <Font size="28.0" />
                </font>

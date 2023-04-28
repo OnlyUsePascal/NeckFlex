@@ -1,7 +1,6 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.SidebarController;
-import com.groupproject.toolkit.GetterFile;
 import com.groupproject.toolkit.GetterPath;
 import com.groupproject.toolkit.SetterFile;
 import javafx.event.ActionEvent;
@@ -21,51 +20,60 @@ public class HomeController implements Initializable {
 
     @FXML
     AnchorPane sidebarPanel;
+    @FXML
+    FXMLLoader sidebarLoader;
 
     @FXML
     AnchorPane pageContent;
+    @FXML
+    FXMLLoader pageContentLoader;
 
     SidebarController sidebarController;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // menuPane.setTranslateX(-300);
-
-        setPageContent(GetterPath.getItemTrending());
-        setSidebar(GetterPath.getSidebar());
+        sidebarPanel.setTranslateX(-300);
+        setPageContent(GetterPath.getPageItemTrending());
+        setSidebar(GetterPath.getComponentSidebar());
     }
 
     public void setSidebar(String url){
-        SetterFile.setAnchorPane(sidebarPanel, url);
-        AnchorPane sidebar = (AnchorPane) sidebarPanel.getChildren().get(0);
-        sidebarController = (SidebarController) sidebar.getUserData();
+        sidebarLoader = new FXMLLoader(getClass().getResource(url));
+        try {
+            AnchorPane sidebar = (AnchorPane) sidebarLoader.load();
+            sidebarController = (SidebarController) sidebarLoader.getController();
+
+            SetterFile.setAnchorPane(sidebarPanel, sidebar);
+            sidebarController.setHomeController(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setPageContent(String url) {
-        SetterFile.setAnchorPane(pageContent, url);
+        pageContentLoader = new FXMLLoader(getClass().getResource(url));
+        try {
+            AnchorPane page = (AnchorPane) pageContentLoader.load();
+            SetterFile.setAnchorPane(pageContent, page);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void menuActive(ActionEvent event){
         sidebarController.menuActive(event);
     }
 
-
-    public void changeContent(ActionEvent event){
-        // Button btn = (Button) event.getSource();
-        // String btnId = btn.getId();
-        // // System.out.println(btnId);
-        //
-        // try {
-        //     String pageFile = "/com/groupproject/fxml/page/" + btnId + ".fxml";
-        //     // System.out.println(pageFile);
-        //     FXMLLoader pageView = new FXMLLoader(getClass().getResource(pageFile));
-        //
-        //     AnchorPane pageResult = (AnchorPane) pageView.load();
-        //     // pageContent.getChildren().add(pageResult);
-        //     pageContent.getChildren().set(0,pageResult);
-        //
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
+    public void changePageContent(String url){
+        // System.out.println(url);
+        pageContentLoader = new FXMLLoader(getClass().getResource(url));
+        try {
+            AnchorPane page = (AnchorPane) pageContentLoader.load();
+            SetterFile.setAnchorPane(pageContent, page);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

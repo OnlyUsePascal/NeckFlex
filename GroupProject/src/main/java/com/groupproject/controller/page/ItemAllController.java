@@ -1,4 +1,9 @@
 package com.groupproject.controller.page;
 
-public class ItemAllController {
+import javafx.fxml.Initializable;
+
+public class ItemAllController implements Initializable {
+    @Override
+    public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
+    }
 }

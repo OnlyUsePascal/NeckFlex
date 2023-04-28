@@ -11,15 +11,23 @@ public class GetterPath {
         return pageRoot + "LoginMain.fxml";
     }
 
-    static public String getHome(){
+    static public String getPageHome(){
         return pageRoot + "Home.fxml";
     }
 
-    static public String getItemTrending(){
+    static public String getPageItemTrending(){
         return pageRoot + "ItemTrending.fxml";
     }
 
-    static public String getSidebar(){
+    static public String getPageItemAll(){
+        return pageRoot + "ItemAll.fxml";
+    }
+
+    static public String getPageBtn(String btnContent){
+        return pageRoot + btnContent + ".fxml";
+    }
+
+    static public String getComponentSidebar(){
         // Account currentUser = CurrentUser.getCurrentUser();
         // if (currentUser.getAccountType() == ConstantUser.ADMIN){
         //     System.out.println("is admin");
@@ -30,5 +38,15 @@ public class GetterPath {
         return componentRoot + "SidebarCustomer.fxml";
     }
 
+    static public String getComponentItemBox(){
+        return componentRoot + "ItemBox.fxml";
+    }
 
+    static public String getMediaImage(String imgName){
+        return imgRoot + imgName;
+    }
+
+    static public String getStyleSheet(){
+        return "/com/groupproject/style.css";
+    }
 }
