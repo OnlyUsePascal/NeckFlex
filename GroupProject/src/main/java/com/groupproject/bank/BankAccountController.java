@@ -1,11 +1,9 @@
-package com.groupproject;
+package com.groupproject.bank;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
 
 public class BankAccountController {
 

@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.bank;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

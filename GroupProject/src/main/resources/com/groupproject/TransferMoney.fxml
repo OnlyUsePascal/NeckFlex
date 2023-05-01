@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.BankAccountController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.bank.BankAccountController">
     <children>
         <Pane fx:id="middleContainer" layoutX="550.0" layoutY="200.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #A69D9A;">
                 <TextField fx:id="accountNumber" layoutX="109.0" layoutY="159.0" prefHeight="40.0" prefWidth="283.0" promptText="Account Number" />
