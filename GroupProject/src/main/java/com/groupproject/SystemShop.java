@@ -5,7 +5,14 @@ import java.util.HashMap;
 
 public class SystemShop {
     static private ArrayList<Account> accountLists = new ArrayList<>();
+
+    static private ArrayList<DVD> dvdLists = new ArrayList<>();
+
+    static private ArrayList<VideoGame> videoGameLists = new ArrayList<>();
+    static private ArrayList<MovieRecord> movieRecordLists = new ArrayList<>();
     static private HashMap<String, String> usernamePasswordMap = new HashMap<>();
+
+    static private ArrayList<Item> itemLists = new ArrayList<>();
 
     static public Account loginAccount;
 
@@ -19,6 +26,22 @@ public class SystemShop {
         usernamePasswordMap.put(account.getUsername(), account.getPassword());
     }
 
+    public static void addDVD(DVD dvd){
+        dvdLists.add(dvd);
+    }
+
+    public static void addVideoGame(VideoGame videoGame){
+        videoGameLists.add(videoGame);
+    }
+
+    public static void addMovieRecord(MovieRecord movieRecord){
+        movieRecordLists.add(movieRecord);
+    }
+
+    public static void addItem(Item item){
+        itemLists.add(item);
+    }
+
     public static boolean checkUsername(String username){
         return usernamePasswordMap.containsKey(username);
     }
@@ -27,10 +50,21 @@ public class SystemShop {
         return accountLists;
     }
 
+    public static ArrayList<Item> getItemLists() {
+        return itemLists;
+    }
+
     public void displayAccount(){
         System.out.println("Display Info:");
         for (Account account : accountLists) {
             System.out.println(account);
+        }
+    }
+
+    public void displayItem(){
+        System.out.println("Display Info:");
+        for (Item item : itemLists) {
+            System.out.println(item);
         }
     }
 }

@@ -1,0 +1,2 @@
+0|I001-1001|Title|0|0|0|2|123.0|rentalStatus
+1|I002-1001|Title|0|0|0|2|123.0|rentalStatus
