@@ -12,7 +12,9 @@ enum AccountLabel {
     FIRSTNAME,
     LASTNAME,
     ADDRESS,
-    PHONE
+    PHONE,
+    BALANCE,
+    REWARDPOINT
 }
 
 enum  ItemLabel {
@@ -31,9 +33,11 @@ public class IOStream {
 
     static void loadAccountData() throws IOException{
 
-        String filePath = new File("GroupProject/src/main/resources/data/Customer.txt").getAbsolutePath();
+        String filePath = new File("src/main/resources/data/Customer.txt").getAbsolutePath();
+//        String pathrtest = "/run/media/kaito/DATA/OOP/OOP-Group-Project/GroupProject/src/main/resources/data/Customer.txt";
         File myfile = new File(filePath);
         System.out.println(myfile);
+
         if (myfile.exists()) {
 //            System.out.println("File name: " + myfile.getName());
 //            System.out.println("Absolute path: " + myfile.getAbsolutePath());
@@ -58,7 +62,9 @@ public class IOStream {
                             list.get(AccountLabel.FIRSTNAME.ordinal()),
                             list.get(AccountLabel.LASTNAME.ordinal()),
                             list.get(AccountLabel.ADDRESS.ordinal()),
-                            list.get(AccountLabel.PHONE.ordinal())
+                            list.get(AccountLabel.PHONE.ordinal()),
+                            Double.parseDouble(list.get(AccountLabel.BALANCE.ordinal())),
+                            Double.parseDouble(list.get(AccountLabel.REWARDPOINT.ordinal()))
                     );
                     SystemShop.addAccount(account);
                     Account.customerID++;
@@ -72,7 +78,7 @@ public class IOStream {
     }
 
     static void loadItemData() throws IOException{
-        String filePath = new File("GroupProject/src/main/resources/data/Item.txt").getAbsolutePath();
+        String filePath = new File("src/main/resources/data/Item.txt").getAbsolutePath();
         File myfile = new File(filePath);
         System.out.println(myfile);
         if (myfile.exists()) {
@@ -160,7 +166,7 @@ public class IOStream {
 
     static void saveAccountData() throws IOException{
         //Get Absolute Path
-        String filePath = new File("GroupProject/src/main/resources/data/Customer.txt").getAbsolutePath();
+        String filePath = new File("src/main/resources/data/Customer.txt").getAbsolutePath();
 //        System.out.println(filePath);
 
         //Write to file
@@ -181,7 +187,7 @@ public class IOStream {
 
     static void saveItemData() throws IOException{
         //Get Absolute Path
-        String filePath = new File("GroupProject/src/main/resources/data/Item.txt").getAbsolutePath();
+        String filePath = new File("src/main/resources/data/Item.txt").getAbsolutePath();
 //        System.out.println(filePath);
 
 //        Write to file

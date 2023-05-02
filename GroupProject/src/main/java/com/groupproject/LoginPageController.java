@@ -58,9 +58,9 @@ public class LoginPageController {
                 loginMessage.setTextFill(Color.GREEN);
                 PauseTransition pause = new PauseTransition(Duration.millis(3000));
                 pause.setOnFinished(event -> {
-                    HomeScreen homeScreen = new HomeScreen();
+                    HelloApplication helloApplication = new HelloApplication();
                     try {
-                        homeScreen.start(new Stage());
+                        helloApplication.start(new Stage());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
