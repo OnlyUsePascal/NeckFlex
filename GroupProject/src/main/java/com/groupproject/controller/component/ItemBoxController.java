@@ -1,6 +1,6 @@
 package com.groupproject.controller.component;
 
-import com.groupproject.toolkit.GetterFile;
+import com.groupproject.toolkit.ObjectHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -21,7 +21,7 @@ public class ItemBoxController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Image img = new Image(getClass().getResourceAsStream("banner1.jpg"));
-        Image img = GetterFile.getImage("banner1.jpg");
+        Image img = ObjectHandler.getImage("banner1.jpg");
         ImagePattern imgView = new ImagePattern(img);
 
         imgFrame.setFill(imgView);

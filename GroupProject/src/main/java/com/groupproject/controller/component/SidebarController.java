@@ -1,7 +1,7 @@
 package com.groupproject.controller.component;
 
 import com.groupproject.controller.page.HomeController;
-import com.groupproject.toolkit.GetterPath;
+import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.ResourceBundle;
 
 public class SidebarController implements Initializable {
@@ -31,10 +32,6 @@ public class SidebarController implements Initializable {
 
         menuToClose = new TranslateTransition(Duration.seconds(duration), menuPane);
         menuToClose.setByX(-300);
-
-        // System.out.println(menuPane.getProperties().get("foo"));
-
-
     }
 
     public void menuActive(ActionEvent event){
@@ -47,12 +44,17 @@ public class SidebarController implements Initializable {
         }
     }
 
-    public void changeContent(ActionEvent event){
-        Button btn = (Button) event.getSource();
-        homeController.changePageContent(GetterPath.getPageBtn(btn.getId()));
-    }
-
     public void setHomeController(HomeController homeController) {
         this.homeController = homeController;
     }
+
+    public void toHome(ActionEvent event){
+        homeController.setPageContent(PathHandler.getPageItemTrending());
+    }
+
+    public void toItemAll(ActionEvent event){
+        homeController.setPageContent(PathHandler.getPageItemAll());
+    }
+
+
 }

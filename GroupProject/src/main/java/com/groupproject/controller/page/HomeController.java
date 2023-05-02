@@ -1,8 +1,9 @@
 package com.groupproject.controller.page;
 
+import com.groupproject.controller.component.NavBarCustomerController;
 import com.groupproject.controller.component.SidebarController;
-import com.groupproject.toolkit.GetterPath;
-import com.groupproject.toolkit.SetterFile;
+import com.groupproject.toolkit.PathHandler;
+import com.groupproject.toolkit.ObjectHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,31 +21,34 @@ public class HomeController implements Initializable {
 
     @FXML
     AnchorPane sidebarPanel;
-    @FXML
-    FXMLLoader sidebarLoader;
 
     @FXML
     AnchorPane pageContent;
+
     @FXML
-    FXMLLoader pageContentLoader;
+    AnchorPane navBar;
 
+    // FXMLLoader pageContentLoader;
+    // FXMLLoader sidebarLoader;
     SidebarController sidebarController;
-
+    // FXMLLoader navBarLoader;
+    NavBarCustomerController navBarCustomerController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sidebarPanel.setTranslateX(-300);
-        setPageContent(GetterPath.getPageItemTrending());
-        setSidebar(GetterPath.getComponentSidebar());
+        setPageContent(PathHandler.getPageItemTrending());
+        setSidebar(PathHandler.getComponentSidebar());
+        setNavBar(PathHandler.getComponentNavBar());
     }
 
     public void setSidebar(String url){
-        sidebarLoader = new FXMLLoader(getClass().getResource(url));
+        FXMLLoader sidebarLoader = new FXMLLoader(getClass().getResource(url));
         try {
             AnchorPane sidebar = (AnchorPane) sidebarLoader.load();
-            sidebarController = (SidebarController) sidebarLoader.getController();
+            sidebarController = sidebarLoader.getController();
 
-            SetterFile.setAnchorPane(sidebarPanel, sidebar);
+            ObjectHandler.setAnchorPane(sidebarPanel, sidebar);
             sidebarController.setHomeController(this);
 
         } catch (IOException e) {
@@ -53,27 +57,29 @@ public class HomeController implements Initializable {
     }
 
     public void setPageContent(String url) {
-        pageContentLoader = new FXMLLoader(getClass().getResource(url));
+        ObjectHandler.setAnchorPane(pageContent, url);
+    }
+
+    public void setNavBar(String url){
+        FXMLLoader navBarLoader = new FXMLLoader(getClass().getResource(url));
         try {
-            AnchorPane page = (AnchorPane) pageContentLoader.load();
-            SetterFile.setAnchorPane(pageContent, page);
-        } catch (IOException e) {
-            e.printStackTrace();
+            AnchorPane navBarPane = navBarLoader.load();
+            navBarCustomerController = navBarLoader.getController();
+
+            ObjectHandler.setAnchorPane(navBar, navBarPane);
+            navBarCustomerController.setHomeController(this);
+        } catch (IOException err) {
+            err.printStackTrace();
         }
     }
 
-    public void menuActive(ActionEvent event){
+    public AnchorPane getPageContentFrame(){
+        return pageContent;
+    }
+
+    public void setMenuActive(ActionEvent event){
         sidebarController.menuActive(event);
     }
 
-    public void changePageContent(String url){
-        // System.out.println(url);
-        pageContentLoader = new FXMLLoader(getClass().getResource(url));
-        try {
-            AnchorPane page = (AnchorPane) pageContentLoader.load();
-            SetterFile.setAnchorPane(pageContent, page);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
+
 }

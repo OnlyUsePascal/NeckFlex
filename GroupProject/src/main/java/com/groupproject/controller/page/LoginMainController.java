@@ -1,24 +1,29 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.toolkit.GetterPath;
+import com.groupproject.entity.current.CurrentUser;
+import com.groupproject.entity.current.ShopSystem;
+import com.groupproject.entity.generic.Account;
+import com.groupproject.toolkit.PathHandler;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginMainController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
+public class LoginMainController implements Initializable {
     @FXML
     private Button button;
 
@@ -26,39 +31,75 @@ public class LoginMainController {
     private Button LoginPageRegister;
 
     @FXML
-    private Label wronglogin;
+    private Label loginMessage;
 
     @FXML
     private TextField username;
 
     @FXML
     private PasswordField password;
-    public void userLogin(ActionEvent event) throws IOException {
-        checkLogin();
-    }
-    public void checkLogin() throws IOException {
-        if(true){
-        // if(username.getText().equals("dat") && password.getText().equals("123")){
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(GetterPath.getPageHome()));
-            root = loader.load();
-//            AfterLogin afterLogin = loader.getController();
-//            afterLogin.setHellobox(username.getText());
-            stage = (Stage) button.getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else if(username.getText().isEmpty() && password.getText().isEmpty()){
-            wronglogin.setText("Please enter username and password");
-        }
-        else{
-            wronglogin.setText("Wrong username or password");
-        }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Node pane = button.getParent().getParent();
+        pane.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                actionLogin(null);
+            }
+        });
     }
 
-    public void userRegister(ActionEvent event) throws IOException {
-        // RegistrationPage registrationPage = new RegistrationPage();
-        // registrationPage.start(new Stage());
+    public void actionLogin(ActionEvent event) {
+        if(username.getText().isEmpty() || password.getText().isEmpty()){
+            loginMessage.setText("Please enter your username and password!");
+            loginMessage.setTextFill(Color.RED);
+            return;
+        }
+
+        // System.out.println(ShopSystem.getAccountList().size());
+        String curUsername = username.getText();
+        String curPwd = password.getText();
+        Account sysAcc = ShopSystem.getAccountFromUsername(curUsername);
+
+        if (sysAcc == null || !sysAcc.getPassword().equals(curPwd)){
+            loginMessage.setText("Wrong username or password!");
+            loginMessage.setTextFill(Color.RED);
+            return;
+        }
+
+        CurrentUser.setCurrentUser(sysAcc);
+        loginMessage.setText("Signing in...");
+        loginMessage.setTextFill(Color.GREEN);
+        PauseTransition pause = new PauseTransition(Duration.millis(2000));
+        pause.setOnFinished(event2 -> {
+            toHome();
+        });
+        pause.play();
     }
+
+    public void toHome(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageHome()));
+        Scene scene = button.getScene();
+        try {
+            scene.setRoot(loader.load());
+        } catch (IOException err){
+            err.printStackTrace();
+        }
+    }
+
+    public void toLoginRegister(ActionEvent event){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageRegister()));
+        Scene scene = button.getScene();
+        try {
+            scene.setRoot(loader.load());
+        } catch (IOException err){
+            err.printStackTrace();
+        }
+    }
+
+
+
+
+
 }

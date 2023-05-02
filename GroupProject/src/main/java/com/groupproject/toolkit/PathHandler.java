@@ -1,14 +1,19 @@
 package com.groupproject.toolkit;
 
-public class GetterPath {
+public class PathHandler {
     final static String pageRoot = "/com/groupproject/fxml/page/";
     final static String componentRoot = "/com/groupproject/fxml/component/";
     final static String imgRoot = "/com/groupproject/media/image/";
     final static String videoRoot = "/com/groupproject/media/video/";
+    final static String textRoot = "src/main/resources/com/groupproject/media/text/";
 
 
-    static public String getLoginMain(){
+    static public String getPageLoginMain(){
         return pageRoot + "LoginMain.fxml";
+    }
+
+    static public String getPageRegister(){
+        return pageRoot + "LoginRegister.fxml";
     }
 
     static public String getPageHome(){
@@ -23,8 +28,12 @@ public class GetterPath {
         return pageRoot + "ItemAll.fxml";
     }
 
-    static public String getPageBtn(String btnContent){
-        return pageRoot + btnContent + ".fxml";
+    static public String getPageUserRecord() {
+        return pageRoot + "UserRecord.fxml";
+    }
+
+    static public String getPageUserProfile(){
+        return pageRoot + "UserProfile.fxml";
     }
 
     static public String getComponentSidebar(){
@@ -38,6 +47,10 @@ public class GetterPath {
         return componentRoot + "SidebarCustomer.fxml";
     }
 
+    static public String getComponentNavBar(){
+        return componentRoot + "NavBarCustomer.fxml";
+    }
+
     static public String getComponentItemBox(){
         return componentRoot + "ItemBox.fxml";
     }
@@ -45,6 +58,14 @@ public class GetterPath {
     static public String getMediaImage(String imgName){
         return imgRoot + imgName;
     }
+    static public String getMediaText(String textName){
+        return textRoot + textName;
+    }
+
+    static public String getMediaTextAccount(){
+        return textRoot + "account.txt";
+    }
+
 
     static public String getStyleSheet(){
         return "/com/groupproject/style.css";

@@ -2,7 +2,7 @@ package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.toolkit.GetterPath;
+import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -56,7 +56,7 @@ public class ItemTrendingController implements Initializable {
     public void addItemTile(HBox itemTile, ArrayList<Item> itemList){
         try{
             for (int i = 0; i < 2; i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(GetterPath.getComponentItemBox()));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
                 Button itemBox = (Button) fxmlLoader.load();
 
                 ItemBoxController itemBoxController = fxmlLoader.getController();

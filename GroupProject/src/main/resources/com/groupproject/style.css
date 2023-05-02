@@ -10,6 +10,33 @@
     -fx-background-color: #239c9c;
 }
 
+/*MENU BUTTON*/
+.menu-button{
+    -fx-background-color: transparent;
+}
+
+.menu-button:hover{
+    -fx-background-color: #07f7f7;
+}
+
+.menu-button:pressed{
+    -fx-background-color: #239c9c;
+}
+
+/*MENU ITEM*/
+.menu-item:hover{
+    -fx-background-color: grey;
+    /*-fx-translate-x: 10;*/
+}
+
+.context-menu{
+    -fx-background-color: white;
+    -fx-font-size: 20;
+    /*-fx-margin: 10 10 10 10;*/
+    -fx-background-radius: 10;
+}
+
+/*Img frame*/
 .imgFrame{
     -fx-arc-height: 30;
     -fx-arc-width: 30;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="820.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.CartController">
+   <children>
+      <Label layoutX="552.0" layoutY="336.0" text="shopping cart">
+         <font>
+            <Font size="93.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

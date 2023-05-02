@@ -1,5 +1,10 @@
 package com.groupproject.controller.component;
 
-public class SidebarCustomerController extends SidebarController{
+import com.groupproject.toolkit.PathHandler;
+import javafx.event.ActionEvent;
 
+public class SidebarCustomerController extends SidebarController{
+    public void toRecord(ActionEvent event){
+        homeController.setPageContent(PathHandler.getPageUserRecord());
+    }
 }
