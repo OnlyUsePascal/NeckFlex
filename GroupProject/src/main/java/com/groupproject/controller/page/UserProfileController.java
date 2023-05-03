@@ -1,7 +1,7 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.NavBarController;
-import com.groupproject.entity.current.CurrentUser;
+import com.groupproject.entity.runtime.CurrentUser;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;

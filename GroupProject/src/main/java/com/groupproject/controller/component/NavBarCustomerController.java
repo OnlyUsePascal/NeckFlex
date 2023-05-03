@@ -1,6 +1,7 @@
 package com.groupproject.controller.component;
 
 import com.groupproject.controller.page.HomeController;
+import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,7 +31,8 @@ public class NavBarCustomerController extends NavBarController {
     }
 
     public void toDeposit(ActionEvent event){
-        System.out.println("to deposit");
+        homeController.setPageContent(PathHandler.getPageUserDeposit());
+        // System.out.println("to deposit");
     }
 
 

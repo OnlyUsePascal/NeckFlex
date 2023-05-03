@@ -1,6 +1,6 @@
 package com.groupproject.toolkit;
 
-import com.groupproject.entity.current.ShopSystem;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.toolkit.Constant.ConstantAccount;
 

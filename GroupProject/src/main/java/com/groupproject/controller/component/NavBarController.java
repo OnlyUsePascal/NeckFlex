@@ -2,7 +2,7 @@ package com.groupproject.controller.component;
 
 import com.groupproject.controller.page.HomeController;
 import com.groupproject.controller.page.UserProfileController;
-import com.groupproject.entity.current.CurrentUser;
+import com.groupproject.entity.runtime.CurrentUser;
 import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;

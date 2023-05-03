@@ -1,4 +1,4 @@
-package com.groupproject.entity.current;
+package com.groupproject.entity.runtime;
 
 import com.groupproject.entity.generic.Account;
 

@@ -1,6 +1,6 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.entity.current.ShopSystem;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.Constant.ConstantAccount;
 
 public class Account {
@@ -90,6 +90,10 @@ public class Account {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setBalanceReceive(double amount){
+        this.balance += amount;
     }
 
 

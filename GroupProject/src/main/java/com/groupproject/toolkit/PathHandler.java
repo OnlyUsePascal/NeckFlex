@@ -36,6 +36,10 @@ public class PathHandler {
         return pageRoot + "UserProfile.fxml";
     }
 
+    static public String getPageUserDeposit(){
+        return pageRoot + "UserDeposit.fxml";
+    }
+
     static public String getComponentSidebar(){
         // Account currentUser = CurrentUser.getCurrentUser();
         // if (currentUser.getAccountType() == ConstantUser.ADMIN){
