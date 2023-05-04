@@ -13,18 +13,20 @@ import java.io.IOException;
 public class ShopApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        //init
         String pageFile = PathHandler.getPageLoginMain();
-        pageFile = PathHandler.getPageHome();
+        // pageFile = PathHandler.getPageItemAll();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageFile));
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
-
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
 
-        DataHandler.getAccount();
+        //data
+        DataHandler.getData();
 
+        //on close
         stage.setOnCloseRequest(event -> {
             postClose(event, stage);
         });
@@ -32,7 +34,8 @@ public class ShopApplication extends Application {
 
     public void postClose(WindowEvent event, Stage stage){
         event.consume();
-        DataHandler.saveAccount();
+
+        DataHandler.saveData();
         stage.close();
     }
 

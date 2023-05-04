@@ -50,14 +50,13 @@ public class ObjectHandler {
     }
 
     public static File getFile(String url){
-        // String path = PathGetter.getMediaText(url);
-        // System.out.println();
+        System.out.println(url);
         File file = new File(url);
         if (file.exists()) {
-            System.out.println("File exists");
+            System.out.println("File found");
             return file;
         }
-        System.out.println("File not found");
+        System.out.println("File not found:");
         return null;
     }
 

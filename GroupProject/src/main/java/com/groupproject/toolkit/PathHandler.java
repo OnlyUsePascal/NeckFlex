@@ -8,23 +8,23 @@ public class PathHandler {
     final static String textRoot = "src/main/resources/com/groupproject/media/text/";
 
 
-    static public String getPageLoginMain(){
+    static public String getPageLoginMain() {
         return pageRoot + "LoginMain.fxml";
     }
 
-    static public String getPageRegister(){
+    static public String getPageRegister() {
         return pageRoot + "LoginRegister.fxml";
     }
 
-    static public String getPageHome(){
+    static public String getPageHome() {
         return pageRoot + "Home.fxml";
     }
 
-    static public String getPageItemTrending(){
+    static public String getPageItemTrending() {
         return pageRoot + "ItemTrending.fxml";
     }
 
-    static public String getPageItemAll(){
+    static public String getPageItemAll() {
         return pageRoot + "ItemAll.fxml";
     }
 
@@ -32,15 +32,15 @@ public class PathHandler {
         return pageRoot + "UserRecord.fxml";
     }
 
-    static public String getPageUserProfile(){
+    static public String getPageUserProfile() {
         return pageRoot + "UserProfile.fxml";
     }
 
-    static public String getPageUserDeposit(){
+    static public String getPageUserDeposit() {
         return pageRoot + "UserDeposit.fxml";
     }
 
-    static public String getComponentSidebar(){
+    static public String getComponentSidebar() {
         // Account currentUser = CurrentUser.getCurrentUser();
         // if (currentUser.getAccountType() == ConstantUser.ADMIN){
         //     System.out.println("is admin");
@@ -51,27 +51,33 @@ public class PathHandler {
         return componentRoot + "SidebarCustomer.fxml";
     }
 
-    static public String getComponentNavBar(){
+
+    static public String getComponentNavBar() {
         return componentRoot + "NavBarCustomer.fxml";
     }
 
-    static public String getComponentItemBox(){
+    static public String getComponentItemBox() {
         return componentRoot + "ItemBox.fxml";
     }
 
-    static public String getMediaImage(String imgName){
+    static public String getMediaImage(String imgName) {
         return imgRoot + imgName;
     }
-    static public String getMediaText(String textName){
+
+    static public String getMediaTextItem(String textName) {
         return textRoot + textName;
     }
 
-    static public String getMediaTextAccount(){
+
+    static public String getMediaTextAccount() {
         return textRoot + "account.txt";
     }
 
+    static public String getMediaTextItem() {
+        return textRoot + "item.txt";
+    }
 
-    static public String getStyleSheet(){
+    static public String getStyleSheet() {
         return "/com/groupproject/style.css";
     }
 }
