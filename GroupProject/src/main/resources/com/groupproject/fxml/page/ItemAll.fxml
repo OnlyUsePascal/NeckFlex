@@ -11,115 +11,81 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="820.0" prefWidth="1600.0" style="-fx-background-color: #394867;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.ItemAllController">
+<AnchorPane prefHeight="820.0" prefWidth="1600.0" style="-fx-background-color: #394867;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.ItemAllController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1300.0" style="-fx-background-color: #F1F6F9;" AnchorPane.leftAnchor="300.0">
-         <content>
-            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="1200.0" prefWidth="1300.0">
-               <children>
-                  <Label contentDisplay="RIGHT" prefHeight="61.0" prefWidth="1300.0" style="-fx-background-color: #B9EDDD;" text="Latest">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                  </Label>
-                  <HBox alignment="TOP_CENTER" prefHeight="2000.0" prefWidth="1100.0">
+      <HBox fillHeight="false" minHeight="820.0" minWidth="1600.0" prefHeight="100.0" prefWidth="1600.0">
+         <children>
+            <AnchorPane minHeight="820.0" minWidth="250.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B0DAFF;" />
+            <ScrollPane fx:id="pageContainerSrollPane" hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1300.0" style="-fx-background-color: #F1F6F9;">
+               <content>
+                  <VBox fx:id="pageContainer" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="1200.0">
                      <children>
-                        <VBox prefHeight="1000.0" prefWidth="930.0">
+                        <Label contentDisplay="RIGHT" prefHeight="61.0" prefWidth="1278.0" style="-fx-background-color: #B9EDDD;" text="Latest">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </Label>
+                        <HBox alignment="TOP_CENTER" prefHeight="2000.0" prefWidth="1100.0">
                            <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="930.0" style="-fx-border-color: transparent;">
+                              <VBox prefHeight="2000.0" prefWidth="930.0">
                                  <children>
-                                    <HBox prefHeight="9.0" prefWidth="931.0" style="-fx-background-color: #569DAA;">
+                                    <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="930.0" style="-fx-background-color: transparent;">
                                        <children>
-                                          <Label prefHeight="48.0" prefWidth="779.0" text="DVD">
-                                             <font>
-                                                <Font size="27.0" />
-                                             </font>
-                                          </Label>
-                                          <Button fx:id="moveLeft" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-left-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-right-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
+                                          <HBox prefHeight="9.0" prefWidth="931.0" style="-fx-background-color: #569DAA;">
+                                             <children>
+                                                <Label prefHeight="48.0" prefWidth="779.0" text="DVD">
+                                                   <font>
+                                                      <Font size="27.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="moveLeft" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0">
+                                                   <graphic>
+                                                      <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../media/image/chevron-left-solid.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0">
+                                                   <graphic>
+                                                      <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../media/image/chevron-right-solid.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                          <ScrollPane fx:id="itemPageScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" styleClass="itemTile" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <HBox fx:id="itemPage" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
+                                             </content>
+                                          </ScrollPane>
                                        </children>
-                                    </HBox>
-                                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" prefHeight="400.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                                       <content>
-                                          <HBox fx:id="itemPage" prefHeight="400.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
-                                       </content>
-                                    </ScrollPane>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </VBox>
                                  </children>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="930.0" style="-fx-border-color: transparent;">
-                                 <children>
-                                    <HBox prefHeight="9.0" prefWidth="931.0" style="-fx-background-color: #569DAA;">
-                                       <children>
-                                          <Label prefHeight="48.0" prefWidth="779.0" text="Records">
-                                             <font>
-                                                <Font size="27.0" />
-                                             </font>
-                                          </Label>
-                                          <Button fx:id="moveLeft" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-left-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-right-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                                       <content>
-                                          <HBox fx:id="itemTileRecord" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
-                                       </content>
-                                    </ScrollPane>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
                               </VBox>
                            </children>
-                        </VBox>
+                        </HBox>
                      </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

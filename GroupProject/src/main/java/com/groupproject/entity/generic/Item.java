@@ -47,6 +47,14 @@ public abstract class Item {
         return category;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public double getFee() {
+        return fee;
+    }
+
     @Override
     public String toString() {
         return this.id + "|" + this.title + "|" + this.category + "|" + this.genre + "|" + this.stock + "|" + this.fee;

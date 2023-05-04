@@ -12,18 +12,18 @@ import java.io.IOException;
 public class ObjectHandler {
     //=========== CHECK ============
     public static boolean checkStringCharacterOnly(String str){
-        System.out.println(str);
+        // System.out.println(str);
         return str.matches("[a-zA-Z ]+");
     }
 
     public static boolean checkStringNumberOnly(String str){
-        System.out.println(str);
+        // System.out.println(str);
         return str.matches("[0-9]+");
     }
 
     public static boolean checkStringGeneral(String str){
-        System.out.println(str);
-        return !str.matches(".*\\|.*");
+        // System.out.println(str);
+        return !str.matches(".*\\|.*") && str.length() != 0;
     }
 
     //=========== GET ============

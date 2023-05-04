@@ -56,6 +56,7 @@ public class ShopSystem {
     }
 
     public static ArrayList<Item> getItemList(){
+
         return itemList;
     }
 }

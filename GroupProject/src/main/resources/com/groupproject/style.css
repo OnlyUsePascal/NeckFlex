@@ -41,3 +41,13 @@
     -fx-arc-height: 30;
     -fx-arc-width: 30;
 }
+
+/*ITEM TILE*/
+.itemTile .viewport {
+    -fx-background-color: transparent;
+}
+
+.itemTile{
+    -fx-background-color: transparent;
+}
+

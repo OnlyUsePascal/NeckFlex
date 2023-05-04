@@ -29,37 +29,37 @@
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="requiredUsername" layoutX="105.0" layoutY="97.0" text="*required" textFill="RED" visible="false">
+            <Label fx:id="requiredUsername" layoutX="105.0" layoutY="97.0" text="Invalid input!" textFill="RED" visible="false">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="requiredConfirmPassword" layoutX="108.0" layoutY="188.0" text="*required" textFill="RED" visible="false">
+            <Label fx:id="requiredConfirmPassword" layoutX="108.0" layoutY="188.0" text="Invalid input!" textFill="RED" visible="false">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="requiredPassword" layoutX="105.0" layoutY="140.0" text="*required" textFill="RED" visible="false">
+            <Label fx:id="requiredPassword" layoutX="105.0" layoutY="140.0" text="Invalid input!" textFill="RED" visible="false">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="requiredFirstName" contentDisplay="BOTTOM" layoutX="108.0" layoutY="233.0" text="*required" textFill="RED" visible="false">
+            <Label fx:id="requiredFirstName" contentDisplay="BOTTOM" layoutX="108.0" layoutY="233.0" text="Invalid input!" textFill="RED" visible="false">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="requiredLastName" layoutX="108.0" layoutY="278.0" text="*required" textFill="RED" visible="false">
+            <Label fx:id="requiredLastName" layoutX="108.0" layoutY="278.0" text="Invalid input!" textFill="RED" visible="false">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="requiredPhoneNumber" layoutX="108.0" layoutY="324.0" text="*required" textFill="RED" visible="false">
+            <Label fx:id="requiredPhoneNumber" layoutX="108.0" layoutY="324.0" text="Invalid input!" textFill="RED" visible="false">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="requiredAddress" layoutX="107.0" layoutY="371.0" text="*required" textFill="RED" visible="false">
+            <Label fx:id="requiredAddress" layoutX="107.0" layoutY="371.0" text="Invalid input!" textFill="RED" visible="false">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>

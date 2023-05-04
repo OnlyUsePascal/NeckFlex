@@ -28,16 +28,15 @@ public class HomeController implements Initializable {
     @FXML
     AnchorPane navBar;
 
-    // FXMLLoader pageContentLoader;
-    // FXMLLoader sidebarLoader;
     SidebarController sidebarController;
-    // FXMLLoader navBarLoader;
     NavBarCustomerController navBarCustomerController;
+    ItemAllController itemAllController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sidebarPanel.setTranslateX(-300);
-        setPageContent(PathHandler.getPageItemTrending());
+        // setPageContent(PathHandler.getPageItemTrending());
+        setPageContent(PathHandler.getPageItemAll());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBar(PathHandler.getComponentNavBar());
     }

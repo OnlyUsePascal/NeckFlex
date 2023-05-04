@@ -13,18 +13,18 @@ import java.io.IOException;
 public class ShopApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        // //get width, height of page
+        DataHandler.getData();
+
         //init
         String pageFile = PathHandler.getPageLoginMain();
-        // pageFile = PathHandler.getPageItemAll();
+        pageFile = PathHandler.getPageHome();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageFile));
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-
-        //data
-        DataHandler.getData();
 
         //on close
         stage.setOnCloseRequest(event -> {

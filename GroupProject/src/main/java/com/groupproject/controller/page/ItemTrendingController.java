@@ -20,42 +20,52 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ItemTrendingController implements Initializable {
+public class ItemTrendingController extends ItemController implements Initializable {
 
     @FXML
     HBox itemTileDvd;
-
     @FXML
     HBox itemTileRecord;
-
     @FXML
     HBox itemTileGame;
+    @FXML
+    ScrollPane itemPageDvd;
+    @FXML
+    ScrollPane itemPageRecord;
+    @FXML
+    ScrollPane itemPageGame;
 
     TranslateTransition moveTile;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         moveTile = new TranslateTransition(Duration.seconds(0.3));
-        // addItemTile(itemTileDvd, null);
-        // addItemTile(itemTileGame, null);
-        // addItemTile(itemTileRecord, null);
 
         new Thread(() -> {
-            Platform.runLater(() -> addItemTile(itemTileDvd, null));
+            Platform.runLater(() -> {
+                addItemTile(itemTileDvd, null);
+                initScrollLock(itemPageDvd);
+            });
         }).start();
 
         new Thread(() -> {
-            Platform.runLater(() -> addItemTile(itemTileGame, null));
+            Platform.runLater(() -> {
+                addItemTile(itemTileRecord, null);
+                initScrollLock(itemPageRecord);
+            });
         }).start();
 
         new Thread(() -> {
-            Platform.runLater(() -> addItemTile(itemTileRecord, null));
+            Platform.runLater(() -> {
+                addItemTile(itemTileGame, null);
+                initScrollLock(itemPageGame);
+            });
         }).start();
     }
 
     public void addItemTile(HBox itemTile, ArrayList<Item> itemList){
         try{
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 10; i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
                 Button itemBox = (Button) fxmlLoader.load();
 
@@ -83,7 +93,7 @@ public class ItemTrendingController implements Initializable {
         moveTile.setNode(itemTile);
 
         //move
-        double offset = ((Button) itemTileDvd.getChildren().get(0)).getWidth();
+        double offset = ((Button) itemTileDvd.getChildren().get(0)).getWidth() * 4;
         if (btnId.equals("moveLeft")){
             moveTile.setByX(offset);
         } else {

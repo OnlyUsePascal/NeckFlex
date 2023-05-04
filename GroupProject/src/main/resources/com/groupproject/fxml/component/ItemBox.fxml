@@ -13,12 +13,12 @@
             <Rectangle fx:id="imgFrame" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="210.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="140.0" />
             <Label fx:id="itemTitle" text="Label">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label text="Price">
+            <Label fx:id="itemPrice" text="Price">
                <font>
-                  <Font size="16.0" />
+                  <Font size="12.0" />
                </font>
             </Label>
          </children>

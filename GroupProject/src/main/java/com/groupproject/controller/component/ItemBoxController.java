@@ -1,5 +1,6 @@
 package com.groupproject.controller.component;
 
+import com.groupproject.entity.generic.Item;
 import com.groupproject.toolkit.ObjectHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,21 +15,34 @@ import java.util.ResourceBundle;
 public class ItemBoxController implements Initializable {
     @FXML
     Rectangle imgFrame;
-
     @FXML
     Label itemTitle;
+    @FXML
+    Label itemPrice;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Image img = new Image(getClass().getResourceAsStream("banner1.jpg"));
-        Image img = ObjectHandler.getImage("banner1.jpg");
-        ImagePattern imgView = new ImagePattern(img);
+        setImg("banner1.jpg");
 
-        imgFrame.setFill(imgView);
         // itemBox.getChildren().add(imgView);
     }
 
-    public void setTitle(String titleNew){
-        itemTitle.setText(itemTitle.getText() + titleNew);
+    public void setData(Item item) {
+        setTitle(item.getTitle());
+        setPrice(item.getFee());
+    }
+
+    public void setImg(String url) {
+        Image img = ObjectHandler.getImage("banner1.jpg");
+        ImagePattern imgView = new ImagePattern(img);
+        imgFrame.setFill(imgView);
+    }
+
+    public void setTitle(String titleNew) {
+        itemTitle.setText(titleNew);
+    }
+
+    public void setPrice(double price){
+        itemPrice.setText(String.valueOf(price));
     }
 }

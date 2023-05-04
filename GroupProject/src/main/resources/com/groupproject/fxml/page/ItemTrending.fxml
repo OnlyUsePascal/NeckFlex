@@ -64,7 +64,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                                    <ScrollPane fx:id="itemPageDvd" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                                        <content>
                                           <HBox fx:id="itemTileDvd" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
                                        </content>
@@ -103,7 +103,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                                    <ScrollPane fx:id="itemPageRecord" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                                        <content>
                                           <HBox fx:id="itemTileRecord" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
                                        </content>
@@ -142,7 +142,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                                    <ScrollPane fx:id="itemPageGame" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                                        <content>
                                           <HBox fx:id="itemTileGame" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
                                        </content>
