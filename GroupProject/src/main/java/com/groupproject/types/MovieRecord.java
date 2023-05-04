@@ -1,6 +1,6 @@
-package com.groupproject;
+package com.groupproject.types;
 
-public class MovieRecord extends Item{
+public class MovieRecord extends Item {
     public MovieRecord(String id, String title, String genre, String rentalType, String loanType, int numberOfCopies, double rentalFee, String rentalStatus) {
         super(id, title, genre, rentalType, loanType, numberOfCopies, rentalFee, rentalStatus);
     }

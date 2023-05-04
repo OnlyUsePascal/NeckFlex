@@ -1,5 +1,7 @@
 package com.groupproject;
 
+import com.groupproject.types.*;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,10 +20,10 @@ enum AccountLabel {
 }
 
 enum  ItemLabel {
-    GENRE,
+    CATEGORY,
     ID,
     TITLE,
-    CATEGORY,
+    GENRE,
     RENTALTYPE,
     LOANTYPE,
     NUMBEROFCOPIES,
@@ -98,12 +100,12 @@ public class IOStream {
                     while (st.hasMoreTokens()) {
                         list.add(st.nextToken());
                     }
-                    if(list.get(ItemLabel.GENRE.ordinal()).equals("0")){
+                    if(list.get(ItemLabel.CATEGORY.ordinal()).equals("0")){
                         System.out.println("DVD Loading!");
                         DVD dvd = new DVD(
                                 list.get(ItemLabel.ID.ordinal()),
                                 list.get(ItemLabel.TITLE.ordinal()),
-                                list.get(ItemLabel.CATEGORY.ordinal()),
+                                list.get(ItemLabel.GENRE.ordinal()),
                                 list.get(ItemLabel.RENTALTYPE.ordinal()),
                                 list.get(ItemLabel.LOANTYPE.ordinal()),
                                 Integer.parseInt(list.get(ItemLabel.NUMBEROFCOPIES.ordinal())),
@@ -115,12 +117,12 @@ public class IOStream {
                         Item.itemID++;
 
 
-                    }else if(list.get(ItemLabel.GENRE.ordinal()).equals("1")){
+                    }else if(list.get(ItemLabel.CATEGORY.ordinal()).equals("1")){
                         System.out.println("MovieRecord Loading!");
                         MovieRecord movieRecord = new MovieRecord(
                                 list.get(ItemLabel.ID.ordinal()),
                                 list.get(ItemLabel.TITLE.ordinal()),
-                                list.get(ItemLabel.CATEGORY.ordinal()),
+                                list.get(ItemLabel.GENRE.ordinal()),
                                 list.get(ItemLabel.RENTALTYPE.ordinal()),
                                 list.get(ItemLabel.LOANTYPE.ordinal()),
                                 Integer.parseInt(list.get(ItemLabel.NUMBEROFCOPIES.ordinal())),
@@ -137,7 +139,7 @@ public class IOStream {
                         VideoGame videoGame = new VideoGame(
                                 list.get(ItemLabel.ID.ordinal()),
                                 list.get(ItemLabel.TITLE.ordinal()),
-                                list.get(ItemLabel.CATEGORY.ordinal()),
+                                list.get(ItemLabel.GENRE.ordinal()),
                                 list.get(ItemLabel.RENTALTYPE.ordinal()),
                                 list.get(ItemLabel.LOANTYPE.ordinal()),
                                 Integer.parseInt(list.get(ItemLabel.NUMBEROFCOPIES.ordinal())),
@@ -157,7 +159,7 @@ public class IOStream {
             System.out.println("The file does not exist.");
         }
     }
-    static void loadData() throws IOException {
+    public static void loadData() throws IOException {
 
         loadAccountData();
         loadItemData();
@@ -215,7 +217,7 @@ public class IOStream {
         }
     }
 
-    static void saveData() throws IOException {
+    public static void saveData() throws IOException {
         saveAccountData();
         saveItemData();
 

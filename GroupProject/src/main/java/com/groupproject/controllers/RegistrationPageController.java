@@ -1,9 +1,10 @@
-package com.groupproject;
+package com.groupproject.controllers;
 
 
+import com.groupproject.types.Account;
+import com.groupproject.RegistrationPage;
+import com.groupproject.types.SystemShop;
 import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

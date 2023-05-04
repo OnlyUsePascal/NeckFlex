@@ -1,6 +1,9 @@
-package com.groupproject;
+package com.groupproject.controllers;
+import com.groupproject.*;
+import com.groupproject.types.Account;
+import com.groupproject.LoginPage;
+import com.groupproject.types.SystemShop;
 import javafx.animation.PauseTransition;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;

@@ -1,17 +1,17 @@
-package com.groupproject;
+package com.groupproject.types;
 
 import java.text.DecimalFormat;
 
 public abstract class Item {
-    private String id;
-    private String title;
+    public String id;
+    public String title;
 
-    private String category;
-    private String rentalType;
-    private String loanType;
-    private int numberOfCopies;
-    private double rentalFee;
-    private String rentalStatus;
+    public String category;
+    public String rentalType;
+    public String loanType;
+    public int numberOfCopies;
+    public double rentalFee;
+    public String rentalStatus;
 
     static public int itemID = 1;
 
@@ -36,6 +36,38 @@ public abstract class Item {
 
     public String Item2Str(){
         return this.id + "|" + this.title + "|" + this.category + "|" + this.rentalType + "|" + this.loanType + "|" + this.numberOfCopies + "|" + this.rentalFee + "|" + this.rentalStatus;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getNumberOfCopies() {
+        return numberOfCopies;
+    }
+
+    public void setNumberOfCopies(int numberOfCopies) {
+        this.numberOfCopies = numberOfCopies;
     }
 
     @Override

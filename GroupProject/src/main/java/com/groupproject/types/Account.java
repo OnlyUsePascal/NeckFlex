@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.types;
 
 public class Account {
     private String id;

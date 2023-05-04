@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.types;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,7 +61,7 @@ public class SystemShop {
         }
     }
 
-    public void displayItem(){
+    public static void displayItem(){
         System.out.println("Display Info:");
         for (Item item : itemLists) {
             System.out.println(item);
