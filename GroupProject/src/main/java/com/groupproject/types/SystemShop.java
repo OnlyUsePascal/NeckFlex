@@ -12,7 +12,9 @@ public class SystemShop {
     static private ArrayList<MovieRecord> movieRecordLists = new ArrayList<>();
     static private HashMap<String, String> usernamePasswordMap = new HashMap<>();
 
-    static private ArrayList<Item> itemLists = new ArrayList<>();
+    static public ArrayList<Item> itemLists = new ArrayList<>();
+
+    static public Item itemInfoSelected;
 
     static public Account loginAccount;
 

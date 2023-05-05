@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,14 +9,23 @@
 
 <AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controllers.ItemViewController">
    <children>
+      <TextField fx:id="searchField" alignment="CENTER" layoutX="569.0" layoutY="24.0" onInputMethodTextChanged="#searchItemAction" prefHeight="29.0" prefWidth="463.0" promptText="Search Bar" />
       <TableView fx:id="TableViewItem" layoutX="56.0" layoutY="70.0" prefHeight="761.0" prefWidth="1454.0">
         <columns>
+            <TableColumn fx:id="itemImageColumn" prefWidth="75.0">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/image1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </TableColumn>
           <TableColumn fx:id="itemIdColumn" prefWidth="160.0" text="Id" />
             <TableColumn fx:id="itemTitleColumn" prefWidth="304.0" text="Title" />
             <TableColumn fx:id="itemCategoryColumn" prefWidth="344.0" text="Category" />
             <TableColumn fx:id="itemStockColumn" prefWidth="645.0" text="Stock" />
         </columns>
       </TableView>
-      <TextField fx:id="searchField" alignment="CENTER" layoutX="569.0" layoutY="24.0" onInputMethodTextChanged="#searchItemAction" prefHeight="29.0" prefWidth="463.0" promptText="Search Bar" />
    </children>
 </AnchorPane>

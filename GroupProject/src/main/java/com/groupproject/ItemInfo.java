@@ -1,8 +1,6 @@
 package com.groupproject;
 
-
-
-import com.groupproject.types.SystemShop;
+import com.groupproject.types.Item;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,23 +8,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
-public class ItemView extends Application {
+public class ItemInfo extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    @Override
+//    @Override
     public void start(Stage stage) throws IOException {
-        IOStream.loadData();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ItemView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
-
-//        SystemShop.displayItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ItemInfo.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 726, 512);
         stage.setResizable(false);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
+
 }
