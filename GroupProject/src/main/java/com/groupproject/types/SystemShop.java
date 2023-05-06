@@ -1,5 +1,7 @@
 package com.groupproject.types;
 
+import com.groupproject.Item.Item;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 

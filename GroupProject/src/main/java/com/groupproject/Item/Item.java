@@ -1,4 +1,4 @@
-package com.groupproject.types;
+package com.groupproject.Item;
 
 import java.text.DecimalFormat;
 

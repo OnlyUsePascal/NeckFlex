@@ -1,5 +1,7 @@
 package com.groupproject.types;
 
+import com.groupproject.Item.Item;
+
 public class VideoGame extends Item {
     public VideoGame(String id, String title, String genre, String rentalType, String loanType, int numberOfCopies, double rentalFee, String rentalStatus) {
         super(id, title, genre, rentalType, loanType, numberOfCopies, rentalFee, rentalStatus);

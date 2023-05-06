@@ -1,5 +1,7 @@
 package com.groupproject.types;
 
+import com.groupproject.Item.Item;
+
 public class DVD extends Item {
 
     public DVD(String id, String title, String genre, String rentalType, String loanType, int numberOfCopies, double rentalFee, String rentalStatus) {

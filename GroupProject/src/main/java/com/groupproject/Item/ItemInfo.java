@@ -1,6 +1,6 @@
-package com.groupproject;
+package com.groupproject.Item;
 
-import com.groupproject.types.Item;
+import com.groupproject.HelloApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

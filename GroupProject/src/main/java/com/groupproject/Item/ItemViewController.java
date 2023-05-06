@@ -1,24 +1,16 @@
-package com.groupproject.controllers;
+package com.groupproject.Item;
 
-import com.groupproject.ItemInfo;
-import com.groupproject.ItemView;
-import com.groupproject.RegistrationPage;
-import com.groupproject.types.Item;
 import com.groupproject.types.SystemShop;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 

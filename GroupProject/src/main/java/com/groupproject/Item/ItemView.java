@@ -1,7 +1,9 @@
-package com.groupproject;
+package com.groupproject.Item;
 
 
 
+import com.groupproject.HelloApplication;
+import com.groupproject.IOStream;
 import com.groupproject.types.SystemShop;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,5 +1,6 @@
 package com.groupproject;
 
+import com.groupproject.Item.Item;
 import com.groupproject.types.*;
 
 import java.io.*;

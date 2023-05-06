@@ -1,8 +1,6 @@
-package com.groupproject.controllers;
+package com.groupproject.Item;
 
 import com.groupproject.HelloApplication;
-import com.groupproject.ItemView;
-import com.groupproject.types.Item;
 import com.groupproject.types.SystemShop;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -10,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
