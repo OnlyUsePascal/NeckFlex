@@ -5,6 +5,10 @@ import com.groupproject.toolkit.Constant.ConstantItem;
 import java.util.ArrayList;
 
 public class ItemDvd extends Item{
+    public ItemDvd(String title, double fee) {
+        super(title, fee);
+    }
+
     public ItemDvd(String id, String title, int category, int genre, int stock, double fee) {
         super(id, title, category, genre, stock, fee);
     }

@@ -34,10 +34,10 @@ public class LoginMainController implements Initializable {
     private Label loginMessage;
 
     @FXML
-    private TextField username;
+    private TextField usernameBox;
 
     @FXML
-    private PasswordField password;
+    private PasswordField passwordBox;
 
 
     @Override
@@ -51,15 +51,15 @@ public class LoginMainController implements Initializable {
     }
 
     public void actionLogin(ActionEvent event) {
-        if(username.getText().isEmpty() || password.getText().isEmpty()){
+        if(usernameBox.getText().isEmpty() || passwordBox.getText().isEmpty()){
             loginMessage.setText("Please enter your username and password!");
             loginMessage.setTextFill(Color.RED);
             return;
         }
 
         // System.out.println(ShopSystem.getAccountList().size());
-        String curUsername = username.getText();
-        String curPwd = password.getText();
+        String curUsername = usernameBox.getText();
+        String curPwd = passwordBox.getText();
         Account sysAcc = ShopSystem.getAccountFromUsername(curUsername);
 
         if (sysAcc == null || !sysAcc.getPassword().equals(curPwd)){

@@ -2,6 +2,7 @@ package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.entity.generic.Item;
+import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -20,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ItemTrendingController extends ItemController implements Initializable {
+public class ItemTrendingController implements Initializable {
 
     @FXML
     HBox itemTileDvd;
@@ -44,21 +45,21 @@ public class ItemTrendingController extends ItemController implements Initializa
         new Thread(() -> {
             Platform.runLater(() -> {
                 addItemTile(itemTileDvd, null);
-                initScrollLock(itemPageDvd);
+                ObjectHandler.setScrollLock(itemPageDvd);
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
                 addItemTile(itemTileRecord, null);
-                initScrollLock(itemPageRecord);
+                ObjectHandler.setScrollLock(itemPageRecord);
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
                 addItemTile(itemTileGame, null);
-                initScrollLock(itemPageGame);
+                ObjectHandler.setScrollLock(itemPageGame);
             });
         }).start();
     }

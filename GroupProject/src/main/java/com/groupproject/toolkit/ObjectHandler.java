@@ -1,9 +1,12 @@
 package com.groupproject.toolkit;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
@@ -70,8 +73,12 @@ public class ObjectHandler {
         }
     }
 
+    public static double getDoubleRound(double num){
+        return Math.round(num * 100.0) / 100.0;
+    }
+
     //======= SET ==========
-    public static void setAnchorPane(AnchorPane frame, Node node){
+    static public void setAnchorPane(AnchorPane frame, Node node){
         // if (true) {
         if (frame.getChildren().size() == 0) {
             frame.getChildren().add(node);
@@ -80,7 +87,7 @@ public class ObjectHandler {
         }
     }
 
-    public static void setAnchorPane(AnchorPane frame, String url){
+    static public void setAnchorPane(AnchorPane frame, String url){
         FXMLLoader fxmlLoader = new FXMLLoader(ObjectHandler.class.getResource(url));
         try {
             AnchorPane node = (AnchorPane) fxmlLoader.load();
@@ -90,12 +97,23 @@ public class ObjectHandler {
         }
     }
 
-    public static void setScene(Scene scene, String url){
+    static public void setScene(Scene scene, String url){
         FXMLLoader loader = new FXMLLoader(ObjectHandler.class.getResource(url));
         try {
             scene.setRoot(loader.load());
         } catch (IOException err){
             err.printStackTrace();
         }
+    }
+
+    static public void setScrollLock(ScrollPane scrollPane){
+        scrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
+            @Override
+            public void handle(ScrollEvent event) {
+                if (event.getDeltaX() != 0) {
+                    event.consume();
+                }
+            }
+        });
     }
 }

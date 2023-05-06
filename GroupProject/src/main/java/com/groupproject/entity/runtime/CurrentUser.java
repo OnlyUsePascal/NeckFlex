@@ -8,6 +8,7 @@ public class CurrentUser {
 
     public static void setCurrentUser(Account acc) {
         currentUser = acc;
+
     }
 
     public static Account getCurrentUser() {

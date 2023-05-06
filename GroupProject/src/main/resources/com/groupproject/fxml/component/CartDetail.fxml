@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="hboxContainer" alignment="CENTER_LEFT" fillHeight="false" prefHeight="180.0" prefWidth="800.0" styleClass="cartItem" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.CartDetailController">
+   <children>
+      <CheckBox mnemonicParsing="false" onAction="#updateCheckBox" selected="true" style="-fx-padding: 0 10;">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </CheckBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="155.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="103.0">
+         <HBox.margin>
+            <Insets right="10.0" />
+         </HBox.margin></Rectangle>
+      <Label fx:id="titleBox" prefWidth="250.0" text="Title">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="unitPriceBox" text="Price">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin>
+      </Label>
+      <HBox alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#updateQuantity" text="-" />
+            <Label fx:id="quantityBox" text="Quantity">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Button mnemonicParsing="false" onAction="#updateQuantity" text="+" />
+         </children>
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin>
+      </HBox>
+      <Label fx:id="totalPriceBox" text="Total">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin>
+      </Label>
+      <Button mnemonicParsing="false" onAction="#removeCartItem" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../media/image/trash-solid.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</HBox>

@@ -1,16 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 
 <AnchorPane prefHeight="820.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.CartController">
    <children>
-      <Label layoutX="552.0" layoutY="336.0" text="shopping cart">
-         <font>
-            <Font size="93.0" />
-         </font>
-      </Label>
+      <HBox fillHeight="false" prefHeight="820.0" prefWidth="1600.0">
+         <children>
+            <AnchorPane prefHeight="820.0" prefWidth="1100.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="820.0" prefWidth="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <AnchorPane prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #A0D8B3;" />
+                           </children>
+                        </AnchorPane>
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="700.0" prefWidth="1100.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <content>
+                              <VBox fx:id="itemContainer" alignment="TOP_CENTER" fillWidth="false" prefWidth="100.0" style="-fx-background-color: #6C9BCF;" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <padding>
+                        <Insets top="40.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="820.0" prefWidth="450.0" style="-fx-background-color: #B6EAFA;">
+               <children>
+                  <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="450.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="450.0" prefWidth="380.0" style="-fx-background-color: #A0D8B3;">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label text="Rental type">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <RadioButton mnemonicParsing="false" selected="true" text="2-day">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="rentalType" />
+                                       </toggleGroup>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="7-day" toggleGroup="$rentalType">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                              <Label prefHeight="21.0" prefWidth="282.0" text="Payment info">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <HBox fillHeight="false" prefHeight="30.0" prefWidth="283.0">
+                                 <children>
+                                    <Label prefHeight="31.0" prefWidth="217.0" text="Total price">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="billTotalPriceBox" prefHeight="21.0" text="\$xxxx" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets top="40.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

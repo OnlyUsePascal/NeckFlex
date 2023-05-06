@@ -36,7 +36,7 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sidebarPanel.setTranslateX(-300);
         // setPageContent(PathHandler.getPageItemTrending());
-        setPageContent(PathHandler.getPageItemAll());
+        setPageContent(PathHandler.getPageCart());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBar(PathHandler.getComponentNavBar());
     }

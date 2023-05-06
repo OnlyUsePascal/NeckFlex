@@ -3,16 +3,15 @@ package com.groupproject.controller.page;
 import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -20,7 +19,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ItemAllController extends ItemController implements Initializable {
+public class ItemAllController implements Initializable {
     @FXML
     HBox itemPage;
     @FXML
@@ -45,7 +44,7 @@ public class ItemAllController extends ItemController implements Initializable {
         ArrayList<Item> itemList = ShopSystem.getItemList();
         initItemToTile(itemList);
         initSizeListener();
-        initScrollLock(itemPageScrollPane);
+        ObjectHandler.setScrollLock(itemPageScrollPane);
 
         //random
         double niceWidth = pageContainerSrollPane.getPrefWidth() - 22;

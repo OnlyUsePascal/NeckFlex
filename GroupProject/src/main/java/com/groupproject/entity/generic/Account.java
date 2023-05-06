@@ -32,7 +32,7 @@ public class Account {
         this.rewardPoint = 0;
     }
 
-    static public Account getNewAccount(String username, String password, String firstName, String lastName, String address, String phone){
+    static public Account getNewAccount(String username, String password, String firstName, String lastName, String phone, String address){
         //get id
         int accId = ShopSystem.getAccountListLength() + 1;
         Account newAaccount = new Account("C" + String.format("%03d", accId), username, password, firstName, lastName, address, phone);

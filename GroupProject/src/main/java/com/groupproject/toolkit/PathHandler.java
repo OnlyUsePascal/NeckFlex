@@ -40,6 +40,10 @@ public class PathHandler {
         return pageRoot + "UserDeposit.fxml";
     }
 
+    static public String getPageCart(){
+        return pageRoot + "Cart.fxml";
+    }
+
     static public String getComponentSidebar() {
         // Account currentUser = CurrentUser.getCurrentUser();
         // if (currentUser.getAccountType() == ConstantUser.ADMIN){
@@ -51,7 +55,6 @@ public class PathHandler {
         return componentRoot + "SidebarCustomer.fxml";
     }
 
-
     static public String getComponentNavBar() {
         return componentRoot + "NavBarCustomer.fxml";
     }
@@ -59,6 +62,11 @@ public class PathHandler {
     static public String getComponentItemBox() {
         return componentRoot + "ItemBox.fxml";
     }
+
+    static public String getComponentCartDetail(){
+        return componentRoot + "CartDetail.fxml";
+    }
+
 
     static public String getMediaImage(String imgName) {
         return imgRoot + imgName;

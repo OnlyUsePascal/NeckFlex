@@ -29,7 +29,7 @@ public class ItemBoxController implements Initializable {
 
     public void setData(Item item) {
         setTitle(item.getTitle());
-        setPrice(item.getFee());
+        setPrice(item.getPrice());
     }
 
     public void setImg(String url) {
