@@ -13,12 +13,15 @@ import java.io.IOException;
 
 public class ItemView extends Application {
 
+//    public static Stage window = new Stage();
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws IOException {
+//        window = stage;
         IOStream.loadData();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ItemView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);

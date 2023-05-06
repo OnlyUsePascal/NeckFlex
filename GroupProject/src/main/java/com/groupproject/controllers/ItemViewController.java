@@ -1,6 +1,8 @@
 package com.groupproject.controllers;
 
 import com.groupproject.ItemInfo;
+import com.groupproject.ItemView;
+import com.groupproject.RegistrationPage;
 import com.groupproject.types.Item;
 import com.groupproject.types.SystemShop;
 import javafx.beans.binding.Bindings;
@@ -46,6 +48,7 @@ public class ItemViewController implements Initializable {
 
     private Map<Item, ImageView> imageViewCache = new HashMap<>();
 
+
     public void searchItemAction(){
         System.out.println(123456);
         TableViewItem.setItems(getItems(searchField.getText()));
@@ -72,6 +75,8 @@ public class ItemViewController implements Initializable {
 //                // This prevents the event from being consumed by the TableView
 //            }
 //        });
+
+
         itemImageColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, ImageView>, ObservableValue<ImageView>>() {
             @Override
             public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Item, ImageView> cellDataFeatures) {
@@ -152,5 +157,9 @@ public class ItemViewController implements Initializable {
         System.out.println("Size of the items: " + items.size());
         return items;
     }
+
+//    public static void closeWindow() {
+//        ItemView.window.close();
+//    }
 
 }
