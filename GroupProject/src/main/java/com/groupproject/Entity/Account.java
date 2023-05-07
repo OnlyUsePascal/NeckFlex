@@ -1,4 +1,4 @@
-package com.groupproject.Page;
+package com.groupproject.Entity;
 
 public class Account {
     private String id;

@@ -1,8 +1,8 @@
-package com.example.admininfo.ControllerAdminInfo;
+package com.groupproject.ControllerAdminInfo;
 
-import com.example.admininfo.page.Account;
-import com.example.admininfo.page.AccountInfo;
-import com.example.admininfo.page.AdminAccountListPage;
+import com.groupproject.Entity.Account;
+import com.groupproject.Page.AccountInfo;
+import com.groupproject.Page.AdminAccountListPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -13,7 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -61,7 +64,7 @@ public class ControllerForMain implements Initializable {
     public void changingWindow(ActionEvent event) throws IOException {
         Button btn = (Button) event.getSource();
         Scene scene = btn.getScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("accountView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("/com/groupproject/accountView.fxml"));
         scene.setRoot(fxmlLoader.load());
 
         AccountInfoController accountInfoController = fxmlLoader.getController();
@@ -165,7 +168,7 @@ public class ControllerForMain implements Initializable {
         rewardPointsColumn.setCellValueFactory(new PropertyValueFactory<Account, Double>("rewardPoint"));
         accountTypeColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("accountType"));
         setupTable();
-        FXMLLoader loader = new FXMLLoader(AdminAccountListPage.class.getResource("filter.fxml"));
+        FXMLLoader loader = new FXMLLoader(AdminAccountListPage.class.getResource("/com/groupproject/filter.fxml"));
         try{
                 AnchorPane pane = loader.load();
                 filterPane.getChildren().add(pane);

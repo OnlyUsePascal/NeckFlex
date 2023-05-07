@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.ControllerForMain">
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.ControllerAdminInfo.ControllerForMain">
    <children>
-      <TableView fx:id="tableView" layoutX="296.0" layoutY="214.0" onMouseClicked="#rowClicked" prefHeight="360.0" prefWidth="680.0">
+      <TableView fx:id="tableView" layoutX="413.0" layoutY="227.0" onMouseClicked="#rowClicked" prefHeight="360.0" prefWidth="680.0">
         <columns>
             <TableColumn fx:id="idImage" prefWidth="47.0" />
           <TableColumn fx:id="idColumn" prefWidth="103.0" text="ID" />
@@ -37,5 +37,6 @@
       <TextField fx:id="keywordBox" layoutX="559.0" layoutY="117.0" prefHeight="33.0" prefWidth="375.0" />
       <Button layoutX="469.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#searching" text="Search" />
       <Button layoutX="83.0" layoutY="105.0" mnemonicParsing="false" onAction="#changingWindow" text="Next" />
+      <AnchorPane fx:id="filterPane" layoutX="92.0" layoutY="279.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" />
    </children>
 </AnchorPane>

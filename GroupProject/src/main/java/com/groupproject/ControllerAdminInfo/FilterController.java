@@ -1,4 +1,4 @@
-package com.example.admininfo.ControllerAdminInfo;
+package com.groupproject.ControllerAdminInfo;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
