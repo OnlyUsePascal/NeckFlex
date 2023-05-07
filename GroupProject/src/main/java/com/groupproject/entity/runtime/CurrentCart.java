@@ -10,6 +10,7 @@ public class CurrentCart {
     }
 
     public static Cart getCurrentCart() {
-        return currentCart;
+        return new Cart();
+        // return currentCart;
     }
 }

@@ -6,11 +6,20 @@ public class CartDetail {
     Item item;
     int quantity;
     double totalPrice;
+    private Cart cart;
 
     public CartDetail(Item item, int quantity) {
         this.item = item;
         this.quantity = quantity;
         this.totalPrice = ObjectHandler.getDoubleRound(item.getPrice() * quantity);
+    }
+
+    public void setCart(Cart cart){
+        this.cart = cart;
+    }
+
+    public Cart getCart() {
+        return cart;
     }
 
     public String getTitle() {
@@ -29,14 +38,12 @@ public class CartDetail {
         return quantity;
     }
 
-    public boolean setQuantity(int quantity) {
-        if (quantity >= 0) {
-            this.quantity = quantity;
-            this.totalPrice = ObjectHandler.getDoubleRound(item.getPrice() * quantity);
-            return true;
+    public void setQuantity(int newQuantity) {
+        if (newQuantity >= 0) {
+            cart.updateTotalPrice(item.getPrice() * (newQuantity - quantity));
+            this.quantity = newQuantity;
+            totalPrice = ObjectHandler.getDoubleRound(item.getPrice() * newQuantity);
         }
-
-        return false;
     }
 
     @Override

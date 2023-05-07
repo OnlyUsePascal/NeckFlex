@@ -1,4 +1,4 @@
-package com.groupproject.toolkit.Constant;
+package com.groupproject.entity.Constant;
 
 public class ConstantAccount {
 

@@ -1,6 +1,5 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.controller.page.UserDepositController;
 import com.groupproject.entity.runtime.CurrentUser;
 
 public class BankAccount {
@@ -16,7 +15,7 @@ public class BankAccount {
 
     public boolean transfer(BankAccount account, double amount) {
         if (this.balance > amount && amount > 0) {
-            CurrentUser.getCurrentUser().setBalanceReceive(amount);
+            CurrentUser.getCurrentUser().setBalance(amount);
             this.balance -= amount;
             return true;
         }

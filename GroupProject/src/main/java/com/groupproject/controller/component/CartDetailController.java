@@ -48,16 +48,11 @@ public class CartDetailController implements Initializable {
         Button btn = (Button) event.getSource();
         String btnText = btn.getText();
         double itemPrice = cartDetail.getItem().getPrice();
-        if (btnText.equals("+")){
-            if (cartDetail.setQuantity(cartDetail.getQuantity() + 1)){
-                cartController.updateBillTotalPrice(itemPrice);
-            }
-        } else if (btnText.equals("-")){
-            if (cartDetail.setQuantity(cartDetail.getQuantity() - 1)){
-                cartController.updateBillTotalPrice(-itemPrice);
-            }
-        }
 
+        int newQuantity = cartDetail.getQuantity() + (btnText.equals("+") ? 1 : -1);
+        cartDetail.setQuantity(newQuantity);
+
+        cartController.refreshBill();
         quantityBox.setText(String.valueOf(cartDetail.getQuantity()));
         totalPriceBox.setText(String.valueOf(cartDetail.getTotalPrice()));
     }
@@ -66,17 +61,26 @@ public class CartDetailController implements Initializable {
         this.cartController = cartController;
     }
 
-    public void removeCartItem(ActionEvent event){
-        cartController.updateBillTotalPrice(-cartDetail.getTotalPrice());
-        cartController.removeCartItem(hboxContainer);
+    public void removeCartDetail(ActionEvent event){
+
+        cartController.removeCartDetail(this);
     }
 
     public void updateCheckBox(ActionEvent event){
         CheckBox checkBox = (CheckBox) event.getSource();
-        if (checkBox.isSelected()){
-            cartController.updateBillTotalPrice(cartDetail.getTotalPrice());
-        } else {
-            cartController.updateBillTotalPrice(-cartDetail.getTotalPrice());
-        }
+        double newPrice = cartDetail.getTotalPrice();
+
+        if (!checkBox.isSelected()) newPrice *= -1;
+        cartDetail.getCart().updateTotalPrice(newPrice);
+
+        cartController.refreshBill();
+    }
+
+    public HBox getCartDetailPane() {
+        return hboxContainer;
+    }
+
+    public CartDetail getCartDetail() {
+        return cartDetail;
     }
 }

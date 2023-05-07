@@ -1,6 +1,4 @@
-package com.groupproject.toolkit.Constant;
-
-import javafx.scene.control.ChoiceBox;
+package com.groupproject.entity.Constant;
 
 public class ConstantItem {
     static public String[] categoryList = {"Dvd", " Movie Record", "Video Game"};

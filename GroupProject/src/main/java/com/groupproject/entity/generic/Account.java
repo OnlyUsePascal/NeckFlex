@@ -1,7 +1,7 @@
 package com.groupproject.entity.generic;
 
 import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.Constant.ConstantAccount;
+import com.groupproject.entity.Constant.ConstantAccount;
 
 public class Account {
     protected String id;
@@ -28,8 +28,8 @@ public class Account {
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.balance = 0;
-        this.rewardPoint = 0;
+        this.balance = 100;
+        this.rewardPoint = 100;
     }
 
     static public Account getNewAccount(String username, String password, String firstName, String lastName, String phone, String address){
@@ -92,7 +92,7 @@ public class Account {
         this.address = address;
     }
 
-    public void setBalanceReceive(double amount){
+    public void setBalance(double amount){
         this.balance += amount;
     }
 

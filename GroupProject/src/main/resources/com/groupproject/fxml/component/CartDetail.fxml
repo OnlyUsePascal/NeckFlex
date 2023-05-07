@@ -58,7 +58,7 @@
             <Insets right="20.0" />
          </HBox.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#removeCartItem" style="-fx-background-color: transparent;">
+      <Button mnemonicParsing="false" onAction="#removeCartDetail" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
