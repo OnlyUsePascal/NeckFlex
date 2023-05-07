@@ -1,5 +1,7 @@
-package com.groupproject;
+package com.example.admininfo.ControllerAdminInfo;
 
+import com.example.admininfo.page.Account;
+import com.example.admininfo.page.AdminAccountListPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

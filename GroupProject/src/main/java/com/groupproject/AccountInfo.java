@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.page;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +17,6 @@ public class AccountInfo extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("accountView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
-
         stage.setResizable(false);
         stage.setTitle("Hello!");
         stage.setScene(scene);

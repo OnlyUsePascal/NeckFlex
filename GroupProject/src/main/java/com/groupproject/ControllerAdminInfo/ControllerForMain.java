@@ -1,8 +1,8 @@
-package com.example.admininfo.Controller;
+package com.example.admininfo.ControllerAdminInfo;
 
-import com.example.admininfo.Account;
-import com.example.admininfo.AccountInfo;
-import com.example.admininfo.AdminAccountListPage;
+import com.example.admininfo.page.Account;
+import com.example.admininfo.page.AccountInfo;
+import com.example.admininfo.page.AdminAccountListPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -18,7 +18,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;

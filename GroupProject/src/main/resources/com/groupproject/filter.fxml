@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="filterPane" prefHeight="100.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.admininfo.Controller.FilterController">
+   <children>
+      <VBox layoutX="7.0" layoutY="7.0" prefHeight="215.0" prefWidth="170.0">
+         <children>
+            <Label text="Select what you want" />
+            <ChoiceBox fx:id="choiceList" prefWidth="150.0" value="All" />
+            <Button fx:id="button" mnemonicParsing="false" onAction="#sortByAccountType" text="Apply" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

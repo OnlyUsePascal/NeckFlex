@@ -1,18 +1,11 @@
-package com.example.admininfo.Controller;
+package com.example.admininfo.ControllerAdminInfo;
 
-import com.example.admininfo.Account;
-import com.example.admininfo.AdminAccountListPage;
-
-import javafx.beans.value.ChangeListener;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class FilterController implements Initializable{
