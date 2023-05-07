@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.controller;
 
 
 import javafx.animation.PauseTransition;

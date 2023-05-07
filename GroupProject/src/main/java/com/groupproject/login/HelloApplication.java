@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.login;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,14 +7,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegistrationPage extends Application {
+public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RegistrationPage.class.getResource("RegistrationPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1600 , 900);
-        stage.setTitle("Registration Page");
-        stage.setScene(scene);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
         stage.setResizable(false);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
         stage.show();
     }
 

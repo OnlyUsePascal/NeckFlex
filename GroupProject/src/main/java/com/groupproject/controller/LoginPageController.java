@@ -1,4 +1,5 @@
-package com.groupproject;
+package com.groupproject.controller;
+import com.groupproject.login.RegistrationPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -7,14 +7,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EditPage extends Application {
+public class AdminAccountListPage extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(EditPage.class.getResource("editPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1600 , 900);
-        stage.setTitle("Registration Page");
-        stage.setScene(scene);
+        FXMLLoader fxmlLoader = new FXMLLoader(AdminAccountListPage.class.getResource("AdminAccountListPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1600, 820);
         stage.setResizable(false);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
         stage.show();
     }
 

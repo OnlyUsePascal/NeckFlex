@@ -1,5 +1,7 @@
-package com.groupproject;
+package com.groupproject.controller;
 
+import com.groupproject.login.Account;
+import com.groupproject.login.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
