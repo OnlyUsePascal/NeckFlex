@@ -1,4 +1,4 @@
-package com.groupproject.page;
+package com.groupproject;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

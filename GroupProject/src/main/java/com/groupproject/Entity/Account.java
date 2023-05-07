@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.Page;
 
 public class Account {
     private String id;
