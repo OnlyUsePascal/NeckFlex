@@ -27,7 +27,7 @@ public class NavBarCustomerController extends NavBarController {
     // }
 
     public void toCart(ActionEvent event){
-        System.out.println("to cart");
+        homeController.setPageContent(PathHandler.getPageCart());
     }
 
     public void toDeposit(ActionEvent event){

@@ -3,22 +3,23 @@ package com.groupproject.entity.generic;
 import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.entity.Constant.ConstantAccount;
 
+import java.util.ArrayList;
+
 public class Account {
-    protected String id;
-    protected String username;
-    protected String password;
-    protected String firstName;
-    protected String lastName;
-    protected String address;
-    protected String phoneNumber;
-    protected ConstantAccount accountType;
-    protected double balance;
-    protected double rewardPoint;
+    private String id;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String phoneNumber;
+    private ConstantAccount accountType;
+    private double balance;
+    private double rewardPoint;
 
+    private Cart cart;
+    private ArrayList<Order> orderList;
 
-
-    Account(){
-    }
 
     public Account(String id, String username, String password, String firstName, String lastName, String address, String phoneNumber) {
         this.id = id;
@@ -30,6 +31,9 @@ public class Account {
         this.phoneNumber = phoneNumber;
         this.balance = 100;
         this.rewardPoint = 100;
+
+        this.cart = new Cart(this);
+        this.orderList = new ArrayList<>();
     }
 
     static public Account getNewAccount(String username, String password, String firstName, String lastName, String phone, String address){
@@ -96,6 +100,18 @@ public class Account {
         this.balance += amount;
     }
 
+
+    public Cart getCart(){
+        return cart;
+    }
+
+    public void addOrder(Order order){
+        orderList.add(order);
+    }
+
+    public ArrayList<Order> getOrderList(){
+        return orderList;
+    }
 
     @Override
     public String toString(){

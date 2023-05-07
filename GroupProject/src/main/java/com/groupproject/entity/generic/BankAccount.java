@@ -1,6 +1,6 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.entity.runtime.CurrentUser;
+import com.groupproject.entity.runtime.ShopSystem;
 
 public class BankAccount {
     private String number;
@@ -15,7 +15,7 @@ public class BankAccount {
 
     public boolean transfer(BankAccount account, double amount) {
         if (this.balance > amount && amount > 0) {
-            CurrentUser.getCurrentUser().setBalance(amount);
+            ShopSystem.getCurrentUser().setBalance(amount);
             this.balance -= amount;
             return true;
         }

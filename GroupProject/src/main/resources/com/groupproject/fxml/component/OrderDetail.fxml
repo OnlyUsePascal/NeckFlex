@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #B0DAFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.OrderDetailController">
+   <children>
+      <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="200.0" prefWidth="950.0">
+         <children>
+            <CheckBox fx:id="checkBox" mnemonicParsing="false">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </CheckBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="180.0" stroke="BLACK" strokeType="INSIDE" width="119.0">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Rectangle>
+            <Label fx:id="itemTitle" prefHeight="30.0" prefWidth="383.0" text="Item Title">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="itemAmount" text="Quantity">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="itemTotalPrice" text="Total price">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#returnItem" text="Return">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

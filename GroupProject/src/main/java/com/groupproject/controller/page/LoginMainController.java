@@ -1,6 +1,5 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.entity.runtime.CurrentUser;
 import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.toolkit.PathHandler;
@@ -68,7 +67,7 @@ public class LoginMainController implements Initializable {
             return;
         }
 
-        CurrentUser.setCurrentUser(sysAcc);
+        ShopSystem.setCurrentUser(sysAcc);
         loginMessage.setText("Signing in...");
         loginMessage.setTextFill(Color.GREEN);
         PauseTransition pause = new PauseTransition(Duration.millis(2000));

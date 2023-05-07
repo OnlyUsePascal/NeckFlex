@@ -67,6 +67,14 @@ public class PathHandler {
         return componentRoot + "CartDetail.fxml";
     }
 
+    static public String getComponentOrder(){
+        return componentRoot + "Order.fxml";
+    }
+
+    static public String getComponentOrderDetail(){
+        return componentRoot + "OrderDetail.fxml";
+    }
+
 
     static public String getMediaImage(String imgName) {
         return imgRoot + imgName;

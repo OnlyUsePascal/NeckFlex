@@ -6,8 +6,7 @@ import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.generic.Cart;
 import com.groupproject.entity.generic.CartDetail;
 import com.groupproject.entity.generic.ItemDvd;
-import com.groupproject.entity.runtime.CurrentCart;
-import com.groupproject.entity.runtime.CurrentUser;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,14 +41,8 @@ public class CartController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cart = CurrentCart.getCurrentCart();
-        cartOwner = CurrentUser.getCurrentUser();
-
-        // cart = new Cart();
-        cart.addCartDetail(new ItemDvd("item1", 12.4), 12);
-        cart.addCartDetail(new ItemDvd("item2", 1), 1);
-        cart.addCartDetail(new ItemDvd("item55", 11.3), 3);
-        cart.addCartDetail(new ItemDvd("ifasdf", 1.4), 2);
+        cart = ShopSystem.getCart();
+        cartOwner = ShopSystem.getCurrentUser();
 
         //show cart detail
         for (CartDetail cartDetail : cart.getcartDetailList()){
@@ -58,7 +51,7 @@ public class CartController implements Initializable {
         refreshBill();
         setDataOwner();
 
-        System.out.println(cartDetailControllerList);
+        // System.out.println(cartDetailControllerList);
     }
 
     public void setDataOwner(){
@@ -105,6 +98,9 @@ public class CartController implements Initializable {
         switch (status){
             case ACCEPTED -> {
                 statusBox.setText("Checkout success");
+
+                //make order
+                ShopSystem.makeOrder();
 
                 //wipe cart
                 for (int i = cartDetailControllerList.size() - 1; i >= 0; i--){

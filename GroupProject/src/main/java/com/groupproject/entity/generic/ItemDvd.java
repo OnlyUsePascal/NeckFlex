@@ -9,8 +9,8 @@ public class ItemDvd extends Item{
         super(title, fee);
     }
 
-    public ItemDvd(String id, String title, int category, int genre, int stock, double fee) {
-        super(id, title, category, genre, stock, fee);
+    public ItemDvd(int year, String title, int category, int genre, int stock, double fee) {
+        super(year, title, category, genre, stock, fee);
     }
 
     public ItemDvd(ArrayList<String> infoList){
@@ -18,7 +18,8 @@ public class ItemDvd extends Item{
     }
 
     public static ItemDvd getNewItemDvd(String title, String genre, double fee, int year, int stock){
-        ItemDvd newItemDvd = new ItemDvd(getItemId(year),
+        ItemDvd newItemDvd = new ItemDvd(
+                year,
                 title,
                 ConstantItem.ItemCategory.DVD.ordinal(),
                 ConstantItem.genreToIndex(genre),

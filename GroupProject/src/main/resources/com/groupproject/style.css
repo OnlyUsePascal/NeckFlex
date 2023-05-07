@@ -40,6 +40,7 @@
 .imgFrame{
     -fx-arc-height: 30;
     -fx-arc-width: 30;
+    -fx-background-color: #07f7f7;
 }
 
 /*ITEM TILE*/

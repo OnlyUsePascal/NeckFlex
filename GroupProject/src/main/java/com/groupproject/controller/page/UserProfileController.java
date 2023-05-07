@@ -1,8 +1,8 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.NavBarController;
-import com.groupproject.entity.runtime.CurrentUser;
 import com.groupproject.entity.generic.Account;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
@@ -49,7 +49,7 @@ public class UserProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.account = CurrentUser.getCurrentUser();
+        this.account = ShopSystem.getCurrentUser();
         // this.account = Account.getNewAccount("joun", "123", "dat", "nguyen", "123", "123");
         displayInfo();
 

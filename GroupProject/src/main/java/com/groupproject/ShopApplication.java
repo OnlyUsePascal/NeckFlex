@@ -1,5 +1,9 @@
 package com.groupproject;
 
+import com.groupproject.entity.generic.Account;
+import com.groupproject.entity.generic.Cart;
+import com.groupproject.entity.generic.ItemDvd;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.DataHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.application.Application;
@@ -13,8 +17,20 @@ import java.io.IOException;
 public class ShopApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        // //get width, height of page
         DataHandler.getData();
+
+        //init data
+        ShopSystem.setCurrentUser(Account.getNewAccount("joun", "123", "dat", "pham", "123", "xxx"));
+        Cart cart = ShopSystem.getCart();
+        cart.addCartDetail(new ItemDvd("item1", 12.4), 12);
+        cart.addCartDetail(new ItemDvd("item2", 1), 1);
+
+        ShopSystem.makeOrder();
+
+        cart.addCartDetail(new ItemDvd("item55", 11.3), 3);
+        cart.addCartDetail(new ItemDvd("ifasdf", 1.4), 2);
+
+        ShopSystem.makeOrder();
 
         //init
         String pageFile = PathHandler.getPageLoginMain();

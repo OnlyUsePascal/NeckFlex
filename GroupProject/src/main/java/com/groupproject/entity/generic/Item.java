@@ -12,6 +12,7 @@ public abstract class Item {
     private int category;
     private int genre;
     private int stock;
+    private int year;
     private double price;
 
     static public int genericId = 1;
@@ -21,8 +22,9 @@ public abstract class Item {
         this.price = price;
     }
 
-    public Item(String id, String title, int category, int genre, int stock, double price) {
-        this.id = id;
+    public Item(int year, String title, int category, int genre, int stock, double price) {
+        this.year = year;
+        this.id = getItemId(year);
         this.title = title;
         this.category = category;
         this.genre = genre;
@@ -62,5 +64,21 @@ public abstract class Item {
     @Override
     public String toString() {
         return this.id + "|" + this.title + "|" + this.category + "|" + this.genre + "|" + this.stock + "|" + this.price;
+    }
+
+    public String getGenre() {
+        return ConstantItem.genreToString(genre);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public int getYear() {
+        return year;
     }
 }

@@ -15,13 +15,19 @@ import java.util.StringTokenizer;
 
 public class DataHandler {
     public static void getData(){
+        System.out.println("===== get data =====");
         getAccount();
         getItem();
+        System.out.println("===== done =====");
+
     }
 
     public static void saveData(){
+        System.out.println("===== save data =====");
         saveAccount();
         saveItem();
+        System.out.println("===== done =====");
+
     }
 
     //================== GET ===================
@@ -72,21 +78,24 @@ public class DataHandler {
                 }
 
                 System.out.println(infoList.toString());
-                int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
-                switch (category){
-                    case 0 -> {
-                        ItemDvd itemDvd = new ItemDvd(infoList);
-                        ShopSystem.addItem(itemDvd);
-                    }
-                    case 1 -> {
-                        ItemRecord itemRecord = new ItemRecord(infoList);
-                        ShopSystem.addItem(itemRecord);
-                    }
-                    case 2 -> {
-                        ItemGame itemGame = new ItemGame(infoList);
-                        ShopSystem.addItem(itemGame);
-                    }
-                }
+
+                Item newItem = ShopSystem.getItemFromInfo(infoList);
+                ShopSystem.addItem(newItem);
+                // int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
+                // switch (category){
+                //     case 0 -> {
+                //         ItemDvd itemDvd = new ItemDvd(infoList);
+                //         ShopSystem.addItem(itemDvd);
+                //     }
+                //     case 1 -> {
+                //         ItemRecord itemRecord = new ItemRecord(infoList);
+                //         ShopSystem.addItem(itemRecord);
+                //     }
+                //     case 2 -> {
+                //         ItemGame itemGame = new ItemGame(infoList);
+                //         ShopSystem.addItem(itemGame);
+                //     }
+                // }
 
                 Item.genericId++;
             }

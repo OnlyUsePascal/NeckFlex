@@ -2,7 +2,7 @@ package com.groupproject.controller.component;
 
 import com.groupproject.controller.page.HomeController;
 import com.groupproject.controller.page.UserProfileController;
-import com.groupproject.entity.runtime.CurrentUser;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
@@ -35,7 +35,7 @@ public class NavBarController implements Initializable {
             }
         });
 
-        setmenuButtonName(CurrentUser.getCurrentUser().getFirstName());
+        setmenuButtonName(ShopSystem.getCurrentUser().getFirstName());
         // menuButton.setText("Hello, " + CurrentUser.getCurrentUser().getFirstName() + "!");
     }
 
