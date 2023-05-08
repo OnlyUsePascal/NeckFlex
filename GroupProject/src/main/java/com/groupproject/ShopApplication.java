@@ -32,6 +32,8 @@ public class ShopApplication extends Application {
 
         ShopSystem.makeOrder();
 
+        ShopSystem.setCurrentStage(stage);
+
         //init
         String pageFile = PathHandler.getPageLoginMain();
         pageFile = PathHandler.getPageHome();

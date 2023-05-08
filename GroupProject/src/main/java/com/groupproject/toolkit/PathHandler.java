@@ -36,12 +36,24 @@ public class PathHandler {
         return pageRoot + "UserProfile.fxml";
     }
 
+    static public String getPageAdminAccountList(){
+        return pageRoot + "AdminAccountList.fxml";
+    }
+
+    static public String getPageAdminItemList(){
+        return pageRoot + "AdminItemList.fxml";
+    }
+
     static public String getPageUserDeposit() {
         return pageRoot + "UserDeposit.fxml";
     }
 
     static public String getPageCart(){
         return pageRoot + "Cart.fxml";
+    }
+
+    static public String getPageItemInfoUpdate(){
+        return pageRoot + "ItemInfoUpdate.fxml";
     }
 
     static public String getComponentSidebar() {
@@ -78,6 +90,10 @@ public class PathHandler {
 
     static public String getMediaImage(String imgName) {
         return imgRoot + imgName;
+    }
+
+    static public String getMediaImageMagnifyGlass(){
+        return "magnifying-glass-solid (1).png";
     }
 
     static public String getMediaTextItem(String textName) {

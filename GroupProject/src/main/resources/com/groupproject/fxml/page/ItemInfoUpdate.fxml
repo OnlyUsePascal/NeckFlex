@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="452.0" prefWidth="614.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.ItemInfoUpdateController">
+   <children>
+      <Pane layoutX="23.0" layoutY="25.0" prefHeight="384.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2px 2px 2px 2px;">
+         <children>
+            <ImageView fitHeight="397.0" fitWidth="208.0" layoutX="-4.0" layoutY="-6.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../media/image/banner1.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <TextField fx:id="itemInfoId" editable="false" layoutX="256.0" layoutY="32.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;" />
+      <TextField fx:id="itemInfoTitle" layoutX="256.0" layoutY="103.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;" />
+      <ChoiceBox fx:id="itemInfoGenre" layoutX="256.0" layoutY="177.0" prefHeight="49.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;" />
+      <TextField fx:id="itemInfoQuantity" alignment="CENTER" layoutX="256.0" layoutY="253.0" prefHeight="43.0" prefWidth="234.0" style="-fx-background-color: #5d5b6a;" />
+      <Button fx:id="ItemInfoDeleteButton" layoutX="263.0" layoutY="357.0" mnemonicParsing="false" onAction="#deleteItem" prefHeight="43.0" prefWidth="131.0" style="-fx-background-color: #333f4e;" text="Delete" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="ItemInfoUpdateButton" layoutX="421.0" layoutY="357.0" mnemonicParsing="false" onAction="#updateItem" prefHeight="43.0" prefWidth="131.0" style="-fx-background-color: #333f4e;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="534.0" layoutY="253.0" onMouseClicked="#IncreaseStock" prefHeight="42.0" prefWidth="37.0" text="+" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="497.0" layoutY="253.0" onMouseClicked="#DecreaseStock" prefHeight="42.0" prefWidth="37.0" text="-" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -30,28 +30,6 @@ public class ObjectHandler {
     }
 
     //=========== GET ============
-    public static AnchorPane getAnchorPane(String url){
-        FXMLLoader fxmlLoader = new FXMLLoader(ObjectHandler.class.getResource(url));
-        try{
-            AnchorPane result = (AnchorPane) fxmlLoader.load();
-            return result;
-        } catch (Exception err){
-            err.printStackTrace();
-            return null;
-        }
-    }
-
-    public static FXMLLoader getFXMLLoader(String url){
-        FXMLLoader fxmlLoader = new FXMLLoader(ObjectHandler.class.getResource(url));
-        try {
-            fxmlLoader.load();
-            return fxmlLoader;
-        } catch (Exception err){
-            err.printStackTrace();
-            return null;
-        }
-    }
-
     public static File getFile(String url){
         System.out.println(url);
         File file = new File(url);
@@ -76,6 +54,8 @@ public class ObjectHandler {
     public static double getDoubleRound(double num){
         return Math.round(num * 100.0) / 100.0;
     }
+
+    // public static getPopup()
 
     //======= SET ==========
     static public void setAnchorPane(AnchorPane frame, Node node){

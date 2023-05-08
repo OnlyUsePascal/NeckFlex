@@ -67,7 +67,7 @@ public abstract class Item {
     }
 
     public String getGenre() {
-        return ConstantItem.genreToString(genre);
+        return ConstantItem.genreList[genre];
     }
 
     public String getId() {
@@ -80,5 +80,29 @@ public abstract class Item {
 
     public int getYear() {
         return year;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public void setGenre(int genre) {
+        this.genre = genre;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

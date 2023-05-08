@@ -19,10 +19,6 @@ public class ConstantItem {
         return -1;
     }
 
-    static public String genreToString(int index){
-        return genreList[index];
-    }
-
     static public enum ItemInfo {
         ID,
         TITLE,

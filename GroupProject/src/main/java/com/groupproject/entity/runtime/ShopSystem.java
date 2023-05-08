@@ -2,6 +2,7 @@ package com.groupproject.entity.runtime;
 
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.*;
+import javafx.stage.Stage;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -18,6 +19,16 @@ public class ShopSystem {
     static private ArrayList<Item> itemGameList = new ArrayList<>();
 
     static private Cart currentUserCart;
+    static private Stage currentStage;
+
+    //===================== SCENE =====================
+    static public void setCurrentStage(Stage stage){
+        currentStage = stage;
+    }
+
+    static public Stage getCurrentStage(){
+        return currentStage;
+    }
 
 
     //===================== ACCOUNT ======================
