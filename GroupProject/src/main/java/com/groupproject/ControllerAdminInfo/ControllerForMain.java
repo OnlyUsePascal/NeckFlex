@@ -2,7 +2,6 @@ package com.groupproject.ControllerAdminInfo;
 
 import com.groupproject.Entity.Account;
 import com.groupproject.Page.AccountInfo;
-import com.groupproject.Page.AdminAccountListPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -11,17 +10,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,20 +44,17 @@ public class ControllerForMain implements Initializable {
     private Button submitButton;
     @FXML
     private TextField keywordBox;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     @FXML
-    private Button nextScene;
-    @FXML
-    private AnchorPane filterPane;
+    private ChoiceBox choiceList;
+    private String[] choice = {"Guest", "Regular", "VIP", "All"};
+    private String selectChoice;
     ObservableList<Account> accountList = FXCollections.observableArrayList();
 
 
     public void changingWindow(ActionEvent event) throws IOException {
         Button btn = (Button) event.getSource();
         Scene scene = btn.getScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("/com/groupproject/accountView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("accountView.fxml"));
         scene.setRoot(fxmlLoader.load());
 
         AccountInfoController accountInfoController = fxmlLoader.getController();
@@ -110,7 +100,6 @@ public class ControllerForMain implements Initializable {
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());
         //Add sorted (and filtered) data to the table
         tableView.setItems(sortedData);
-
     }
 
 
@@ -120,7 +109,7 @@ public class ControllerForMain implements Initializable {
         accountList = FXCollections.observableArrayList(
                 new  Account("1", "username1", 1,"nhan","truong",3,"391510951","HCM", "Guest"),
                 new Account("2", "username2", 10,"dat","pham",2,"3915102351","Hanoi", "VIP"),
-            new Account("3", "huanchodien", 10,"huan","pham",2,"3915102351","Hanoi", "VIP")
+                new Account("3", "huanchodien", 10,"huan","pham",2,"3915102351","Hanoi", "VIP")
 
         );
         tableView.setItems(accountList);
@@ -149,9 +138,6 @@ public class ControllerForMain implements Initializable {
             }
         return tempList;
     }
-    public void test(){
-        System.out.println("TESTING!!");
-    }
     public void displaySortedTable(ArrayList<Account> tempList){
         ObservableList<Account> tempObservableList = FXCollections.observableArrayList();
         for(Account acc : tempList){
@@ -159,6 +145,17 @@ public class ControllerForMain implements Initializable {
         }
         tableView.refresh();
         tableView.setItems(tempObservableList);
+    }
+    public void sortByAccountType(){
+        choiceList.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+            selectChoice = newValue.toString();
+            if(selectChoice.equals("All")){
+                displayTable();
+            }
+            else{
+                displaySortedTable(getSortedAccountList(selectChoice));
+            }
+        });
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -168,19 +165,10 @@ public class ControllerForMain implements Initializable {
         rewardPointsColumn.setCellValueFactory(new PropertyValueFactory<Account, Double>("rewardPoint"));
         accountTypeColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("accountType"));
         setupTable();
-        FXMLLoader loader = new FXMLLoader(AdminAccountListPage.class.getResource("/com/groupproject/filter.fxml"));
-        try{
-                AnchorPane pane = loader.load();
-                filterPane.getChildren().add(pane);
-                FilterController filterController = loader.getController();
-                filterController.setControllerForMain(this);
-            }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-
-
-
+        // Set list and default value for ChoiceBox
+        choiceList.getItems().addAll("Guest", "Regular", "VIP", "All");
+        choiceList.setValue("All");
+        sortByAccountType();
     }
 
 }
