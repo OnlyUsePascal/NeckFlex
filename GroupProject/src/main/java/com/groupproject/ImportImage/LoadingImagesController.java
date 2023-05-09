@@ -13,6 +13,7 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.*;
 import java.util.ResourceBundle;
 
 
@@ -43,6 +44,15 @@ public class LoadingImagesController implements Initializable {
             System.out.println(file.toURI().toString());
             imgView.setImage(image);
         }
+        Path from = Paths.get(file.toURI());
+        int count = 1;
+        String nameFile = Integer.toString(count) + ".jpg";
+        Path to = Paths.get("src/main/resources/com/groupproject/" + nameFile);
+        CopyOption[] options = new CopyOption[]{
+                StandardCopyOption.REPLACE_EXISTING,
+                StandardCopyOption.COPY_ATTRIBUTES
+        };
+        Files.copy(from, to, options);
     }
 
     @Override
