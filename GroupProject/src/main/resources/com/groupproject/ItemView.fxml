@@ -29,5 +29,6 @@
       </TableView>
       <ChoiceBox fx:id="GroupByCategory" layoutX="1057.0" layoutY="24.0" prefWidth="150.0" />
       <Button layoutX="452.0" layoutY="24.0" mnemonicParsing="false" onAction="#searchItemAction" prefHeight="29.0" prefWidth="99.0" text="Search" />
+      <Button layoutX="1394.0" layoutY="24.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" text="Add Item" />
    </children>
 </AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.Item.ItemRegisterController">
+   <children>
+      <AnchorPane layoutX="49.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="899.0" style="-fx-background-color: grey;">
+         <children>
+            <Pane layoutX="14.0" layoutY="19.0" prefHeight="499.0" prefWidth="410.0" style="-fx-border-color: Black; -fx-border-width: 2px 2px 2px 2px;">
+               <children>
+                  <ImageView fx:id="ItemRegisterImage" fitHeight="453.0" fitWidth="379.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="502.0" layoutY="28.0" prefHeight="70.0" prefWidth="334.0" text="Item Registration" textFill="#4f00f8">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ItemRegisterTitle" layoutX="512.0" layoutY="127.0" prefHeight="37.0" prefWidth="223.0" promptText="Title" style="-fx-background-color: #5d5b6a;" />
+            <ChoiceBox fx:id="ItemRegisterGenre" layoutX="510.0" layoutY="189.0" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: #5d5b6a;" />
+            <ChoiceBox fx:id="ItemRegisterCategory" layoutX="510.0" layoutY="250.0" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: #5d5b6a;" />
+            <TextField fx:id="ItemRegisterStock" layoutX="510.0" layoutY="308.0" prefHeight="37.0" prefWidth="156.0" promptText="Stock" style="-fx-background-color: #5d5b6a;" />
+            <Label alignment="CENTER" layoutX="667.0" layoutY="305.0" onMouseClicked="#DecreaseStock" prefHeight="42.0" prefWidth="37.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="704.0" layoutY="305.0" onMouseClicked="#IncreaseStock" prefHeight="42.0" prefWidth="37.0" text="+" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ItemRegisterFee" layoutX="510.0" layoutY="374.0" prefHeight="37.0" prefWidth="223.0" promptText="Fee" style="-fx-background-color: #5d5b6a;" />
+            <Button layoutX="787.0" layoutY="232.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: #333f4e;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Button layoutX="787.0" layoutY="290.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: #333f4e;" text="Create" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="512.0" layoutY="437.0" mnemonicParsing="false" onAction="#loadImage" prefHeight="37.0" prefWidth="99.0" style="-fx-background-color: #333f4e;" text="Load Image" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
