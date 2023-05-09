@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.ImportImage;
 
 
 import javafx.event.ActionEvent;

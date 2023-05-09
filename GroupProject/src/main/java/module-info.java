@@ -17,5 +17,6 @@ module com.groupproject {
     opens com.groupproject.Page to javafx.fxml;
     exports com.groupproject.Entity;
     opens com.groupproject.Entity to javafx.fxml;
-
+    exports com.groupproject.ImportImage;
+    opens com.groupproject.ImportImage to javafx.fxml;
 }
