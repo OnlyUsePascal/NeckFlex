@@ -1,12 +1,16 @@
 package com.groupproject.Item;
 
+import com.groupproject.types.DVD;
+import com.groupproject.types.MovieRecord;
 import com.groupproject.types.SystemShop;
+import com.groupproject.types.VideoGame;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -17,6 +21,7 @@ import javafx.util.Callback;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.DirectoryStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -38,27 +43,42 @@ public class ItemViewController implements Initializable {
     @FXML
     private TextField searchField;
 
+    @FXML
+    private ChoiceBox<String> GroupByCategory;
+
     private Map<Item, ImageView> imageViewCache = new HashMap<>();
 
 
     public void searchItemAction(){
-        System.out.println(123456);
-        TableViewItem.setItems(getItems(searchField.getText()));
+//        System.out.println(123456);
+        TableViewItem.setItems(getItems(searchField.getText(), GroupByCategory.getValue()));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        searchField.setText("");
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            TableViewItem.setItems(getItems(newValue));
+        GroupByCategory.getItems().add("All");
+        GroupByCategory.getItems().add("DVD");
+        GroupByCategory.getItems().add("Movie Record");
+        GroupByCategory.getItems().add("Video Game");
+
+        GroupByCategory.setValue("All");
+        //Add listeners to GroupByCategory
+        GroupByCategory.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+            System.out.println("Selected: " + newValue);
+            TableViewItem.setItems(getItems(searchField.getText(), newValue));
         });
+
+        searchField.setText("");
+//        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+//            TableViewItem.setItems(getItems(newValue));
+//        });
 
         itemIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         itemTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         itemCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         itemStockColumn.setCellValueFactory(new PropertyValueFactory<>("numberOfCopies"));
-        TableViewItem.setItems(getItems(searchField.getText()));
+        TableViewItem.setItems(getItems(searchField.getText(), GroupByCategory.getValue()));
 
 //        TableViewItem.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 //            @Override
@@ -134,18 +154,48 @@ public class ItemViewController implements Initializable {
 
     }
 
-    public ObservableList<Item> getItems(String searchKeyword){
+    public ObservableList<Item> getItems(String searchKeyword, String filterGroup){
         ObservableList<Item> items = FXCollections.observableArrayList();
         for (Item item : SystemShop.getItemLists()) {
 //            System.out.println(item);
-            if(searchKeyword.isBlank()){
-                items.add(item);
-            }else {
-                if (item.getId().contains(searchKeyword) || item.getTitle().contains(searchKeyword)) {
-                    items.add(item);
-                }
+
+            switch (filterGroup){
+                case "All":
+                    if(searchKeyword.isBlank()){
+                        items.add(item);
+                    }else {
+                        if (item.getId().contains(searchKeyword) || item.getTitle().contains(searchKeyword)) {
+                            items.add(item);
+                        }
+                    }
+                    break;
+
+                case "DVD":
+                    if(item instanceof DVD){
+                        if (item.getId().contains(searchKeyword) || item.getTitle().contains(searchKeyword)) {
+                            items.add(item);
+                        }
+                    }
+                    break;
+
+                case "Movie Record":
+                    if(item instanceof MovieRecord){
+                        if (item.getId().contains(searchKeyword) || item.getTitle().contains(searchKeyword)) {
+                            items.add(item);
+                        }
+                    }
+                    break;
+
+                case "Video Game":
+                    if(item instanceof VideoGame){
+                        if (item.getId().contains(searchKeyword) || item.getTitle().contains(searchKeyword)) {
+                            items.add(item);
+                        }
+                    }
+                    break;
             }
         }
+
         System.out.println("Size of the items: " + items.size());
         return items;
     }
