@@ -6,9 +6,71 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.groupproject.controller.page.ItemInfoController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <AnchorPane layoutX="56.0" layoutY="25.0" prefHeight="452.0" prefWidth="614.0" style="-fx-background-color: grey;">
+            <children>
+                <Pane layoutX="23.0" layoutY="25.0" prefHeight="384.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2px 2px 2px 2px;">
+                    <children>
+                        <ImageView fitHeight="397.0" fitWidth="208.0" layoutX="-4.0" layoutY="-6.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../../media/image/banner1.jpg" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Label fx:id="genre" layoutX="256.0" layoutY="103.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;">
+                    <font>
+                        <Font size="21.0" />
+                    </font></Label>
+                <Label fx:id="price" layoutX="326.0" layoutY="177.0" prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: #5d5b6a;">
+                    <font>
+                        <Font size="21.0" />
+                    </font></Label>
+                <Label fx:id="quantity" layoutX="363.0" layoutY="252.0" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: #5d5b6a;">
+                    <font>
+                        <Font size="22.0" />
+                    </font></Label>
+                <Button fx:id="addToCart" layoutX="421.0" layoutY="366.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="43.0" prefWidth="131.0" style="-fx-background-color: #333f4e;" text="Add To Cart" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Label fx:id="title" layoutX="256.0" layoutY="35.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="256.0" layoutY="177.0" prefHeight="49.0" prefWidth="58.0" text="Price">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="256.0" layoutY="249.0" prefHeight="49.0" prefWidth="99.0" text="Available">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Label>
+                <Button layoutX="458.0" layoutY="319.0" mnemonicParsing="false" onAction="#incAmount" prefHeight="26.0" prefWidth="29.0" text="+" />
+                <Button layoutX="498.0" layoutY="319.0" mnemonicParsing="false" onAction="#decAmount" prefHeight="26.0" prefWidth="29.0" text="-" />
+                <Label layoutX="258.0" layoutY="307.0" prefHeight="49.0" prefWidth="99.0" text="Rent">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Label>
+                <Label fx:id="cartResponse" alignment="TOP_LEFT" layoutX="258.0" layoutY="354.0" prefHeight="55.0" prefWidth="151.0" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font></Label>
+                <TextField fx:id="cartAmount" layoutX="363.0" layoutY="319.0" prefHeight="26.0" prefWidth="80.0"  />
+            </children>
+        </AnchorPane>
+    </children>
 
 </AnchorPane>

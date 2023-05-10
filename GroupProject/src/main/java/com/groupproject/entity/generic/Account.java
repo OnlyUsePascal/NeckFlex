@@ -13,12 +13,12 @@ public class Account {
     private String lastName;
     private String address;
     private String phoneNumber;
-    private ConstantAccount accountType;
     private double balance;
     private double rewardPoint;
 
     private Cart cart;
     private ArrayList<Order> orderList;
+    private int type;
 
 
     public Account(String id, String username, String password, String firstName, String lastName, String address, String phoneNumber) {
@@ -34,6 +34,7 @@ public class Account {
 
         this.cart = new Cart(this);
         this.orderList = new ArrayList<>();
+        this.type = 1;
     }
 
     static public Account getNewAccount(String username, String password, String firstName, String lastName, String phone, String address){
@@ -43,8 +44,8 @@ public class Account {
         return newAaccount;
     }
 
-    public ConstantAccount getAccountType() {
-        return accountType;
+    public String getAccountType() {
+        return ConstantAccount.statusList[type];
     }
 
     public String getUsername() {
@@ -79,6 +80,12 @@ public class Account {
         return this.address;
     }
 
+    public Cart getCart(){
+        return cart;
+    }
+
+    public String getId(){ return id;}
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -101,9 +108,6 @@ public class Account {
     }
 
 
-    public Cart getCart(){
-        return cart;
-    }
 
     public void addOrder(Order order){
         orderList.add(order);

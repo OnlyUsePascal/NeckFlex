@@ -9,6 +9,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
-import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -106,48 +107,40 @@ public class AdminItemListController implements Initializable {
                     setOnMouseClicked(event -> {
                         System.out.println("testing");
                         Item item = getTableView().getItems().get(getIndex());
-                        getPopupItem(item);
+                        getPopup(item);
                     });
                 }
             };
         });
     }
 
-    public void getPopupItem(Item item){
-        Popup popup = new Popup();
-        popup.setAutoHide(true);
-
+    public void getPopup(Item item){
         FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPageItemInfoUpdate()));
         try {
             AnchorPane itemPane = itemLoader.load();
-
-            popup.getContent().add(itemPane);
             ItemInfoUpdateController controller = itemLoader.getController();
             controller.setData(item);
 
-        } catch (IOException err){
+            EventHandler<WindowEvent> popupOnClose = event -> {
+                refreshTable();
+            };
+
+            Popup popup = ObjectHandler.getPopup(itemPane, popupOnClose);
+            popup.show(ShopSystem.getCurrentStage());
+        } catch (IOException err) {
             err.printStackTrace();
         }
-
-        Stage window = ShopSystem.getCurrentStage();
-        double x = window.getX() + (window.getWidth() - popup.getWidth()) / 2;
-        double y = window.getY() + (window.getHeight() - popup.getHeight()) / 2;
-
-        popup.show(window, x, y);
-        popup.setOnHidden(event -> {
-            refreshTable();
-        });
     }
 
     boolean what = false;
 
     public void refreshTable(){
         // tableViewItem.getItems().clear();
-        tableViewItem.setItems(getItems());
+        tableViewItem.setItems(getData());
         tableViewItem.refresh();
     }
 
-    public ObservableList<Item> getItems() {
+    public ObservableList<Item> getData() {
         // ObservableList<Item> itemList = ArrayList
         // if (what){
         //     return null;
@@ -159,7 +152,5 @@ public class AdminItemListController implements Initializable {
             items.add(item);
         }
         return items;
-
-
     }
 }

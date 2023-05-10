@@ -1,24 +1,35 @@
 package com.groupproject.controller.component;
 
+import com.groupproject.ShopApplication;
+import com.groupproject.controller.page.ItemInfoController;
 import com.groupproject.entity.generic.Item;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.toolkit.PathHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Popup;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ItemBoxController implements Initializable {
     @FXML
-    Rectangle imgFrame;
+    private Rectangle imgFrame;
     @FXML
-    Label itemTitle;
+    private Label itemTitle;
     @FXML
-    Label itemPrice;
+    private Label itemPrice;
+
+    private Item item;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -27,9 +38,10 @@ public class ItemBoxController implements Initializable {
         // itemBox.getChildren().add(imgView);
     }
 
-    public void setData(Item item) {
-        setTitle(item.getTitle());
-        setPrice(item.getPrice());
+    public void setData(Item _item) {
+        item = _item;
+        setTitle(_item.getTitle());
+        setPrice(_item.getPrice());
     }
 
     public void setImg(String url) {
@@ -44,5 +56,21 @@ public class ItemBoxController implements Initializable {
 
     public void setPrice(double price){
         itemPrice.setText(String.valueOf(price));
+    }
+
+    public void getPopup(ActionEvent event){
+        System.out.println("popup");
+        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPageItemInfo()));
+        try {
+            AnchorPane itemInfoPane = itemLoader.load();
+
+            ItemInfoController itemInfoController = itemLoader.getController();
+            itemInfoController.setData(item);
+
+            Popup popup = ObjectHandler.getPopup(itemInfoPane, null);
+            ShopSystem.showPopup(popup);
+        } catch (IOException err){
+            err.printStackTrace();
+        }
     }
 }

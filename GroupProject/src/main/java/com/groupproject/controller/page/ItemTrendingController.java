@@ -1,7 +1,9 @@
 package com.groupproject.controller.page;
 
+import com.groupproject.ShopApplication;
 import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.entity.generic.Item;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
@@ -44,21 +46,21 @@ public class ItemTrendingController implements Initializable {
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileDvd, null);
+                addItemTile(itemTileDvd, ShopSystem.getItemDvdList());
                 ObjectHandler.setScrollLock(itemPageDvd);
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileRecord, null);
+                addItemTile(itemTileRecord, ShopSystem.getItemRecordList());
                 ObjectHandler.setScrollLock(itemPageRecord);
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileGame, null);
+                addItemTile(itemTileGame, ShopSystem.getItemGameList());
                 ObjectHandler.setScrollLock(itemPageGame);
             });
         }).start();
@@ -66,15 +68,23 @@ public class ItemTrendingController implements Initializable {
 
     public void addItemTile(HBox itemTile, ArrayList<Item> itemList){
         try{
-            for (int i = 0; i < 10; i++) {
+            for (Item item : itemList){
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
                 Button itemBox = (Button) fxmlLoader.load();
 
                 ItemBoxController itemBoxController = fxmlLoader.getController();
-                itemBoxController.setTitle("" + i);
+                itemBoxController.setData(item);
                 itemTile.getChildren().add(itemBox);
-                // itemTileDvd.getChildren().addAll
             }
+            // for (int i = 0; i < 10; i++) {
+            //     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
+            //     Button itemBox = (Button) fxmlLoader.load();
+            //
+            //     ItemBoxController itemBoxController = fxmlLoader.getController();
+            //     itemBoxController.setTitle("" + i);
+            //     itemTile.getChildren().add(itemBox);
+            //     // itemTileDvd.getChildren().addAll
+            // }
 
         } catch (IOException err) {
             err.printStackTrace();

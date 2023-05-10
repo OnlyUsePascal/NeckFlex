@@ -31,6 +31,15 @@ public class Cart {
         // System.out.println(cartDetailList);
     }
 
+    public CartDetail findCartDetail(Item item){
+        for (CartDetail cartDetail : cartDetailList){
+            if (cartDetail.getItem().equals(item)){
+                return cartDetail;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<CartDetail> getcartDetailList() {
         return cartDetailList;
     }

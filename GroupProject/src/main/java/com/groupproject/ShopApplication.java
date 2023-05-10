@@ -51,9 +51,9 @@ public class ShopApplication extends Application {
     }
 
     public void postClose(WindowEvent event, Stage stage){
-        event.consume();
-
-        DataHandler.saveData();
+        // event.consume();
+        //
+        // DataHandler.saveData();
         stage.close();
     }
 

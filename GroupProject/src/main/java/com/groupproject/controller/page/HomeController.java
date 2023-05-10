@@ -28,6 +28,7 @@ public class HomeController implements Initializable {
     @FXML
     AnchorPane navBar;
 
+
     SidebarController sidebarController;
     NavBarCustomerController navBarCustomerController;
     ItemAllController itemAllController;
@@ -36,7 +37,7 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sidebarPanel.setTranslateX(-300);
         // setPageContent(PathHandler.getPageItemTrending());
-        setPageContent(PathHandler.getPageAdminItemList());
+        setPageContent(PathHandler.getPageAdminAccountList());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBar(PathHandler.getComponentNavBar());
     }

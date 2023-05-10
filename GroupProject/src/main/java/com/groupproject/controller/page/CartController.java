@@ -5,7 +5,6 @@ import com.groupproject.entity.Constant.ConstantOrder;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.generic.Cart;
 import com.groupproject.entity.generic.CartDetail;
-import com.groupproject.entity.generic.ItemDvd;
 import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
@@ -34,7 +33,7 @@ public class CartController implements Initializable {
     @FXML
     Label statusBox;
 
-    private double billTotalPrice = 0;
+    // private double billTotalPrice = 0;
     private Cart cart;
     private Account cartOwner;
     private ArrayList<CartDetailController> cartDetailControllerList = new ArrayList<>();
@@ -44,34 +43,41 @@ public class CartController implements Initializable {
         cart = ShopSystem.getCart();
         cartOwner = ShopSystem.getCurrentUser();
 
-        //show cart detail
-        for (CartDetail cartDetail : cart.getcartDetailList()){
-            showCartDetail(cartDetail);
-        }
+        refreshPage();
         refreshBill();
-        setDataOwner();
-
-        // System.out.println(cartDetailControllerList);
+        refreshBalance();
     }
 
-    public void setDataOwner(){
+    public void refreshBalance(){
         userBalance.setText("$" + cartOwner.getBalance());
         userBalancePoint.setText(cartOwner.getRewardPoint() + " points");
     }
 
-    public void showCartDetail(CartDetail cartDetail){
-        try {
-            FXMLLoader cartItemLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentCartDetail()));
-            HBox cartDetailPane = cartItemLoader.load();
+    public void refreshPage(){
+        refreshCart();
+        refreshBill();
+    }
 
-            CartDetailController cartDetailController = cartItemLoader.getController();
-            cartDetailController.setData(cartDetail);
-            cartDetailController.setCartController(this);
+    public void refreshCart(){
+        //reset
+        itemContainer.getChildren().clear();
+        cartDetailControllerList = new ArrayList<>();
 
-            itemContainer.getChildren().add(cartDetailPane);
-            cartDetailControllerList.add(cartDetailController);
-        } catch (IOException err){
-            err.printStackTrace();
+        //add
+        for (CartDetail cartDetail : cart.getcartDetailList()){
+            try {
+                FXMLLoader cartItemLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentCartDetail()));
+                HBox cartDetailPane = cartItemLoader.load();
+
+                CartDetailController cartDetailController = cartItemLoader.getController();
+                cartDetailController.setData(cartDetail);
+                cartDetailController.setCartController(this);
+
+                itemContainer.getChildren().add(cartDetailPane);
+                cartDetailControllerList.add(cartDetailController);
+            } catch (IOException err){
+                err.printStackTrace();
+            }
         }
     }
 
@@ -88,7 +94,6 @@ public class CartController implements Initializable {
         cartDetailControllerList.remove(cartDetailController);
 
         refreshBill();
-        // System.out.println(cartDetailControllerList);
     }
 
     public void checkout(ActionEvent event){

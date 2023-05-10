@@ -8,9 +8,13 @@ import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,9 +54,7 @@ public class UserProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.account = ShopSystem.getCurrentUser();
-        // this.account = Account.getNewAccount("joun", "123", "dat", "nguyen", "123", "123");
         displayInfo();
-
     }
 
     public void setHomeController(HomeController homeController) {
@@ -61,6 +63,11 @@ public class UserProfileController implements Initializable {
 
     public void setNavBarController(NavBarController navBarController) {
         this.navBarController = navBarController;
+    }
+
+    public void setData(Account account){
+        this.account = account;
+        displayInfo();
     }
 
     public void displayInfo(){
@@ -107,11 +114,31 @@ public class UserProfileController implements Initializable {
         this.account.setPhoneNumber(phoneNumberBox.getText());
         this.account.setAddress(addressBox.getText());
 
-        System.out.println(this.account);
+        // System.out.println(this.account);
 
-        homeController.setPageContent(PathHandler.getPageItemTrending());
-        navBarController.setmenuButtonName(account.getFirstName());
+        //back to home
+        returnHome(event);
+
     }
+
+    public void returnHome(ActionEvent event){
+        //popup -> close
+        //other wise -> update navbar, back to home
+
+        Window window = ((Node) event.getSource()).getScene().getWindow();
+
+        if (account.equals(ShopSystem.getCurrentUser())){
+            navBarController.setmenuButtonName(account.getFirstName());
+        }
+
+        if (window instanceof Popup){
+            window.hide();
+        } else {
+            homeController.setPageContent(PathHandler.getPageItemTrending());
+        }
+    }
+
+
 
 }
 

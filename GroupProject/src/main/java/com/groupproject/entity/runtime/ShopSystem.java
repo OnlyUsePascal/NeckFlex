@@ -2,7 +2,11 @@ package com.groupproject.entity.runtime;
 
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.*;
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -22,14 +26,23 @@ public class ShopSystem {
     static private Stage currentStage;
 
     //===================== SCENE =====================
-    static public void setCurrentStage(Stage stage){
+    static public void setCurrentStage(Stage stage) {
         currentStage = stage;
     }
 
-    static public Stage getCurrentStage(){
+    static public Stage getCurrentStage() {
         return currentStage;
     }
 
+    static public void showPopup(Popup popup) {
+        popup.show(currentStage);
+    }
+
+    static public void closePopup(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        Window window =  node.getScene().getWindow();
+        window.hide();
+    }
 
     //===================== ACCOUNT ======================
     static public ArrayList<Account> getAccountList() {
@@ -78,9 +91,21 @@ public class ShopSystem {
         return itemList;
     }
 
-    static public Item getItemFromInfo(ArrayList<String> infoList){
+    static public ArrayList<Item> getItemDvdList() {
+        return itemDvdList;
+    }
+
+    static public ArrayList<Item> getItemRecordList() {
+        return itemRecordList;
+    }
+
+    static public ArrayList<Item> getItemGameList() {
+        return itemGameList;
+    }
+
+    static public Item getItemFromInfo(ArrayList<String> infoList) {
         int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
-        switch (category){
+        switch (category) {
             case 0 -> {
                 return new ItemDvd(infoList);
             }
@@ -94,9 +119,9 @@ public class ShopSystem {
         return null;
     }
 
-    static public Item getItemFromInfo(Item item){
+    static public Item getItemFromInfo(Item item) {
         int category = item.getCategory();
-        switch (category){
+        switch (category) {
             case 0 -> {
                 return ItemDvd.getNewItemDvd(item.getTitle(), item.getGenre(), item.getPrice(), item.getYear(), item.getStock());
             }
@@ -115,13 +140,21 @@ public class ShopSystem {
         return currentUser.getCart();
     }
 
+    static public CartDetail findCartDetail(Item item) {
+        return currentUserCart.findCartDetail(item);
+    }
+
+    static public void addCartDetail(Item item, int quantity) {
+        currentUserCart.addCartDetail(item, quantity);
+    }
+
 
     //===================== ORDER ======================
     static public void makeOrder() {
         System.out.println("wtf");
         Order order = new Order(currentUser);
 
-        //cart detail -> order detail
+        // cart detail -> order detail
         for (CartDetail cartDetail : currentUserCart.getcartDetailList()) {
             OrderDetail orderDetail = new OrderDetail(cartDetail);
             order.addOrderDetail(orderDetail);

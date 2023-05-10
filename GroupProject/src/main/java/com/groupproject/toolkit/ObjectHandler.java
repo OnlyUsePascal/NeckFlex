@@ -1,5 +1,7 @@
 package com.groupproject.toolkit;
 
+import com.groupproject.entity.runtime.ShopSystem;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,29 +10,32 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.io.IOException;
 
 public class ObjectHandler {
     //=========== CHECK ============
-    public static boolean checkStringCharacterOnly(String str){
+    static public boolean checkStringCharacterOnly(String str){
         // System.out.println(str);
         return str.matches("[a-zA-Z ]+");
     }
 
-    public static boolean checkStringNumberOnly(String str){
+    static public boolean checkStringNumberOnly(String str){
         // System.out.println(str);
         return str.matches("[0-9]+");
     }
 
-    public static boolean checkStringGeneral(String str){
+    static public boolean checkStringGeneral(String str){
         // System.out.println(str);
         return !str.matches(".*\\|.*") && str.length() != 0;
     }
 
     //=========== GET ============
-    public static File getFile(String url){
+    static public File getFile(String url){
         System.out.println(url);
         File file = new File(url);
         if (file.exists()) {
@@ -41,7 +46,7 @@ public class ObjectHandler {
         return null;
     }
 
-    public static Image getImage(String url){
+    static public Image getImage(String url){
         try {
             Image img = new Image(ObjectHandler.class.getResourceAsStream(PathHandler.getMediaImage(url)));
             return img;
@@ -51,11 +56,25 @@ public class ObjectHandler {
         }
     }
 
-    public static double getDoubleRound(double num){
+    static public double getDoubleRound(double num){
         return Math.round(num * 100.0) / 100.0;
     }
 
-    // public static getPopup()
+    static public Popup getPopup(AnchorPane pane, EventHandler<WindowEvent> popupOnClose){
+        Popup popup = new Popup();
+        popup.setAutoHide(true);
+
+        Stage window = ShopSystem.getCurrentStage();
+        double x = window.getX() + (window.getWidth() - popup.getWidth()) / 2;
+        double y = window.getY() + (window.getHeight() - popup.getHeight()) / 2;
+        popup.setX(x);
+        popup.setY(y);
+
+        popup.getContent().add(pane);
+        if (popupOnClose != null) popup.setOnHidden(popupOnClose);
+
+        return popup;
+    }
 
     //======= SET ==========
     static public void setAnchorPane(AnchorPane frame, Node node){

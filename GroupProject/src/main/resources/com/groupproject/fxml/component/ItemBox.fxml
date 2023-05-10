@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Button mnemonicParsing="false" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.ItemBoxController">
+<Button mnemonicParsing="false" onAction="#getPopup" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.ItemBoxController">
    <graphic>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>

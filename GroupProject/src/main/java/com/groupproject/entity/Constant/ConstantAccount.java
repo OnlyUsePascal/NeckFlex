@@ -1,12 +1,13 @@
 package com.groupproject.entity.Constant;
 
 public class ConstantAccount {
+    static public String[] statusList = {"Admin", "Guest", "Regular", "VIP"};
 
-    public static enum AccountStatus{
+    static public enum AccountStatus{
         ADMIN, GUEST, REGULAR, VIP;
     }
 
-    public static enum AccountInfo{
+    static public enum AccountInfo{
         ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, ADDRESS, PHONE
     }
 }

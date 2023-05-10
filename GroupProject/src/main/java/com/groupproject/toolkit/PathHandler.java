@@ -52,6 +52,10 @@ public class PathHandler {
         return pageRoot + "Cart.fxml";
     }
 
+    static public String getPageItemInfo(){
+        return pageRoot + "ItemInfo.fxml";
+    }
+
     static public String getPageItemInfoUpdate(){
         return pageRoot + "ItemInfoUpdate.fxml";
     }

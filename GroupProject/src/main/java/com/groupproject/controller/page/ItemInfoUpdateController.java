@@ -39,7 +39,10 @@ public class ItemInfoUpdateController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // item = SystemShop.itemInfoSelected;
+        //add genre options
+        ObservableList<String> genreList = FXCollections.observableArrayList();
+        genreList.addAll(Arrays.asList(ConstantItem.genreList));
+        itemInfoGenre.setItems(genreList);
     }
 
     public void setData(Item _item){
@@ -48,11 +51,6 @@ public class ItemInfoUpdateController implements Initializable {
         itemInfoTitle.setText(item.getTitle());
         itemInfoQuantity.setText(Integer.toString(item.getStock()));
         itemInfoGenre.setValue(item.getGenre());
-
-        //add genre options
-        ObservableList<String> genreList = FXCollections.observableArrayList();
-        genreList.addAll(Arrays.asList(ConstantItem.genreList));
-        itemInfoGenre.setItems(genreList);
     }
 
     public void updateItem(ActionEvent event){
@@ -62,13 +60,7 @@ public class ItemInfoUpdateController implements Initializable {
         item.setGenre(ConstantItem.genreToIndex(itemInfoGenre.getValue()));
         item.setStock(Integer.parseInt(itemInfoQuantity.getText()));
 
-        closePopup(event);
-    }
-
-    public void closePopup(ActionEvent event){
-        Node node = (Node) event.getSource();
-        Window window =  node.getScene().getWindow();
-        window.hide();
+        ShopSystem.closePopup(event);
     }
 
     public void DecreaseStock(){
@@ -82,7 +74,7 @@ public class ItemInfoUpdateController implements Initializable {
     public void deleteItem(ActionEvent event){
         System.out.println("Deleting Item!!!");
         ShopSystem.getItemList().remove(item);
-        closePopup(event);
+        ShopSystem.closePopup(event);
     }
 
 
