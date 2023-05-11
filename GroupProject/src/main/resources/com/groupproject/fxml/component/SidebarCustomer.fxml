@@ -74,7 +74,7 @@
                               <Image url="@../../media/image/list-solid.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="195.0" text="Item Manager">
+                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="195.0" text="Your Records">
                            <font>
                               <Font size="20.0" />
                            </font>

@@ -22,7 +22,6 @@ public class OrderController implements Initializable {
     VBox orderDetailContainer;
 
     Order order;
-    UserRecordController userRecordController;
     ArrayList<OrderDetailController> orderDetailControllerList;
 
     @Override
@@ -30,9 +29,8 @@ public class OrderController implements Initializable {
         orderDetailControllerList = new ArrayList<>();
     }
 
-    public void setData(Order order, UserRecordController userRecordController){
+    public void setData(Order order){
         this.order = order;
-        this.userRecordController = userRecordController;
     }
 
     public void addOrderDetailPane(OrderDetail orderDetail){
@@ -42,7 +40,7 @@ public class OrderController implements Initializable {
             OrderDetailController orderDetailController = loader.getController();
 
             orderDetailContainer.getChildren().add(pane);
-            orderDetailController.setDataFromOrderDetail(orderDetail, userRecordController);
+            orderDetailController.setDataFromOrderDetail(orderDetail);
             orderDetailControllerList.add(orderDetailController);
         } catch (Exception e){
             e.printStackTrace();

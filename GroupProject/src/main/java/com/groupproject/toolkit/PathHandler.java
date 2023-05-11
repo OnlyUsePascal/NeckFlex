@@ -68,8 +68,8 @@ public class PathHandler {
         // }
         //
         // System.out.println("is customer");
-        return componentRoot + "SidebarAdmin.fxml";
-        // return componentRoot + "SidebarCustomer.fxml";
+        // return componentRoot + "SidebarAdmin.fxml";
+        return componentRoot + "SidebarCustomer.fxml";
     }
 
     static public String getComponentNavBar() {

@@ -3,6 +3,7 @@ package com.groupproject.entity.runtime;
 import com.groupproject.controller.component.NavBarController;
 import com.groupproject.controller.component.SidebarController;
 import com.groupproject.controller.page.HomeController;
+import com.groupproject.controller.page.UserRecordController;
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.*;
 import com.groupproject.toolkit.ObjectHandler;
@@ -23,6 +24,7 @@ public class ShopSystem {
     static private HomeController homeController;
     static private NavBarController navBarController;
     static private SidebarController sidebarController;
+    static private UserRecordController userRecordController;
 
     //model
     static private ArrayList<Account> accountList = new ArrayList<>();
@@ -68,7 +70,7 @@ public class ShopSystem {
     }
 
     //===================== CONTROLLER ======================
-    //home controller
+    //home
     static public void setHomeController(HomeController homeController) {
         ShopSystem.homeController = homeController;
     }
@@ -77,7 +79,7 @@ public class ShopSystem {
         homeController.setPageContent(url);
     }
 
-    //nav bar controller
+    //nav bar
     static public void setNavBarController(NavBarController navBarController) {
         ShopSystem.navBarController = navBarController;
     }
@@ -93,6 +95,15 @@ public class ShopSystem {
 
     static public void setMenuActive(){
         sidebarController.menuActive(null);
+    }
+
+    //user record
+    static public void setUserRecordController(UserRecordController controller){
+        ShopSystem.userRecordController = controller;
+    }
+
+    static public UserRecordController getUserRecordController(){
+        return userRecordController;
     }
 
     //===================== ACCOUNT ======================

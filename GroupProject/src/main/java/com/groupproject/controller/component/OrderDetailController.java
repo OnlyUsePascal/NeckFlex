@@ -2,6 +2,7 @@ package com.groupproject.controller.component;
 
 import com.groupproject.controller.page.UserRecordController;
 import com.groupproject.entity.generic.OrderDetail;
+import com.groupproject.entity.runtime.ShopSystem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,12 +28,11 @@ public class OrderDetailController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        userRecordController = ShopSystem.getUserRecordController();
     }
 
-    public void setDataFromOrderDetail(OrderDetail orderDetail, UserRecordController userRecordController){
+    public void setDataFromOrderDetail(OrderDetail orderDetail){
         this.orderDetail = orderDetail;
-        this.userRecordController = userRecordController;
 
         itemTitle.setText(orderDetail.getItem().getTitle());
         itemTotalPrice.setText(String.valueOf(orderDetail.getPrice()));
