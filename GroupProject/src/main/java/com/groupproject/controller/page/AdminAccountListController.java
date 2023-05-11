@@ -156,8 +156,11 @@ public class AdminAccountListController implements Initializable {
                 refreshTable(null);
             };
 
-            Popup popup = ObjectHandler.getPopup(pane, popupOnClose);
-            popup.show(ShopSystem.getCurrentStage());
+            ObjectHandler.getPopup(pane, popupOnClose);
+            // popup.show(ShopSystem.getCurrentStage());
+
+            // AnchorPane pane2 = (AnchorPane) popup.getContent().get(0);
+            // System.out.println(pane2.getWidth() + " " + pane2.getHeight());
         } catch (IOException err) {
             err.printStackTrace();
         }

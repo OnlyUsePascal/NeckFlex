@@ -1,18 +1,30 @@
 package com.groupproject.entity.runtime;
 
+import com.groupproject.controller.component.NavBarController;
+import com.groupproject.controller.component.SidebarController;
+import com.groupproject.controller.page.HomeController;
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.*;
+import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ShopSystem {
+    //view
+    static private HomeController homeController;
+    static private NavBarController navBarController;
+    static private SidebarController sidebarController;
+
+    //model
     static private ArrayList<Account> accountList = new ArrayList<>();
     static private HashMap<String, Account> usernameToObject = new HashMap<>();
     static private Account currentUser;
@@ -25,7 +37,16 @@ public class ShopSystem {
     static private Cart currentUserCart;
     static private Stage currentStage;
 
+    //===================== AUTH ======================
+    //logging
+    static public void logOut(){
+        AnchorPane loginPane = ObjectHandler.getAnchorPane(PathHandler.getPageLoginMain());
+        Scene scene = new Scene(loginPane);
+        currentStage.setScene(scene);
+    }
+
     //===================== SCENE =====================
+    //stage
     static public void setCurrentStage(Stage stage) {
         currentStage = stage;
     }
@@ -33,6 +54,8 @@ public class ShopSystem {
     static public Stage getCurrentStage() {
         return currentStage;
     }
+
+    //popup
 
     static public void showPopup(Popup popup) {
         popup.show(currentStage);
@@ -42,6 +65,34 @@ public class ShopSystem {
         Node node = (Node) event.getSource();
         Window window =  node.getScene().getWindow();
         window.hide();
+    }
+
+    //===================== CONTROLLER ======================
+    //home controller
+    static public void setHomeController(HomeController homeController) {
+        ShopSystem.homeController = homeController;
+    }
+
+    static public void setPageContent(String url){
+        homeController.setPageContent(url);
+    }
+
+    //nav bar controller
+    static public void setNavBarController(NavBarController navBarController) {
+        ShopSystem.navBarController = navBarController;
+    }
+
+    static public void refreshMenuButtonName(){
+        navBarController.refreshMenuButtonName();
+    }
+
+    //sidebar
+    static public void setSidebarController(SidebarController sidebarController) {
+        ShopSystem.sidebarController = sidebarController;
+    }
+
+    static public void setMenuActive(){
+        sidebarController.menuActive(null);
     }
 
     //===================== ACCOUNT ======================
@@ -151,7 +202,6 @@ public class ShopSystem {
 
     //===================== ORDER ======================
     static public void makeOrder() {
-        System.out.println("wtf");
         Order order = new Order(currentUser);
 
         // cart detail -> order detail

@@ -24,12 +24,10 @@ public class ShopApplication extends Application {
         Cart cart = ShopSystem.getCart();
         cart.addCartDetail(new ItemDvd("item1", 12.4), 12);
         cart.addCartDetail(new ItemDvd("item2", 1), 1);
-
         ShopSystem.makeOrder();
 
         cart.addCartDetail(new ItemDvd("item55", 11.3), 3);
         cart.addCartDetail(new ItemDvd("ifasdf", 1.4), 2);
-
         ShopSystem.makeOrder();
 
         ShopSystem.setCurrentStage(stage);

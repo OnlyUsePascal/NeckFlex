@@ -1,4 +1,5 @@
 package com.groupproject.controller.component;
 
-public class NavBarAdminController {
+public class NavBarAdminController extends NavBarController{
+
 }

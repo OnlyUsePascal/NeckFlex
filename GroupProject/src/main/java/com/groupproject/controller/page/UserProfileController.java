@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
-import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.net.URL;
@@ -48,22 +47,17 @@ public class UserProfileController implements Initializable {
     @FXML
     private Label invalidMessage;
 
-    private HomeController homeController;
-    private NavBarController navBarController;
+    // private NavBarController navBarController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.account = ShopSystem.getCurrentUser();
+        setData(ShopSystem.getCurrentUser());
         displayInfo();
     }
 
-    public void setHomeController(HomeController homeController) {
-        this.homeController = homeController;
-    }
-
-    public void setNavBarController(NavBarController navBarController) {
-        this.navBarController = navBarController;
-    }
+    // public void setNavBarController(NavBarController navBarController) {
+    //     this.navBarController = navBarController;
+    // }
 
     public void setData(Account account){
         this.account = account;
@@ -127,14 +121,12 @@ public class UserProfileController implements Initializable {
 
         Window window = ((Node) event.getSource()).getScene().getWindow();
 
-        if (account.equals(ShopSystem.getCurrentUser())){
-            navBarController.setmenuButtonName(account.getFirstName());
-        }
+        ShopSystem.refreshMenuButtonName();
 
         if (window instanceof Popup){
             window.hide();
         } else {
-            homeController.setPageContent(PathHandler.getPageItemTrending());
+            ShopSystem.setPageContent(PathHandler.getPageItemTrending());
         }
     }
 

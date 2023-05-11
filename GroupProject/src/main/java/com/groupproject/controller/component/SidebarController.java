@@ -1,6 +1,7 @@
 package com.groupproject.controller.component;
 
 import com.groupproject.controller.page.HomeController;
+import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -19,13 +20,17 @@ public class SidebarController implements Initializable {
     @FXML
     AnchorPane menuPane;
 
-    HomeController homeController;
     boolean menuIsOpen = false;
     TranslateTransition menuToOpen, menuToClose;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ShopSystem.setSidebarController(this);
+        initTransition();
+    }
+
+    public void initTransition(){
         double duration = 0.3;
         menuToOpen = new TranslateTransition(Duration.seconds(duration), menuPane);
         menuToOpen.setByX(+300);
@@ -44,17 +49,13 @@ public class SidebarController implements Initializable {
         }
     }
 
-    public void setHomeController(HomeController homeController) {
-        this.homeController = homeController;
-    }
-
     public void toHome(ActionEvent event){
-        homeController.setPageContent(PathHandler.getPageItemTrending());
+        ShopSystem.setPageContent(PathHandler.getPageItemTrending());
         menuActive(null);
     }
 
     public void toItemAll(ActionEvent event){
-        homeController.setPageContent(PathHandler.getPageItemAll());
+        ShopSystem.setPageContent(PathHandler.getPageItemAll());
         menuActive(null);
     }
 

@@ -125,8 +125,7 @@ public class AdminItemListController implements Initializable {
                 refreshTable();
             };
 
-            Popup popup = ObjectHandler.getPopup(itemPane, popupOnClose);
-            popup.show(ShopSystem.getCurrentStage());
+            ObjectHandler.getPopup(itemPane, popupOnClose);
         } catch (IOException err) {
             err.printStackTrace();
         }

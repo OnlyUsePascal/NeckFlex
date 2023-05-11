@@ -12,6 +12,8 @@ public class Order {
         orderDetailList = new ArrayList<>();
     }
 
+    // public Orde
+
     public void addOrderDetail(OrderDetail orderDetail){
         orderDetailList.add(orderDetail);
     }

@@ -67,8 +67,8 @@ public class ItemBoxController implements Initializable {
             ItemInfoController itemInfoController = itemLoader.getController();
             itemInfoController.setData(item);
 
-            Popup popup = ObjectHandler.getPopup(itemInfoPane, null);
-            ShopSystem.showPopup(popup);
+            ObjectHandler.getPopup(itemInfoPane, null);
+            // ShopSystem.showPopup(popup);
         } catch (IOException err){
             err.printStackTrace();
         }

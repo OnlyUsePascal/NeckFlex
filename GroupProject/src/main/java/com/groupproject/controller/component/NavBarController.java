@@ -1,55 +1,46 @@
 package com.groupproject.controller.component;
 
-import com.groupproject.controller.page.HomeController;
-import com.groupproject.controller.page.UserProfileController;
 import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NavBarController implements Initializable {
     @FXML
     TextField searchField;
-
     @FXML
     MenuButton menuButton;
-
-    HomeController homeController;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ShopSystem.setNavBarController(this);
+        initSearchField();
+        refreshMenuButtonName();
+        // menuButton.setText("Hello, " + CurrentUser.getCurrentUser().getFirstName() + "!");
+    }
+
+    public void initSearchField(){
         searchField.setOnKeyPressed(keyEvent -> {
             if(keyEvent.getCode().toString().equals("ENTER")){
                 toHomeWithSearch(null);
             }
         });
-
-        setmenuButtonName(ShopSystem.getCurrentUser().getFirstName());
-        // menuButton.setText("Hello, " + CurrentUser.getCurrentUser().getFirstName() + "!");
     }
 
-    public void setHomeController(HomeController homeController) {
-        this.homeController = homeController;
-    }
-
-    public void setmenuButtonName(String name){
-        menuButton.setText("Hello, " + name + "!");
+    public void refreshMenuButtonName(){
+        menuButton.setText("Hello, " + ShopSystem.getCurrentUser().getFirstName() + "!");
     }
 
 
-    public void toMenu(ActionEvent event){
-        homeController.setMenuActive(event);
+    public void setMenuActive(ActionEvent event){
+        ShopSystem.setMenuActive();
     }
 
     public void toHomeWithSearch(ActionEvent event){
@@ -57,26 +48,15 @@ public class NavBarController implements Initializable {
     }
 
     public void toHome(ActionEvent event){
-        System.out.println("to home");
+        ShopSystem.setPageContent(PathHandler.getPageItemTrending());
     }
 
     public void toUserProfile(ActionEvent event){
-        // homeController.setPageContent(PathHandler.getPageUserProfile());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageUserProfile()));
-        try {
-            AnchorPane page = loader.load();
-            ObjectHandler.setAnchorPane(homeController.getPageContentFrame(), page);
-
-            UserProfileController userProfileController = loader.getController();
-            userProfileController.setHomeController(homeController);
-            userProfileController.setNavBarController(this);
-        } catch (IOException err){
-            err.printStackTrace();
-        }
+        ShopSystem.setPageContent(PathHandler.getPageUserProfile());
     }
 
-    public void toLoginMain(ActionEvent event){
-        System.out.println("to login main");
+    public void toLogout(ActionEvent event){
+        ShopSystem.logOut();
     }
 
 }

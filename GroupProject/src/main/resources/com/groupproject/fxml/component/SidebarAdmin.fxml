@@ -1,14 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.groupproject.controller.component.SidebarAdminController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="menuPane" prefHeight="840.0" prefWidth="290.0" style="-fx-background-color: #FEE8B0;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.SidebarAdminController">
+    <children>
+        <VBox prefHeight="210.0" prefWidth="290.0" spacing="10.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#toHome" prefWidth="290.0">
+                    <graphic>
+                        <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../media/image/house-solid.png" />
+                                    </image>
+                                </ImageView>
+                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="30.0" prefWidth="195.0" text="Home">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                            </children>
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#toItemAll" prefWidth="290.0">
+                    <graphic>
+                        <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../media/image/shop-solid.png" />
+                                    </image>
+                                </ImageView>
+                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="27.0" prefWidth="195.0" text="Items">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                            </children>
+                        </HBox>
+                    </graphic>
+                </Button>
+            <Button mnemonicParsing="false" onAction="#toAdminItem" prefWidth="290.0">
+               <graphic>
+                  <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="27.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../media/image/note-sticky-solid.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="195.0" text="Item Manager">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#toAdminAccount" prefWidth="290.0">
+               <graphic>
+                  <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../media/image/book-solid.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="33.0" prefWidth="195.0" text="Account manager">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            </children>
+            <padding>
+                <Insets top="10.0" />
+            </padding>
+        </VBox>
+    </children>
 </AnchorPane>

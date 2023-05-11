@@ -19,7 +19,7 @@
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#toUserProfile" text="User Profile xxxxxxx" />
                 <MenuItem mnemonicParsing="false" onAction="#toDeposit" text="Deposit" />
-                  <MenuItem mnemonicParsing="false" onAction="#toLoginMain" text="Log out" />
+                  <MenuItem mnemonicParsing="false" onAction="#toLogout" text="Log out" />
               </items>
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -42,9 +42,9 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="80.0" prefWidth="1200.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#toMenu" prefHeight="80.0" prefWidth="84.0">
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#setMenuActive" prefHeight="80.0" prefWidth="84.0">
                <graphic>
-                  <ImageView fitHeight="80.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../media/image/bars-solid.png" />
                      </image>
@@ -60,9 +60,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="343.0">
+            <HBox alignment="CENTER" prefHeight="36.0" prefWidth="628.0">
                <children>
-                  <TextField fx:id="searchField" prefHeight="36.0" prefWidth="200.0" promptText="Something here" style="-fx-background-radius: 5 0 0 5; -fx-background-color: white;">
+                  <TextField fx:id="searchField" prefHeight="37.0" prefWidth="515.0" promptText="Something here" style="-fx-background-radius: 5 0 0 5; -fx-background-color: white;">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

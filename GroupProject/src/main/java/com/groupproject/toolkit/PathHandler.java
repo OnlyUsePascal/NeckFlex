@@ -36,11 +36,11 @@ public class PathHandler {
         return pageRoot + "UserProfile.fxml";
     }
 
-    static public String getPageAdminAccountList(){
+    static public String getPageAdminAccount(){
         return pageRoot + "AdminAccountList.fxml";
     }
 
-    static public String getPageAdminItemList(){
+    static public String getPageAdminItem(){
         return pageRoot + "AdminItemList.fxml";
     }
 
@@ -68,7 +68,8 @@ public class PathHandler {
         // }
         //
         // System.out.println("is customer");
-        return componentRoot + "SidebarCustomer.fxml";
+        return componentRoot + "SidebarAdmin.fxml";
+        // return componentRoot + "SidebarCustomer.fxml";
     }
 
     static public String getComponentNavBar() {

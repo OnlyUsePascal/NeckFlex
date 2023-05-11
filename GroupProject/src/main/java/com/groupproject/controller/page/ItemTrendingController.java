@@ -76,16 +76,6 @@ public class ItemTrendingController implements Initializable {
                 itemBoxController.setData(item);
                 itemTile.getChildren().add(itemBox);
             }
-            // for (int i = 0; i < 10; i++) {
-            //     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
-            //     Button itemBox = (Button) fxmlLoader.load();
-            //
-            //     ItemBoxController itemBoxController = fxmlLoader.getController();
-            //     itemBoxController.setTitle("" + i);
-            //     itemTile.getChildren().add(itemBox);
-            //     // itemTileDvd.getChildren().addAll
-            // }
-
         } catch (IOException err) {
             err.printStackTrace();
         }

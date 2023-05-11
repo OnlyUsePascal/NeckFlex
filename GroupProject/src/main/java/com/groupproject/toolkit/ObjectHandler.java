@@ -60,20 +60,36 @@ public class ObjectHandler {
         return Math.round(num * 100.0) / 100.0;
     }
 
-    static public Popup getPopup(AnchorPane pane, EventHandler<WindowEvent> popupOnClose){
+    static public void getPopup(AnchorPane pane, EventHandler<WindowEvent> popupOnClose){
+        Stage window = ShopSystem.getCurrentStage();
+
+        //popup
         Popup popup = new Popup();
         popup.setAutoHide(true);
-
-        Stage window = ShopSystem.getCurrentStage();
-        double x = window.getX() + (window.getWidth() - popup.getWidth()) / 2;
-        double y = window.getY() + (window.getHeight() - popup.getHeight()) / 2;
-        popup.setX(x);
-        popup.setY(y);
-
         popup.getContent().add(pane);
         if (popupOnClose != null) popup.setOnHidden(popupOnClose);
+        popup.show(window);
 
-        return popup;
+        //to middle
+        AnchorPane contentPane = (AnchorPane) popup.getContent().get(0);
+        double x = window.getX() + (window.getWidth() - contentPane.getWidth()) / 2;
+        double y = window.getY() + (window.getHeight() - contentPane.getHeight()) / 2;
+        // System.out.println(window.getX() + " " + window.getY() + " " + window.getWidth() + " " + window.getHeight());
+        // System.out.println(pane.getWidth() + " " + pane.getHeight());
+        System.out.println(x + " " + y);
+        popup.setX(x);
+        popup.setY(y);
+    }
+
+    static public AnchorPane getAnchorPane(String url){
+        FXMLLoader fxmlLoader = new FXMLLoader(ObjectHandler.class.getResource(url));
+        try {
+            AnchorPane node = (AnchorPane) fxmlLoader.load();
+            return node;
+        } catch (Exception err){
+            err.printStackTrace();
+            return null;
+        }
     }
 
     //======= SET ==========
@@ -115,4 +131,6 @@ public class ObjectHandler {
             }
         });
     }
+
+
 }
