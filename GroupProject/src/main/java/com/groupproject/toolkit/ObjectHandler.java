@@ -93,6 +93,11 @@ public class ObjectHandler {
     }
 
     //======= SET ==========
+    static public void hideNode(Node node){
+        node.setVisible(!node.isVisible());
+        node.setDisable(!node.isDisable());
+    }
+
     static public void setAnchorPane(AnchorPane frame, Node node){
         // if (true) {
         if (frame.getChildren().size() == 0) {

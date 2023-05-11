@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="452.0" prefWidth="614.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.ItemInfoController">
    <children>
       <Pane layoutX="23.0" layoutY="25.0" prefHeight="384.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2px 2px 2px 2px;">
-         <children>
+         <children> 
             <ImageView fitHeight="397.0" fitWidth="208.0" layoutX="-4.0" layoutY="-6.0" pickOnBounds="true">
                <image>
                   <Image url="@../../media/image/banner1.jpg" />
@@ -40,6 +40,11 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="updateCartBtn" layoutX="416.0" layoutY="365.0" mnemonicParsing="false" onAction="#updateCart" prefHeight="44.0" prefWidth="140.0" style="-fx-background-color: #333f4e;" text="Update Cart" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
       <Label fx:id="title" layoutX="256.0" layoutY="35.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;">
          <font>
             <Font size="21.0" />
@@ -55,8 +60,8 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button layoutX="458.0" layoutY="319.0" mnemonicParsing="false" onAction="#incAmount" prefHeight="26.0" prefWidth="29.0" text="+" />
-      <Button layoutX="498.0" layoutY="319.0" mnemonicParsing="false" onAction="#decAmount" prefHeight="26.0" prefWidth="29.0" text="-" />
+      <Button layoutX="503.0" layoutY="319.0" mnemonicParsing="false" onAction="#incAmount" prefHeight="26.0" prefWidth="29.0" text="+" />
+      <Button layoutX="463.0" layoutY="319.0" mnemonicParsing="false" onAction="#decAmount" prefHeight="26.0" prefWidth="29.0" text="-" />
       <Label layoutX="258.0" layoutY="307.0" prefHeight="49.0" prefWidth="99.0" text="Rent">
          <font>
             <Font size="21.0" />
