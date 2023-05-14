@@ -40,7 +40,7 @@ public class CartDetail {
 
     public void setQuantity(int newQuantity) {
         if (newQuantity >= 0) {
-            cart.updateTotalPrice(item.getPrice() * (newQuantity - quantity));
+            cart.totalPriceUpdate(item.getPrice() * (newQuantity - quantity));
             this.quantity = newQuantity;
             totalPrice = ViewHandler.getDoubleRound(item.getPrice() * newQuantity);
         }

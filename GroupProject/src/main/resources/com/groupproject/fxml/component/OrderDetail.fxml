@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #B0DAFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.OrderDetailController">
    <children>
-      <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="200.0" prefWidth="950.0">
+      <HBox fx:id="container" alignment="CENTER_LEFT" fillHeight="false" prefHeight="200.0" prefWidth="950.0">
          <children>
             <CheckBox fx:id="checkBox" mnemonicParsing="false">
                <font>
@@ -50,7 +50,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#returnItem" text="Return">
+            <Button fx:id="btn" mnemonicParsing="false" onAction="#returnItem" text="Return">
                <font>
                   <Font size="17.0" />
                </font>

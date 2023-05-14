@@ -129,18 +129,18 @@ public class EntityHandler {
     }
 
     static public CartDetail cartDetailGet(Item item) {
-        return currentCart.findCartDetail(item);
+        return currentCart.cartDetailFind(item);
     }
 
     static public void cartDetailAdd(Item item, int quantity) {
-        currentCart.addCartDetail(item, quantity);
+        currentCart.cartDetailAdd(item, quantity);
     }
 
 
     //===================== ORDER ======================
     static public void orderAdd() {
-        Order newOrder = Order.getNewOrder(currentCart.getcartDetailList());
+        Order newOrder = Order.getNewOrder(currentCart.cartDetailListGet());
         currentUser.addOrder(newOrder);
-        currentCart.wipeCart();
+        currentCart.cartWipe();
     }
 }

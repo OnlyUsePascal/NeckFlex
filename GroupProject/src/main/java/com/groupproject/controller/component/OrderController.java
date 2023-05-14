@@ -1,6 +1,5 @@
 package com.groupproject.controller.component;
 
-import com.groupproject.controller.page.UserRecordController;
 import com.groupproject.entity.generic.Order;
 import com.groupproject.entity.generic.OrderDetail;
 import com.groupproject.entity.runtime.ViewHandler;
@@ -9,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -21,6 +21,12 @@ import java.util.ResourceBundle;
 public class OrderController implements Initializable {
     @FXML
     VBox orderDetailContainer;
+    @FXML
+    CheckBox checkBox;
+    @FXML
+    Button btn;
+    @FXML
+    HBox orderHeader;
 
     Order order;
     ArrayList<OrderDetailController> orderDetailControllerList;
@@ -30,8 +36,20 @@ public class OrderController implements Initializable {
         orderDetailControllerList = new ArrayList<>();
     }
 
-    public void setData(Order order){
+    public void setData(Order order, ArrayList<OrderDetail> orderDetailList){
         this.order = order;
+        for (OrderDetail orderDetail : orderDetailList){
+            addOrderDetailPane(orderDetail);
+        }
+
+        checkIsReturned(orderDetailList.get(0));
+    }
+
+    public void checkIsReturned(OrderDetail orderDetail){
+        if (orderDetail.isReturned()){
+            orderHeader.getChildren().remove(btn);
+            orderHeader.getChildren().remove(checkBox);
+        }
     }
 
     public void addOrderDetailPane(OrderDetail orderDetail){
@@ -41,7 +59,7 @@ public class OrderController implements Initializable {
             OrderDetailController orderDetailController = loader.getController();
 
             orderDetailContainer.getChildren().add(pane);
-            orderDetailController.setDataFromOrderDetail(orderDetail);
+            orderDetailController.setData(orderDetail);
             orderDetailControllerList.add(orderDetailController);
         } catch (Exception e){
             e.printStackTrace();

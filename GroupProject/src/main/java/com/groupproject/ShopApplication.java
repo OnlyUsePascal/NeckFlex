@@ -24,12 +24,12 @@ public class ShopApplication extends Application {
         EntityHandler.currentUserGet(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
         // System.out.println();
         Cart cart = EntityHandler.cartGet();
-        cart.addCartDetail(new ItemDvd("item1", 12.4), 1);
-        cart.addCartDetail(new ItemDvd("item2", 1), 1);
+        cart.cartDetailAdd(new ItemDvd("item1", 12.4), 1);
+        cart.cartDetailAdd(new ItemDvd("item2", 1), 1);
         EntityHandler.orderAdd();
 
-        cart.addCartDetail(new ItemDvd("item55", 11.3), 3);
-        cart.addCartDetail(new ItemDvd("ifasdf", 1.4), 2);
+        cart.cartDetailAdd(new ItemDvd("item55", 11.3), 3);
+        cart.cartDetailAdd(new ItemDvd("ifasdf", 1.4), 2);
         EntityHandler.orderAdd();
 
 

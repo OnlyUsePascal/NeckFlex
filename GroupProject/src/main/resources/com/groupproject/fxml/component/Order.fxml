@@ -9,14 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="60.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.OrderController">
    <children>
       <VBox fx:id="orderDetailContainer" alignment="TOP_CENTER" fillWidth="false" prefWidth="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="900.0" style="-fx-background-color: #E3F2C1;">
+            <HBox fx:id="orderHeader" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="900.0" style="-fx-background-color: #E3F2C1;">
                <children>
-                  <CheckBox alignment="CENTER" mnemonicParsing="false" onAction="#setCheckBoxAll">
+                  <CheckBox fx:id="checkBox" alignment="CENTER" mnemonicParsing="false" onAction="#setCheckBoxAll">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -34,7 +33,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#returnItemAll" text="Return items">
+                  <Button fx:id="btn" mnemonicParsing="false" onAction="#returnItemAll" text="Return items">
                      <font>
                         <Font size="17.0" />
                      </font>

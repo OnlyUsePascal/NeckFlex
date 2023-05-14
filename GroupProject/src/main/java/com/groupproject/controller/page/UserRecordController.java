@@ -54,17 +54,7 @@ public class UserRecordController implements Initializable {
         }
     }
 
-
-    public Rectangle getStartLine(){
-        Rectangle startLine = new Rectangle();
-        startLine.setHeight(50);
-        startLine.setWidth(600);
-        startLine.setFill(Color.TEAL);
-
-        return startLine;
-    }
-
-    public void addOrderPane(Order order, ArrayList<OrderDetail> orderDetailList, VBox container){
+    public void addOrderPane(Order order, ArrayList<OrderDetail> orderDetailList, VBox orderContainer){
         if (orderDetailList.isEmpty()) return;
 
         FXMLLoader orderLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentOrder()));
@@ -72,12 +62,8 @@ public class UserRecordController implements Initializable {
             AnchorPane orderPane = orderLoader.load();
             OrderController orderController = orderLoader.getController();
 
-            orderController.setData(order);
-            for (OrderDetail orderDetail : orderDetailList){
-                orderController.addOrderDetailPane(orderDetail);
-            }
-
-            container.getChildren().add(0, orderPane);
+            orderController.setData(order, orderDetailList);
+            orderContainer.getChildren().add(0, orderPane); //add to start
         } catch (IOException err) {
             err.printStackTrace();
         }

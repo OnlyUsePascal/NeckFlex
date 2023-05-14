@@ -75,7 +75,7 @@ public class CartController implements Initializable {
         cartDetailControllerList = new ArrayList<>();
 
         //add
-        for (CartDetail cartDetail : cart.getcartDetailList()){
+        for (CartDetail cartDetail : cart.cartDetailListGet()){
             try {
                 FXMLLoader cartItemLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentCartDetail()));
                 HBox cartDetailPane = cartItemLoader.load();
@@ -96,7 +96,7 @@ public class CartController implements Initializable {
 
     public void refreshBill(){
         //price
-        billTotalPriceBox.setText("$" + cart.getTotalPrice());
+        billTotalPriceBox.setText("$" + cart.totalPriceGet());
 
         //balance
         userBalance.setText("$" + cartOwner.getBalance());

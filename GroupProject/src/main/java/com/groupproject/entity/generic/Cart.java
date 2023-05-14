@@ -16,24 +16,24 @@ public class Cart {
         totalPrice = 0;
     }
 
-    public void addCartDetail(Item item, int quantity) {
+    public void cartDetailAdd(Item item, int quantity) {
         CartDetail cartDetail = new CartDetail(item, quantity);
         cartDetailList.add(cartDetail);
         cartDetail.setCart(this);
-        updateTotalPrice(cartDetail.getTotalPrice());
+        totalPriceUpdate(cartDetail.getTotalPrice());
     }
 
-    public void removeCartDetail(CartDetail cartDetail) {
-        updateTotalPrice(-cartDetail.getTotalPrice());
+    public void cartDetailRemove(CartDetail cartDetail) {
+        totalPriceUpdate(-cartDetail.getTotalPrice());
         cartDetailList.remove(cartDetail);
     }
 
-    public void wipeCart(){
-        updateTotalPrice(-totalPrice);
+    public void cartWipe(){
+        totalPriceUpdate(-totalPrice);
         cartDetailList.clear();
     }
 
-    public CartDetail findCartDetail(Item item){
+    public CartDetail cartDetailFind(Item item){
         for (CartDetail cartDetail : cartDetailList){
             if (cartDetail.getItem().equals(item)){
                 return cartDetail;
@@ -42,15 +42,15 @@ public class Cart {
         return null;
     }
 
-    public ArrayList<CartDetail> getcartDetailList() {
+    public ArrayList<CartDetail> cartDetailListGet() {
         return cartDetailList;
     }
 
-    public void updateTotalPrice(double price){
+    public void totalPriceUpdate(double price){
         totalPrice = ViewHandler.getDoubleRound(totalPrice + price);
     }
 
-    public double getTotalPrice(){
+    public double totalPriceGet(){
         return totalPrice;
     }
 
