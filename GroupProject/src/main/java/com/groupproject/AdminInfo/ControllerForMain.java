@@ -51,7 +51,7 @@ public class ControllerForMain implements Initializable {
     public void changingWindow(ActionEvent event) throws IOException {
         Button btn = (Button) event.getSource();
         Scene scene = btn.getScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("accountView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("/com/groupproject/accountView.fxml"));
         scene.setRoot(fxmlLoader.load());
 
         AccountInfoController accountInfoController = fxmlLoader.getController();
@@ -160,7 +160,7 @@ public class ControllerForMain implements Initializable {
     public void addAccountFunction(ActionEvent event) throws IOException {
         Button btn = (Button) event.getSource();
         Scene scene = btn.getScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(RegistrationPage.class.getResource("registrationPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RegistrationPageForAdmin.class.getResource("/com/groupproject/RegistrationInAdminPage.fxml"));
         scene.setRoot(fxmlLoader.load());
     }
     public void updateNewAccount(Account acc){

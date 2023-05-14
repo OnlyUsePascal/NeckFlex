@@ -1,6 +1,7 @@
 package com.groupproject.AdminInfo;
 
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -166,17 +168,24 @@ public class RegistrationController implements Initializable {
 
             Button btn = (Button) event.getSource();
             Scene scene = btn.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(AdminAccountListPage.class.getResource("AdminAccountListPage.fxml"));
-            scene.setRoot(fxmlLoader.load());
-            ControllerForMain controllerForMain1 = fxmlLoader.getController();
-            controllerForMain1.updateNewAccount(account);
+            FXMLLoader fxmlLoader = new FXMLLoader(AdminAccountListPage.class.getResource("/com/groupproject/AdminAccountListPage.fxml"));
+
 
 
             RegistrationPageMessage.setText("Register successfully!");
             RegistrationPageMessage.setTextFill(Color.GREEN);
-//            PauseTransition pause = new PauseTransition(Duration.millis(5000));
-//            pause.setOnFinished(event -> System.exit(0));
-//            pause.play();
+            PauseTransition pause = new PauseTransition(Duration.millis(5000));
+            pause.setOnFinished(e -> {
+                try {
+                    scene.setRoot(fxmlLoader.load());
+                    ControllerForMain controllerForMain1 = fxmlLoader.getController();
+                    controllerForMain1.updateNewAccount(account);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                    }
+                }
+            );
+            pause.play();
 //            exit();
         }
 
