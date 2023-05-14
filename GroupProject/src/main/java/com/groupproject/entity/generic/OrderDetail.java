@@ -1,7 +1,7 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 
 public class OrderDetail {
     private Item item;
@@ -10,9 +10,9 @@ public class OrderDetail {
     private boolean isReturned;
 
     public OrderDetail(CartDetail cartDetail) {
-        this.item = ShopSystem.getItemFromInfo(cartDetail.getItem());
+        this.item = EntityHandler.getItemFromInfo(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
-        this.price = ObjectHandler.getDoubleRound(cartDetail.getTotalPrice());
+        this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
         this.isReturned = false;
     }
 

@@ -3,8 +3,9 @@ package com.groupproject;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.generic.Cart;
 import com.groupproject.entity.generic.ItemDvd;
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.toolkit.DataHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,19 +21,20 @@ public class ShopApplication extends Application {
         DataHandler.getData();
 
         //init data
-        ShopSystem.setCurrentUser(Account.getNewAccount("joun", "123", "dat", "pham", "123", "xxx"));
-        Cart cart = ShopSystem.getCart();
-        cart.addCartDetail(new ItemDvd("item1", 12.4), 12);
+        EntityHandler.setCurrentUser(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
+        // System.out.println();
+        Cart cart = EntityHandler.getCart();
+        cart.addCartDetail(new ItemDvd("item1", 12.4), 1);
         cart.addCartDetail(new ItemDvd("item2", 1), 1);
-        ShopSystem.makeOrder();
+        // ShopSystem.makeOrder();
+        //
+        // cart.addCartDetail(new ItemDvd("item55", 11.3), 3);
+        // cart.addCartDetail(new ItemDvd("ifasdf", 1.4), 2);
+        // ShopSystem.makeOrder();
 
-        cart.addCartDetail(new ItemDvd("item55", 11.3), 3);
-        cart.addCartDetail(new ItemDvd("ifasdf", 1.4), 2);
-        ShopSystem.makeOrder();
-
-        ShopSystem.setCurrentStage(stage);
 
         //init
+        ViewHandler.currentStageSet(stage);
         String pageFile = PathHandler.getPageLoginMain();
         pageFile = PathHandler.getPageHome();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageFile));

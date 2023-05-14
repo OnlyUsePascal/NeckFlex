@@ -2,17 +2,13 @@ package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.NavBarCustomerController;
 import com.groupproject.controller.component.SidebarController;
-import com.groupproject.entity.runtime.ShopSystem;
 import com.groupproject.toolkit.PathHandler;
-import com.groupproject.toolkit.ObjectHandler;
-import javafx.event.ActionEvent;
+import com.groupproject.entity.runtime.ViewHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,24 +29,24 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ShopSystem.setHomeController(this);
+        ViewHandler.homeControllerSet(this);
 
-        setPageContent(PathHandler.getPageItemTrending());
-        // setPageContent(PathHandler.getPageAdminAccount());
+        // setPageContent(PathHandler.getPageItemTrending());
+        setPageContent(PathHandler.getPageItemAll());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBar(PathHandler.getComponentNavBar());
     }
 
     public void setSidebar(String url){
-        ObjectHandler.setAnchorPane(sidebarPanel, url);
+        ViewHandler.anchorPaneSet(sidebarPanel, url);
     }
 
     public void setPageContent(String url) {
-        ObjectHandler.setAnchorPane(pageContent, url);
+        ViewHandler.anchorPaneSet(pageContent, url);
     }
 
     public void setNavBar(String url){
         sidebarPanel.setTranslateX(-300);
-        ObjectHandler.setAnchorPane(navBar, url);
+        ViewHandler.anchorPaneSet(navBar, url);
     }
 }

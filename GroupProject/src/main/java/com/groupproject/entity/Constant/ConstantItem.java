@@ -2,12 +2,11 @@ package com.groupproject.entity.Constant;
 
 public class ConstantItem {
     static public String[] categoryList = {"Dvd", " Movie Record", "Video Game"};
-    static public enum ItemCategory{
+    static public enum ItemCategory {
         DVD,
         RECORD,
-        GAME;
+        GAME
     }
-
 
     static public String[] genreList = {"Action", "Thrilling", "Comedy", "Sci - fi", "Romance"};
     static public int genreToIndex(String genre){

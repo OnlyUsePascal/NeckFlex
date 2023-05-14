@@ -1,6 +1,7 @@
 package com.groupproject.controller.component;
 
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,10 +21,9 @@ public class NavBarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ShopSystem.setNavBarController(this);
+        ViewHandler.navBarControllerSet(this);
         initSearchField();
         refreshMenuButtonName();
-        // menuButton.setText("Hello, " + CurrentUser.getCurrentUser().getFirstName() + "!");
     }
 
     public void initSearchField(){
@@ -35,12 +35,12 @@ public class NavBarController implements Initializable {
     }
 
     public void refreshMenuButtonName(){
-        menuButton.setText("Hello, " + ShopSystem.getCurrentUser().getFirstName() + "!");
+        menuButton.setText("Hello, " + EntityHandler.getCurrentUser().getFirstName() + "!");
     }
 
 
     public void setMenuActive(ActionEvent event){
-        ShopSystem.setMenuActive();
+        ViewHandler.setMenuActive();
     }
 
     public void toHomeWithSearch(ActionEvent event){
@@ -48,15 +48,15 @@ public class NavBarController implements Initializable {
     }
 
     public void toHome(ActionEvent event){
-        ShopSystem.setPageContent(PathHandler.getPageItemTrending());
+        ViewHandler.setPageContent(PathHandler.getPageItemTrending());
     }
 
     public void toUserProfile(ActionEvent event){
-        ShopSystem.setPageContent(PathHandler.getPageUserProfile());
+        ViewHandler.setPageContent(PathHandler.getPageUserProfile());
     }
 
     public void toLogout(ActionEvent event){
-        ShopSystem.logOut();
+        EntityHandler.logOut();
     }
 
 }

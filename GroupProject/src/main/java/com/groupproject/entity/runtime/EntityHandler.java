@@ -1,109 +1,33 @@
 package com.groupproject.entity.runtime;
 
-import com.groupproject.controller.component.NavBarController;
-import com.groupproject.controller.component.SidebarController;
-import com.groupproject.controller.page.HomeController;
-import com.groupproject.controller.page.UserRecordController;
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.*;
-import com.groupproject.toolkit.ObjectHandler;
 import com.groupproject.toolkit.PathHandler;
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ShopSystem {
-    //view
-    static private HomeController homeController;
-    static private NavBarController navBarController;
-    static private SidebarController sidebarController;
-    static private UserRecordController userRecordController;
-
+public class EntityHandler {
     //model
     static private ArrayList<Account> accountList = new ArrayList<>();
     static private HashMap<String, Account> usernameToObject = new HashMap<>();
     static private Account currentUser;
+    static private Cart currentCart;
 
     static private ArrayList<Item> itemList = new ArrayList<>();
     static private ArrayList<Item> itemDvdList = new ArrayList<>();
     static private ArrayList<Item> itemRecordList = new ArrayList<>();
     static private ArrayList<Item> itemGameList = new ArrayList<>();
 
-    static private Cart currentUserCart;
-    static private Stage currentStage;
 
     //===================== AUTH ======================
     //logging
     static public void logOut(){
-        AnchorPane loginPane = ObjectHandler.getAnchorPane(PathHandler.getPageLoginMain());
+        AnchorPane loginPane = ViewHandler.anchorPaneGet(PathHandler.getPageLoginMain());
         Scene scene = new Scene(loginPane);
-        currentStage.setScene(scene);
-    }
-
-    //===================== SCENE =====================
-    //stage
-    static public void setCurrentStage(Stage stage) {
-        currentStage = stage;
-    }
-
-    static public Stage getCurrentStage() {
-        return currentStage;
-    }
-
-    //popup
-
-    static public void showPopup(Popup popup) {
-        popup.show(currentStage);
-    }
-
-    static public void closePopup(ActionEvent event) {
-        Node node = (Node) event.getSource();
-        Window window =  node.getScene().getWindow();
-        window.hide();
-    }
-
-    //===================== CONTROLLER ======================
-    //home
-    static public void setHomeController(HomeController homeController) {
-        ShopSystem.homeController = homeController;
-    }
-
-    static public void setPageContent(String url){
-        homeController.setPageContent(url);
-    }
-
-    //nav bar
-    static public void setNavBarController(NavBarController navBarController) {
-        ShopSystem.navBarController = navBarController;
-    }
-
-    static public void refreshMenuButtonName(){
-        navBarController.refreshMenuButtonName();
-    }
-
-    //sidebar
-    static public void setSidebarController(SidebarController sidebarController) {
-        ShopSystem.sidebarController = sidebarController;
-    }
-
-    static public void setMenuActive(){
-        sidebarController.menuActive(null);
-    }
-
-    //user record
-    static public void setUserRecordController(UserRecordController controller){
-        ShopSystem.userRecordController = controller;
-    }
-
-    static public UserRecordController getUserRecordController(){
-        return userRecordController;
+        ViewHandler.currentStageGet().setScene(scene);
     }
 
     //===================== ACCOUNT ======================
@@ -134,7 +58,7 @@ public class ShopSystem {
 
     static public void setCurrentUser(Account acc) {
         currentUser = acc;
-        currentUserCart = currentUser.getCart();
+        currentCart = currentUser.getCart();
     }
 
     //===================== ITEM ======================
@@ -203,27 +127,18 @@ public class ShopSystem {
     }
 
     static public CartDetail findCartDetail(Item item) {
-        return currentUserCart.findCartDetail(item);
+        return currentCart.findCartDetail(item);
     }
 
     static public void addCartDetail(Item item, int quantity) {
-        currentUserCart.addCartDetail(item, quantity);
+        currentCart.addCartDetail(item, quantity);
     }
 
 
     //===================== ORDER ======================
     static public void makeOrder() {
-        Order order = new Order(currentUser);
-
-        // cart detail -> order detail
-        for (CartDetail cartDetail : currentUserCart.getcartDetailList()) {
-            OrderDetail orderDetail = new OrderDetail(cartDetail);
-            order.addOrderDetail(orderDetail);
-        }
-
-        order.setTotalPrice(currentUserCart.getTotalPrice());
-        currentUser.addOrder(order);
-
-        System.out.println(order);
+        Order newOrder = Order.getNewOrder(currentCart.getcartDetailList());
+        currentUser.addOrder(newOrder);
+        currentCart.wipeCart();
     }
 }

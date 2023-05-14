@@ -2,9 +2,8 @@ package com.groupproject.controller.page;
 
 import com.groupproject.entity.Constant.ConstantAccount;
 import com.groupproject.entity.generic.Account;
-import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
@@ -20,7 +19,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Popup;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
@@ -44,12 +42,6 @@ public class AdminAccountListController implements Initializable {
     private TableColumn<Account, Double> rewardPointsColumn;
     @FXML
     private TableColumn<Account, String> accountTypeColumn ;
-    // @FXML
-    // private TextField idTextField;
-    // @FXML
-    // private TextField usernameTextField;
-    // @FXML
-    // private Button submitButton;
     @FXML
     private TextField keywordBox;
     @FXML
@@ -64,6 +56,8 @@ public class AdminAccountListController implements Initializable {
 
         initColumnProperty();
         refreshTable(null);
+
+
     }
 
     public void initFilter(){
@@ -87,15 +81,16 @@ public class AdminAccountListController implements Initializable {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Account, String> accountStringCellDataFeatures) {
                 Account account = accountStringCellDataFeatures.getValue();
-                return new SimpleObjectProperty<>(account.getAccountType());
+                return new SimpleObjectProperty<>(account.getStatusString());
             }
         });
 
         //image
+        imageColumn.setStyle("-fx-alignment: center;");
         imageColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Account, ImageView>, ObservableValue<ImageView>>() {
             @Override
             public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Account, ImageView> itemImageViewCellDataFeatures) {
-                Image img = ObjectHandler.getImage(PathHandler.getMediaImageMagnifyGlass());
+                Image img = ViewHandler.getImage(PathHandler.getMediaImageMagnifyGlass());
                 ImageView imageView = new ImageView(img);
                 imageView.setFitWidth(25);
                 imageView.setFitHeight(25);
@@ -134,7 +129,7 @@ public class AdminAccountListController implements Initializable {
 
     public ObservableList<Account> getData() {
         ObservableList<Account> accounts = FXCollections.observableArrayList();
-        for (Account account : ShopSystem.getAccountList()){
+        for (Account account : EntityHandler.getAccountList()){
             boolean legit = true;
             legit &= filterType(account);
             legit &= filterSearch(account);
@@ -156,7 +151,7 @@ public class AdminAccountListController implements Initializable {
                 refreshTable(null);
             };
 
-            ObjectHandler.getPopup(pane, popupOnClose);
+            ViewHandler.popupGet(pane, popupOnClose);
             // popup.show(ShopSystem.getCurrentStage());
 
             // AnchorPane pane2 = (AnchorPane) popup.getContent().get(0);
@@ -169,7 +164,7 @@ public class AdminAccountListController implements Initializable {
     public boolean filterType(Account account){
         String option = choiceList.getValue();
         if (option.equals(accountTypeOptionAll)) return true;
-        return account.getAccountType() .equals(option);
+        return account.getStatusString().equals(option);
     }
 
     public boolean filterSearch(Account account){

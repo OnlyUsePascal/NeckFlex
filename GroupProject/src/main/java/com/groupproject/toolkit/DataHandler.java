@@ -1,9 +1,9 @@
 package com.groupproject.toolkit;
 
 import com.groupproject.entity.generic.*;
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.Constant.ConstantAccount;
-import com.groupproject.entity.Constant.ConstantItem;
+import com.groupproject.entity.runtime.ViewHandler;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,7 +32,7 @@ public class DataHandler {
 
     //================== GET ===================
     public static void getAccount(){
-        File file = ObjectHandler.getFile(PathHandler.getMediaTextAccount());
+        File file = ViewHandler.getFile(PathHandler.getMediaTextAccount());
 
         try {
             Scanner my_reader = new Scanner(file);
@@ -51,11 +51,13 @@ public class DataHandler {
                         list.get(ConstantAccount.AccountInfo.FIRSTNAME.ordinal()),
                         list.get(ConstantAccount.AccountInfo.LASTNAME.ordinal()),
                         list.get(ConstantAccount.AccountInfo.ADDRESS.ordinal()),
-                        list.get(ConstantAccount.AccountInfo.PHONE.ordinal())
+                        list.get(ConstantAccount.AccountInfo.PHONE.ordinal()),
+                        Integer.parseInt(list.get(ConstantAccount.AccountInfo.STATUS.ordinal()))
                 );
 
-                ShopSystem.addAccount(account);
-                System.out.println(account);
+                EntityHandler.addAccount(account);
+                // System.out.println(account);
+                // System.out.println(list);
             }
         } catch (FileNotFoundException err){
             err.printStackTrace();
@@ -63,7 +65,7 @@ public class DataHandler {
     }
 
     public static void getItem(){
-        File file = ObjectHandler.getFile(PathHandler.getMediaTextItem());
+        File file = ViewHandler.getFile(PathHandler.getMediaTextItem());
 
         try {
             Scanner my_reader = new Scanner(file);
@@ -79,24 +81,8 @@ public class DataHandler {
 
                 System.out.println(infoList.toString());
 
-                Item newItem = ShopSystem.getItemFromInfo(infoList);
-                ShopSystem.addItem(newItem);
-                // int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
-                // switch (category){
-                //     case 0 -> {
-                //         ItemDvd itemDvd = new ItemDvd(infoList);
-                //         ShopSystem.addItem(itemDvd);
-                //     }
-                //     case 1 -> {
-                //         ItemRecord itemRecord = new ItemRecord(infoList);
-                //         ShopSystem.addItem(itemRecord);
-                //     }
-                //     case 2 -> {
-                //         ItemGame itemGame = new ItemGame(infoList);
-                //         ShopSystem.addItem(itemGame);
-                //     }
-                // }
-
+                Item newItem = EntityHandler.getItemFromInfo(infoList);
+                EntityHandler.addItem(newItem);
                 Item.genericId++;
             }
         } catch(FileNotFoundException e){
@@ -106,11 +92,11 @@ public class DataHandler {
 
     //================== SAVE ===================
     public static void saveAccount(){
-        File file = ObjectHandler.getFile(PathHandler.getMediaTextAccount());
+        File file = ViewHandler.getFile(PathHandler.getMediaTextAccount());
 
         try{
             PrintWriter printWriter = new PrintWriter(file);
-            for(Account account : ShopSystem.getAccountList()){
+            for(Account account : EntityHandler.getAccountList()){
                 printWriter.println(account);
             }
 
@@ -123,12 +109,12 @@ public class DataHandler {
     }
 
     public static void saveItem(){
-        File file = ObjectHandler.getFile(PathHandler.getMediaTextItem());
+        File file = ViewHandler.getFile(PathHandler.getMediaTextItem());
 
         try{
             PrintWriter printWriter = new PrintWriter(file);
 
-            for (Item item : ShopSystem.getItemList()) {
+            for (Item item : EntityHandler.getItemList()) {
                 printWriter.println(item);
             }
 

@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.HomeController">
     <children>
-        <AnchorPane fx:id="pageContent" layoutX="-1.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
-        <AnchorPane fx:id="navBar" layoutX="454.0" layoutY="23.0" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #0A4D68;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        <AnchorPane fx:id="sidebarPanel" layoutY="72.0" prefHeight="840.0" prefWidth="290.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0" />
+      <VBox prefHeight="900.0" prefWidth="1600.0">
+         <children>
+              <AnchorPane fx:id="navBar" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #0A4D68;" />
+            <AnchorPane prefHeight="820.0" prefWidth="1600.0">
+               <children>
+                    <AnchorPane fx:id="pageContent" prefHeight="820.0" prefWidth="1600.0" />
+                    <AnchorPane fx:id="sidebarPanel" prefHeight="820.0" prefWidth="290.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

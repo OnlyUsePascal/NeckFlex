@@ -2,8 +2,8 @@ package com.groupproject.controller.page;
 
 import com.groupproject.entity.generic.CartDetail;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,29 +39,31 @@ public class ItemInfoController implements Initializable {
     }
 
     public void refreshPage() {
-        CartDetail cartDetail = ShopSystem.findCartDetail(item);
+        CartDetail cartDetail = EntityHandler.findCartDetail(item);
         if (cartDetail != null) {
             cartAmount.setText(String.valueOf(cartDetail.getQuantity()));
         } else {
             cartAmount.setText("1");
-            ObjectHandler.hideNode(updateCartBtn);
+            ViewHandler.nodeHide(updateCartBtn);
         }
     }
 
     public void addToCart(ActionEvent event) {
         // System.out.println("add to cart");
         int newCartQuantity = Integer.parseInt(cartAmount.getText());
-        ShopSystem.addCartDetail(item, newCartQuantity);
-        ShopSystem.closePopup(event);
+        EntityHandler.addCartDetail(item, newCartQuantity);
+        // ShopSystem.closePopup(event);
+        ViewHandler.popupClose(event);
     }
 
     public void updateCart(ActionEvent event) {
         // System.out.println("update cart");
         int newCartQuantity = Integer.parseInt(cartAmount.getText());
-        CartDetail cartDetail = ShopSystem.findCartDetail(item);
+        CartDetail cartDetail = EntityHandler.findCartDetail(item);
         cartDetail.setQuantity(newCartQuantity);
 
-        ShopSystem.closePopup(event);
+        // ShopSystem.closePopup(event);
+        ViewHandler.popupClose(event);
     }
 
     public void setData(Item _item) {

@@ -5,7 +5,7 @@ import com.groupproject.entity.Constant.ConstantOrder;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.generic.Cart;
 import com.groupproject.entity.generic.CartDetail;
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -23,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class CartController implements Initializable {
     @FXML
-    VBox itemContainer;
+    VBox cartDetailContainer;
     @FXML
     Label billTotalPriceBox;
     @FXML
@@ -32,25 +33,35 @@ public class CartController implements Initializable {
     Label userBalancePoint;
     @FXML
     Label statusBox;
+    @FXML
+    RadioButton rent7Day;
+    @FXML
+    Button payPoint;
 
-    // private double billTotalPrice = 0;
     private Cart cart;
     private Account cartOwner;
     private ArrayList<CartDetailController> cartDetailControllerList = new ArrayList<>();
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cart = ShopSystem.getCart();
-        cartOwner = ShopSystem.getCurrentUser();
+        cart = EntityHandler.getCart();
+        cartOwner = EntityHandler.getCurrentUser();
 
+        initPayment();
         refreshPage();
-        refreshBill();
-        refreshBalance();
     }
 
-    public void refreshBalance(){
-        userBalance.setText("$" + cartOwner.getBalance());
-        userBalancePoint.setText(cartOwner.getRewardPoint() + " points");
+    public void initPayment(){
+        if (EntityHandler.getCurrentUser().isGuest()){
+            rent7Day.setDisable(true);
+            payPoint.setDisable(true);
+        } else {
+            rent7Day.setDisable(false);
+            if (EntityHandler.getCurrentUser().isVIP()){
+                payPoint.setDisable(false);
+            }
+        }
     }
 
     public void refreshPage(){
@@ -60,7 +71,7 @@ public class CartController implements Initializable {
 
     public void refreshCart(){
         //reset
-        itemContainer.getChildren().clear();
+        cartDetailContainer.getChildren().clear();
         cartDetailControllerList = new ArrayList<>();
 
         //add
@@ -68,12 +79,14 @@ public class CartController implements Initializable {
             try {
                 FXMLLoader cartItemLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentCartDetail()));
                 HBox cartDetailPane = cartItemLoader.load();
-
                 CartDetailController cartDetailController = cartItemLoader.getController();
+
+                //set data
                 cartDetailController.setData(cartDetail);
                 cartDetailController.setCartController(this);
 
-                itemContainer.getChildren().add(cartDetailPane);
+                //add to pane
+                cartDetailContainer.getChildren().add(cartDetailPane);
                 cartDetailControllerList.add(cartDetailController);
             } catch (IOException err){
                 err.printStackTrace();
@@ -82,18 +95,12 @@ public class CartController implements Initializable {
     }
 
     public void refreshBill(){
+        //price
         billTotalPriceBox.setText("$" + cart.getTotalPrice());
-    }
 
-    public void removeCartDetail(CartDetailController cartDetailController){
-        CartDetail cartDetail = cartDetailController.getCartDetail();
-        HBox cartItemPane = cartDetailController.getCartDetailPane();
-
-        itemContainer.getChildren().remove(cartItemPane);
-        cart.removeCartDetail(cartDetail);
-        cartDetailControllerList.remove(cartDetailController);
-
-        refreshBill();
+        //balance
+        userBalance.setText("$" + cartOwner.getBalance());
+        userBalancePoint.setText(cartOwner.getRewardPoint() + "");
     }
 
     public void checkout(ActionEvent event){
@@ -104,14 +111,8 @@ public class CartController implements Initializable {
             case ACCEPTED -> {
                 statusBox.setText("Checkout success");
 
-                //make order
-                ShopSystem.makeOrder();
-
-                //wipe cart
-                for (int i = cartDetailControllerList.size() - 1; i >= 0; i--){
-                    CartDetailController cartDetailController = cartDetailControllerList.get(i);
-                    removeCartDetail(cartDetailController);
-                }
+                EntityHandler.makeOrder();
+                refreshPage();
 
             } case INSUFFICIENT_BALANCE -> {
                 statusBox.setText("Insufficient balance");

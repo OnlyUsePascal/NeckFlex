@@ -6,9 +6,78 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.groupproject.controller.component.NavBarAdminController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #F9E2AF;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.NavBarAdminController">
+    <children>
+        <HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" prefWidth="1600.0">
+            <children>
+                <MenuButton fx:id="menuButton" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" text="Hello, Joun!">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#toUserProfile" text="User Profile xxxxxxx" />
+                        <MenuItem mnemonicParsing="false" onAction="#toLogout" text="Log out" />
+                    </items>
+                    <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../media/image/user-regular.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </MenuButton>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="80.0" prefWidth="1200.0">
+            <children>
+                <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#setMenuActive" prefHeight="80.0" prefWidth="84.0">
+                    <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../media/image/bars-solid.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#toHome" prefHeight="80.0" prefWidth="89.0">
+                    <graphic>
+                        <ImageView fitHeight="59.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../media/image/logo.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <HBox alignment="CENTER" prefHeight="36.0" prefWidth="628.0">
+                    <children>
+                        <TextField fx:id="searchField" prefHeight="37.0" prefWidth="515.0" promptText="Something here" style="-fx-background-radius: 5 0 0 5; -fx-background-color: white;">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#toHomeWithSearch" prefHeight="35.0" style="-fx-background-color: #F7C04A; -fx-background-radius: 0 5 5 0;">
+                            <HBox.margin>
+                                <Insets left="-1.0" top="-1.5" />
+                            </HBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../media/image/magnifying-glass-solid%20(1).png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </HBox>
+            </children>
+        </HBox>
+    </children>
 
 </AnchorPane>

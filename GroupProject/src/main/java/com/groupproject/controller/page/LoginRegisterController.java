@@ -1,8 +1,8 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.generic.Account;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -91,31 +91,31 @@ public class LoginRegisterController implements Initializable {
         RegistrationPageMessage.setText("");
 
         //format
-        status = ObjectHandler.checkStringGeneral(username);
+        status = ViewHandler.checkStringGeneral(username);
         requiredUsername.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringGeneral(password);
+        status = ViewHandler.checkStringGeneral(password);
         requiredPassword.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringGeneral(confirmPassword);
+        status = ViewHandler.checkStringGeneral(confirmPassword);
         requiredConfirmPassword.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringCharacterOnly(firstName);
+        status = ViewHandler.checkStringCharacterOnly(firstName);
         requiredFirstName.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringCharacterOnly(lastName);
+        status = ViewHandler.checkStringCharacterOnly(lastName);
         requiredLastName.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringNumberOnly(phoneNumber);
+        status = ViewHandler.checkStringNumberOnly(phoneNumber);
         requiredPhoneNumber.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringGeneral(address);
+        status = ViewHandler.checkStringGeneral(address);
         requiredAddress.setVisible(!status);
         legit &= status;
 
@@ -125,7 +125,7 @@ public class LoginRegisterController implements Initializable {
         }
 
         //extra err
-        if(ShopSystem.checkAccountExist(username)){
+        if(EntityHandler.checkAccountExist(username)){
             RegistrationPageMessage.setText("Username already exists!");
             return;
         }
@@ -135,11 +135,11 @@ public class LoginRegisterController implements Initializable {
             return;
         }
 
-
+        //legit
         RegistrationPageMessage.setText("Register successfully!");
         RegistrationPageMessage.setTextFill(Color.GREEN);
         Account newAccount = Account.getNewAccount(username, password, firstName, lastName, phoneNumber, address);
-        ShopSystem.addAccount(newAccount);
+        EntityHandler.addAccount(newAccount);
 
         PauseTransition pause = new PauseTransition(Duration.millis(2000));
         pause.setOnFinished(event2 -> toPageLoginMain(event));
@@ -149,7 +149,7 @@ public class LoginRegisterController implements Initializable {
 
     public void toPageLoginMain(ActionEvent event){
         Scene scene = ((Button) event.getSource()).getScene();
-        ObjectHandler.setScene(scene, PathHandler.getPageLoginMain());
+        ViewHandler.sceneSet(scene, PathHandler.getPageLoginMain());
     }
 
 }

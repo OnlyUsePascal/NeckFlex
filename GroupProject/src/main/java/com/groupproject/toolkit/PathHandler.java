@@ -1,5 +1,7 @@
 package com.groupproject.toolkit;
 
+import com.groupproject.entity.runtime.EntityHandler;
+
 public class PathHandler {
     final static String pageRoot = "/com/groupproject/fxml/page/";
     final static String componentRoot = "/com/groupproject/fxml/component/";
@@ -61,18 +63,16 @@ public class PathHandler {
     }
 
     static public String getComponentSidebar() {
-        // Account currentUser = CurrentUser.getCurrentUser();
-        // if (currentUser.getAccountType() == ConstantUser.ADMIN){
-        //     System.out.println("is admin");
-        //     return componentRoot + "SidebarAdmin.fxml";
-        // }
-        //
-        // System.out.println("is customer");
-        // return componentRoot + "SidebarAdmin.fxml";
+        if (EntityHandler.getCurrentUser().isAdmin()){
+            return componentRoot + "SidebarAdmin.fxml";
+        }
         return componentRoot + "SidebarCustomer.fxml";
     }
 
     static public String getComponentNavBar() {
+        if (EntityHandler.getCurrentUser().isAdmin()) {
+            return componentRoot + "NavBarAdmin.fxml";
+        }
         return componentRoot + "NavBarCustomer.fxml";
     }
 

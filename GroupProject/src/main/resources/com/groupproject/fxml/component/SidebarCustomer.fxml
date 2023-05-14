@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="menuPane" prefHeight="840.0" prefWidth="290.0" style="-fx-background-color: #FEE8B0;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.SidebarCustomerController">
+<AnchorPane fx:id="menuPane" prefHeight="820.0" prefWidth="290.0" style="-fx-background-color: #FEE8B0;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.SidebarCustomerController">
    <children>
       <VBox prefHeight="210.0" prefWidth="290.0" spacing="10.0">
          <children>

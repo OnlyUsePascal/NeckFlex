@@ -1,10 +1,8 @@
 package com.groupproject.controller.component;
 
-import com.groupproject.ShopApplication;
 import com.groupproject.controller.page.ItemInfoController;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Popup;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,7 +42,7 @@ public class ItemBoxController implements Initializable {
     }
 
     public void setImg(String url) {
-        Image img = ObjectHandler.getImage("banner1.jpg");
+        Image img = ViewHandler.getImage("banner1.jpg");
         ImagePattern imgView = new ImagePattern(img);
         imgFrame.setFill(imgView);
     }
@@ -67,7 +64,7 @@ public class ItemBoxController implements Initializable {
             ItemInfoController itemInfoController = itemLoader.getController();
             itemInfoController.setData(item);
 
-            ObjectHandler.getPopup(itemInfoPane, null);
+            ViewHandler.popupGet(itemInfoPane, null);
             // ShopSystem.showPopup(popup);
         } catch (IOException err){
             err.printStackTrace();

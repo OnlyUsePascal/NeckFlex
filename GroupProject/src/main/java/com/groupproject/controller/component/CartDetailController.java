@@ -2,7 +2,7 @@ package com.groupproject.controller.component;
 
 import com.groupproject.controller.page.CartController;
 import com.groupproject.entity.generic.CartDetail;
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -63,8 +63,7 @@ public class CartDetailController implements Initializable {
     }
 
     public void removeCartDetail(ActionEvent event){
-        // cartController.removeCartDetail(this);
-        ShopSystem.getCart().removeCartDetail(cartDetail);
+        EntityHandler.getCart().removeCartDetail(cartDetail);
         cartController.refreshPage();
     }
 

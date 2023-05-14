@@ -1,6 +1,6 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.Constant.ConstantAccount;
 
 import java.util.ArrayList;
@@ -14,14 +14,18 @@ public class Account {
     private String address;
     private String phoneNumber;
     private double balance;
-    private double rewardPoint;
+    private int rewardPoint;
+    private ConstantAccount.AccountStatus status;
 
     private Cart cart;
     private ArrayList<Order> orderList;
-    private int type;
+    // private int type;
 
 
-    public Account(String id, String username, String password, String firstName, String lastName, String address, String phoneNumber) {
+    public Account(String id, String username,
+                   String password, String firstName,
+                   String lastName, String address,
+                   String phoneNumber, int status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -29,24 +33,29 @@ public class Account {
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
+
         this.balance = 100;
         this.rewardPoint = 100;
 
         this.cart = new Cart(this);
         this.orderList = new ArrayList<>();
-        this.type = 1;
+
+        this.status = ConstantAccount.getStatus(status);
     }
 
-    static public Account getNewAccount(String username, String password, String firstName, String lastName, String phone, String address){
-        //get id
-        int accId = ShopSystem.getAccountListLength() + 1;
-        Account newAaccount = new Account("C" + String.format("%03d", accId), username, password, firstName, lastName, address, phone);
+    static public Account getNewAccount(String username, String password,
+                                        String firstName, String lastName,
+                                        String address, String phone) {
+        // get id
+        int accId = EntityHandler.getAccountListLength() + 1;
+        Account newAaccount = new Account("C" + String.format("%03d", accId),
+                username, password,
+                firstName, lastName,
+                address, phone,
+                ConstantAccount.AccountStatus.GUEST.ordinal());
         return newAaccount;
     }
 
-    public String getAccountType() {
-        return ConstantAccount.statusList[type];
-    }
 
     public String getUsername() {
         return username;
@@ -56,35 +65,54 @@ public class Account {
         return password;
     }
 
-    public double getBalance(){
+    public double getBalance() {
         return this.balance;
     }
 
-    public double getRewardPoint(){
+    public int getRewardPoint() {
         return this.rewardPoint;
     }
 
-    public String getFirstName(){
+    public String getFirstName() {
         return this.firstName;
     }
 
-    public String getLastName(){
+    public String getLastName() {
         return this.lastName;
     }
 
-    public String getPhoneNumber(){
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
-    public String getAddress(){
+    public String getAddress() {
         return this.address;
     }
 
-    public Cart getCart(){
+    public Cart getCart() {
         return cart;
     }
 
-    public String getId(){ return id;}
+    public String getId() {return id;}
+
+    public String getStatusString() {
+        return ConstantAccount.statusList[status.ordinal()];
+    }
+
+    public ConstantAccount.AccountStatus getStatus() {return status;}
+
+    public boolean isAdmin() {
+        return status == ConstantAccount.AccountStatus.ADMIN;
+    }
+
+    public boolean isGuest(){
+        //if not guest -> regular, vip
+        return status == ConstantAccount.AccountStatus.GUEST;
+    }
+
+    public boolean isVIP(){
+        return status == ConstantAccount.AccountStatus.VIP;
+    }
 
 
     public void setFirstName(String firstName) {
@@ -103,22 +131,24 @@ public class Account {
         this.address = address;
     }
 
-    public void setBalance(double amount){
+    public void setBalance(double amount) {
         this.balance += amount;
     }
 
 
-
-    public void addOrder(Order order){
+    public void addOrder(Order order) {
         orderList.add(order);
     }
 
-    public ArrayList<Order> getOrderList(){
+    public ArrayList<Order> getOrderList() {
         return orderList;
     }
 
     @Override
-    public String toString(){
-        return this.id + "|" + this.username + "|" + this.password + "|" + this.firstName + "|" + this.lastName + "|" + this.address + "|" + this.phoneNumber;
+    public String toString() {
+        return this.id + "|" + this.username + "|" + this.password + "|"
+                + this.firstName + "|" + this.lastName
+                + "|" + this.address + "|"
+                + this.phoneNumber + "|" + this.status.ordinal();
     }
 }

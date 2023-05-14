@@ -2,21 +2,16 @@ package com.groupproject.controller.page;
 
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -60,7 +55,7 @@ public class ItemInfoUpdateController implements Initializable {
         item.setGenre(ConstantItem.genreToIndex(itemInfoGenre.getValue()));
         item.setStock(Integer.parseInt(itemInfoQuantity.getText()));
 
-        ShopSystem.closePopup(event);
+        ViewHandler.popupClose(event);
     }
 
     public void DecreaseStock(){
@@ -73,8 +68,9 @@ public class ItemInfoUpdateController implements Initializable {
 
     public void deleteItem(ActionEvent event){
         System.out.println("Deleting Item!!!");
-        ShopSystem.getItemList().remove(item);
-        ShopSystem.closePopup(event);
+        EntityHandler.getItemList().remove(item);
+
+        ViewHandler.popupClose(event);
     }
 
 

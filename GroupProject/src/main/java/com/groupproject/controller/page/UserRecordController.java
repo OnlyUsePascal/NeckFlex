@@ -1,12 +1,11 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.OrderController;
-import com.groupproject.controller.component.OrderDetailController;
 import com.groupproject.entity.generic.Order;
 import com.groupproject.entity.generic.OrderDetail;
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,8 +17,6 @@ import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class UserRecordController implements Initializable {
@@ -30,7 +27,7 @@ public class UserRecordController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ShopSystem.setUserRecordController(this);
+        ViewHandler.userRecordControllerSet(this);
         refreshPage();
 
     }
@@ -39,7 +36,7 @@ public class UserRecordController implements Initializable {
         rentingContainer.getChildren().clear();
         returnedContainer.getChildren().clear();
 
-        for (Order order: ShopSystem.getCurrentUser().getOrderList()){
+        for (Order order: EntityHandler.getCurrentUser().getOrderList()){
             ArrayList<OrderDetail> renting = new ArrayList<>();
             ArrayList<OrderDetail> returned = new ArrayList<>();
 
@@ -69,9 +66,6 @@ public class UserRecordController implements Initializable {
 
     public void addOrderPane(Order order, ArrayList<OrderDetail> orderDetailList, VBox container){
         if (orderDetailList.isEmpty()) return;
-
-        System.out.println(orderDetailList);
-        System.out.println(orderDetailList);
 
         FXMLLoader orderLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentOrder()));
         try {

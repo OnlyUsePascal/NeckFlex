@@ -1,6 +1,6 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 
 public class CartDetail {
     Item item;
@@ -11,7 +11,7 @@ public class CartDetail {
     public CartDetail(Item item, int quantity) {
         this.item = item;
         this.quantity = quantity;
-        this.totalPrice = ObjectHandler.getDoubleRound(item.getPrice() * quantity);
+        this.totalPrice = ViewHandler.getDoubleRound(item.getPrice() * quantity);
     }
 
     public void setCart(Cart cart){
@@ -42,7 +42,7 @@ public class CartDetail {
         if (newQuantity >= 0) {
             cart.updateTotalPrice(item.getPrice() * (newQuantity - quantity));
             this.quantity = newQuantity;
-            totalPrice = ObjectHandler.getDoubleRound(item.getPrice() * newQuantity);
+            totalPrice = ViewHandler.getDoubleRound(item.getPrice() * newQuantity);
         }
     }
 

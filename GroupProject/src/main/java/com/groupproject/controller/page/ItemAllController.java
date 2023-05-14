@@ -2,11 +2,8 @@ package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.toolkit.PathHandler;
-import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,120 +11,69 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class ItemAllController implements Initializable {
+    // @FXML
+    // HBox itemPage;
+    // @FXML
+    // ScrollPane itemPageScrollPane;
     @FXML
-    HBox itemPage;
+    private VBox pageContainer;
     @FXML
-    ScrollPane itemPageScrollPane;
-    @FXML
-    VBox pageContainer;
-    @FXML
-    ScrollPane pageContainerSrollPane;
+    private ScrollPane pageContainerSrollPane;
 
-
-    TranslateTransition moveTile;
-    final int pgSize = 12;
-    double itemPageWidth;
-    double itemPageHeight;
-    int curPage;
-    int pageCnt;
+    private int rowCnt;
+    private final int rowSize = 5;
+    private int itemCnt;
+    // TranslateTransition moveTile;
+    // final int pgSize = 12;
+    // double itemPageWidth;
+    // double itemPageHeight;
+    // int curPage;
+    // int pageCnt;
 
     @Override
     public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
-        //item
-        curPage = 1;
-        ArrayList<Item> itemList = ShopSystem.getItemList();
-        initItemToTile(itemList);
-        initSizeListener();
-        ObjectHandler.setScrollLock(itemPageScrollPane);
-
-        //random
-        double niceWidth = pageContainerSrollPane.getPrefWidth() - 22;
-        System.out.println(niceWidth);
-        pageContainer.setPrefWidth(niceWidth);
-
-        //transition
-        moveTile = new TranslateTransition(Duration.seconds(0.3), itemPage);
+        setData();
     }
 
-    public void initItemToTile(ArrayList<Item> itemList){
-        //itempage - vbox (page) - hbox (row) - item ( col)
-        int itemCnt = itemList.size();
-        // itemCnt = ;
-        pageCnt = itemCnt / pgSize + ((itemCnt % pgSize != 0) ? 1 : 0);
+    public void setData() {
+        // getData
+        ArrayList<Item> itemList = EntityHandler.getItemList();
+        itemCnt = itemList.size();
+        rowCnt = itemList.size() / rowSize + ((itemCnt % rowSize != 0) ? 1 : 0);
 
-        for (int i = 0; i < pageCnt; i++){
-            //page
-            VBox pagePane = new VBox();
-            itemPage.getChildren().add(pagePane);
+        // init row
+        for (int i = 0; i < rowCnt; i++) {
+            HBox itemRow = new HBox();
 
-            //row
-            for (int j = i * pgSize; j < Math.min((i+1) * pgSize, itemCnt);j++){
-                int rowIdx = (j % pgSize) / 4;
-                // System.out.println(i + " " + j + " " + idx + " " +  pagePane.getChildren().size());
-                if (rowIdx >= pagePane.getChildren().size()) pagePane.getChildren().add(new HBox());
-
-                //item
-                HBox row = (HBox) pagePane.getChildren().get(rowIdx);
-                initItemToRow(row, itemList.get(j));
+            // item box
+            for (int j = i * rowSize; j < Math.min((i + 1) * rowSize, itemCnt); j++) {
+                Item item = itemList.get(j);
+                Button itemBox = getItemBox(item);
+                itemRow.getChildren().add(itemBox);
             }
+
+            pageContainer.getChildren().add(itemRow);
         }
 
     }
 
-    public void initItemToRow(HBox row, Item item){
+    public Button getItemBox(Item item) {
         try {
-            FXMLLoader btnLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
-            Button itemBox = (Button) btnLoader.load();
-            ItemBoxController itemBoxController = btnLoader.getController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
+            Button itemBox = (Button) loader.load();
+            ItemBoxController itemBoxController = loader.getController();
 
             itemBoxController.setData(item);
-            row.getChildren().add(itemBox);
-        } catch (IOException err){
+
+            return itemBox;
+        } catch (IOException err) {
             err.printStackTrace();
-        }
-    }
-
-    public void initSizeListener(){
-        if (itemPage.getChildren().isEmpty()) return;
-        VBox pagePane = (VBox) itemPage.getChildren().get(0);
-        pagePane.widthProperty().addListener((obs, oldVal, newVal) -> {
-            if (itemPageWidth == 0){
-                itemPageWidth = newVal.doubleValue();
-            }
-        });
-
-        pagePane.heightProperty().addListener((obs, oldVal, newVal) -> {
-            if (itemPageHeight == 0){
-                itemPageHeight = newVal.doubleValue();
-                itemPageScrollPane.setMinHeight(itemPageHeight + 10);
-            }
-        });
-    }
-
-    public void moveItemTile(ActionEvent event){
-        Button btn = (Button) event.getSource();
-        String btnId = btn.getId();
-
-        double offset = itemPageWidth;
-        if (btnId.equals("moveLeft")){
-            if (curPage > 1){
-                curPage--;
-                moveTile.setByX(offset);
-                moveTile.play();
-            }
-        } else {
-            //next page
-            if (curPage < pageCnt){
-                curPage++;
-                moveTile.setByX(-offset);
-                moveTile.play();
-            }
+            return null;
         }
     }
 }

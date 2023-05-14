@@ -1,9 +1,8 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.controller.component.NavBarController;
 import com.groupproject.entity.generic.Account;
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,7 +50,7 @@ public class UserProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setData(ShopSystem.getCurrentUser());
+        setData(EntityHandler.getCurrentUser());
         displayInfo();
     }
 
@@ -79,19 +78,19 @@ public class UserProfileController implements Initializable {
         boolean legit = true;
         boolean status = true;
 
-        status = ObjectHandler.checkStringCharacterOnly(firstNameBox.getText());
+        status = ViewHandler.checkStringCharacterOnly(firstNameBox.getText());
         requiredFirstName.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringCharacterOnly(lastNameBox.getText());
+        status = ViewHandler.checkStringCharacterOnly(lastNameBox.getText());
         requiredLastName.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringNumberOnly(phoneNumberBox.getText());
+        status = ViewHandler.checkStringNumberOnly(phoneNumberBox.getText());
         requiredPhoneNumber.setVisible(!status);
         legit &= status;
 
-        status = ObjectHandler.checkStringGeneral(addressBox.getText());
+        status = ViewHandler.checkStringGeneral(addressBox.getText());
         requiredAddress.setVisible(!status);
         legit &= status;
 
@@ -121,12 +120,12 @@ public class UserProfileController implements Initializable {
 
         Window window = ((Node) event.getSource()).getScene().getWindow();
 
-        ShopSystem.refreshMenuButtonName();
+        ViewHandler.refreshMenuButtonName();
 
         if (window instanceof Popup){
             window.hide();
         } else {
-            ShopSystem.setPageContent(PathHandler.getPageItemTrending());
+            ViewHandler.setPageContent(PathHandler.getPageItemTrending());
         }
     }
 

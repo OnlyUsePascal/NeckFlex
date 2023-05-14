@@ -2,8 +2,8 @@ package com.groupproject.controller.page;
 
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
@@ -21,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Popup;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
@@ -52,6 +51,7 @@ public class AdminItemListController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initColumnProperty();
         refreshTable();
+
     }
 
     public void initColumnProperty() {
@@ -78,10 +78,11 @@ public class AdminItemListController implements Initializable {
         });
 
         // image
+        itemImageColumn.setStyle("-fx-alignment: center;");
         itemImageColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, ImageView>, ObservableValue<ImageView>>() {
             @Override
             public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Item, ImageView> itemImageViewCellDataFeatures) {
-                Image img = ObjectHandler.getImage(PathHandler.getMediaImageMagnifyGlass());
+                Image img = ViewHandler.getImage(PathHandler.getMediaImageMagnifyGlass());
                 ImageView imageView = new ImageView(img);
                 imageView.setFitWidth(25);
                 imageView.setFitHeight(25);
@@ -125,7 +126,7 @@ public class AdminItemListController implements Initializable {
                 refreshTable();
             };
 
-            ObjectHandler.getPopup(itemPane, popupOnClose);
+            ViewHandler.popupGet(itemPane, popupOnClose);
         } catch (IOException err) {
             err.printStackTrace();
         }
@@ -147,7 +148,7 @@ public class AdminItemListController implements Initializable {
 
         // what = true;
         ObservableList<Item> items = FXCollections.observableArrayList();
-        for (Item item : ShopSystem.getItemList()) {
+        for (Item item : EntityHandler.getItemList()) {
             items.add(item);
         }
         return items;

@@ -1,10 +1,9 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.ShopApplication;
 import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -46,22 +45,22 @@ public class ItemTrendingController implements Initializable {
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileDvd, ShopSystem.getItemDvdList());
-                ObjectHandler.setScrollLock(itemPageDvd);
+                addItemTile(itemTileDvd, EntityHandler.getItemDvdList());
+                ViewHandler.scrollPaneLockScroll(itemPageDvd);
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileRecord, ShopSystem.getItemRecordList());
-                ObjectHandler.setScrollLock(itemPageRecord);
+                addItemTile(itemTileRecord, EntityHandler.getItemRecordList());
+                ViewHandler.scrollPaneLockScroll(itemPageRecord);
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileGame, ShopSystem.getItemGameList());
-                ObjectHandler.setScrollLock(itemPageGame);
+                addItemTile(itemTileGame, EntityHandler.getItemGameList());
+                ViewHandler.scrollPaneLockScroll(itemPageGame);
             });
         }).start();
     }

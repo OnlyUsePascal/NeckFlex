@@ -1,18 +1,15 @@
 package com.groupproject.controller.component;
 
-import com.groupproject.controller.page.HomeController;
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.nio.file.Path;
 import java.util.ResourceBundle;
 
 public class SidebarController implements Initializable {
@@ -26,7 +23,7 @@ public class SidebarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ShopSystem.setSidebarController(this);
+        ViewHandler.sidebarControllerSet(this);
         initTransition();
     }
 
@@ -50,12 +47,12 @@ public class SidebarController implements Initializable {
     }
 
     public void toHome(ActionEvent event){
-        ShopSystem.setPageContent(PathHandler.getPageItemTrending());
+        ViewHandler.setPageContent(PathHandler.getPageItemTrending());
         menuActive(null);
     }
 
     public void toItemAll(ActionEvent event){
-        ShopSystem.setPageContent(PathHandler.getPageItemAll());
+        ViewHandler.setPageContent(PathHandler.getPageItemAll());
         menuActive(null);
     }
 

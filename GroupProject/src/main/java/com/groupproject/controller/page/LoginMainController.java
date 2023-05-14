@@ -1,6 +1,6 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.entity.runtime.ShopSystem;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.PauseTransition;
@@ -59,7 +59,7 @@ public class LoginMainController implements Initializable {
         // System.out.println(ShopSystem.getAccountList().size());
         String curUsername = usernameBox.getText();
         String curPwd = passwordBox.getText();
-        Account sysAcc = ShopSystem.getAccountFromUsername(curUsername);
+        Account sysAcc = EntityHandler.getAccountFromUsername(curUsername);
 
         if (sysAcc == null || !sysAcc.getPassword().equals(curPwd)){
             loginMessage.setText("Wrong username or password!");
@@ -67,7 +67,7 @@ public class LoginMainController implements Initializable {
             return;
         }
 
-        ShopSystem.setCurrentUser(sysAcc);
+        EntityHandler.setCurrentUser(sysAcc);
         loginMessage.setText("Signing in...");
         loginMessage.setTextFill(Color.GREEN);
         PauseTransition pause = new PauseTransition(Duration.millis(2000));

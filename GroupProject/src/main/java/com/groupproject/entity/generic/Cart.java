@@ -1,8 +1,7 @@
 package com.groupproject.entity.generic;
 
 import com.groupproject.entity.Constant.ConstantOrder;
-import com.groupproject.entity.runtime.ShopSystem;
-import com.groupproject.toolkit.ObjectHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 
 import java.util.ArrayList;
 
@@ -27,8 +26,11 @@ public class Cart {
     public void removeCartDetail(CartDetail cartDetail) {
         updateTotalPrice(-cartDetail.getTotalPrice());
         cartDetailList.remove(cartDetail);
+    }
 
-        // System.out.println(cartDetailList);
+    public void wipeCart(){
+        updateTotalPrice(-totalPrice);
+        cartDetailList.clear();
     }
 
     public CartDetail findCartDetail(Item item){
@@ -45,7 +47,7 @@ public class Cart {
     }
 
     public void updateTotalPrice(double price){
-        totalPrice = ObjectHandler.getDoubleRound(totalPrice + price);
+        totalPrice = ViewHandler.getDoubleRound(totalPrice + price);
     }
 
     public double getTotalPrice(){
