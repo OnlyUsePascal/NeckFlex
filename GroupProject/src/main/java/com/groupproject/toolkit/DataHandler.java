@@ -52,11 +52,13 @@ public class DataHandler {
                         list.get(ConstantAccount.AccountInfo.LASTNAME.ordinal()),
                         list.get(ConstantAccount.AccountInfo.ADDRESS.ordinal()),
                         list.get(ConstantAccount.AccountInfo.PHONE.ordinal()),
-                        Integer.parseInt(list.get(ConstantAccount.AccountInfo.STATUS.ordinal()))
+                        Integer.parseInt(list.get(ConstantAccount.AccountInfo.STATUS.ordinal())),
+                        Double.parseDouble(list.get(ConstantAccount.AccountInfo.BALANCE.ordinal())),
+                        Integer.parseInt(list.get(ConstantAccount.AccountInfo.REWARDPOINT.ordinal()))
                 );
 
                 EntityHandler.accountAdd(account);
-                // System.out.println(account);
+                System.out.println(account);
                 // System.out.println(list);
             }
         } catch (FileNotFoundException err){

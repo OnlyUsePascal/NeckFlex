@@ -25,7 +25,8 @@ public class Account {
     public Account(String id, String username,
                    String password, String firstName,
                    String lastName, String address,
-                   String phoneNumber, int status) {
+                   String phoneNumber, int status,
+                   double balance, int rewardPoint) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -33,8 +34,8 @@ public class Account {
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.balance = 100;
-        this.rewardPoint = 0;
+        this.balance = balance;
+        this.rewardPoint = rewardPoint;
 
         this.cart = new Cart(this);
         this.orderList = new ArrayList<>();
@@ -50,7 +51,8 @@ public class Account {
                 username, password,
                 firstName, lastName,
                 address, phone,
-                ConstantAccount.AccountStatus.GUEST.ordinal());
+                ConstantAccount.AccountStatus.GUEST.ordinal(),
+                30, 0);
         return newAaccount;
     }
 

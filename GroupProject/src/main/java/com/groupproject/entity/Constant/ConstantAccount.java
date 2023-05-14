@@ -20,6 +20,9 @@ public class ConstantAccount {
     }
 
     static public enum AccountInfo{
-        ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, ADDRESS, PHONE, STATUS
+        ID, USERNAME, PASSWORD,
+        FIRSTNAME, LASTNAME,
+        ADDRESS, PHONE, STATUS,
+        BALANCE, REWARDPOINT
     }
 }
