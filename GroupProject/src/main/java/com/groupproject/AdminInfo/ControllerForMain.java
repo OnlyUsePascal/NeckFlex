@@ -1,7 +1,5 @@
-package com.groupproject.ControllerAdminInfo;
+package com.groupproject.AdminInfo;
 
-import com.groupproject.Entity.Account;
-import com.groupproject.Page.AccountInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -41,14 +39,13 @@ public class ControllerForMain implements Initializable {
     @FXML
     private TextField usernameTextField;
     @FXML
-    private Button submitButton;
-    @FXML
     private TextField keywordBox;
     @FXML
     private ChoiceBox choiceList;
     private String[] choice = {"Guest", "Regular", "VIP", "All"};
     private String selectChoice;
     ObservableList<Account> accountList = FXCollections.observableArrayList();
+    ObservableList<Account> accountListAfterGroup = FXCollections.observableArrayList();
 
 
     public void changingWindow(ActionEvent event) throws IOException {
@@ -80,7 +77,8 @@ public class ControllerForMain implements Initializable {
         usernameTextField.setText(clickedAccount.getUsername());
     }
     public void searching(MouseEvent event){
-        FilteredList<Account> filteredData = new FilteredList<>(accountList, b -> true);
+
+        FilteredList<Account> filteredData = new FilteredList<>(accountListAfterGroup, b -> true);
         String keyword = keywordBox.getText().toLowerCase();
         filteredData.setPredicate(account -> {
                 //If no search value then displaay all accounts
@@ -150,12 +148,24 @@ public class ControllerForMain implements Initializable {
         choiceList.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             selectChoice = newValue.toString();
             if(selectChoice.equals("All")){
+                accountListAfterGroup = accountList;
                 displayTable();
             }
             else{
+                accountListAfterGroup = FXCollections.observableArrayList(getSortedAccountList(selectChoice));
                 displaySortedTable(getSortedAccountList(selectChoice));
             }
         });
+    }
+    public void addAccountFunction(ActionEvent event) throws IOException {
+        Button btn = (Button) event.getSource();
+        Scene scene = btn.getScene();
+        FXMLLoader fxmlLoader = new FXMLLoader(RegistrationPage.class.getResource("registrationPage.fxml"));
+        scene.setRoot(fxmlLoader.load());
+    }
+    public void updateNewAccount(Account acc){
+        accountList.add(acc);
+        displayTable();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -165,8 +175,9 @@ public class ControllerForMain implements Initializable {
         rewardPointsColumn.setCellValueFactory(new PropertyValueFactory<Account, Double>("rewardPoint"));
         accountTypeColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("accountType"));
         setupTable();
+        accountListAfterGroup = accountList;
         // Set list and default value for ChoiceBox
-        choiceList.getItems().addAll("Guest", "Regular", "VIP", "All");
+        choiceList.getItems().addAll("Guest", "Regular", "VIP","Admin", "All");
         choiceList.setValue("All");
         sortByAccountType();
     }

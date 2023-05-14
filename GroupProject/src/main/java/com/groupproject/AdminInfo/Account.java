@@ -1,4 +1,4 @@
-package com.groupproject.Entity;
+package com.groupproject.AdminInfo;
 
 public class Account {
     private String id;
@@ -10,6 +10,8 @@ public class Account {
     private String phoneNumber;
     private String address;
     private String accountType;
+    private String password;
+
 
     public Account(){
         this.id = "";
@@ -22,6 +24,18 @@ public class Account {
         this.accountType = "Default";
         this.address = "Default";
     }
+    public Account(String username,String password, String firstName, String lastName, String phoneNumber, String address, String accountType){
+        this.id = "2";
+        this.username = username;
+        this.balance = 0;
+        this.rewardPoint = 0;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.accountType = accountType;
+        this.address = address;
+        this.password = password;
+    }
     public Account(String id, String username, double rewardPoint, String firstName, String lastName, double balance, String phoneNumber, String address, String accountType){
         this.id = id;
         this.username = username;
@@ -32,6 +46,7 @@ public class Account {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.accountType = accountType;
+        this.password = password;
     }
     public String getUsername(){
         return this.username;

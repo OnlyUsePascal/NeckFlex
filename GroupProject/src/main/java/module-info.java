@@ -11,12 +11,9 @@ module com.groupproject {
     exports com.groupproject.login;
     opens com.groupproject.login to javafx.fxml;
 
-    exports com.groupproject.ControllerAdminInfo;
-    opens com.groupproject.ControllerAdminInfo to javafx.fxml;
-    exports com.groupproject.Page;
-    opens com.groupproject.Page to javafx.fxml;
-    exports com.groupproject.Entity;
     opens com.groupproject.Entity to javafx.fxml;
     exports com.groupproject.ImportImage;
     opens com.groupproject.ImportImage to javafx.fxml;
+    exports com.groupproject.AdminInfo;
+    opens com.groupproject.AdminInfo to javafx.fxml;
 }

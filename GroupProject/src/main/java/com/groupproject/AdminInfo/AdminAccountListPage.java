@@ -1,4 +1,4 @@
-package com.groupproject.Page;
+package com.groupproject.AdminInfo;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ import java.io.IOException;
 public class AdminAccountListPage extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AdminAccountListPage.class.getResource("/com/groupproject/AdminAccountListPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AdminAccountListPage.class.getResource("AdminAccountListPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1600, 820);
         stage.setResizable(false);
         stage.setTitle("Hello!");

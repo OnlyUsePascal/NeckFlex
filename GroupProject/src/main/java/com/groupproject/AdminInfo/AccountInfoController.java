@@ -1,7 +1,5 @@
-package com.groupproject.ControllerAdminInfo;
+package com.groupproject.AdminInfo;
 
-import com.groupproject.Entity.Account;
-import com.groupproject.Page.AdminAccountListPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

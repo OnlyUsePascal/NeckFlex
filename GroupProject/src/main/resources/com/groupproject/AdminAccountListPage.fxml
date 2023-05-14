@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.ControllerAdminInfo.ControllerForMain">
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.AdminInfo.ControllerForMain">
    <children>
       <TableView fx:id="tableView" layoutX="413.0" layoutY="227.0" onMouseClicked="#rowClicked" prefHeight="360.0" prefWidth="680.0">
         <columns>
@@ -39,5 +39,6 @@
       <Button layoutX="469.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#searching" text="Search" />
       <Button layoutX="83.0" layoutY="105.0" mnemonicParsing="false" onAction="#changingWindow" text="Next" />
       <ChoiceBox fx:id="choiceList" layoutX="1001.0" layoutY="115.0" prefHeight="33.0" prefWidth="70.0" />
+      <Button layoutX="1102.0" layoutY="116.0" mnemonicParsing="false" onAction="#addAccountFunction" prefHeight="32.0" prefWidth="107.0" text="Add account" />
    </children>
 </AnchorPane>
