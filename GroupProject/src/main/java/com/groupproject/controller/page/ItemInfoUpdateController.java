@@ -28,9 +28,6 @@ public class ItemInfoUpdateController implements Initializable {
 
     private Item item;
 
-    public void assignItem(Item item){
-        this.item = item;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,7 +65,7 @@ public class ItemInfoUpdateController implements Initializable {
 
     public void deleteItem(ActionEvent event){
         System.out.println("Deleting Item!!!");
-        EntityHandler.getItemList().remove(item);
+        EntityHandler.itemListAdd().remove(item);
 
         ViewHandler.popupClose(event);
     }

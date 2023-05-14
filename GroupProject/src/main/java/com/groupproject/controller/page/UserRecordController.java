@@ -36,7 +36,7 @@ public class UserRecordController implements Initializable {
         rentingContainer.getChildren().clear();
         returnedContainer.getChildren().clear();
 
-        for (Order order: EntityHandler.getCurrentUser().getOrderList()){
+        for (Order order: EntityHandler.currentUserGet().getOrderList()){
             ArrayList<OrderDetail> renting = new ArrayList<>();
             ArrayList<OrderDetail> returned = new ArrayList<>();
 

@@ -125,7 +125,7 @@ public class LoginRegisterController implements Initializable {
         }
 
         //extra err
-        if(EntityHandler.checkAccountExist(username)){
+        if(EntityHandler.accountIsExist(username)){
             RegistrationPageMessage.setText("Username already exists!");
             return;
         }
@@ -139,7 +139,7 @@ public class LoginRegisterController implements Initializable {
         RegistrationPageMessage.setText("Register successfully!");
         RegistrationPageMessage.setTextFill(Color.GREEN);
         Account newAccount = Account.getNewAccount(username, password, firstName, lastName, phoneNumber, address);
-        EntityHandler.addAccount(newAccount);
+        EntityHandler.accountAdd(newAccount);
 
         PauseTransition pause = new PauseTransition(Duration.millis(2000));
         pause.setOnFinished(event2 -> toPageLoginMain(event));

@@ -45,21 +45,21 @@ public class ItemTrendingController implements Initializable {
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileDvd, EntityHandler.getItemDvdList());
+                addItemTile(itemTileDvd, EntityHandler.itemDvdListGet());
                 ViewHandler.scrollPaneLockScroll(itemPageDvd);
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileRecord, EntityHandler.getItemRecordList());
+                addItemTile(itemTileRecord, EntityHandler.itemRecordListGet());
                 ViewHandler.scrollPaneLockScroll(itemPageRecord);
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileGame, EntityHandler.getItemGameList());
+                addItemTile(itemTileGame, EntityHandler.itemGameListGet());
                 ViewHandler.scrollPaneLockScroll(itemPageGame);
             });
         }).start();

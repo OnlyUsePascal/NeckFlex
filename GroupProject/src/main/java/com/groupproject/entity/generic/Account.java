@@ -33,13 +33,11 @@ public class Account {
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-
         this.balance = 100;
-        this.rewardPoint = 100;
+        this.rewardPoint = 0;
 
         this.cart = new Cart(this);
         this.orderList = new ArrayList<>();
-
         this.status = ConstantAccount.getStatus(status);
     }
 
@@ -47,7 +45,7 @@ public class Account {
                                         String firstName, String lastName,
                                         String address, String phone) {
         // get id
-        int accId = EntityHandler.getAccountListLength() + 1;
+        int accId = EntityHandler.accountListLength() + 1;
         Account newAaccount = new Account("C" + String.format("%03d", accId),
                 username, password,
                 firstName, lastName,
@@ -101,6 +99,11 @@ public class Account {
 
     public ConstantAccount.AccountStatus getStatus() {return status;}
 
+    public ArrayList<Order> getOrderList() {
+        return orderList;
+    }
+
+
     public boolean isAdmin() {
         return status == ConstantAccount.AccountStatus.ADMIN;
     }
@@ -135,20 +138,33 @@ public class Account {
         this.balance += amount;
     }
 
-
     public void addOrder(Order order) {
         orderList.add(order);
     }
 
-    public ArrayList<Order> getOrderList() {
-        return orderList;
+    public void updateCredit(){
+        rewardPoint += 10;
+
+        //status
+        if(status == ConstantAccount.AccountStatus.REGULAR ||
+            rewardPoint >= 30){
+            status = ConstantAccount.AccountStatus.REGULAR;
+        }
+
+        if (status == ConstantAccount.AccountStatus.VIP ||
+            rewardPoint >= 80){
+            status = ConstantAccount.AccountStatus.VIP;
+        }
+
+        System.out.println(this);
     }
 
     @Override
     public String toString() {
-        return this.id + "|" + this.username + "|" + this.password + "|"
-                + this.firstName + "|" + this.lastName
-                + "|" + this.address + "|"
-                + this.phoneNumber + "|" + this.status.ordinal();
+        return this.id + "|" + this.username + "|" +
+                this.password + "|" + this.firstName + "|" +
+                this.lastName + "|" + this.address +
+                "|" + this.phoneNumber + "|" + this.status.ordinal() +
+                "|" + this.balance + "|" + this.rewardPoint;
     }
 }

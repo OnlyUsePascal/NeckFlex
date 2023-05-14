@@ -59,7 +59,7 @@ public class LoginMainController implements Initializable {
         // System.out.println(ShopSystem.getAccountList().size());
         String curUsername = usernameBox.getText();
         String curPwd = passwordBox.getText();
-        Account sysAcc = EntityHandler.getAccountFromUsername(curUsername);
+        Account sysAcc = EntityHandler.accountFromUsername(curUsername);
 
         if (sysAcc == null || !sysAcc.getPassword().equals(curPwd)){
             loginMessage.setText("Wrong username or password!");
@@ -67,7 +67,7 @@ public class LoginMainController implements Initializable {
             return;
         }
 
-        EntityHandler.setCurrentUser(sysAcc);
+        EntityHandler.currentUserGet(sysAcc);
         loginMessage.setText("Signing in...");
         loginMessage.setTextFill(Color.GREEN);
         PauseTransition pause = new PauseTransition(Duration.millis(2000));

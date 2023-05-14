@@ -15,7 +15,7 @@ public class BankAccount {
 
     public boolean transfer(BankAccount account, double amount) {
         if (this.balance > amount && amount > 0) {
-            EntityHandler.getCurrentUser().setBalance(amount);
+            EntityHandler.currentUserGet().setBalance(amount);
             this.balance -= amount;
             return true;
         }

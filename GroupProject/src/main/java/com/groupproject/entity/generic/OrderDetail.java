@@ -10,7 +10,7 @@ public class OrderDetail {
     private boolean isReturned;
 
     public OrderDetail(CartDetail cartDetail) {
-        this.item = EntityHandler.getItemFromInfo(cartDetail.getItem());
+        this.item = EntityHandler.itemFromInfo(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
         this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
         this.isReturned = false;
@@ -34,6 +34,7 @@ public class OrderDetail {
 
     public void setReturned(){
         isReturned = true;
+        EntityHandler.currentUserGet().updateCredit();
     }
 
     @Override

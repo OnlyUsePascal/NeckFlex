@@ -63,7 +63,7 @@ public class CartDetailController implements Initializable {
     }
 
     public void removeCartDetail(ActionEvent event){
-        EntityHandler.getCart().removeCartDetail(cartDetail);
+        EntityHandler.cartGet().removeCartDetail(cartDetail);
         cartController.refreshPage();
     }
 

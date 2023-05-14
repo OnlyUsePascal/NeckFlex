@@ -30,39 +30,41 @@ public class EntityHandler {
         ViewHandler.currentStageGet().setScene(scene);
     }
 
+
+
     //===================== ACCOUNT ======================
-    static public ArrayList<Account> getAccountList() {
+    static public ArrayList<Account> accountListGet() {
         return accountList;
     }
 
-    static public Account getAccountFromUsername(String username) {
+    static public Account accountFromUsername(String username) {
         return usernameToObject.get(username);
     }
 
-    static public int getAccountListLength() {
+    static public int accountListLength() {
         return accountList.size();
     }
 
-    static public boolean checkAccountExist(String username) {
-        return (getAccountFromUsername(username) != null);
+    static public boolean accountIsExist(String username) {
+        return (accountFromUsername(username) != null);
     }
 
-    static public void addAccount(Account account) {
+    static public void accountAdd(Account account) {
         accountList.add(account);
         usernameToObject.put(account.getUsername(), account);
     }
 
-    static public Account getCurrentUser() {
+    static public Account currentUserGet() {
         return currentUser;
     }
 
-    static public void setCurrentUser(Account acc) {
+    static public void currentUserGet(Account acc) {
         currentUser = acc;
         currentCart = currentUser.getCart();
     }
 
     //===================== ITEM ======================
-    static public void addItem(Item item) {
+    static public void itemAdd(Item item) {
         itemList.add(item);
 
         if (item instanceof ItemDvd)
@@ -73,23 +75,23 @@ public class EntityHandler {
             itemGameList.add(item);
     }
 
-    static public ArrayList<Item> getItemList() {
+    static public ArrayList<Item> itemListAdd() {
         return itemList;
     }
 
-    static public ArrayList<Item> getItemDvdList() {
+    static public ArrayList<Item> itemDvdListGet() {
         return itemDvdList;
     }
 
-    static public ArrayList<Item> getItemRecordList() {
+    static public ArrayList<Item> itemRecordListGet() {
         return itemRecordList;
     }
 
-    static public ArrayList<Item> getItemGameList() {
+    static public ArrayList<Item> itemGameListGet() {
         return itemGameList;
     }
 
-    static public Item getItemFromInfo(ArrayList<String> infoList) {
+    static public Item itemFromInfo(ArrayList<String> infoList) {
         int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
         switch (category) {
             case 0 -> {
@@ -105,7 +107,7 @@ public class EntityHandler {
         return null;
     }
 
-    static public Item getItemFromInfo(Item item) {
+    static public Item itemFromInfo(Item item) {
         int category = item.getCategory();
         switch (category) {
             case 0 -> {
@@ -122,21 +124,21 @@ public class EntityHandler {
     }
 
     //===================== CART ======================
-    static public Cart getCart() {
+    static public Cart cartGet() {
         return currentUser.getCart();
     }
 
-    static public CartDetail findCartDetail(Item item) {
+    static public CartDetail cartDetailGet(Item item) {
         return currentCart.findCartDetail(item);
     }
 
-    static public void addCartDetail(Item item, int quantity) {
+    static public void cartDetailAdd(Item item, int quantity) {
         currentCart.addCartDetail(item, quantity);
     }
 
 
     //===================== ORDER ======================
-    static public void makeOrder() {
+    static public void orderAdd() {
         Order newOrder = Order.getNewOrder(currentCart.getcartDetailList());
         currentUser.addOrder(newOrder);
         currentCart.wipeCart();

@@ -45,20 +45,20 @@ public class CartController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cart = EntityHandler.getCart();
-        cartOwner = EntityHandler.getCurrentUser();
+        cart = EntityHandler.cartGet();
+        cartOwner = EntityHandler.currentUserGet();
 
         initPayment();
         refreshPage();
     }
 
     public void initPayment(){
-        if (EntityHandler.getCurrentUser().isGuest()){
+        if (EntityHandler.currentUserGet().isGuest()){
             rent7Day.setDisable(true);
             payPoint.setDisable(true);
         } else {
             rent7Day.setDisable(false);
-            if (EntityHandler.getCurrentUser().isVIP()){
+            if (EntityHandler.currentUserGet().isVIP()){
                 payPoint.setDisable(false);
             }
         }
@@ -111,7 +111,7 @@ public class CartController implements Initializable {
             case ACCEPTED -> {
                 statusBox.setText("Checkout success");
 
-                EntityHandler.makeOrder();
+                EntityHandler.orderAdd();
                 refreshPage();
 
             } case INSUFFICIENT_BALANCE -> {

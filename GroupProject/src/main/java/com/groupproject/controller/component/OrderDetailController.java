@@ -23,12 +23,11 @@ public class OrderDetailController implements Initializable {
     CheckBox checkBox;
 
     OrderDetail orderDetail;
-    UserRecordController userRecordController;
+    // UserRecordController userRecordController;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userRecordController = ViewHandler.userRecordControllerGet();
     }
 
     public void setDataFromOrderDetail(OrderDetail orderDetail){
@@ -40,15 +39,13 @@ public class OrderDetailController implements Initializable {
     }
 
     public void returnItem(ActionEvent event){
-        System.out.println("sick my duck");
         orderDetail.setReturned();
-        userRecordController.refreshPage();
+        ViewHandler.userRecordControllerGet().refreshPage();
     }
 
-    public void returnItem(boolean refreshPage){
-        System.out.println("succccc");
+    public void returnItem(){
         orderDetail.setReturned();
-        if (refreshPage) userRecordController.refreshPage();
+
     }
 
     public void setCheckBox(boolean status){

@@ -65,7 +65,6 @@ public class Cart {
             }
         }
 
-
         return ConstantOrder.OrderStatus.ACCEPTED;
     }
 

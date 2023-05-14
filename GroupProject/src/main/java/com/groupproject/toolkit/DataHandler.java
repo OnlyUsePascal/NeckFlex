@@ -55,7 +55,7 @@ public class DataHandler {
                         Integer.parseInt(list.get(ConstantAccount.AccountInfo.STATUS.ordinal()))
                 );
 
-                EntityHandler.addAccount(account);
+                EntityHandler.accountAdd(account);
                 // System.out.println(account);
                 // System.out.println(list);
             }
@@ -81,8 +81,8 @@ public class DataHandler {
 
                 System.out.println(infoList.toString());
 
-                Item newItem = EntityHandler.getItemFromInfo(infoList);
-                EntityHandler.addItem(newItem);
+                Item newItem = EntityHandler.itemFromInfo(infoList);
+                EntityHandler.itemAdd(newItem);
                 Item.genericId++;
             }
         } catch(FileNotFoundException e){
@@ -96,7 +96,7 @@ public class DataHandler {
 
         try{
             PrintWriter printWriter = new PrintWriter(file);
-            for(Account account : EntityHandler.getAccountList()){
+            for(Account account : EntityHandler.accountListGet()){
                 printWriter.println(account);
             }
 
@@ -114,7 +114,7 @@ public class DataHandler {
         try{
             PrintWriter printWriter = new PrintWriter(file);
 
-            for (Item item : EntityHandler.getItemList()) {
+            for (Item item : EntityHandler.itemListAdd()) {
                 printWriter.println(item);
             }
 

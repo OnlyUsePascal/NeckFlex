@@ -63,14 +63,14 @@ public class PathHandler {
     }
 
     static public String getComponentSidebar() {
-        if (EntityHandler.getCurrentUser().isAdmin()){
+        if (EntityHandler.currentUserGet().isAdmin()){
             return componentRoot + "SidebarAdmin.fxml";
         }
         return componentRoot + "SidebarCustomer.fxml";
     }
 
     static public String getComponentNavBar() {
-        if (EntityHandler.getCurrentUser().isAdmin()) {
+        if (EntityHandler.currentUserGet().isAdmin()) {
             return componentRoot + "NavBarAdmin.fxml";
         }
         return componentRoot + "NavBarCustomer.fxml";

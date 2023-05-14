@@ -21,16 +21,16 @@ public class ShopApplication extends Application {
         DataHandler.getData();
 
         //init data
-        EntityHandler.setCurrentUser(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
+        EntityHandler.currentUserGet(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
         // System.out.println();
-        Cart cart = EntityHandler.getCart();
+        Cart cart = EntityHandler.cartGet();
         cart.addCartDetail(new ItemDvd("item1", 12.4), 1);
         cart.addCartDetail(new ItemDvd("item2", 1), 1);
-        // ShopSystem.makeOrder();
-        //
-        // cart.addCartDetail(new ItemDvd("item55", 11.3), 3);
-        // cart.addCartDetail(new ItemDvd("ifasdf", 1.4), 2);
-        // ShopSystem.makeOrder();
+        EntityHandler.orderAdd();
+
+        cart.addCartDetail(new ItemDvd("item55", 11.3), 3);
+        cart.addCartDetail(new ItemDvd("ifasdf", 1.4), 2);
+        EntityHandler.orderAdd();
 
 
         //init

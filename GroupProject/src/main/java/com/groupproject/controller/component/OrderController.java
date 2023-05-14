@@ -3,6 +3,7 @@ package com.groupproject.controller.component;
 import com.groupproject.controller.page.UserRecordController;
 import com.groupproject.entity.generic.Order;
 import com.groupproject.entity.generic.OrderDetail;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,23 +58,15 @@ public class OrderController implements Initializable {
     }
 
     public void returnItemAll(ActionEvent event){
-        //get min
-        int firstIdx = -1;
         int sz = orderDetailControllerList.size();
-        for (int i = 0; i < sz; i++){
-            if (orderDetailControllerList.get(i).getCheckBox()){
-                firstIdx = i;
-                break;
-            }
-        }
-
-        if (firstIdx == -1) return;
         for (int i = sz-1; i >= 0; i--){
             if (orderDetailControllerList.get(i).getCheckBox()){
-                orderDetailControllerList.get(i).returnItem(i == firstIdx);
+                orderDetailControllerList.get(i).returnItem();
                 orderDetailControllerList.remove(i);
             }
         }
+
+        ViewHandler.userRecordControllerGet().refreshPage();
     }
 
 }

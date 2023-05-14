@@ -39,7 +39,7 @@ public class ItemInfoController implements Initializable {
     }
 
     public void refreshPage() {
-        CartDetail cartDetail = EntityHandler.findCartDetail(item);
+        CartDetail cartDetail = EntityHandler.cartDetailGet(item);
         if (cartDetail != null) {
             cartAmount.setText(String.valueOf(cartDetail.getQuantity()));
         } else {
@@ -51,7 +51,7 @@ public class ItemInfoController implements Initializable {
     public void addToCart(ActionEvent event) {
         // System.out.println("add to cart");
         int newCartQuantity = Integer.parseInt(cartAmount.getText());
-        EntityHandler.addCartDetail(item, newCartQuantity);
+        EntityHandler.cartDetailAdd(item, newCartQuantity);
         // ShopSystem.closePopup(event);
         ViewHandler.popupClose(event);
     }
@@ -59,7 +59,7 @@ public class ItemInfoController implements Initializable {
     public void updateCart(ActionEvent event) {
         // System.out.println("update cart");
         int newCartQuantity = Integer.parseInt(cartAmount.getText());
-        CartDetail cartDetail = EntityHandler.findCartDetail(item);
+        CartDetail cartDetail = EntityHandler.cartDetailGet(item);
         cartDetail.setQuantity(newCartQuantity);
 
         // ShopSystem.closePopup(event);
