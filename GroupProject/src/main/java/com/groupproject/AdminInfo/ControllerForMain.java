@@ -1,5 +1,6 @@
 package com.groupproject.AdminInfo;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -51,7 +52,7 @@ public class ControllerForMain implements Initializable {
     public void changingWindow(ActionEvent event) throws IOException {
         Button btn = (Button) event.getSource();
         Scene scene = btn.getScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("/com/groupproject/accountView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AccountInfo.class.getResource("accountView.fxml"));
         scene.setRoot(fxmlLoader.load());
 
         AccountInfoController accountInfoController = fxmlLoader.getController();
@@ -165,6 +166,12 @@ public class ControllerForMain implements Initializable {
     }
     public void updateNewAccount(Account acc){
         accountList.add(acc);
+        displayTable();
+    }
+    public void clearFilter(){
+        keywordBox.clear();
+        choiceList.setValue("All");
+        accountListAfterGroup = accountList;
         displayTable();
     }
     @Override

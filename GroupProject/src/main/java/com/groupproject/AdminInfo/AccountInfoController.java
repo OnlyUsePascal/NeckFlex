@@ -140,7 +140,7 @@ public class AccountInfoController implements Initializable {
             //change scene
             Button btn = (Button) event.getSource();
             Scene scene = btn.getScene();
-            FXMLLoader fxmlLoader = new FXMLLoader(AdminAccountListPage.class.getResource("AdminAccountListPage.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AdminAccountListPage.class.getResource("/com/groupproject/AdminAccountListPage.fxml"));
             scene.setRoot(fxmlLoader.load());
             // pass data to new scene
             ControllerForMain controllerForMain= fxmlLoader.getController();

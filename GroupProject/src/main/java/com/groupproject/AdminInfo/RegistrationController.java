@@ -170,13 +170,12 @@ public class RegistrationController implements Initializable {
             Scene scene = btn.getScene();
             FXMLLoader fxmlLoader = new FXMLLoader(AdminAccountListPage.class.getResource("/com/groupproject/AdminAccountListPage.fxml"));
 
-
-
             RegistrationPageMessage.setText("Register successfully!");
             RegistrationPageMessage.setTextFill(Color.GREEN);
             PauseTransition pause = new PauseTransition(Duration.millis(5000));
             pause.setOnFinished(e -> {
                 try {
+
                     scene.setRoot(fxmlLoader.load());
                     ControllerForMain controllerForMain1 = fxmlLoader.getController();
                     controllerForMain1.updateNewAccount(account);
