@@ -16,4 +16,6 @@ module com.groupproject {
 
     exports com.groupproject.AdminInfo;
     opens com.groupproject.AdminInfo to javafx.fxml;
+    exports com.groupproject.NotificationFadingTransition;
+    opens com.groupproject.NotificationFadingTransition to javafx.fxml;
 }
