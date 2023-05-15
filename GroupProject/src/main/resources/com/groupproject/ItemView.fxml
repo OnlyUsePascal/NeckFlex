@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.ItemViewController">
    <children>
-      <VBox fx:id="buttonContainer" layoutX="-2.0" layoutY="100.0" prefHeight="200.0" prefWidth="600.0" />
+      <VBox fx:id="buttonContainer" layoutY="154.0" prefHeight="200.0" prefWidth="600.0" />
+      <ComboBox fx:id="genreDropdown" layoutX="249.0" layoutY="20.0" prefWidth="150.0" />
+      <Label layoutX="199.0" layoutY="24.0" text="Genre" />
+      <Button fx:id="applyButton" layoutX="452.0" layoutY="45.0" mnemonicParsing="false" onAction="#sortItems" text="Apply" />
+      <CheckBox fx:id="availableCheckbox" alignment="CENTER" layoutX="28.0" layoutY="52.0" mnemonicParsing="false" text="Available to purchase" />
+      <ComboBox fx:id="orderDropdown" layoutX="250.0" layoutY="57.0" prefWidth="150.0" />
+      <Label layoutX="200.0" layoutY="61.0" text="Order" />
+      <ComboBox fx:id="categoryDropdown" layoutX="250.0" layoutY="91.0" prefWidth="150.0" />
+      <Label layoutX="183.0" layoutY="95.0" text="Category" />
+      <ComboBox fx:id="sortByDropdown" layoutX="250.0" layoutY="128.0" prefWidth="150.0" />
+      <Label layoutX="197.0" layoutY="132.0" text="Sort by" />
+      <Button fx:id="defaultButton" layoutX="452.0" layoutY="78.0" mnemonicParsing="false" onAction="#restoreContainerToDefault" text="Default" />
    </children>
 </AnchorPane>
