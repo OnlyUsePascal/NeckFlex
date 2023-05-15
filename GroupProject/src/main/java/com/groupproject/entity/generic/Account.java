@@ -96,7 +96,7 @@ public class Account {
     public String getId() {return id;}
 
     public String getStatusString() {
-        return ConstantAccount.statusList[status.ordinal()];
+        return ConstantAccount.getStatusString(status.ordinal());
     }
 
     public ConstantAccount.AccountStatus getStatus() {return status;}
@@ -159,6 +159,14 @@ public class Account {
         }
 
         System.out.println(this);
+    }
+
+    public void deductBalance(double amount) {
+        balance -= amount;
+    }
+
+    public void deductRewardPoint() {
+        rewardPoint -= 100;
     }
 
     @Override

@@ -19,6 +19,10 @@ public class ConstantAccount {
         return null;
     }
 
+    static public String getStatusString(int index){
+        return statusList[index];
+    }
+
     static public enum AccountInfo{
         ID, USERNAME, PASSWORD,
         FIRSTNAME, LASTNAME,

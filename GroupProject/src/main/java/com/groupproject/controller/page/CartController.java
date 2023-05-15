@@ -53,14 +53,14 @@ public class CartController implements Initializable {
     }
 
     public void initPayment(){
-        if (EntityHandler.currentUserGet().isGuest()){
-            rent7Day.setDisable(true);
-            payPoint.setDisable(true);
-        } else {
+        rent7Day.setDisable(true);
+        payPoint.setDisable(true);
+
+        if (!EntityHandler.currentUserGet().isGuest()){
             rent7Day.setDisable(false);
-            if (EntityHandler.currentUserGet().isVIP()){
-                payPoint.setDisable(false);
-            }
+        }
+        if (EntityHandler.currentUserGet().isVIP()){
+            payPoint.setDisable(false);
         }
     }
 
@@ -107,6 +107,7 @@ public class CartController implements Initializable {
         Button btn = (Button) event.getSource();
         ConstantOrder.OrderStatus status = cart.checkout(btn.getId().equals("payCash"));
 
+        System.out.println(status);
         switch (status){
             case ACCEPTED -> {
                 statusBox.setText("Checkout success");
@@ -118,6 +119,8 @@ public class CartController implements Initializable {
                 statusBox.setText("Insufficient balance");
             } case INSUFFICIENT_POINT -> {
                 statusBox.setText("Insufficient point");
+            } case LIMITED_AMOUNT -> {
+                statusBox.setText("You can only hold " + ConstantOrder.rentingLimit + " items");
             }
         }
     }
