@@ -31,8 +31,8 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ViewHandler.homeControllerSet(this);
 
-        // setPageContent(PathHandler.getPageItemTrending());
-        setPageContent(PathHandler.getPageCart());
+        setPageContent(PathHandler.getPageItemTrending());
+        // setPageContent(PathHandler.getPageCart());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBar(PathHandler.getComponentNavBar());
     }

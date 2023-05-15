@@ -1,9 +1,9 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.controller.component.ItemBoxController;
+import com.groupproject.controller.component.ItemTrendingTileController;
+import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
@@ -36,48 +37,59 @@ public class ItemTrendingController implements Initializable {
     ScrollPane itemPageRecord;
     @FXML
     ScrollPane itemPageGame;
+    @FXML
+    private VBox tileContainer;
 
-    TranslateTransition moveTile;
+    private TranslateTransition moveTile;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         moveTile = new TranslateTransition(Duration.seconds(0.3));
 
+
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileDvd, EntityHandler.itemDvdListGet());
-                ViewHandler.scrollPaneLockScroll(itemPageDvd);
+                addItemTile(ConstantItem.ItemCategory.DVD, EntityHandler.getItemDvdList());
             });
         }).start();
 
         new Thread(() -> {
             Platform.runLater(() -> {
-                addItemTile(itemTileRecord, EntityHandler.itemRecordListGet());
-                ViewHandler.scrollPaneLockScroll(itemPageRecord);
+                addItemTile(ConstantItem.ItemCategory.RECORD, EntityHandler.getItemGameList());
             });
         }).start();
 
-        new Thread(() -> {
-            Platform.runLater(() -> {
-                addItemTile(itemTileGame, EntityHandler.itemGameListGet());
-                ViewHandler.scrollPaneLockScroll(itemPageGame);
-            });
-        }).start();
+        // new Thread(() -> {
+        //     Platform.runLater(() -> {
+        //         addItemTile(itemTileGame, EntityHandler.itemGameListGet());
+        //         ViewHandler.scrollPaneLockScroll(itemPageGame);
+        //     });
+        // }).start();
     }
 
-    public void addItemTile(HBox itemTile, ArrayList<Item> itemList){
-        try{
-            for (Item item : itemList){
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
-                Button itemBox = (Button) fxmlLoader.load();
+    public void addItemTile(ConstantItem.ItemCategory category, ArrayList<Item> itemList){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemTrendingTile()));
+            Node tile = loader.load();
+            ItemTrendingTileController itemTrendingTileController = loader.getController();
 
-                ItemBoxController itemBoxController = fxmlLoader.getController();
-                itemBoxController.setData(item);
-                itemTile.getChildren().add(itemBox);
-            }
+            tileContainer.getChildren().add(tile);
+            itemTrendingTileController.setData(category, itemList);
         } catch (IOException err) {
             err.printStackTrace();
         }
+        // try{
+        //     for (Item item : itemList.subList(0,4)){
+        //         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
+        //         Button itemBox = (Button) fxmlLoader.load();
+        //
+        //         ItemBoxController itemBoxController = fxmlLoader.getController();
+        //         itemBoxController.setData(item);
+        //         itemTile.getChildren().add(itemBox);
+        //     }
+        // } catch (IOException err) {
+        //     err.printStackTrace();
+        // }
     }
 
     public void moveItemTile(ActionEvent event){

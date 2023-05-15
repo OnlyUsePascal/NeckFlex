@@ -35,7 +35,7 @@ public class NavBarController implements Initializable {
     }
 
     public void refreshMenuButtonName(){
-        menuButton.setText("Hello, " + EntityHandler.currentUserGet().getFirstName() + "!");
+        menuButton.setText("Hello, " + EntityHandler.getCurrentUser().getFirstName() + "!");
     }
 
 

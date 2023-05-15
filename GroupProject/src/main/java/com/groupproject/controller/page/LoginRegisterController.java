@@ -139,7 +139,7 @@ public class LoginRegisterController implements Initializable {
         RegistrationPageMessage.setText("Register successfully!");
         RegistrationPageMessage.setTextFill(Color.GREEN);
         Account newAccount = Account.getNewAccount(username, password, firstName, lastName, phoneNumber, address);
-        EntityHandler.accountAdd(newAccount);
+        EntityHandler.addAccount(newAccount);
 
         PauseTransition pause = new PauseTransition(Duration.millis(2000));
         pause.setOnFinished(event2 -> toPageLoginMain(event));

@@ -8,12 +8,14 @@ public class OrderDetail {
     private int quantity;
     private double price;
     private boolean isReturned;
+    private Order order;
 
-    public OrderDetail(CartDetail cartDetail) {
-        this.item = EntityHandler.itemFromInfo(cartDetail.getItem());
+    public OrderDetail(CartDetail cartDetail, Order order) {
+        this.item = EntityHandler.getCategorizedItem(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
         this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
         this.isReturned = false;
+        this.order = order;
     }
 
     public Item getItem() {
@@ -34,7 +36,7 @@ public class OrderDetail {
 
     public void setReturned(){
         isReturned = true;
-        EntityHandler.currentUserGet().updateCredit();
+        EntityHandler.getCurrentUser().updateCredit();
     }
 
     @Override

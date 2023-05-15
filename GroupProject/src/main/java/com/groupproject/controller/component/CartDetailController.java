@@ -63,7 +63,7 @@ public class CartDetailController implements Initializable {
     }
 
     public void removeCartDetail(ActionEvent event){
-        EntityHandler.cartGet().cartDetailRemove(cartDetail);
+        EntityHandler.getCart().removeCartDetail(cartDetail);
         cartController.refreshPage();
     }
 
@@ -72,7 +72,7 @@ public class CartDetailController implements Initializable {
         double newPrice = cartDetail.getTotalPrice();
 
         if (!checkBox.isSelected()) newPrice *= -1;
-        cartDetail.getCart().totalPriceUpdate(newPrice);
+        cartDetail.getCart().updateTotalPrice(newPrice);
 
         cartController.refreshBill();
     }

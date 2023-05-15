@@ -1,7 +1,7 @@
 package com.groupproject.entity.Constant;
 
 public class ConstantItem {
-    static public String[] categoryList = {"Dvd", " Movie Record", "Video Game"};
+    static public String[] categoryList = {"Dvd", "Movie Record", "Video Game"};
     static public enum ItemCategory {
         DVD,
         RECORD,

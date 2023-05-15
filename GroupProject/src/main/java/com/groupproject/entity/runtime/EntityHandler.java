@@ -33,7 +33,7 @@ public class EntityHandler {
 
 
     //===================== ACCOUNT ======================
-    static public ArrayList<Account> accountListGet() {
+    static public ArrayList<Account> getAccountList() {
         return accountList;
     }
 
@@ -49,22 +49,22 @@ public class EntityHandler {
         return (accountFromUsername(username) != null);
     }
 
-    static public void accountAdd(Account account) {
+    static public void addAccount(Account account) {
         accountList.add(account);
         usernameToObject.put(account.getUsername(), account);
     }
 
-    static public Account currentUserGet() {
+    static public Account getCurrentUser() {
         return currentUser;
     }
 
-    static public void currentUserGet(Account acc) {
+    static public void setCurrentUser(Account acc) {
         currentUser = acc;
         currentCart = currentUser.getCart();
     }
 
     //===================== ITEM ======================
-    static public void itemAdd(Item item) {
+    static public void addItem(Item item) {
         itemList.add(item);
 
         if (item instanceof ItemDvd)
@@ -75,23 +75,23 @@ public class EntityHandler {
             itemGameList.add(item);
     }
 
-    static public ArrayList<Item> itemListAdd() {
+    static public ArrayList<Item> getItemList() {
         return itemList;
     }
 
-    static public ArrayList<Item> itemDvdListGet() {
+    static public ArrayList<Item> getItemDvdList() {
         return itemDvdList;
     }
 
-    static public ArrayList<Item> itemRecordListGet() {
+    static public ArrayList<Item> getItemRecordList() {
         return itemRecordList;
     }
 
-    static public ArrayList<Item> itemGameListGet() {
+    static public ArrayList<Item> getItemGameList() {
         return itemGameList;
     }
 
-    static public Item itemFromInfo(ArrayList<String> infoList) {
+    static public Item getCategorizedItem(ArrayList<String> infoList) {
         int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
         switch (category) {
             case 0 -> {
@@ -107,7 +107,7 @@ public class EntityHandler {
         return null;
     }
 
-    static public Item itemFromInfo(Item item) {
+    static public Item getCategorizedItem(Item item) {
         int category = item.getCategory();
         switch (category) {
             case 0 -> {
@@ -124,23 +124,23 @@ public class EntityHandler {
     }
 
     //===================== CART ======================
-    static public Cart cartGet() {
+    static public Cart getCart() {
         return currentUser.getCart();
     }
 
-    static public CartDetail cartDetailGet(Item item) {
-        return currentCart.cartDetailFind(item);
+    static public CartDetail getCartDetail(Item item) {
+        return currentCart.findCartDetail(item);
     }
 
-    static public void cartDetailAdd(Item item, int quantity) {
-        currentCart.cartDetailAdd(item, quantity);
+    static public void addCartDetail(Item item, int quantity) {
+        currentCart.addCartDetail(item, quantity);
     }
 
 
     //===================== ORDER ======================
-    static public void orderAdd() {
-        Order newOrder = Order.getNewOrder(currentCart.cartDetailListGet());
+    static public void addOrder() {
+        Order newOrder = Order.getNewOrder(currentCart.getCartDetailList());
         currentUser.addOrder(newOrder);
-        currentCart.cartWipe();
+        currentCart.WipeCart();
     }
 }

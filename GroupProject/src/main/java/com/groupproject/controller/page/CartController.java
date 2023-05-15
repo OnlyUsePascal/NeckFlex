@@ -45,8 +45,8 @@ public class CartController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cart = EntityHandler.cartGet();
-        cartOwner = EntityHandler.currentUserGet();
+        cart = EntityHandler.getCart();
+        cartOwner = EntityHandler.getCurrentUser();
 
         initPayment();
         refreshPage();
@@ -56,10 +56,10 @@ public class CartController implements Initializable {
         rent7Day.setDisable(true);
         payPoint.setDisable(true);
 
-        if (!EntityHandler.currentUserGet().isGuest()){
+        if (!EntityHandler.getCurrentUser().isGuest()){
             rent7Day.setDisable(false);
         }
-        if (EntityHandler.currentUserGet().isVIP()){
+        if (EntityHandler.getCurrentUser().isVIP()){
             payPoint.setDisable(false);
         }
     }
@@ -75,7 +75,7 @@ public class CartController implements Initializable {
         cartDetailControllerList = new ArrayList<>();
 
         //add
-        for (CartDetail cartDetail : cart.cartDetailListGet()){
+        for (CartDetail cartDetail : cart.getCartDetailList()){
             try {
                 FXMLLoader cartItemLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentCartDetail()));
                 HBox cartDetailPane = cartItemLoader.load();
@@ -96,7 +96,7 @@ public class CartController implements Initializable {
 
     public void refreshBill(){
         //price
-        billTotalPriceBox.setText("$" + cart.totalPriceGet());
+        billTotalPriceBox.setText("$" + cart.getTotalPrice());
 
         //balance
         userBalance.setText("$" + cartOwner.getBalance());
@@ -112,7 +112,7 @@ public class CartController implements Initializable {
             case ACCEPTED -> {
                 statusBox.setText("Checkout success");
 
-                EntityHandler.orderAdd();
+                EntityHandler.addOrder();
                 refreshPage();
 
             } case INSUFFICIENT_BALANCE -> {

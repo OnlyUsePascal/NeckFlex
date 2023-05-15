@@ -42,7 +42,7 @@ public class ItemAllController implements Initializable {
 
     public void setData() {
         // getData
-        ArrayList<Item> itemList = EntityHandler.itemListAdd();
+        ArrayList<Item> itemList = EntityHandler.getItemList();
         itemCnt = itemList.size();
         rowCnt = itemList.size() / rowSize + ((itemCnt % rowSize != 0) ? 1 : 0);
 

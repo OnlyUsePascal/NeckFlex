@@ -50,7 +50,7 @@ public class UserProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setData(EntityHandler.currentUserGet());
+        setData(EntityHandler.getCurrentUser());
         displayInfo();
     }
 

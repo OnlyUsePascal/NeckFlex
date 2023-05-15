@@ -67,7 +67,7 @@ public class LoginMainController implements Initializable {
             return;
         }
 
-        EntityHandler.currentUserGet(sysAcc);
+        EntityHandler.setCurrentUser(sysAcc);
         loginMessage.setText("Signing in...");
         loginMessage.setTextFill(Color.GREEN);
         PauseTransition pause = new PauseTransition(Duration.millis(2000));

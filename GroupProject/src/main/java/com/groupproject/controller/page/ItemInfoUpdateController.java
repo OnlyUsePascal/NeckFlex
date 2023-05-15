@@ -65,7 +65,7 @@ public class ItemInfoUpdateController implements Initializable {
 
     public void deleteItem(ActionEvent event){
         System.out.println("Deleting Item!!!");
-        EntityHandler.itemListAdd().remove(item);
+        EntityHandler.getItemList().remove(item);
 
         ViewHandler.popupClose(event);
     }

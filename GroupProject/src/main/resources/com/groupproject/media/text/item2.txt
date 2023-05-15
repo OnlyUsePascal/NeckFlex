@@ -1,0 +1,109 @@
+xI001-2018|Avengers: Infinity War|0|0|1|11.55
+I002-2021|Spider-Man: No Way Home|0|1|2|14.71
+I003-2015|Jurassic World|0|2|9|19.66
+I004-2019|The Lion King|0|3|2|11.36
+I005-2012|The Avengers|0|4|8|16.77
+I006-2015|Furious 7|0|0|6|16.21
+I007-2022|Top Gun: Maverick|0|1|5|16.57
+I008-2019|Frozen II|0|2|7|15.77
+I009-2015|Avengers: Age of Ultron|0|3|8|19.12
+I010-2018|Black Panther|0|4|6|17.92
+I011-2011|Harry Potter and the Deathly Hallows: Part 2|0|0|3|11.51
+I012-2017|Star Wars: Episode VIII - The Last Jedi|0|1|7|15.9
+I013-2018|Jurassic World: Fallen Kingdom|0|2|7|13.55
+I014-2013|Frozen|0|3|2|17.59
+I015-2017|Beauty and the Beast|0|4|7|18.45
+I016-2018|Incredibles 2|0|0|9|16.58
+I017-2017|The Fate of the Furious|0|1|7|14.52
+I018-2013|Iron Man 3|0|2|5|10.53
+I019-2015|Minions|0|3|8|15.95
+I020-2016|Captain America: Civil War|0|4|2|17.1
+I021-2018|Aquaman|0|0|6|13.64
+I022-2003|The Lord of the Rings: The Return of the King|0|1|4|14.63
+I023-2012|Skyfall|0|2|7|11.11
+I024-2019|Spider-Man: Far from Home|0|3|2|15.29
+I025-2019|Captain Marvel|0|4|4|12.39
+I026-2011|Transformers: Dark of the Moon|0|0|1|13.08
+I027-1993|Jurassic Park|0|1|2|15.61
+I028-2014|Transformers: Age of Extinction|0|2|8|18.5
+I029-2012|The Dark Knight Rises|0|3|0|15.63
+I030-2019|Star Wars: Episode IX - The Rise of Skywalker|0|4|5|10.83
+I031-2019|Joker|0|0|5|14.9
+I032-2019|Toy Story 4|0|1|0|16.95
+I033-2010|Toy Story 3|0|2|4|14.38
+I034-2006|Pirates of the Caribbean: Dead Man's Chest|0|3|1|11.55
+I035-2016|Rogue One: A Star Wars Story|0|4|5|14.21
+I036-2019|Aladdin|0|0|4|16.3
+I037-2011|Pirates of the Caribbean: On Stranger Tides|0|1|3|10.39
+I038-2017|Despicable Me 3|0|2|5|16.98
+I039-2016|Finding Dory|0|3|1|13.23
+I040-1999|Star Wars: Episode I - The Phantom Menace|1|4|7|17.16
+I041-2016|Zootopia|1|0|6|10.74
+I042-2010|Alice in Wonderland|1|1|9|19.32
+I043-2001|Harry Potter and the Sorcerer's Stone|1|2|8|17.12
+I044-2012|The Hobbit: An Unexpected Journey|1|3|1|18.72
+I045-2008|The Dark Knight|1|4|8|18.34
+I046-2022|Jurassic World: Dominion|1|0|5|10.34
+I047-2017|Jumanji: Welcome to the Jungle|1|1|3|12.96
+I048-2010|Harry Potter and the Deathly Hallows: Part 1|1|2|0|12.73
+I049-2013|Despicable Me 2|1|3|8|12.57
+I050-1994|The Lion King|1|4|7|18.14
+I051-2016|The Jungle Book|1|0|0|19.34
+I052-2014|The Hobbit: The Battle of the Five Armies|1|1|0|11.85
+I053-2007|Pirates of the Caribbean: At World's End|1|2|9|15.25
+I054-2013|The Hobbit: The Desolation of Smaug|1|3|4|13.4
+I055-2022|Doctor Strange in the Multiverse of Madness|1|4|1|11.75
+I056-2002|The Lord of the Rings: The Two Towers|1|0|0|13.22
+I057-2007|Harry Potter and the Order of the Phoenix|1|1|0|18.77
+I058-2003|Finding Nemo|1|2|3|12.32
+I059-2022|Minions: The Rise of Gru|1|3|4|17.94
+I060-2009|Harry Potter and the Half-Blood Prince|1|4|8|14.17
+I061-2004|Shrek 2|1|0|5|16.89
+I062-2002|Harry Potter and the Chamber of Secrets|1|1|2|12.69
+I063-2018|Bohemian Rhapsody|1|2|5|15.49
+I064-2023|The Super Mario Bros. Movie|1|3|9|12.12
+I065-2021|The Battle at Lake Changjin|1|4|7|14.03
+I066-2001|The Lord of the Rings: The Fellowship of the Ring|1|0|5|12.82
+I067-2005|Harry Potter and the Goblet of Fire|1|1|8|18.53
+I068-2007|Spider-Man 3|1|2|6|14.62
+I069-2016|The Secret Life of Pets|1|3|7|15.14
+I070-2009|Ice Age: Dawn of the Dinosaurs|1|4|4|10.51
+I071-2015|Spectre|1|0|3|11.79
+I072-2017|Spider-Man: Homecoming|1|1|3|18.79
+I073-2012|Ice Age: Continental Drift|1|2|5|16.94
+I074-2016|Batman v Superman: Dawn of Justice|1|3|1|10.61
+I075-2017|Wolf Warrior 2|1|4|6|17.81
+I076-2010|Inception|1|0|3|11.76
+I077-2005|Star Wars: Episode III - Revenge of the Sith|1|1|2|10.85
+I078-2013|The Hunger Games: Catching Fire|1|2|4|15.33
+I079-2017|Guardians of the Galaxy Vol. 2|1|3|1|17.75
+I080-2022|Black Panther: Wakanda Forever|1|4|0|14.7
+I081-2018|God of War|2|0|1|13.23
+I082-2018|Red Dead Redemption 2|2|1|2|17.16
+I083-2017|Super Mario Odyssey|2|2|9|10.74
+I084-2017|The Legend of Zelda: Breath of the Wild|2|3|2|19.32
+I085-2016|Inside|2|4|8|17.12
+I086-2016|Overwatch|2|0|6|18.72
+I087-2016|Stardew Valley|2|1|5|18.34
+I088-2016|Uncharted 4: A Thief's End|2|2|7|10.34
+I089-2015|Bloodborne|2|3|8|12.96
+I090-2015|Rocket League|2|4|6|12.73
+I091-2015|The Witcher 3: Wild Hunt|2|0|3|12.57
+I092-2015|Undertale|2|1|7|18.14
+I093-2014|Destiny|2|2|7|19.34
+I094-2014|Hearthstone|2|3|2|11.85
+I095-2014|Shovel Knight|2|4|7|15.25
+I096-2013|BioShock Infinite|2|0|9|13.4
+I097-2013|Dota 2|2|1|7|11.75
+I098-2013|Grand Theft Auto V|2|2|5|13.22
+I099-2013|The Last of Us|2|3|8|18.77
+I100-2012|Dishonored|2|4|2|12.32
+I101-2012|Far Cry 3|2|0|6|17.94
+I102-2012|Fire Emblem: Awakening|2|1|4|14.17
+I103-2012|Hotline Miami|2|2|7|16.89
+I104-2012|Journey|2|3|2|12.69
+I105-2012|The Walking Dead|2|4|4|15.49
+I106-2012|XCOM: Enemy Unknown|2|0|1|12.12
+I107-2011|Batman: Arkham City|2|1|2|14.03
+I108-2011|Dark Souls|2|2|8|12.82
+I109-2009|League of Legends|2|3|0|18.53

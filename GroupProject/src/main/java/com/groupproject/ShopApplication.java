@@ -1,8 +1,6 @@
 package com.groupproject;
 
-import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.generic.Cart;
-import com.groupproject.entity.generic.ItemDvd;
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.toolkit.DataHandler;
 import com.groupproject.entity.runtime.ViewHandler;
@@ -21,12 +19,13 @@ public class ShopApplication extends Application {
         DataHandler.getData();
 
         //init data
-        EntityHandler.currentUserGet(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
+        // EntityHandler.setCurrentUser(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
+        EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(1));
         // System.out.println();
-        Cart cart = EntityHandler.cartGet();
-        cart.cartDetailAdd(new ItemDvd("item1", 12.4), 2);
-        // cart.cartDetailAdd(new ItemDvd("item2", 1), 1);
-        EntityHandler.orderAdd();
+        Cart cart = EntityHandler.getCart();
+        // cart.addCartDetail(EntityHandler.getItemList().get(12), 2);
+        // cart.addCartDetail(EntityHandler.getItemList().get(60), 10);
+        // EntityHandler.addOrder();
 
         // cart.cartDetailAdd(new ItemDvd("item55", 11.3), 3);
         // cart.cartDetailAdd(new ItemDvd("ifasdf", 1.4), 2);
@@ -51,9 +50,9 @@ public class ShopApplication extends Application {
     }
 
     public void postClose(WindowEvent event, Stage stage){
-        // event.consume();
-        //
-        // DataHandler.saveData();
+        event.consume();
+
+        DataHandler.saveData();
         stage.close();
     }
 

@@ -7,34 +7,42 @@ import com.groupproject.entity.runtime.ViewHandler;
 import java.util.ArrayList;
 
 public class Cart {
-    private Account cartOwner;
+    private Account owner;
     private ArrayList<CartDetail> cartDetailList;
     private double totalPrice;
 
-    public Cart(Account cartOwner) {
-        this.cartOwner = cartOwner;
+    public Cart(Account owner) {
+        this.owner = owner;
         cartDetailList = new ArrayList<>();
         totalPrice = 0;
     }
 
-    public void cartDetailAdd(Item item, int quantity) {
+    public Account getOwner() {
+        return owner;
+    }
+
+    public int getCartWeight(){
+        return cartDetailList.size();
+    }
+
+    public void addCartDetail(Item item, int quantity) {
         CartDetail cartDetail = new CartDetail(item, quantity);
         cartDetailList.add(cartDetail);
         cartDetail.setCart(this);
-        totalPriceUpdate(cartDetail.getTotalPrice());
+        updateTotalPrice(cartDetail.getTotalPrice());
     }
 
-    public void cartDetailRemove(CartDetail cartDetail) {
-        totalPriceUpdate(-cartDetail.getTotalPrice());
+    public void removeCartDetail(CartDetail cartDetail) {
+        updateTotalPrice(-cartDetail.getTotalPrice());
         cartDetailList.remove(cartDetail);
     }
 
-    public void cartWipe() {
-        totalPriceUpdate(-totalPrice);
+    public void WipeCart() {
+        updateTotalPrice(-totalPrice);
         cartDetailList.clear();
     }
 
-    public CartDetail cartDetailFind(Item item) {
+    public CartDetail findCartDetail(Item item) {
         for (CartDetail cartDetail : cartDetailList) {
             if (cartDetail.getItem().equals(item)) {
                 return cartDetail;
@@ -43,15 +51,15 @@ public class Cart {
         return null;
     }
 
-    public ArrayList<CartDetail> cartDetailListGet() {
+    public ArrayList<CartDetail> getCartDetailList() {
         return cartDetailList;
     }
 
-    public void totalPriceUpdate(double price) {
+    public void updateTotalPrice(double price) {
         totalPrice = ViewHandler.getDoubleRound(totalPrice + price);
     }
 
-    public double totalPriceGet() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
@@ -68,7 +76,7 @@ public class Cart {
                 return ConstantOrder.OrderStatus.INSUFFICIENT_BALANCE;
             }
         } else {
-            if (!payWithPoints()){
+            if (!payWithPoint()){
                 return ConstantOrder.OrderStatus.INSUFFICIENT_POINT;
             }
         }
@@ -77,29 +85,29 @@ public class Cart {
     }
 
     public boolean payWithBalance(){
-        if (cartOwner.getBalance() < totalPrice) {
+        if (owner.getBalance() < totalPrice) {
             return false;
         }
 
-        cartOwner.deductBalance(totalPrice);
+        owner.deductBalance(totalPrice);
         return true;
     }
 
-    public boolean payWithPoints(){
-        if (cartOwner.getRewardPoint() < totalPrice) {
+    public boolean payWithPoint(){
+        if (owner.getRewardPoint() < totalPrice) {
             return false;
         }
 
-        cartOwner.deductRewardPoint();
+        owner.deductRewardPoint();
         return true;
     }
 
     public boolean checkLimit() {
-        if (!cartOwner.isGuest()) return true;
+        if (!owner.isGuest()) return true;
 
         // renting + number in cart <= 2
         int curQuantity = 0;
-        for (Order order : EntityHandler.currentUserGet().getOrderList()) {
+        for (Order order : EntityHandler.getCurrentUser().getOrderList()) {
             for (OrderDetail orderDetail : order.getOrderDetailList()) {
                 if (!orderDetail.isReturned()) {
                     curQuantity += orderDetail.getQuantity();
@@ -120,10 +128,21 @@ public class Cart {
         return true;
     }
 
+    public String getCartInfoString(){
+        String cartInfo = "";
+        cartInfo += (owner.getUsername() + "|");
+        for (CartDetail cartDetail : cartDetailList){
+            cartInfo += (EntityHandler.getItemList().indexOf(cartDetail.getItem()) + "/"
+                        + cartDetail.getQuantity() + "|");
+        }
+
+        return cartInfo;
+    }
+
     @Override
     public String toString() {
         return "Cart{" +
-                "cartOwner=" + cartOwner.getUsername() +
+                "cartOwner=" + owner.getUsername() +
                 ", cartDetailList=" + cartDetailList +
                 ", totalPrice=" + totalPrice +
                 '}';

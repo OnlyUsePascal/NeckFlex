@@ -63,7 +63,9 @@ public abstract class Item {
 
     @Override
     public String toString() {
-        return this.id + "|" + this.title + "|" + this.category + "|" + this.genre + "|" + this.stock + "|" + this.price;
+        return this.id + "|" + this.title + "|" +
+                this.category + "|" + this.genre + "|" +
+                this.stock + "|" + this.price;
     }
 
     public String getGenre() {

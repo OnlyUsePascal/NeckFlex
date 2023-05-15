@@ -148,7 +148,7 @@ public class AdminItemListController implements Initializable {
 
         // what = true;
         ObservableList<Item> items = FXCollections.observableArrayList();
-        for (Item item : EntityHandler.itemListAdd()) {
+        for (Item item : EntityHandler.getItemList()) {
             items.add(item);
         }
         return items;

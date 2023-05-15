@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -13,152 +10,34 @@
 
 <AnchorPane prefHeight="820.0" prefWidth="1600.0" style="-fx-background-color: #394867;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.ItemTrendingController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1300.0" style="-fx-background-color: #F1F6F9;" AnchorPane.leftAnchor="300.0">
-         <content>
-            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="1200.0" prefWidth="1300.0">
-               <children>
-                  <Label contentDisplay="RIGHT" prefHeight="61.0" prefWidth="1300.0" style="-fx-background-color: #B9EDDD;" text="Home">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                  </Label>
-                  <HBox alignment="TOP_CENTER" prefHeight="2000.0" prefWidth="1100.0">
+      <HBox fillHeight="false" prefHeight="820.0" prefWidth="1600.0">
+         <children>
+            <AnchorPane prefHeight="820.0" prefWidth="200.0" style="-fx-background-color: teal;" />
+            <ScrollPane hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1300.0" style="-fx-background-color: #F1F6F9;">
+               <content>
+                  <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="1300.0">
                      <children>
-                        <VBox prefHeight="2000.0" prefWidth="930.0">
-                           <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="930.0" style="-fx-border-color: transparent;">
-                                 <children>
-                                    <HBox prefHeight="9.0" prefWidth="931.0" style="-fx-background-color: #569DAA;">
-                                       <children>
-                                          <Label prefHeight="48.0" prefWidth="779.0" text="DVD">
-                                             <font>
-                                                <Font size="27.0" />
-                                             </font>
-                                          </Label>
-                                          <Button fx:id="moveLeft" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-left-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-right-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <ScrollPane fx:id="itemPageDvd" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                                       <content>
-                                          <HBox fx:id="itemTileDvd" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
-                                       </content>
-                                    </ScrollPane>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="930.0" style="-fx-border-color: transparent;">
-                                 <children>
-                                    <HBox prefHeight="9.0" prefWidth="931.0" style="-fx-background-color: #569DAA;">
-                                       <children>
-                                          <Label prefHeight="48.0" prefWidth="779.0" text="Records">
-                                             <font>
-                                                <Font size="27.0" />
-                                             </font>
-                                          </Label>
-                                          <Button fx:id="moveLeft" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-left-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-right-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <ScrollPane fx:id="itemPageRecord" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                                       <content>
-                                          <HBox fx:id="itemTileRecord" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
-                                       </content>
-                                    </ScrollPane>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="930.0" style="-fx-border-color: transparent;">
-                                 <children>
-                                    <HBox prefHeight="9.0" prefWidth="931.0" style="-fx-background-color: #569DAA;">
-                                       <children>
-                                          <Label prefHeight="48.0" prefWidth="779.0" text="Video games">
-                                             <font>
-                                                <Font size="27.0" />
-                                             </font>
-                                          </Label>
-                                          <Button fx:id="moveLeft" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-left-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
-                                             <graphic>
-                                                <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../media/image/chevron-right-solid.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <ScrollPane fx:id="itemPageGame" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                                       <content>
-                                          <HBox fx:id="itemTileGame" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
-                                       </content>
-                                    </ScrollPane>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" top="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                           </children>
-                        </VBox>
+                        <Label contentDisplay="RIGHT" prefHeight="61.0" prefWidth="1300.0" style="-fx-background-color: #B9EDDD;" text="Home">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </Label>
+                        <VBox fx:id="tileContainer" fillWidth="false" prefWidth="1042.0" />
                      </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+
    </children>
 </AnchorPane>

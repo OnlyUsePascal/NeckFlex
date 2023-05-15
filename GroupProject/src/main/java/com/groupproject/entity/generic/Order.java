@@ -20,10 +20,10 @@ public class Order {
     }
 
     static public Order getNewOrder(ArrayList<CartDetail> cartDetailList){
-        Order newOrder = new Order(EntityHandler.currentUserGet());
+        Order newOrder = new Order(EntityHandler.getCurrentUser());
 
         for (CartDetail cartDetail : cartDetailList){
-            OrderDetail orderDetail = new OrderDetail(cartDetail);
+            OrderDetail orderDetail = new OrderDetail(cartDetail, newOrder);
 
             newOrder.addOrderDetail(orderDetail);
             newOrder.updateTotalPrice(cartDetail.getTotalPrice());

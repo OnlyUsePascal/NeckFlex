@@ -11,8 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +34,7 @@ public class UserRecordController implements Initializable {
         rentingContainer.getChildren().clear();
         returnedContainer.getChildren().clear();
 
-        for (Order order: EntityHandler.currentUserGet().getOrderList()){
+        for (Order order: EntityHandler.getCurrentUser().getOrderList()){
             ArrayList<OrderDetail> renting = new ArrayList<>();
             ArrayList<OrderDetail> returned = new ArrayList<>();
 

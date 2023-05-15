@@ -18,14 +18,16 @@ public class DataHandler {
         System.out.println("===== get data =====");
         getAccount();
         getItem();
+        getCart();
         System.out.println("===== done =====");
 
     }
 
     public static void saveData(){
         System.out.println("===== save data =====");
-        saveAccount();
-        saveItem();
+        // saveAccount();
+        // saveItem();
+        saveCart();
         System.out.println("===== done =====");
 
     }
@@ -57,7 +59,7 @@ public class DataHandler {
                         Integer.parseInt(list.get(ConstantAccount.AccountInfo.REWARDPOINT.ordinal()))
                 );
 
-                EntityHandler.accountAdd(account);
+                EntityHandler.addAccount(account);
                 System.out.println(account);
                 // System.out.println(list);
             }
@@ -73,7 +75,7 @@ public class DataHandler {
             Scanner my_reader = new Scanner(file);
             while(my_reader.hasNextLine()){
                 String data = my_reader.nextLine();
-                if (data.length() == 0) break;
+                // if (data.length() == 0) break;
 
                 StringTokenizer st = new StringTokenizer(data, "|");
                 ArrayList<String> infoList = new ArrayList<>();
@@ -81,14 +83,52 @@ public class DataHandler {
                     infoList.add(st.nextToken());
                 }
 
-                System.out.println(infoList.toString());
+                // System.out.println(infoList.toString());
 
-                Item newItem = EntityHandler.itemFromInfo(infoList);
-                EntityHandler.itemAdd(newItem);
+                Item newItem = EntityHandler.getCategorizedItem(infoList);
+                EntityHandler.addItem(newItem);
                 Item.genericId++;
             }
-        } catch(FileNotFoundException e){
-            System.out.println("File not Found!");
+        } catch(FileNotFoundException err){
+            err.printStackTrace();
+        }
+    }
+
+    public static void getCart(){
+        File file = ViewHandler.getFile(PathHandler.getMediaTextCart());
+
+        try {
+            Scanner my_reader = new Scanner(file);
+            while(my_reader.hasNextLine()){
+                String data = my_reader.nextLine();
+
+                StringTokenizer st = new StringTokenizer(data, "|");
+                ArrayList<String> infoList = new ArrayList<>();
+                while (st.hasMoreTokens()) {
+                    infoList.add(st.nextToken());
+                }
+
+                //basic
+                Account user = EntityHandler.accountFromUsername(infoList.get(0));
+                Cart cart = user.getCart();
+
+                //detail
+                for (int i = 1 ; i < infoList.size() ; i++) {
+                    StringTokenizer st2 = new StringTokenizer(infoList.get(i), "/");
+                    ArrayList<String> itemInfo = new ArrayList<>();
+
+                    while (st2.hasMoreTokens()) {
+                        itemInfo.add(st2.nextToken());
+                    }
+
+                    Item item = EntityHandler.getItemList().get(Integer.parseInt(itemInfo.get(0)));
+                    int quantity = Integer.parseInt(itemInfo.get(1));
+                    cart.addCartDetail(item, quantity);
+                }
+
+            }
+        } catch(FileNotFoundException err){
+            err.printStackTrace();
         }
     }
 
@@ -98,15 +138,15 @@ public class DataHandler {
 
         try{
             PrintWriter printWriter = new PrintWriter(file);
-            for(Account account : EntityHandler.accountListGet()){
+            for(Account account : EntityHandler.getAccountList()){
                 printWriter.println(account);
             }
 
             printWriter.close();
             System.out.println("Save account data successfully!");
 
-        }catch(IOException e2){
-            e2.printStackTrace();
+        }catch(IOException err){
+            err.printStackTrace();
         }
     }
 
@@ -116,17 +156,44 @@ public class DataHandler {
         try{
             PrintWriter printWriter = new PrintWriter(file);
 
-            for (Item item : EntityHandler.itemListAdd()) {
+            for (Item item : EntityHandler.getItemList()) {
                 printWriter.println(item);
             }
 
             printWriter.close();
             System.out.println("Save data successfully!");
 
+        }catch(IOException err){
+            err.printStackTrace();
+        }
+    }
+
+    public static void saveCart(){
+        File file = ViewHandler.getFile(PathHandler.getMediaTextCart());
+
+        try{
+            PrintWriter printWriter = new PrintWriter(file);
+
+
+            // for (Item item : EntityHandler.getItemList()) {
+            //     printWriter.println(item);
+            // }
+            for (Account user : EntityHandler.getAccountList()) {
+                if (user.isAdmin()) continue;
+
+                String cartInfo = user.getCart().getCartInfoString();
+                printWriter.println(cartInfo);
+                // System.out.println(cartInfo);
+            }
+
+            printWriter.close();
+            System.out.println("Save data successfully!");
+
         }catch(IOException e2){
-            System.out.println("An error occurred.");
             e2.printStackTrace();
         }
+        //
+
     }
 
 }

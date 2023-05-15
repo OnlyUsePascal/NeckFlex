@@ -129,7 +129,7 @@ public class AdminAccountListController implements Initializable {
 
     public ObservableList<Account> getData() {
         ObservableList<Account> accounts = FXCollections.observableArrayList();
-        for (Account account : EntityHandler.accountListGet()){
+        for (Account account : EntityHandler.getAccountList()){
             boolean legit = true;
             legit &= filterType(account);
             legit &= filterSearch(account);

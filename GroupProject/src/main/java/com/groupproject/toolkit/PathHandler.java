@@ -63,14 +63,14 @@ public class PathHandler {
     }
 
     static public String getComponentSidebar() {
-        if (EntityHandler.currentUserGet().isAdmin()){
+        if (EntityHandler.getCurrentUser().isAdmin()){
             return componentRoot + "SidebarAdmin.fxml";
         }
         return componentRoot + "SidebarCustomer.fxml";
     }
 
     static public String getComponentNavBar() {
-        if (EntityHandler.currentUserGet().isAdmin()) {
+        if (EntityHandler.getCurrentUser().isAdmin()) {
             return componentRoot + "NavBarAdmin.fxml";
         }
         return componentRoot + "NavBarCustomer.fxml";
@@ -92,6 +92,10 @@ public class PathHandler {
         return componentRoot + "OrderDetail.fxml";
     }
 
+    static public String getComponentItemTrendingTile(){
+        return componentRoot + "ItemTrendingTile.fxml";
+    }
+
 
     static public String getMediaImage(String imgName) {
         return imgRoot + imgName;
@@ -111,7 +115,11 @@ public class PathHandler {
     }
 
     static public String getMediaTextItem() {
-        return textRoot + "item.txt";
+        return textRoot + "item2.txt";
+    }
+
+    static public String getMediaTextCart(){
+        return textRoot + "cart.txt";
     }
 
     static public String getStyleSheet() {
