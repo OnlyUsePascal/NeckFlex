@@ -54,6 +54,22 @@ public class ItemViewController implements Initializable {
         TableViewItem.setItems(getItems(searchField.getText(), GroupByCategory.getValue()));
     }
 
+    public void clearFilter(){
+        GroupByCategory.setValue("All");
+        searchField.setText("");
+        searchItemAction();
+    }
+
+    public void addItem(){
+        try {
+            ItemRegister itemRegister = new ItemRegister();
+            itemRegister.start(new Stage());
+            searchItemAction();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -66,7 +82,7 @@ public class ItemViewController implements Initializable {
         //Add listeners to GroupByCategory
         GroupByCategory.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             System.out.println("Selected: " + newValue);
-            TableViewItem.setItems(getItems(searchField.getText(), newValue));
+            searchItemAction();
         });
 
         searchField.setText("");
@@ -158,7 +174,6 @@ public class ItemViewController implements Initializable {
         ObservableList<Item> items = FXCollections.observableArrayList();
         for (Item item : SystemShop.getItemLists()) {
 //            System.out.println(item);
-
             switch (filterGroup){
                 case "All":
                     if(searchKeyword.isBlank()){

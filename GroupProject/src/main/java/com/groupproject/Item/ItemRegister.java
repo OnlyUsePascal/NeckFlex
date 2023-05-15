@@ -10,12 +10,15 @@ import java.io.IOException;
 
 public class ItemRegister extends Application {
 
+    public static Stage window;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     //    @Override
     public void start(Stage stage) throws IOException {
+        window = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ItemRegister.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 996, 581);
         stage.setResizable(false);
