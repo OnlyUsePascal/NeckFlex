@@ -1,7 +1,7 @@
-package com.groupproject.controller.page;
+package com.groupproject.controller.popup;
 
-import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.generic.Account;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.PauseTransition;
@@ -9,38 +9,29 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class LoginRegisterController implements Initializable {
-
+public class AccountInfoAddController implements Initializable {
     @FXML
     TextField RegistrationPageUsername = new TextField();
-
     @FXML
     PasswordField RegistrationPagePassword = new PasswordField();
-
     @FXML
     PasswordField RegistrationPageConfirmPassword = new PasswordField();
-
     @FXML
     TextField RegistrationPageFirstName = new TextField();
     @FXML
     TextField RegistrationPageLastName = new TextField();
-
     @FXML
     TextField RegistrationPagePhoneNumber = new TextField();
-
     @FXML
     TextField RegistrationPageAddress = new TextField();
-
     @FXML
     Label RegistrationPageMessage = new Label();
 
@@ -58,16 +49,20 @@ public class LoginRegisterController implements Initializable {
     Label requiredPhoneNumber = new Label();
     @FXML
     Label requiredAddress = new Label();
+    @FXML
+    ChoiceBox<String> choiceList;
 
+    private String[] choices = {"Admin", "Customer"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RegistrationPageMessage.setText("");
         RegistrationPageMessage.setTextFill(Color.RED);
+
+        choiceList.getItems().addAll(Arrays.asList(choices));
     }
 
     public void onCreateButtonClick(ActionEvent event) {
-
         String username = RegistrationPageUsername.getText();
         String password = RegistrationPagePassword.getText();
         String confirmPassword = RegistrationPageConfirmPassword.getText();
@@ -126,20 +121,18 @@ public class LoginRegisterController implements Initializable {
         }
 
         //legit
-        RegistrationPageMessage.setText("Register successfully!");
-        RegistrationPageMessage.setTextFill(Color.GREEN);
         Account newAccount = Account.getNewAccount(username, password, firstName, lastName, phoneNumber, address);
+
+        if (choiceList.getValue().equals(choices[0])){ //is admin
+            newAccount.makeAdmin();
+        }
+
         EntityHandler.addAccount(newAccount);
 
-        PauseTransition pause = new PauseTransition(Duration.millis(2000));
-        pause.setOnFinished(event2 -> toPageLoginMain(event));
-        pause.play();
-
+        closePopup(event);
     }
 
-    public void toPageLoginMain(ActionEvent event){
-        Scene scene = ((Button) event.getSource()).getScene();
-        ViewHandler.setScene(scene, PathHandler.getPageLoginMain());
+    public void closePopup(ActionEvent event) {
+        ViewHandler.closePopup(event);
     }
-
 }

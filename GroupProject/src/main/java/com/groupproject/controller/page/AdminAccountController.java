@@ -45,8 +45,10 @@ public class AdminAccountController implements Initializable {
     private TableColumn<Account, String> accountTypeColumn ;
     @FXML
     private TextField keywordBox;
+    // @FXML
+    // private ChoiceBox<String> choiceList;
     @FXML
-    private ChoiceBox<String> choiceList;
+    private ComboBox<String> choiceList;
 
     String accountTypeOptionAll;
 
@@ -57,8 +59,6 @@ public class AdminAccountController implements Initializable {
 
         initColumnProperty();
         refreshTable(null);
-
-
     }
 
     public void initFilter(){
@@ -116,7 +116,7 @@ public class AdminAccountController implements Initializable {
                     this.imageView.setImage((empty || imageView == null) ? null : imageView.getImage());
                     setOnMouseClicked(event -> {
                         Account account = getTableView().getItems().get(getIndex());
-                        getPopup(account);
+                        getPopupUpdate(account);
                     });
                 }
             };
@@ -141,9 +141,7 @@ public class AdminAccountController implements Initializable {
         return accounts;
     }
 
-    public void getPopup(Account account){
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageUserProfile()));
-
+    public void getPopupUpdate(Account account){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPopupAccountInfoUpdate()));
             AnchorPane pane = loader.load();
@@ -160,6 +158,24 @@ public class AdminAccountController implements Initializable {
         }
     }
 
+    public void getPopupCreate(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPopupAccountInfoAdd()));
+            AnchorPane pane = loader.load();
+            // AccountInfoUpdateController controller = loader.getController();
+            // controller.setData(account);
+
+            EventHandler<WindowEvent> popupOnClose = event2 -> {
+                refreshTable(null);
+            };
+
+            ViewHandler.getPopup(pane, popupOnClose);
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+
+    }
+
     public boolean filterType(Account account){
         String option = choiceList.getValue();
         if (option.equals(accountTypeOptionAll)) return true;
@@ -173,6 +189,12 @@ public class AdminAccountController implements Initializable {
                 account.getUsername().contains(searchKeyword) ||
                 account.getFirstName().contains(searchKeyword) ||
                 account.getLastName().contains(searchKeyword);
+    }
+
+    public void clearFilter(ActionEvent event){
+        keywordBox.clear();
+        choiceList.setValue(accountTypeOptionAll);
+        refreshTable(null);
     }
 
 }

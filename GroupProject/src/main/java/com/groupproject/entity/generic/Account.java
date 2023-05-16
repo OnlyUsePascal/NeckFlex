@@ -56,7 +56,6 @@ public class Account {
         return newAaccount;
     }
 
-
     public String getUsername() {
         return username;
     }
@@ -167,6 +166,10 @@ public class Account {
 
     public void deductRewardPoint() {
         rewardPoint -= 100;
+    }
+
+    public void makeAdmin() {
+        status = ConstantAccount.AccountStatus.ADMIN;
     }
 
     @Override

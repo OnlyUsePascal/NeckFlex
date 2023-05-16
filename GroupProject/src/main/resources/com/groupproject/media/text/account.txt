@@ -1,4 +1,5 @@
-C000|admin|admin|vinh|thanh|google|01234|0|0|0
-C001|pasha|123|jeff|joun|my house|090902|1|90|20
-C002|joun|123|dat|pham|my house|09213|2|50|10
-C003|johnson|123|dat|what|my house|02414|3|20|30
+C000|admin|admin|vinh|thanh|google|01234|0|0.0|0
+C001|pasha|123|jeff|joun|my house|090902|1|90.0|20
+C002|joun|123|dat|pham|my house|09213|2|50.0|10
+C003|johnson|123|dat|what|my house|02414|3|20.0|30
+C005|joun2|123|dat|pham|0123|address|1|30.0|0

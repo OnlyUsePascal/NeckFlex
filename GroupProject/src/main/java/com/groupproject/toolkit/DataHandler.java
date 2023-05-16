@@ -25,7 +25,7 @@ public class DataHandler {
 
     public static void saveData(){
         System.out.println("===== save data =====");
-        // saveAccount();
+        saveAccount();
         // saveItem();
         saveCart();
         System.out.println("===== done =====");
@@ -109,7 +109,9 @@ public class DataHandler {
                 }
 
                 //basic
-                Account user = EntityHandler.accountFromUsername(infoList.get(0));
+                String username = infoList.get(0);
+                System.out.println(username);
+                Account user = EntityHandler.accountFromUsername(username);
                 Cart cart = user.getCart();
 
                 //detail
