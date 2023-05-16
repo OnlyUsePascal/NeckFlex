@@ -1,4 +1,4 @@
-pasha|12/2|60/10|
-joun|
+pasha|
+joun|0/1|
 johnson|
 joun2|

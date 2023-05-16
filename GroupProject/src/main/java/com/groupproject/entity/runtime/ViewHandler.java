@@ -83,7 +83,7 @@ public class ViewHandler {
         window.hide();
     }
 
-    static public void getPopup(AnchorPane pane, EventHandler<WindowEvent> popupOnClose){
+    static public Popup getPopup(AnchorPane pane, EventHandler<WindowEvent> popupOnClose){
         Stage stage = getCurrentStage();
 
         //popup
@@ -102,9 +102,10 @@ public class ViewHandler {
 
         // System.out.println(window.getX() + " " + window.getY() + " " + window.getWidth() + " " + window.getHeight());
         // System.out.println(pane.getWidth() + " " + pane.getHeight());
-        System.out.println(stage.getScene().getWidth());
-        System.out.println(popup.getWidth());
-        System.out.println(x + " " + y);
+        // System.out.println(stage.getScene().getWidth());
+        // System.out.println(popup.getWidth());
+        // System.out.println(x + " " + y);
+        return popup;
     }
 
     static public void hideNode(Node node){
@@ -119,6 +120,12 @@ public class ViewHandler {
         } catch (IOException err){
             err.printStackTrace();
         }
+    }
+
+    static public Window getWindow(ActionEvent event){
+        Node node = (Node) event.getSource();
+        Window window =  node.getScene().getWindow();
+        return window;
     }
 
     //=========== PANE ============
@@ -152,8 +159,8 @@ public class ViewHandler {
         }
     }
 
-    static public void lockScrollPane(ScrollPane scrollPane){
-        scrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
+    static public void lockHorizonScroll(Node pane){
+        pane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent event) {
                 if (event.getDeltaX() != 0) {
@@ -204,5 +211,9 @@ public class ViewHandler {
 
     static public double getDoubleRound(double num){
         return Math.round(num * 100.0) / 100.0;
+    }
+
+    static public boolean checkStringSimilar(String frame, String target){
+        return frame.toLowerCase().contains(target.toLowerCase());
     }
 }

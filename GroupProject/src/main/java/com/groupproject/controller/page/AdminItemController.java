@@ -10,23 +10,23 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Popup;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class AdminItemController implements Initializable {
@@ -46,13 +46,40 @@ public class AdminItemController implements Initializable {
     private TableColumn<Item, Integer> itemStockColumn;
     @FXML
     private TextField searchField;
+    @FXML
+    private ComboBox<String> categoryList;
 
+    private String optionAny;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        optionAny = "Any";
+        initFilter();
+
+        ViewHandler.lockHorizonScroll(tableViewItem);
         initColumnProperty();
         refreshTable();
 
+    }
+
+    public void initFilter() {
+        // category
+        categoryList.getItems().addAll(Arrays.asList(ConstantItem.categoryList));
+        categoryList.getItems().add(optionAny);
+        categoryList.setValue(optionAny);
+        categoryList.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                refreshTable();
+            }
+        });
+
+        // search
+        searchField.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode().toString().equals("ENTER")) {
+                refreshTable();
+            }
+        });
     }
 
     public void initColumnProperty() {
@@ -60,7 +87,7 @@ public class AdminItemController implements Initializable {
         itemTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         itemStockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
 
-        //category
+        // category
         itemCategoryColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Item, String> itemStringCellDataFeatures) {
@@ -69,7 +96,7 @@ public class AdminItemController implements Initializable {
             }
         });
 
-        //genre
+        // genre
         itemGenreColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Item, String> itemStringCellDataFeatures) {
@@ -109,14 +136,14 @@ public class AdminItemController implements Initializable {
                     setOnMouseClicked(event -> {
                         System.out.println("testing");
                         Item item = getTableView().getItems().get(getIndex());
-                        getPopup(item);
+                        getPopupUpdate(item);
                     });
                 }
             };
         });
     }
 
-    public void getPopup(Item item){
+    public void getPopupUpdate(Item item) {
         FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoUpdate()));
         try {
             AnchorPane itemPane = itemLoader.load();
@@ -133,25 +160,60 @@ public class AdminItemController implements Initializable {
         }
     }
 
-    boolean what = false;
+    public void getPopupCreate() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoAdd()));
+            AnchorPane pane = loader.load();
 
-    public void refreshTable(){
-        // tableViewItem.getItems().clear();
+            EventHandler<WindowEvent> popupOnClose = event2 -> {
+                refreshTable();
+            };
+
+            ViewHandler.getPopup(pane, popupOnClose);
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+
+    boolean scrollEvent = false;
+
+    public void refreshTable() {
         tableViewItem.setItems(getData());
         tableViewItem.refresh();
     }
 
     public ObservableList<Item> getData() {
-        // ObservableList<Item> itemList = ArrayList
-        // if (what){
-        //     return null;
-        // }
-
-        // what = true;
         ObservableList<Item> items = FXCollections.observableArrayList();
         for (Item item : EntityHandler.getItemList()) {
-            items.add(item);
+            boolean legit = true;
+            legit &= filterCategory(item);
+            legit &= filterSearch(item);
+
+            if (legit) {
+                items.add(item);
+            }
         }
         return items;
     }
+
+    public boolean filterCategory(Item item) {
+        String option = categoryList.getValue();
+        if (option.equals(optionAny)) return true;
+        return item.getCategoryString().equals(categoryList.getValue());
+    }
+
+    public boolean filterSearch(Item item) {
+        String searchString = searchField.getText();
+        if (searchString.isBlank()) return true;
+        return ViewHandler.checkStringSimilar(item.getId(), searchString) ||
+                ViewHandler.checkStringSimilar(item.getTitle(), searchString);
+    }
+
+    public void clearFilter(ActionEvent event) {
+        searchField.clear();
+        categoryList.setValue(optionAny);
+        refreshTable();
+    }
+
+
 }

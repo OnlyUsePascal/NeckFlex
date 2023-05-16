@@ -2,6 +2,7 @@ package com.groupproject.entity.generic;
 
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.Constant.ConstantAccount;
+import com.groupproject.entity.runtime.ViewHandler;
 
 import java.util.ArrayList;
 
@@ -65,7 +66,7 @@ public class Account {
     }
 
     public double getBalance() {
-        return this.balance;
+        return ViewHandler.getDoubleRound(balance);
     }
 
     public int getRewardPoint() {

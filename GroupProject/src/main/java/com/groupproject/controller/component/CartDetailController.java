@@ -48,14 +48,14 @@ public class CartDetailController implements Initializable {
     public void updateQuantity(ActionEvent event){
         Button btn = (Button) event.getSource();
         String btnText = btn.getText();
-        double itemPrice = cartDetail.getItem().getPrice();
 
         int newQuantity = cartDetail.getQuantity() + (btnText.equals("+") ? 1 : -1);
-        cartDetail.setQuantity(newQuantity);
+        if (cartDetail.setQuantity(newQuantity)){
+            cartController.refreshBill();
 
-        cartController.refreshBill();
-        quantityBox.setText(String.valueOf(cartDetail.getQuantity()));
-        totalPriceBox.setText(String.valueOf(cartDetail.getTotalPrice()));
+            quantityBox.setText(cartDetail.getQuantity() + "");
+            totalPriceBox.setText(cartDetail.getTotalPrice() + "");
+        }
     }
 
     public void setCartController(CartController cartController) {

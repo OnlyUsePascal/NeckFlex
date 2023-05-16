@@ -1,4 +1,4 @@
-xI001-2018|Avengers: Infinity War|0|0|1|11.55
+I001-2018|Avengers: Infinity War|0|0|1|11.55
 I002-2021|Spider-Man: No Way Home|0|1|2|14.71
 I003-2015|Jurassic World|0|2|9|19.66
 I004-2019|The Lion King|0|3|2|11.36

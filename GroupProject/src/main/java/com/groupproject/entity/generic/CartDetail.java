@@ -38,12 +38,15 @@ public class CartDetail {
         return quantity;
     }
 
-    public void setQuantity(int newQuantity) {
-        if (newQuantity >= 0) {
-            cart.updateTotalPrice(item.getPrice() * (newQuantity - quantity));
-            this.quantity = newQuantity;
-            totalPrice = ViewHandler.getDoubleRound(item.getPrice() * newQuantity);
+    public boolean setQuantity(int newQuantity) {
+        if (newQuantity < 1 || newQuantity > item.getStock()) {
+            return false;
         }
+
+        cart.updateTotalPrice(item.getPrice() * (newQuantity - quantity));
+        quantity = newQuantity;
+        totalPrice = ViewHandler.getDoubleRound(item.getPrice() * newQuantity);
+        return true;
     }
 
     @Override

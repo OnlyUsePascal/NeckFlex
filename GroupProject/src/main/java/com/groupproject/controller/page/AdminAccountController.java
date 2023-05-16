@@ -44,31 +44,31 @@ public class AdminAccountController implements Initializable {
     @FXML
     private TableColumn<Account, String> accountTypeColumn ;
     @FXML
-    private TextField keywordBox;
-    // @FXML
-    // private ChoiceBox<String> choiceList;
+    private TextField searchField;
     @FXML
     private ComboBox<String> choiceList;
 
-    String accountTypeOptionAll;
+    String optionAny;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        accountTypeOptionAll = "All";
+        optionAny = "Any";
         initFilter();
 
         initColumnProperty();
-        refreshTable(null);
+        refreshTable();
     }
 
     public void initFilter(){
         choiceList.getItems().addAll(Arrays.asList(ConstantAccount.statusList));
-        choiceList.getItems().add(accountTypeOptionAll);
-        choiceList.setValue(accountTypeOptionAll);
+        choiceList.getItems().add(optionAny);
+        choiceList.setValue(optionAny);
 
         choiceList.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            refreshTable(null);
+            refreshTable();
         });
+
+
     }
 
     public void initColumnProperty(){
@@ -123,7 +123,7 @@ public class AdminAccountController implements Initializable {
         });
     }
 
-    public void refreshTable(ActionEvent event){
+    public void refreshTable(){
         tableView.setItems(getData());
         tableView.refresh();
     }
@@ -134,6 +134,7 @@ public class AdminAccountController implements Initializable {
             boolean legit = true;
             legit &= filterType(account);
             legit &= filterSearch(account);
+
             if (legit){
                 accounts.add(account);
             }
@@ -149,7 +150,7 @@ public class AdminAccountController implements Initializable {
             controller.setData(account);
 
             EventHandler<WindowEvent> popupOnClose = event -> {
-                refreshTable(null);
+                refreshTable();
             };
 
             ViewHandler.getPopup(pane, popupOnClose);
@@ -162,39 +163,36 @@ public class AdminAccountController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPopupAccountInfoAdd()));
             AnchorPane pane = loader.load();
-            // AccountInfoUpdateController controller = loader.getController();
-            // controller.setData(account);
 
             EventHandler<WindowEvent> popupOnClose = event2 -> {
-                refreshTable(null);
+                refreshTable();
             };
 
             ViewHandler.getPopup(pane, popupOnClose);
         } catch (IOException err) {
             err.printStackTrace();
         }
-
     }
 
     public boolean filterType(Account account){
         String option = choiceList.getValue();
-        if (option.equals(accountTypeOptionAll)) return true;
+        if (option.equals(optionAny)) return true;
         return account.getStatusString().equals(option);
     }
 
     public boolean filterSearch(Account account){
-        String searchKeyword = keywordBox.getText();
+        String searchKeyword = searchField.getText();
         if(searchKeyword.isBlank()) return true;
-        return account.getId().contains(searchKeyword) ||
-                account.getUsername().contains(searchKeyword) ||
-                account.getFirstName().contains(searchKeyword) ||
-                account.getLastName().contains(searchKeyword);
+        return ViewHandler.checkStringSimilar(account.getId(), searchKeyword) ||
+                ViewHandler.checkStringSimilar(account.getUsername(), searchKeyword) ||
+                ViewHandler.checkStringSimilar(account.getFirstName(), searchKeyword) ||
+                ViewHandler.checkStringSimilar(account.getLastName(), searchKeyword);
     }
 
     public void clearFilter(ActionEvent event){
-        keywordBox.clear();
-        choiceList.setValue(accountTypeOptionAll);
-        refreshTable(null);
+        searchField.clear();
+        choiceList.setValue(optionAny);
+        refreshTable();
     }
 
 }
