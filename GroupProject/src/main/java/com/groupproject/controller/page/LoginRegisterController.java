@@ -149,7 +149,7 @@ public class LoginRegisterController implements Initializable {
 
     public void toPageLoginMain(ActionEvent event){
         Scene scene = ((Button) event.getSource()).getScene();
-        ViewHandler.sceneSet(scene, PathHandler.getPageLoginMain());
+        ViewHandler.setScene(scene, PathHandler.getPageLoginMain());
     }
 
 }

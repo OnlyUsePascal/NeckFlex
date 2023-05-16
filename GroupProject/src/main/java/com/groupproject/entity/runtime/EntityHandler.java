@@ -25,9 +25,9 @@ public class EntityHandler {
     //===================== AUTH ======================
     //logging
     static public void logOut(){
-        AnchorPane loginPane = ViewHandler.anchorPaneGet(PathHandler.getPageLoginMain());
+        AnchorPane loginPane = ViewHandler.getAnchorPane(PathHandler.getPageLoginMain());
         Scene scene = new Scene(loginPane);
-        ViewHandler.currentStageGet().setScene(scene);
+        ViewHandler.getCurrentStage().setScene(scene);
     }
 
 

@@ -1,4 +1,4 @@
-package com.groupproject.controller.page;
+package com.groupproject.controller.popup;
 
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
@@ -52,7 +52,7 @@ public class ItemInfoUpdateController implements Initializable {
         item.setGenre(ConstantItem.genreToIndex(itemInfoGenre.getValue()));
         item.setStock(Integer.parseInt(itemInfoQuantity.getText()));
 
-        ViewHandler.popupClose(event);
+        ViewHandler.closePopup(event);
     }
 
     public void DecreaseStock(){
@@ -67,7 +67,7 @@ public class ItemInfoUpdateController implements Initializable {
         System.out.println("Deleting Item!!!");
         EntityHandler.getItemList().remove(item);
 
-        ViewHandler.popupClose(event);
+        ViewHandler.closePopup(event);
     }
 
 

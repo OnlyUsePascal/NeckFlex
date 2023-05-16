@@ -1,5 +1,6 @@
 package com.groupproject.controller.page;
 
+import com.groupproject.controller.popup.ItemInfoUpdateController;
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.EntityHandler;
@@ -28,7 +29,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AdminItemListController implements Initializable {
+public class AdminItemController implements Initializable {
     @FXML
     private TableView<Item> tableViewItem;
     @FXML
@@ -116,7 +117,7 @@ public class AdminItemListController implements Initializable {
     }
 
     public void getPopup(Item item){
-        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPageItemInfoUpdate()));
+        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoUpdate()));
         try {
             AnchorPane itemPane = itemLoader.load();
             ItemInfoUpdateController controller = itemLoader.getController();
@@ -126,7 +127,7 @@ public class AdminItemListController implements Initializable {
                 refreshTable();
             };
 
-            ViewHandler.popupGet(itemPane, popupOnClose);
+            ViewHandler.getPopup(itemPane, popupOnClose);
         } catch (IOException err) {
             err.printStackTrace();
         }

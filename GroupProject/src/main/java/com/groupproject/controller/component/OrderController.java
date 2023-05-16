@@ -84,7 +84,7 @@ public class OrderController implements Initializable {
             }
         }
 
-        ViewHandler.userRecordControllerGet().refreshPage();
+        ViewHandler.getUserRecordController().refreshPage();
     }
 
 }

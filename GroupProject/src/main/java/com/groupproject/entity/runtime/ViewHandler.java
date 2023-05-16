@@ -32,7 +32,7 @@ public class ViewHandler {
 
     //=========== CONTROLLER ============
     //home
-    static public void homeControllerSet(HomeController homeController) {
+    static public void setHomeController(HomeController homeController) {
         ViewHandler.homeController = homeController;
     }
 
@@ -41,7 +41,7 @@ public class ViewHandler {
     }
 
     //nav bar
-    static public void navBarControllerSet(NavBarController navBarController) {
+    static public void setNavBarController(NavBarController navBarController) {
         ViewHandler.navBarController = navBarController;
     }
 
@@ -50,7 +50,7 @@ public class ViewHandler {
     }
 
     //sidebar
-    static public void sidebarControllerSet(SidebarController sidebarController) {
+    static public void setSidebarController(SidebarController sidebarController) {
         ViewHandler.sidebarController = sidebarController;
     }
 
@@ -59,32 +59,32 @@ public class ViewHandler {
     }
 
     //user record
-    static public void userRecordControllerSet(UserRecordController controller){
+    static public void setUserRecordController(UserRecordController controller){
         ViewHandler.userRecordController = controller;
     }
 
-    static public UserRecordController userRecordControllerGet(){
+    static public UserRecordController getUserRecordController(){
         return userRecordController;
     }
 
 
     //=========== SCENE, PANE, .. ============
-    static public Stage currentStageGet() {
+    static public Stage getCurrentStage() {
         return currentStage;
     }
 
-    static public void currentStageSet(Stage stage) {
+    static public void setCurrentStage(Stage stage) {
         currentStage = stage;
     }
 
-    static public void popupClose(ActionEvent event) {
+    static public void closePopup(ActionEvent event) {
         Node node = (Node) event.getSource();
         Window window =  node.getScene().getWindow();
         window.hide();
     }
 
-    static public void popupGet(AnchorPane pane, EventHandler<WindowEvent> popupOnClose){
-        Stage stage = currentStageGet();
+    static public void getPopup(AnchorPane pane, EventHandler<WindowEvent> popupOnClose){
+        Stage stage = getCurrentStage();
 
         //popup
         Popup popup = new Popup();
@@ -95,23 +95,24 @@ public class ViewHandler {
 
         //to middle
         AnchorPane contentPane = (AnchorPane) popup.getContent().get(0);
-        double x = stage.getX() + (stage.getScene().getWidth() - popup.getWidth()) / 2;
-        double y = stage.getY() + (stage.getScene().getHeight() - popup.getHeight()) / 2;
+        double x = stage.getX() + (stage.getWidth() - popup.getWidth()) / 2;
+        double y = stage.getY() + (stage.getHeight() - popup.getHeight()) / 2;
+        popup.setX(x);
+        popup.setY(y);
+
         // System.out.println(window.getX() + " " + window.getY() + " " + window.getWidth() + " " + window.getHeight());
         // System.out.println(pane.getWidth() + " " + pane.getHeight());
         System.out.println(stage.getScene().getWidth());
         System.out.println(popup.getWidth());
         System.out.println(x + " " + y);
-        popup.setX(x);
-        popup.setY(y);
     }
 
-    static public void nodeHide(Node node){
+    static public void hideNode(Node node){
         node.setVisible(!node.isVisible());
         node.setDisable(!node.isDisable());
     }
 
-    static public void sceneSet(Scene scene, String url){
+    static public void setScene(Scene scene, String url){
         FXMLLoader loader = new FXMLLoader(ViewHandler.class.getResource(url));
         try {
             scene.setRoot(loader.load());
@@ -121,7 +122,7 @@ public class ViewHandler {
     }
 
     //=========== PANE ============
-    static public void anchorPaneSet(AnchorPane frame, Node node){
+    static public void setAnchorPane(AnchorPane frame, Node node){
         // if (true) {
         if (frame.getChildren().size() == 0) {
             frame.getChildren().add(node);
@@ -130,17 +131,17 @@ public class ViewHandler {
         }
     }
 
-    static public void anchorPaneSet(AnchorPane frame, String url){
+    static public void setAnchorPane(AnchorPane frame, String url){
         FXMLLoader fxmlLoader = new FXMLLoader(ViewHandler.class.getResource(url));
         try {
             AnchorPane node = (AnchorPane) fxmlLoader.load();
-            anchorPaneSet(frame, node);
+            setAnchorPane(frame, node);
         } catch (Exception err){
             err.printStackTrace();
         }
     }
 
-    static public AnchorPane anchorPaneGet(String url){
+    static public AnchorPane getAnchorPane(String url){
         FXMLLoader fxmlLoader = new FXMLLoader(ViewHandler.class.getResource(url));
         try {
             AnchorPane node = (AnchorPane) fxmlLoader.load();
@@ -151,7 +152,7 @@ public class ViewHandler {
         }
     }
 
-    static public void scrollPaneLockScroll(ScrollPane scrollPane){
+    static public void lockScrollPane(ScrollPane scrollPane){
         scrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent event) {

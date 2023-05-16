@@ -23,7 +23,7 @@ public class SidebarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ViewHandler.sidebarControllerSet(this);
+        ViewHandler.setSidebarController(this);
         initTransition();
     }
 

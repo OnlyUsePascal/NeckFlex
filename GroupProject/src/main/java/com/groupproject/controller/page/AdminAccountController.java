@@ -1,5 +1,6 @@
 package com.groupproject.controller.page;
 
+import com.groupproject.controller.popup.AccountInfoUpdateController;
 import com.groupproject.entity.Constant.ConstantAccount;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.runtime.EntityHandler;
@@ -27,7 +28,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class AdminAccountListController implements Initializable {
+public class AdminAccountController implements Initializable {
     @FXML
     private TableView<Account> tableView;
     @FXML
@@ -141,21 +142,19 @@ public class AdminAccountListController implements Initializable {
     }
 
     public void getPopup(Account account){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageUserProfile()));
+        // FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageUserProfile()));
+
         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPopupAccountInfoUpdate()));
             AnchorPane pane = loader.load();
-            UserProfileController controller = loader.getController();
+            AccountInfoUpdateController controller = loader.getController();
             controller.setData(account);
 
             EventHandler<WindowEvent> popupOnClose = event -> {
                 refreshTable(null);
             };
 
-            ViewHandler.popupGet(pane, popupOnClose);
-            // popup.show(ShopSystem.getCurrentStage());
-
-            // AnchorPane pane2 = (AnchorPane) popup.getContent().get(0);
-            // System.out.println(pane2.getWidth() + " " + pane2.getHeight());
+            ViewHandler.getPopup(pane, popupOnClose);
         } catch (IOException err) {
             err.printStackTrace();
         }

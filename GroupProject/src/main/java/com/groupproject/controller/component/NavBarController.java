@@ -21,7 +21,7 @@ public class NavBarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ViewHandler.navBarControllerSet(this);
+        ViewHandler.setNavBarController(this);
         initSearchField();
         refreshMenuButtonName();
     }

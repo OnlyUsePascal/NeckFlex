@@ -22,4 +22,7 @@ module com.groupproject {
 
     exports com.groupproject.entity.Constant;
     opens com.groupproject.entity.Constant to javafx.fxml;
+
+    opens com.groupproject.controller.popup to javafx.fxml;
+    exports com.groupproject.controller.popup;
 }

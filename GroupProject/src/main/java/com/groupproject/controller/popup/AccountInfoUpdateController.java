@@ -1,14 +1,12 @@
-package com.groupproject.controller.page;
+package com.groupproject.controller.popup;
 
 import com.groupproject.entity.generic.Account;
-import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
@@ -17,7 +15,7 @@ import javafx.stage.Window;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserProfileController implements Initializable {
+public class AccountInfoUpdateController implements Initializable {
     @FXML
     private Label usernameBox;
     @FXML
@@ -45,24 +43,17 @@ public class UserProfileController implements Initializable {
 
     private Account account;
 
-    // private NavBarController navBarController;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setData(EntityHandler.getCurrentUser());
-        displayInfo();
+
     }
 
-    // public void setNavBarController(NavBarController navBarController) {
-    //     this.navBarController = navBarController;
-    // }
-
-    public void setData(Account account) {
+    public void setData(Account account){
         this.account = account;
         displayInfo();
     }
 
-    public void displayInfo() {
+    public void displayInfo(){
         usernameBox.setText(account.getUsername());
         balanceBox.setText(String.valueOf(account.getBalance()));
         rewardPointBox.setText(String.valueOf(account.getRewardPoint()));
@@ -72,7 +63,8 @@ public class UserProfileController implements Initializable {
         addressBox.setText(account.getAddress());
     }
 
-    public void profileEdit(ActionEvent event) {
+
+    public void profileEdit(ActionEvent event){
         // System.out.println("toUserProfileEdit");
         boolean legit = true;
         boolean status = true;
@@ -100,7 +92,7 @@ public class UserProfileController implements Initializable {
 
         invalidMessage.setVisible(false);
 
-        // account
+        //account
         this.account.setFirstName(firstNameBox.getText());
         this.account.setLastName(lastNameBox.getText());
         this.account.setPhoneNumber(phoneNumberBox.getText());
@@ -108,39 +100,21 @@ public class UserProfileController implements Initializable {
 
         // System.out.println(this.account);
 
-        // back to home
+        //back to home
         returnHome(event);
-
     }
 
-    public void returnHome(ActionEvent event) {
-        // popup -> close
-        // other wise -> update navbar, back to home
+    public void returnHome(ActionEvent event){
+        //popup -> close
+        //other wise -> update navbar, back to home
 
-        // Window window = ((Node) event.getSource()).getScene().getWindow();
+        Window window = ((Node) event.getSource()).getScene().getWindow();
         ViewHandler.refreshMenuButtonName();
-        ViewHandler.setPageContent(PathHandler.getPageItemTrending());
-        // if (window instanceof Popup) {
+        window.hide();
+        // if (window instanceof Popup){
         //     window.hide();
         // } else {
+        //     ViewHandler.setPageContent(PathHandler.getPageItemTrending());
         // }
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

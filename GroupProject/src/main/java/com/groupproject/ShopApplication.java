@@ -33,7 +33,7 @@ public class ShopApplication extends Application {
 
 
         //init
-        ViewHandler.currentStageSet(stage);
+        ViewHandler.setCurrentStage(stage);
         String pageFile = PathHandler.getPageLoginMain();
         pageFile = PathHandler.getPageHome();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageFile));

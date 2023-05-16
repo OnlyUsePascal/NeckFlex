@@ -25,7 +25,7 @@ public class UserRecordController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ViewHandler.userRecordControllerSet(this);
+        ViewHandler.setUserRecordController(this);
         refreshPage();
 
     }

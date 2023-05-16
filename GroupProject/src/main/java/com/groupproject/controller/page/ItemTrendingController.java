@@ -59,12 +59,11 @@ public class ItemTrendingController implements Initializable {
             });
         }).start();
 
-        // new Thread(() -> {
-        //     Platform.runLater(() -> {
-        //         addItemTile(itemTileGame, EntityHandler.itemGameListGet());
-        //         ViewHandler.scrollPaneLockScroll(itemPageGame);
-        //     });
-        // }).start();
+        new Thread(() -> {
+            Platform.runLater(() -> {
+                addItemTile(ConstantItem.ItemCategory.GAME, EntityHandler.getItemGameList());
+            });
+        }).start();
     }
 
     public void addItemTile(ConstantItem.ItemCategory category, ArrayList<Item> itemList){
@@ -78,40 +77,5 @@ public class ItemTrendingController implements Initializable {
         } catch (IOException err) {
             err.printStackTrace();
         }
-        // try{
-        //     for (Item item : itemList.subList(0,4)){
-        //         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
-        //         Button itemBox = (Button) fxmlLoader.load();
-        //
-        //         ItemBoxController itemBoxController = fxmlLoader.getController();
-        //         itemBoxController.setData(item);
-        //         itemTile.getChildren().add(itemBox);
-        //     }
-        // } catch (IOException err) {
-        //     err.printStackTrace();
-        // }
-    }
-
-    public void moveItemTile(ActionEvent event){
-        //get btn
-        Button btn = (Button) event.getSource();
-        String btnId = btn.getId();
-
-        //get item tile from button
-        HBox tileTitleContainer = (HBox) btn.getParent();
-        VBox itemTileContainer = (VBox) tileTitleContainer.getParent();
-        ScrollPane scrollPane = (ScrollPane) itemTileContainer.getChildren().get(1);
-        HBox itemTile = (HBox) scrollPane.getContent();
-        moveTile.setNode(itemTile);
-
-        //move
-        double offset = ((Button) itemTileDvd.getChildren().get(0)).getWidth() * 4;
-        if (btnId.equals("moveLeft")){
-            moveTile.setByX(offset);
-        } else {
-            moveTile.setByX(-offset);
-        }
-
-        moveTile.play();
     }
 }

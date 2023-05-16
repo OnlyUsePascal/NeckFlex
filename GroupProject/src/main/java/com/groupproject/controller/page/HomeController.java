@@ -29,24 +29,24 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ViewHandler.homeControllerSet(this);
+        ViewHandler.setHomeController(this);
 
-        setPageContent(PathHandler.getPageItemTrending());
-        // setPageContent(PathHandler.getPageCart());
+        // setPageContent(PathHandler.getPageItemTrending());
+        setPageContent(PathHandler.getPageAdminAccount());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBar(PathHandler.getComponentNavBar());
     }
 
     public void setSidebar(String url){
-        ViewHandler.anchorPaneSet(sidebarPanel, url);
+        ViewHandler.setAnchorPane(sidebarPanel, url);
     }
 
     public void setPageContent(String url) {
-        ViewHandler.anchorPaneSet(pageContent, url);
+        ViewHandler.setAnchorPane(pageContent, url);
     }
 
     public void setNavBar(String url){
         sidebarPanel.setTranslateX(-300);
-        ViewHandler.anchorPaneSet(navBar, url);
+        ViewHandler.setAnchorPane(navBar, url);
     }
 }

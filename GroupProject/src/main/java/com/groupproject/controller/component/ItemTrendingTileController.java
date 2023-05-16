@@ -39,7 +39,7 @@ public class ItemTrendingTileController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         moveTileAnimation = new TranslateTransition(Duration.seconds(0.3), container);
         pgCnt = (((int) listSz) - rowSz) / (int) moveSz ;
-        ViewHandler.scrollPaneLockScroll(scrollPane);
+        ViewHandler.lockScrollPane(scrollPane);
     }
 
     public void moveItemTile(ActionEvent event){

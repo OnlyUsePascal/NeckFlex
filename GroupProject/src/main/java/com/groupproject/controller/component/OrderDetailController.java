@@ -54,7 +54,7 @@ public class OrderDetailController implements Initializable {
 
     public void returnItem(ActionEvent event){
         orderDetail.setReturned();
-        ViewHandler.userRecordControllerGet().refreshPage();
+        ViewHandler.getUserRecordController().refreshPage();
     }
 
     public void returnItem(){

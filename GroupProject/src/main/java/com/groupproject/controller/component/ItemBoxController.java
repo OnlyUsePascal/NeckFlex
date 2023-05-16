@@ -1,6 +1,6 @@
 package com.groupproject.controller.component;
 
-import com.groupproject.controller.page.ItemInfoController;
+import com.groupproject.controller.popup.ItemInfoCartController;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
@@ -57,14 +57,14 @@ public class ItemBoxController implements Initializable {
 
     public void getPopup(ActionEvent event){
         System.out.println("popup");
-        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPageItemInfo()));
+        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoCart()));
         try {
             AnchorPane itemInfoPane = itemLoader.load();
 
-            ItemInfoController itemInfoController = itemLoader.getController();
-            itemInfoController.setData(item);
+            ItemInfoCartController itemInfoCartController = itemLoader.getController();
+            itemInfoCartController.setData(item);
 
-            ViewHandler.popupGet(itemInfoPane, null);
+            ViewHandler.getPopup(itemInfoPane, null);
             // ShopSystem.showPopup(popup);
         } catch (IOException err){
             err.printStackTrace();

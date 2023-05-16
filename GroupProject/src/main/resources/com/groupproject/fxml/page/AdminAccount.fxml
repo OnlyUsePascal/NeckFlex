@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="820.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.AdminAccountListController">
+<AnchorPane prefHeight="820.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.AdminAccountController">
     <children>
         <TableView fx:id="tableView" layoutX="469.0" layoutY="215.0" prefHeight="360.0" prefWidth="812.0">
             <columns>

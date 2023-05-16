@@ -5,6 +5,7 @@ import com.groupproject.entity.runtime.EntityHandler;
 public class PathHandler {
     final static String pageRoot = "/com/groupproject/fxml/page/";
     final static String componentRoot = "/com/groupproject/fxml/component/";
+    final static String popupRoot = "/com/groupproject/fxml/popup/";
     final static String imgRoot = "/com/groupproject/media/image/";
     final static String videoRoot = "/com/groupproject/media/video/";
     final static String textRoot = "src/main/resources/com/groupproject/media/text/";
@@ -38,29 +39,23 @@ public class PathHandler {
         return pageRoot + "UserProfile.fxml";
     }
 
-    static public String getPageAdminAccount(){
-        return pageRoot + "AdminAccountList.fxml";
-    }
-
-    static public String getPageAdminItem(){
-        return pageRoot + "AdminItemList.fxml";
-    }
-
     static public String getPageUserDeposit() {
         return pageRoot + "UserDeposit.fxml";
     }
+
+    static public String getPageAdminAccount(){
+        return pageRoot + "AdminAccount.fxml";
+    }
+
+    static public String getPageAdminItem(){
+        return pageRoot + "AdminItem.fxml";
+    }
+
 
     static public String getPageCart(){
         return pageRoot + "Cart.fxml";
     }
 
-    static public String getPageItemInfo(){
-        return pageRoot + "ItemInfo.fxml";
-    }
-
-    static public String getPageItemInfoUpdate(){
-        return pageRoot + "ItemInfoUpdate.fxml";
-    }
 
     static public String getComponentSidebar() {
         if (EntityHandler.getCurrentUser().isAdmin()){
@@ -75,6 +70,7 @@ public class PathHandler {
         }
         return componentRoot + "NavBarCustomer.fxml";
     }
+
 
     static public String getComponentItemBox() {
         return componentRoot + "ItemBox.fxml";
@@ -94,6 +90,23 @@ public class PathHandler {
 
     static public String getComponentItemTrendingTile(){
         return componentRoot + "ItemTrendingTile.fxml";
+    }
+
+
+    static public String getPopupItemInfoCart(){
+        return popupRoot + "ItemInfoCart.fxml";
+    }
+
+    static public String getPopupItemInfoUpdate(){
+        return popupRoot + "ItemInfoUpdate.fxml";
+    }
+
+    static public String getPopupItemInfoAdd(){
+        return popupRoot + "ItemInfoAdd.fxml";
+    }
+
+    static public String getPopupAccountInfoUpdate(){
+        return popupRoot + "AccountInfoUpdate.fxml";
     }
 
 

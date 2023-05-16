@@ -1,4 +1,4 @@
-package com.groupproject.controller.page;
+package com.groupproject.controller.popup;
 
 import com.groupproject.entity.generic.CartDetail;
 import com.groupproject.entity.generic.Item;
@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ItemInfoController implements Initializable {
+public class ItemInfoCartController implements Initializable {
     @FXML
     private Label title;
     @FXML
@@ -44,7 +44,7 @@ public class ItemInfoController implements Initializable {
             cartAmount.setText(String.valueOf(cartDetail.getQuantity()));
         } else {
             cartAmount.setText("1");
-            ViewHandler.nodeHide(updateCartBtn);
+            ViewHandler.hideNode(updateCartBtn);
         }
     }
 
@@ -53,7 +53,7 @@ public class ItemInfoController implements Initializable {
         int newCartQuantity = Integer.parseInt(cartAmount.getText());
         EntityHandler.addCartDetail(item, newCartQuantity);
         // ShopSystem.closePopup(event);
-        ViewHandler.popupClose(event);
+        ViewHandler.closePopup(event);
     }
 
     public void updateCart(ActionEvent event) {
@@ -63,7 +63,7 @@ public class ItemInfoController implements Initializable {
         cartDetail.setQuantity(newCartQuantity);
 
         // ShopSystem.closePopup(event);
-        ViewHandler.popupClose(event);
+        ViewHandler.closePopup(event);
     }
 
     public void setData(Item _item) {
