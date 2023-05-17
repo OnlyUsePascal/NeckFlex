@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.MakeOrderBasicController">
+   <children>
+      <VBox fx:id="dateContainer" prefHeight="400.0" prefWidth="304.0" />
+      <AnchorPane fx:id="orderPlane" layoutX="300.0" prefHeight="400.0" prefWidth="304.0">
+         <children>
+            <Label layoutX="106.0" layoutY="57.0" text="Period Of Time" />
+            <Button fx:id="orderButton" layoutX="122.0" layoutY="154.0" mnemonicParsing="false" onAction="#makeOrder" text="Order" />
+            <ComboBox fx:id="choiceBox" layoutX="75.0" layoutY="98.0" prefWidth="150.0" />
+            <Label fx:id="response" alignment="CENTER" layoutX="77.0" layoutY="208.0" prefHeight="109.0" prefWidth="150.0" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
