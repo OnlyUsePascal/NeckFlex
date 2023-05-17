@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.ImportAndShow.scene1Controller">
+   <children>
+      <Button fx:id="button" layoutX="532.0" layoutY="350.0" mnemonicParsing="false" onAction="#changeScene" text="Next" />
+      <Label layoutX="484.0" layoutY="7.0" prefHeight="57.0" prefWidth="116.0" text="This is scene 1" />
+   </children>
+</AnchorPane>
