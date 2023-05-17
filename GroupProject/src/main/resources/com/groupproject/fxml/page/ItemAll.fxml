@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -82,6 +84,33 @@
                                  <font>
                                     <Font size="16.0" />
                                  </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="28.0">
+                           <children>
+                              <Button fx:id="pagePrev" mnemonicParsing="false" onAction="#changePage" prefHeight="41.0" prefWidth="51.0" stylesheets="@../../style.css">
+                                 <graphic>
+                                    <ImageView fitHeight="26.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../media/image/chevron-left-solid.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Label fx:id="pageIndex" text="1">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="pageNext" mnemonicParsing="false" onAction="#changePage" prefHeight="41.0" prefWidth="51.0" stylesheets="@../../style.css">
+                                 <graphic>
+                                    <ImageView fitHeight="26.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../media/image/chevron-right-solid.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
                            </children>
                         </HBox>

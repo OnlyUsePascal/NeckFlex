@@ -4,6 +4,8 @@ import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.toolkit.PathHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,7 +18,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 
 import java.io.File;
+import java.net.URI;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -39,14 +45,13 @@ public class ItemInfoAddController implements Initializable {
     @FXML
     private Label errorMessage;
 
+    private URI imgPath;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         itemRegisterGenre.getItems().addAll(Arrays.asList(ConstantItem.genreList));
         itemRegisterCategory.getItems().addAll(Arrays.asList(ConstantItem.categoryList));
-
-        // itemRegisterGenre.getItems().addAll("Action", "Adventure", "Comedy", "Crime", "Drama");
-        // itemRegisterCategory.getItems().addAll("MovieRecord", "DVD", "VideoGame");
     }
 
     public void loadImage(ActionEvent event) {
@@ -64,13 +69,42 @@ public class ItemInfoAddController implements Initializable {
         Popup popup = (Popup) ViewHandler.getWindow(event);
         popup.show(ViewHandler.getCurrentStage());
 
-
         if (file != null) {
             Image image = new Image(file.toURI().toString());
-            System.out.println(file.toURI().toString());
-
             itemRegisterImage.setImage(image);
+
+            imgPath = file.toURI();
         }
+    }
+
+    public void addItem(ActionEvent event) {
+        if (!checkAll()) return;
+
+        int year = Integer.parseInt(itemRegisterYear.getText());
+        String title = itemRegisterTitle.getText();
+        String category = itemRegisterCategory.getValue();
+        String genre = itemRegisterGenre.getValue();
+        int stock = Integer.parseInt(itemRegisterStock.getText());
+        double price = Double.parseDouble(itemRegisterPrice.getText());
+
+        ArrayList<String> infoList = new ArrayList<>();
+        infoList.add(Item.getIdFromYear(year));
+        infoList.add(title);
+        infoList.add(ConstantItem.categoryToIndex(category) + "");
+        infoList.add(ConstantItem.genreToIndex(genre) + "");
+        infoList.add(stock + "");
+        infoList.add(price + "");
+
+        Item item = EntityHandler.getCategorizedItem(infoList);
+        EntityHandler.addItem(item);
+
+        //copy image
+        new Thread(() -> {
+            String newName = item.getImgName();
+            ViewHandler.copyImageToResource(imgPath, newName);
+        }).start();
+
+        closePopup(event);
     }
 
     public void DecreaseStock() {
@@ -92,10 +126,6 @@ public class ItemInfoAddController implements Initializable {
             return;
         }
     }
-
-    // public void cancel(){
-    //     ItemRegister.window.close();
-    // }
 
     public boolean checkTitle() {
         if (itemRegisterTitle.getText().isEmpty()) {
@@ -163,6 +193,13 @@ public class ItemInfoAddController implements Initializable {
             errorMessage.setTextFill(javafx.scene.paint.Color.RED);
             return false;
         }
+
+        if (itemRegisterYear.getText().length() != 4) {
+            errorMessage.setText("Invalid year");
+            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
+            return false;
+        }
+
         return true;
     }
 
@@ -191,29 +228,7 @@ public class ItemInfoAddController implements Initializable {
         return true;
     }
 
-    public void addItem(ActionEvent event) {
-        if (!checkAll()) return;
 
-        int year = Integer.parseInt(itemRegisterYear.getText());
-        String title = itemRegisterTitle.getText();
-        String category = itemRegisterCategory.getValue();
-        String genre = itemRegisterGenre.getValue().toString();
-        int stock = Integer.parseInt(itemRegisterStock.getText());
-        double price = Double.parseDouble(itemRegisterPrice.getText());
-
-        ArrayList<String> infoList = new ArrayList<>();
-        infoList.add(year + "");
-        infoList.add(title);
-        infoList.add(ConstantItem.categoryToIndex(category) + "");
-        infoList.add(ConstantItem.genreToIndex(genre) + "");
-        infoList.add(stock + "");
-        infoList.add(price + "");
-
-        Item item = EntityHandler.getCategorizedItem(infoList);
-        EntityHandler.addItem(item);
-
-        closePopup(event);
-    }
 
     public void closePopup(ActionEvent event) {
         ViewHandler.closePopup(event);

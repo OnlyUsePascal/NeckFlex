@@ -105,6 +105,21 @@ public class Account {
         return orderList;
     }
 
+    public String getOrderListInfo(){
+        String orderListInfo = username + "@";
+        for (Order order : orderList){
+            orderListInfo += order.getOrderInfo() + "@";
+        }
+
+        return orderListInfo;
+    }
+
+    public String getCartInfo(){
+        String cartInfo = username + "|";
+        cartInfo += cart.getCartInfo();
+        return cart.getCartInfo();
+    }
+
 
     public boolean isAdmin() {
         return status == ConstantAccount.AccountStatus.ADMIN;
@@ -172,6 +187,7 @@ public class Account {
     public void makeAdmin() {
         status = ConstantAccount.AccountStatus.ADMIN;
     }
+
 
     @Override
     public String toString() {

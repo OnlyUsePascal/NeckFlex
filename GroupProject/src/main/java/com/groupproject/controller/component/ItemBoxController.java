@@ -16,6 +16,9 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class ItemBoxController implements Initializable {
@@ -30,19 +33,21 @@ public class ItemBoxController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setImg("banner1.jpg");
-
-        // itemBox.getChildren().add(imgView);
     }
 
     public void setData(Item _item) {
         item = _item;
         setTitle(_item.getTitle());
         setPrice(_item.getPrice());
+
+        setImg();
     }
 
-    public void setImg(String url) {
-        Image img = ViewHandler.getImage("banner1.jpg");
+    public void setImg() {
+        String url = PathHandler.getFileImageItem(item.getImgName());
+        Path path = Paths.get(url);
+
+        Image img = new Image(path.toUri().toString());
         ImagePattern imgView = new ImagePattern(img);
         imgFrame.setFill(imgView);
     }

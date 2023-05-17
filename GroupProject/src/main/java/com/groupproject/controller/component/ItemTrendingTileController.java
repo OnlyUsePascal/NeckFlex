@@ -64,7 +64,8 @@ public class ItemTrendingTileController implements Initializable {
         title.setText(category.toString());
 
         try{
-            for (Item item : itemList.subList(0,listSz)){
+            for (int i = 0 ; i < Math.min(listSz, itemList.size()); i++){
+                Item item = itemList.get(i);
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
                 Button itemBox = (Button) fxmlLoader.load();
 
@@ -77,4 +78,6 @@ public class ItemTrendingTileController implements Initializable {
             err.printStackTrace();
         }
     }
+
+
 }

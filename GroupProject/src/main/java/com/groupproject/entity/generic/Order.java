@@ -5,13 +5,13 @@ import com.groupproject.entity.runtime.EntityHandler;
 import java.util.ArrayList;
 
 public class Order {
-    private Account orderOwner;
+    private Account owner;
     private ArrayList<OrderDetail> orderDetailList;
     private double totalPrice;
 
 
     public Order(Account user){
-        orderOwner = user;
+        owner = user;
         orderDetailList = new ArrayList<>();
     }
 
@@ -44,10 +44,19 @@ public class Order {
         totalPrice = price;
     }
 
+    public String getOrderInfo(){
+        String orderInfo = "";
+        for (OrderDetail orderDetail : orderDetailList){
+            orderInfo += orderDetail.getOrderDetailInfo() + "~";
+        }
+
+        return orderInfo;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "orderOwner=" + orderOwner +
+                "orderOwner=" + owner +
                 ", orderDetailList=" + orderDetailList +
                 '}';
     }

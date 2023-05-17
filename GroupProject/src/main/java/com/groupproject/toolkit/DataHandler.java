@@ -19,6 +19,7 @@ public class DataHandler {
         getAccount();
         getItem();
         getCart();
+        getOrder();
         System.out.println("===== done =====");
 
     }
@@ -28,13 +29,14 @@ public class DataHandler {
         saveAccount();
         // saveItem();
         saveCart();
+        saveOrder();
         System.out.println("===== done =====");
 
     }
 
     //================== GET ===================
     public static void getAccount(){
-        File file = ViewHandler.getFile(PathHandler.getMediaTextAccount());
+        File file = ViewHandler.getFile(PathHandler.getFileTextAccount());
 
         try {
             Scanner my_reader = new Scanner(file);
@@ -69,7 +71,7 @@ public class DataHandler {
     }
 
     public static void getItem(){
-        File file = ViewHandler.getFile(PathHandler.getMediaTextItem());
+        File file = ViewHandler.getFile(PathHandler.getFileTextItem());
 
         try {
             Scanner my_reader = new Scanner(file);
@@ -83,11 +85,9 @@ public class DataHandler {
                     infoList.add(st.nextToken());
                 }
 
-                // System.out.println(infoList.toString());
-
                 Item newItem = EntityHandler.getCategorizedItem(infoList);
                 EntityHandler.addItem(newItem);
-                Item.genericId++;
+                // Item.genericId++;
             }
         } catch(FileNotFoundException err){
             err.printStackTrace();
@@ -95,7 +95,7 @@ public class DataHandler {
     }
 
     public static void getCart(){
-        File file = ViewHandler.getFile(PathHandler.getMediaTextCart());
+        File file = ViewHandler.getFile(PathHandler.getFileTextCart());
 
         try {
             Scanner my_reader = new Scanner(file);
@@ -110,7 +110,7 @@ public class DataHandler {
 
                 //basic
                 String username = infoList.get(0);
-                System.out.println(username);
+                // System.out.println(username);
                 Account user = EntityHandler.accountFromUsername(username);
                 Cart cart = user.getCart();
 
@@ -134,9 +134,72 @@ public class DataHandler {
         }
     }
 
+    public static void getOrder(){
+        File file = ViewHandler.getFile(PathHandler.getFileTextOrder());
+
+        try {
+            Scanner my_reader = new Scanner(file);
+            while(my_reader.hasNextLine()){
+                String data = my_reader.nextLine();
+
+                StringTokenizer st = new StringTokenizer(data, "@");
+                ArrayList<String> infoList = new ArrayList<>();
+                while (st.hasMoreTokens()) {
+                    infoList.add(st.nextToken());
+                }
+
+                //basic
+                String username = infoList.get(0);
+                // System.out.println(username);
+                Account user = EntityHandler.accountFromUsername(username);
+
+                //order
+                for (int i = 1; i < infoList.size(); i++){
+                    Order order = new Order(user);
+
+                    StringTokenizer st2 = new StringTokenizer(infoList.get(i), "~");
+                    ArrayList<String> orderDetails = new ArrayList<>();
+                    while (st2.hasMoreTokens()) {
+                        orderDetails.add(st2.nextToken());
+                    }
+
+                    //order detail
+                    for (String orderDetailInfo : orderDetails){
+                        StringTokenizer st3 = new StringTokenizer(orderDetailInfo, "/");
+                        ArrayList<String> orderDetail = new ArrayList<>();
+                        while (st3.hasMoreTokens()) {
+                            orderDetail.add(st3.nextToken());
+                        }
+
+                        int quantity = Integer.parseInt(orderDetail.get(0));
+                        boolean returned = Boolean.parseBoolean(orderDetail.get(1));
+
+                        //item
+                        String itemInfo = orderDetail.get(2);
+                        StringTokenizer st4 = new StringTokenizer(itemInfo, "|");
+                        ArrayList<String> itemInfoList = new ArrayList<>();
+                        while (st4.hasMoreTokens()) {
+                            itemInfoList.add(st4.nextToken());
+                        }
+
+                        Item item = EntityHandler.getCategorizedItem(itemInfoList);
+
+                        OrderDetail orderDetail1 = new OrderDetail(item, quantity, returned, order);
+                        order.addOrderDetail(orderDetail1);
+                    }
+
+                    user.addOrder(order);
+                }
+            }
+        } catch(FileNotFoundException err){
+            err.printStackTrace();
+        }
+    }
+
+
     //================== SAVE ===================
     public static void saveAccount(){
-        File file = ViewHandler.getFile(PathHandler.getMediaTextAccount());
+        File file = ViewHandler.getFile(PathHandler.getFileTextAccount());
 
         try{
             PrintWriter printWriter = new PrintWriter(file);
@@ -153,7 +216,7 @@ public class DataHandler {
     }
 
     public static void saveItem(){
-        File file = ViewHandler.getFile(PathHandler.getMediaTextItem());
+        File file = ViewHandler.getFile(PathHandler.getFileTextItem());
 
         try{
             PrintWriter printWriter = new PrintWriter(file);
@@ -163,7 +226,7 @@ public class DataHandler {
             }
 
             printWriter.close();
-            System.out.println("Save data successfully!");
+            System.out.println("Save item successfully!");
 
         }catch(IOException err){
             err.printStackTrace();
@@ -171,31 +234,44 @@ public class DataHandler {
     }
 
     public static void saveCart(){
-        File file = ViewHandler.getFile(PathHandler.getMediaTextCart());
+        File file = ViewHandler.getFile(PathHandler.getFileTextCart());
 
         try{
             PrintWriter printWriter = new PrintWriter(file);
 
-
-            // for (Item item : EntityHandler.getItemList()) {
-            //     printWriter.println(item);
-            // }
             for (Account user : EntityHandler.getAccountList()) {
                 if (user.isAdmin()) continue;
 
-                String cartInfo = user.getCart().getCartInfoString();
+                String cartInfo = user.getCart().getCartInfo();
                 printWriter.println(cartInfo);
                 // System.out.println(cartInfo);
             }
 
             printWriter.close();
-            System.out.println("Save data successfully!");
+            System.out.println("Save cart successfully!");
 
         }catch(IOException e2){
             e2.printStackTrace();
         }
-        //
-
     }
 
+    public static void saveOrder(){
+        File file = ViewHandler.getFile(PathHandler.getFileTextOrder());
+
+        try {
+            PrintWriter printWriter = new PrintWriter(file);
+
+            for (Account user : EntityHandler.getAccountList()) {
+                if (user.isAdmin()) continue;
+
+                String orderInfo = user.getOrderListInfo();
+                printWriter.println(orderInfo);
+            }
+
+            printWriter.close();
+            System.out.println("Save order successfully!");
+        }catch(IOException e2){
+            e2.printStackTrace();
+        }
+    }
 }

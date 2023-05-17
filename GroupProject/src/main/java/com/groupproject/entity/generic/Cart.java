@@ -63,6 +63,17 @@ public class Cart {
         return totalPrice;
     }
 
+    public String getCartInfo(){
+        String cartInfo = "";
+        cartInfo += (owner.getUsername() + "|");
+        for (CartDetail cartDetail : cartDetailList){
+            cartInfo += (EntityHandler.getItemList().indexOf(cartDetail.getItem()) + "/"
+                    + cartDetail.getQuantity() + "|");
+        }
+
+        return cartInfo;
+    }
+
     public ConstantOrder.OrderStatus checkout(boolean payWithBalance) {
         // check limit
         if (!checkLimit()) {
@@ -128,16 +139,7 @@ public class Cart {
         return true;
     }
 
-    public String getCartInfoString(){
-        String cartInfo = "";
-        cartInfo += (owner.getUsername() + "|");
-        for (CartDetail cartDetail : cartDetailList){
-            cartInfo += (EntityHandler.getItemList().indexOf(cartDetail.getItem()) + "/"
-                        + cartDetail.getQuantity() + "|");
-        }
 
-        return cartInfo;
-    }
 
     @Override
     public String toString() {

@@ -21,6 +21,8 @@ import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.nio.file.*;
 
 public class ViewHandler {
     static private HomeController homeController;
@@ -182,13 +184,37 @@ public class ViewHandler {
         return null;
     }
 
-    static public Image getImage(String url){
+    static public Image getImage(String imgName){
         try {
-            Image img = new Image(ViewHandler.class.getResourceAsStream(PathHandler.getMediaImage(url)));
+            String url = PathHandler.getMediaImage(imgName);
+            Image img = new Image(ViewHandler.class.getResourceAsStream(PathHandler.getMediaImage(imgName)));
             return img;
         } catch (Exception err){
             err.printStackTrace();
             return null;
+        }
+    }
+
+    static public Image getImageItem(String imgName){
+        try {
+            Image img = new Image(ViewHandler.class.getResourceAsStream(PathHandler.getMediaImageItem(imgName)));
+            return img;
+        } catch (Exception err){
+            err.printStackTrace();
+            return null;
+        }
+    }
+
+    static public void copyImageToResource(URI filePath, String newName){
+        Path from = Paths.get(filePath);
+        String toPath = PathHandler.getFileImageItem(newName);
+        Path to = Paths.get(toPath);
+        // System.out.println(Files.exists(to));
+
+        try {
+            Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

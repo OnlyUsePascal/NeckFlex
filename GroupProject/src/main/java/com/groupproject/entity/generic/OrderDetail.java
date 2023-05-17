@@ -11,10 +11,18 @@ public class OrderDetail {
     private Order order;
 
     public OrderDetail(CartDetail cartDetail, Order order) {
-        this.item = EntityHandler.getCategorizedItem(cartDetail.getItem());
+        this.item = EntityHandler.getItemCopy(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
         this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
         this.isReturned = false;
+        this.order = order;
+    }
+
+    public OrderDetail(Item item, int quantity, boolean isReturned, Order order) {
+        this.item = item;
+        this.quantity = quantity;
+        this.price = ViewHandler.getDoubleRound(item.getPrice() * quantity);
+        this.isReturned = isReturned;
         this.order = order;
     }
 
@@ -37,6 +45,16 @@ public class OrderDetail {
     public void setReturned(){
         isReturned = true;
         EntityHandler.getCurrentUser().updateCredit();
+    }
+
+    public String getOrderDetailInfo(){
+        String orderDetailInfo = "";
+
+        orderDetailInfo += quantity + "/";
+        orderDetailInfo += isReturned + "/";
+        orderDetailInfo += item.toString();
+
+        return orderDetailInfo;
     }
 
     @Override

@@ -91,6 +91,22 @@ public class EntityHandler {
         return itemGameList;
     }
 
+    static public Item getItem(int idx){
+        return itemList.get(idx);
+    }
+
+    static public Item getItemDvd(int idx){
+        return itemDvdList.get(idx);
+    }
+
+    static public Item getItemRecord(int idx){
+        return itemRecordList.get(idx);
+    }
+
+    static public Item getItemGame(int idx){
+        return itemGameList.get(idx);
+    }
+
     static public Item getCategorizedItem(ArrayList<String> infoList) {
         int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
         switch (category) {
@@ -107,7 +123,7 @@ public class EntityHandler {
         return null;
     }
 
-    static public Item getCategorizedItem(Item item) {
+    static public Item getItemCopy(Item item) {
         int category = item.getCategory();
         switch (category) {
             case 0 -> {
@@ -143,4 +159,5 @@ public class EntityHandler {
         currentUser.addOrder(newOrder);
         currentCart.WipeCart();
     }
+
 }

@@ -20,16 +20,12 @@ public class ShopApplication extends Application {
 
         //init data
         // EntityHandler.setCurrentUser(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
-        EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(1));
+        EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(0));
         // System.out.println();
         Cart cart = EntityHandler.getCart();
         // cart.addCartDetail(EntityHandler.getItemList().get(12), 2);
         // cart.addCartDetail(EntityHandler.getItemList().get(60), 10);
         // EntityHandler.addOrder();
-
-        // cart.cartDetailAdd(new ItemDvd("item55", 11.3), 3);
-        // cart.cartDetailAdd(new ItemDvd("ifasdf", 1.4), 2);
-        // EntityHandler.orderAdd();
 
 
         //init

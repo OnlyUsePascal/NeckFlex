@@ -15,40 +15,63 @@ public abstract class Item {
     private int year;
     private double price;
 
-    static public int genericId = 1;
+    static public int genericIdOrder = 1;
 
     public Item(int year, String title, int category, int genre, int stock, double price) {
         this.year = year;
-        this.id = getItemId(year);
+        this.id = getIdFromYear(year);
         this.title = title;
         this.category = category;
         this.genre = genre;
         this.stock = stock;
         this.price = price;
+
+        updateGenericId();
     }
 
     public Item(ArrayList<String> infoList) {
         this.id = infoList.get(ConstantItem.ItemInfo.ID.ordinal());
         this.title = infoList.get(ConstantItem.ItemInfo.TITLE.ordinal());
+        this.year = getYearFromId(id);
         this.category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
         this.genre = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.GENRE.ordinal()));
         this.stock = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.STOCK.ordinal()));
-        this.price = Double.parseDouble(infoList.get(ConstantItem.ItemInfo.FEE.ordinal()));
+        this.price = Double.parseDouble(infoList.get(ConstantItem.ItemInfo.PRICE.ordinal()));
+
+        updateGenericId();
     }
 
-    public static String getItemId(int year) {
+    public static String getIdFromYear(int year) {
         DecimalFormat df = new DecimalFormat("000");
-        String code = df.format(genericId);
-        genericId++;
+        String code = df.format(genericIdOrder);
         String formattedYear = String.format("%04d", year);
+
+        genericIdOrder++;
         return "I" + code + "-" + formattedYear;
     }
 
-    public int getCategory(){
+    public static int getYearFromId(String id) {
+        return Integer.parseInt(id.substring(id.length() - 4));
+    }
+
+    public void updateGenericId(){
+        int curIdOrder = Integer.parseInt(id.substring(1,4));
+        if (curIdOrder >= genericIdOrder) {
+            genericIdOrder = curIdOrder + 1;
+        }
+
+        System.out.println("genId:" + genericIdOrder);
+    }
+
+    public String getImgName(){
+        return id + ".png";
+    }
+
+    public int getCategory() {
         return category;
     }
 
-    public String getCategoryString(){
+    public String getCategoryString() {
         return ConstantItem.categoryList[category];
     }
 

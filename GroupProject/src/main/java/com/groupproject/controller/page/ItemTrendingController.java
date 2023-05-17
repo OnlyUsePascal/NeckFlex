@@ -47,23 +47,17 @@ public class ItemTrendingController implements Initializable {
         moveTile = new TranslateTransition(Duration.seconds(0.3));
 
 
-        new Thread(() -> {
-            Platform.runLater(() -> {
-                addItemTile(ConstantItem.ItemCategory.DVD, EntityHandler.getItemDvdList());
-            });
-        }).start();
+        Platform.runLater(() -> {
+            addItemTile(ConstantItem.ItemCategory.DVD, EntityHandler.getItemDvdList());
+        });
 
-        new Thread(() -> {
-            Platform.runLater(() -> {
-                addItemTile(ConstantItem.ItemCategory.RECORD, EntityHandler.getItemGameList());
-            });
-        }).start();
-
-        new Thread(() -> {
-            Platform.runLater(() -> {
-                addItemTile(ConstantItem.ItemCategory.GAME, EntityHandler.getItemGameList());
-            });
-        }).start();
+        // Platform.runLater(() -> {
+        //     addItemTile(ConstantItem.ItemCategory.RECORD, EntityHandler.getItemRecordList());
+        // });
+        //
+        // Platform.runLater(() -> {
+        //     addItemTile(ConstantItem.ItemCategory.GAME, EntityHandler.getItemGameList());
+        // });
     }
 
     public void addItemTile(ConstantItem.ItemCategory category, ArrayList<Item> itemList){
