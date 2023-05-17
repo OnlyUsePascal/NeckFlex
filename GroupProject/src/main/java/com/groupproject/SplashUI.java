@@ -14,8 +14,15 @@ public class SplashUI extends Application {
         launch(args);
     }
 
+//    public static Stage window = new Stage();
+//
+//    public static void close(){
+//        window.close();
+//    }
+
     @Override
     public void start(Stage stage) throws IOException {
+//        window = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(SplashUI.class.getResource("SplashUI.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.initStyle(StageStyle.UNDECORATED);

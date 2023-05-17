@@ -1,6 +1,5 @@
-package com.groupproject.Item;
+package com.groupproject;
 
-import com.groupproject.HelloApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,20 +7,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ItemInfo extends Application {
+public class ScrollPane extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
 
-//    @Override
+    @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ItemInfo.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 726, 512);
+        FXMLLoader fxmlLoader = new FXMLLoader(ScrollPane.class.getResource("ScrollPaneTest.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
-
 }
