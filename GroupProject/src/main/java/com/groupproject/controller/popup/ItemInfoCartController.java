@@ -52,7 +52,7 @@ public class ItemInfoCartController implements Initializable {
             cartAmount.setText(String.valueOf(cartDetail.getQuantity()));
         } else {
             cartAmount.setText("1");
-            ViewHandler.hideNode(updateCartBtn);
+            ViewHandler.toggleNode(updateCartBtn, false);
         }
     }
 

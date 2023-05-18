@@ -3,6 +3,7 @@ package com.groupproject.controller.component;
 import com.groupproject.controller.page.CartController;
 import com.groupproject.entity.generic.CartDetail;
 import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,24 +12,27 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CartDetailController implements Initializable {
     @FXML
-    Label titleBox;
+    private Label titleBox;
     @FXML
-    Label unitPriceBox;
+    private Label unitPriceBox;
     @FXML
-    Label quantityBox;
+    private Label quantityBox;
     @FXML
-    Label totalPriceBox;
+    private Label totalPriceBox;
     @FXML
-    HBox hboxContainer;
+    private HBox hboxContainer;
+    @FXML
+    private Rectangle imgFrame;
 
-    CartDetail cartDetail;
-    CartController cartController;
+    private CartDetail cartDetail;
+    private CartController cartController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,6 +47,8 @@ public class CartDetailController implements Initializable {
         unitPriceBox.setText(String.valueOf(this.cartDetail.getTotalPrice()));
         quantityBox.setText(String.valueOf(this.cartDetail.getQuantity()));
         totalPriceBox.setText(String.valueOf(this.cartDetail.getTotalPrice()));
+
+        ViewHandler.fillShapeWithImage(this.cartDetail.getItem().getImgName(), imgFrame);
     }
 
     public void updateQuantity(ActionEvent event){
@@ -51,7 +57,7 @@ public class CartDetailController implements Initializable {
 
         int newQuantity = cartDetail.getQuantity() + (btnText.equals("+") ? 1 : -1);
         if (cartDetail.setQuantity(newQuantity)){
-            cartController.refreshBill();
+            cartController.refreshBill(false);
 
             quantityBox.setText(cartDetail.getQuantity() + "");
             totalPriceBox.setText(cartDetail.getTotalPrice() + "");
@@ -64,7 +70,7 @@ public class CartDetailController implements Initializable {
 
     public void removeCartDetail(ActionEvent event){
         EntityHandler.getCart().removeCartDetail(cartDetail);
-        cartController.refreshPage();
+        cartController.refreshCart();
     }
 
     public void updateCheckBox(ActionEvent event){
@@ -74,7 +80,7 @@ public class CartDetailController implements Initializable {
         if (!checkBox.isSelected()) newPrice *= -1;
         cartDetail.getCart().updateTotalPrice(newPrice);
 
-        cartController.refreshBill();
+        cartController.refreshBill(false);
     }
 
     public HBox getCartDetailPane() {

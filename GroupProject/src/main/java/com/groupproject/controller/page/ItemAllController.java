@@ -4,14 +4,18 @@ import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,6 +43,8 @@ public class ItemAllController implements Initializable {
     private ComboBox<String> orderList;
     @FXML
     private CheckBox availableBox;
+    @FXML
+    private VBox loadingScreen;
 
     private final int rowSize = 5;
     private final int rowPerPage = 4;
@@ -57,7 +63,7 @@ public class ItemAllController implements Initializable {
         refreshPage();
     }
 
-    public void initFilter(){
+    public void initFilter() {
         categoryList.getItems().addAll(Arrays.asList(ConstantItem.categoryList));
         categoryList.getItems().add(0, optionAny);
         categoryList.setValue(optionAny);
@@ -73,73 +79,79 @@ public class ItemAllController implements Initializable {
         orderList.setValue(orderOptions[0]);
     }
 
-    public void refreshLayout(){
+    public void refreshLayout() {
         itemCnt = itemsToShow.size();
         pageCnt = itemCnt / pageSize;
         currentPage = 0;
     }
 
-    public void refreshData(){
+    public void refreshData() {
         itemsToShow = new ArrayList<>();
-        //filter
+        // filter
         for (Item item : EntityHandler.getItemList()) {
             if (!checkItem(item)) continue;
             itemsToShow.add(item);
         }
-        //sort
+        // sort
         sortItemList(itemsToShow);
 
-        //layout
+        // layout
         refreshLayout();
     }
 
-    public void refreshPage(){
+    public void refreshPage() {
         pageContainer.getChildren().clear();
+        ViewHandler.toggleNode(loadingScreen, true);
 
-        refreshData();
+        new Thread(() -> {
+            refreshData();
+            // for (long i = 0 ; i < 1e10; i++){}
 
-        //show
-        for (int i = 0; i < rowPerPage; i++) {
-            HBox itemRow = new HBox();
+            Platform.runLater(() -> {
+                for (int i = 0; i < rowPerPage; i++) {
+                    HBox itemRow = new HBox();
 
-            // item box
-            int min = currentPage * pageSize + i * rowSize;
-            int max = Math.min(currentPage * pageSize + (i + 1) * rowSize, itemCnt);
-            for (int j = min; j < max; j++) {
-                Item item = itemsToShow.get(j);
+                    // item box
+                    int min = currentPage * pageSize + i * rowSize;
+                    int max = Math.min(currentPage * pageSize + (i + 1) * rowSize, itemCnt);
+                    for (int j = min; j < max; j++) {
+                        Item item = itemsToShow.get(j);
 
-                Button itemBox = getItemBox(item);
-                itemRow.getChildren().add(itemBox);
-            }
+                        Button itemBox = ViewHandler.getItemBox(item);
+                        itemRow.getChildren().add(itemBox);
+                    }
 
-            pageContainer.getChildren().add(itemRow);
-        }
+                    pageContainer.getChildren().add(itemRow);
+                }
+                ViewHandler.toggleNode(loadingScreen, false);
+            });
+        }).start();
     }
 
-    public boolean checkItem(Item item){
+    public boolean checkItem(Item item) {
         return checkItemCategory(item) &&
                 checkItemGenre(item) &&
                 checkItemAvailable(item);
     }
 
-    public boolean checkItemCategory(Item item){
+    public boolean checkItemCategory(Item item) {
         String category = categoryList.getValue();
         if (category.equals(optionAny)) return true;
         return item.getCategoryString().equals(category);
     }
 
-    public boolean checkItemGenre(Item item){
+    public boolean checkItemGenre(Item item) {
         String genre = genreList.getValue();
         if (genre.equals(optionAny)) return true;
         return item.getGenreString().equals(genre);
     }
 
-    public boolean checkItemAvailable(Item item){
+    public boolean checkItemAvailable(Item item) {
         if (availableBox.isSelected()) return item.isAvailable();
         return !item.isAvailable();
     }
 
-    public void sortItemList(ArrayList<Item> itemList){
+    public void sortItemList(ArrayList<Item> itemList) {
         String sortBy = sortByList.getValue();
         String order = orderList.getValue();
 
@@ -160,27 +172,12 @@ public class ItemAllController implements Initializable {
         });
     }
 
-    public Button getItemBox(Item item) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
-            Button itemBox = loader.load();
-            ItemBoxController itemBoxController = loader.getController();
-
-            itemBoxController.setData(item);
-
-            return itemBox;
-        } catch (IOException err) {
-            err.printStackTrace();
-            return null;
-        }
-    }
-
-    public void clearFilter(){
+    public void clearFilter() {
         initFilter();
         refreshPage();
     }
 
-    public void changePage(ActionEvent event){
+    public void changePage(ActionEvent event) {
         Button button = (Button) event.getSource();
         String id = button.getId();
 

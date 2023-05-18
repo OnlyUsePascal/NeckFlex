@@ -114,16 +114,8 @@ public class UserProfileController implements Initializable {
     }
 
     public void returnHome(ActionEvent event) {
-        // popup -> close
-        // other wise -> update navbar, back to home
-
-        // Window window = ((Node) event.getSource()).getScene().getWindow();
         ViewHandler.refreshMenuButtonName();
         ViewHandler.setPageContent(PathHandler.getPageItemTrending());
-        // if (window instanceof Popup) {
-        //     window.hide();
-        // } else {
-        // }
     }
 
 

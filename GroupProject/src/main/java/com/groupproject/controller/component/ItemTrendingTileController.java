@@ -63,21 +63,13 @@ public class ItemTrendingTileController implements Initializable {
     public void setData(ConstantItem.ItemCategory category, ArrayList<Item> itemList){
         title.setText(category.toString());
 
-        try{
-            for (int i = 0 ; i < Math.min(listSz, itemList.size()); i++){
-                Item item = itemList.get(i);
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemBox()));
-                Button itemBox = (Button) fxmlLoader.load();
-
-                ItemBoxController itemBoxController = fxmlLoader.getController();
-                itemBoxController.setData(item);
-
-                container.getChildren().add(itemBox);
-            }
-        } catch (IOException err) {
-            err.printStackTrace();
+        for (int i = 0 ; i < Math.min(listSz, itemList.size()); i++){
+            Button itemBox = ViewHandler.getItemBox(itemList.get(i));
+            container.getChildren().add(itemBox);
         }
     }
+
+
 
 
 }

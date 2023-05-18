@@ -53,6 +53,26 @@ public class Order {
         return orderInfo;
     }
 
+    public ArrayList<OrderDetail> getReturnedOrderDetailList(){
+        ArrayList<OrderDetail> returnedOrderDetailList = new ArrayList<>();
+        for (OrderDetail orderDetail : orderDetailList){
+            if (orderDetail.isReturned()){
+                returnedOrderDetailList.add(orderDetail);
+            }
+        }
+        return returnedOrderDetailList;
+    }
+
+    public ArrayList<OrderDetail> getRentingOrderDetailList(){
+        ArrayList<OrderDetail> rentingOrderDetailList = new ArrayList<>();
+        for (OrderDetail orderDetail : orderDetailList){
+            if (!orderDetail.isReturned()){
+                rentingOrderDetailList.add(orderDetail);
+            }
+        }
+        return rentingOrderDetailList;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

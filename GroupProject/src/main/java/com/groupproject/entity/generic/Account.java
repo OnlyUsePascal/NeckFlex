@@ -199,6 +199,6 @@ public class Account {
                 this.password + "|" + this.firstName + "|" +
                 this.lastName + "|" + this.address +
                 "|" + this.phoneNumber + "|" + this.status.ordinal() +
-                "|" + this.balance + "|" + this.rewardPoint;
+                "|" + ViewHandler.getDoubleRound(this.balance) + "|" + this.rewardPoint;
     }
 }

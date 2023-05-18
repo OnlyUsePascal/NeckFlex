@@ -4,6 +4,7 @@ import com.groupproject.controller.component.NavBarCustomerController;
 import com.groupproject.controller.component.SidebarController;
 import com.groupproject.toolkit.PathHandler;
 import com.groupproject.entity.runtime.ViewHandler;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -37,7 +38,7 @@ public class HomeController implements Initializable {
         setNavBar(PathHandler.getComponentNavBar());
     }
 
-    public void setSidebar(String url){
+    public void setSidebar(String url) {
         ViewHandler.setAnchorPane(sidebarPanel, url);
     }
 
@@ -45,7 +46,7 @@ public class HomeController implements Initializable {
         ViewHandler.setAnchorPane(pageContent, url);
     }
 
-    public void setNavBar(String url){
+    public void setNavBar(String url) {
         sidebarPanel.setTranslateX(-300);
         ViewHandler.setAnchorPane(navBar, url);
     }

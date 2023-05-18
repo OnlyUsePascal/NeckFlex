@@ -6,6 +6,7 @@ import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
@@ -30,23 +32,25 @@ import java.util.ResourceBundle;
 
 public class AdminItemController implements Initializable {
     @FXML
-    private TableView<Item> tableViewItem;
+    private TableView<Item> tableView;
     @FXML
-    private TableColumn<Item, ImageView> itemImageColumn;
+    private TableColumn<Item, ImageView> imageColumn;
     @FXML
-    private TableColumn<Item, String> itemIdColumn;
+    private TableColumn<Item, String> idColumn;
     @FXML
-    private TableColumn<Item, String> itemTitleColumn;
+    private TableColumn<Item, String> titleColumn;
     @FXML
-    private TableColumn<Item, String> itemCategoryColumn;
+    private TableColumn<Item, String> categoryColumn;
     @FXML
-    private TableColumn<Item, String> itemGenreColumn;
+    private TableColumn<Item, String> genreColumn;
     @FXML
-    private TableColumn<Item, Integer> itemStockColumn;
+    private TableColumn<Item, Integer> stockColumn;
     @FXML
     private TextField searchField;
     @FXML
     private ComboBox<String> categoryList;
+    @FXML
+    private VBox loadingScreen;
 
     private String optionAny;
 
@@ -55,7 +59,7 @@ public class AdminItemController implements Initializable {
         optionAny = "Any";
         initFilter();
 
-        ViewHandler.lockHorizonScroll(tableViewItem);
+        ViewHandler.lockHorizonScroll(tableView);
         initColumnProperty();
         refreshTable();
 
@@ -82,12 +86,12 @@ public class AdminItemController implements Initializable {
     }
 
     public void initColumnProperty() {
-        itemIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        itemTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        itemStockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        stockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
 
         // category
-        itemCategoryColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, String>, ObservableValue<String>>() {
+        categoryColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Item, String> itemStringCellDataFeatures) {
                 Item item = itemStringCellDataFeatures.getValue();
@@ -96,7 +100,7 @@ public class AdminItemController implements Initializable {
         });
 
         // genre
-        itemGenreColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, String>, ObservableValue<String>>() {
+        genreColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Item, String> itemStringCellDataFeatures) {
                 Item item = itemStringCellDataFeatures.getValue();
@@ -105,8 +109,8 @@ public class AdminItemController implements Initializable {
         });
 
         // image
-        itemImageColumn.setStyle("-fx-alignment: center;");
-        itemImageColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, ImageView>, ObservableValue<ImageView>>() {
+        imageColumn.setStyle("-fx-alignment: center;");
+        imageColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, ImageView>, ObservableValue<ImageView>>() {
             @Override
             public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Item, ImageView> itemImageViewCellDataFeatures) {
                 Image img = ViewHandler.getImage(PathHandler.getMediaImageMagnifyGlass());
@@ -117,7 +121,7 @@ public class AdminItemController implements Initializable {
             }
         });
 
-        itemImageColumn.setCellFactory(column -> {
+        imageColumn.setCellFactory(column -> {
             return new TableCell<Item, ImageView>() {
                 private final ImageView imageView = new ImageView();
 
@@ -174,11 +178,18 @@ public class AdminItemController implements Initializable {
         }
     }
 
-    boolean scrollEvent = false;
-
     public void refreshTable() {
-        tableViewItem.setItems(getData());
-        tableViewItem.refresh();
+        ViewHandler.toggleNode(loadingScreen,  true);
+
+        new Thread(() -> {
+            ObservableList<Item> items = getData();
+
+            Platform.runLater(() -> {
+                tableView.setItems(items);
+                tableView.refresh();
+                ViewHandler.toggleNode(loadingScreen, false);
+            });
+        }).start();
     }
 
     public ObservableList<Item> getData() {

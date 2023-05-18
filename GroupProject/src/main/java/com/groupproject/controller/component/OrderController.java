@@ -4,6 +4,7 @@ import com.groupproject.entity.generic.Order;
 import com.groupproject.entity.generic.OrderDetail;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class OrderController implements Initializable {
     @FXML
@@ -27,6 +29,10 @@ public class OrderController implements Initializable {
     Button btn;
     @FXML
     HBox orderHeader;
+    @FXML
+    VBox loadingScreen;
+    @FXML
+    AnchorPane orderPane;
 
     Order order;
     ArrayList<OrderDetailController> orderDetailControllerList;
@@ -36,49 +42,87 @@ public class OrderController implements Initializable {
         orderDetailControllerList = new ArrayList<>();
     }
 
-    public void setData(Order order, ArrayList<OrderDetail> orderDetailList){
+    public void setData(Order order, boolean isReturned) {
+        //init
         this.order = order;
-        for (OrderDetail orderDetail : orderDetailList){
-            addOrderDetailPane(orderDetail);
-        }
+        toggleInteractiveNodes(isReturned);
 
-        checkIsReturned(orderDetailList.get(0));
+        //load
+        loadingScreen.setManaged(true);
+        ViewHandler.toggleNode(loadingScreen, true);
+        new Thread(() -> {
+            //get order detail
+            ArrayList<OrderDetail> orderDetailList;
+            if (isReturned) {
+                orderDetailList = order.getReturnedOrderDetailList();
+            } else {
+                orderDetailList = order.getRentingOrderDetailList();
+            }
+            // for (long i = 0; i < 1e9; i++);
+
+            //make detail pane -> add to order pane
+            Platform.runLater(() -> {
+                if (orderDetailList.isEmpty()) {
+                    ViewHandler.toggleNode(orderPane, false);
+                    orderPane.setManaged(false);
+                    return;
+                }
+
+                loadingScreen.setManaged(false);
+                ViewHandler.toggleNode(loadingScreen, false);
+
+                for (OrderDetail orderDetail : orderDetailList){
+                    addOrderDetailPane(orderDetail);
+                }
+            });
+        }).start();
     }
 
-    public void checkIsReturned(OrderDetail orderDetail){
-        if (orderDetail.isReturned()){
+    public void toggleInteractiveNodes(boolean status) {
+        if (!status) {
+            ViewHandler.toggleNode(btn, true);
+            ViewHandler.toggleNode(checkBox, true);
+        } else {
+            ViewHandler.toggleNode(btn, false);
+            ViewHandler.toggleNode(checkBox, false);
+        }
+    }
+
+    public void checkIsReturned(OrderDetail orderDetail) {
+        if (orderDetail.isReturned()) {
             orderHeader.getChildren().remove(btn);
             orderHeader.getChildren().remove(checkBox);
         }
     }
 
-    public void addOrderDetailPane(OrderDetail orderDetail){
+    public void addOrderDetailPane(OrderDetail orderDetail) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentOrderDetail()));
             AnchorPane pane = loader.load();
             OrderDetailController orderDetailController = loader.getController();
 
-            orderDetailContainer.getChildren().add(pane);
             orderDetailController.setData(orderDetail);
             orderDetailControllerList.add(orderDetailController);
-        } catch (Exception e){
+
+            orderDetailContainer.getChildren().add(pane);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void setCheckBoxAll(ActionEvent event){
+    public void setCheckBoxAll(ActionEvent event) {
         CheckBox btn = (CheckBox) event.getSource();
         boolean status = btn.isSelected();
 
-        for (OrderDetailController orderDetailController : orderDetailControllerList){
+        for (OrderDetailController orderDetailController : orderDetailControllerList) {
             orderDetailController.setCheckBox(status);
         }
     }
 
-    public void returnItemAll(ActionEvent event){
+    public void returnItemAll(ActionEvent event) {
         int sz = orderDetailControllerList.size();
-        for (int i = sz-1; i >= 0; i--){
-            if (orderDetailControllerList.get(i).getCheckBox()){
+        for (int i = sz - 1; i >= 0; i--) {
+            if (orderDetailControllerList.get(i).getCheckBox()) {
                 orderDetailControllerList.get(i).returnItem();
                 orderDetailControllerList.remove(i);
             }

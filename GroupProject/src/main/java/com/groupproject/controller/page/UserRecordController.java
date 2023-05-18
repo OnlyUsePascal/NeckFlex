@@ -30,44 +30,27 @@ public class UserRecordController implements Initializable {
 
     }
 
-    public void refreshPage(){
+    public void refreshPage() {
         rentingContainer.getChildren().clear();
         returnedContainer.getChildren().clear();
 
-        for (Order order: EntityHandler.getCurrentUser().getOrderList()){
-            ArrayList<OrderDetail> renting = new ArrayList<>();
-            ArrayList<OrderDetail> returned = new ArrayList<>();
-
-            for (OrderDetail orderDetail : order.getOrderDetailList()){
-                if (!orderDetail.isReturned()){
-                    renting.add(orderDetail);
-                } else {
-                    returned.add(orderDetail);
-                }
-            }
-
-            // //renting
-            addOrderPane(order, renting, rentingContainer);
-            addOrderPane(order, returned, returnedContainer);
+        // order - renting / returned ->
+        for (Order order : EntityHandler.getCurrentUser().getOrderList()) {
+            addOrderPane(order, returnedContainer, true);
+            addOrderPane(order, rentingContainer, false);
         }
     }
 
-    public void addOrderPane(Order order, ArrayList<OrderDetail> orderDetailList, VBox orderContainer){
-        if (orderDetailList.isEmpty()) return;
-
-        FXMLLoader orderLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentOrder()));
+    public void addOrderPane(Order order, VBox orderContainer, boolean isReturned) {
         try {
-            AnchorPane orderPane = orderLoader.load();
-            OrderController orderController = orderLoader.getController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentOrder()));
+            AnchorPane orderPane = loader.load();
+            OrderController orderController = loader.getController();
 
-            orderController.setData(order, orderDetailList);
-            orderContainer.getChildren().add(0, orderPane); //add to start
+            orderController.setData(order, isReturned);
+            orderContainer.getChildren().add(0, orderPane); // add to start
         } catch (IOException err) {
             err.printStackTrace();
         }
     }
-
-
-
-
 }

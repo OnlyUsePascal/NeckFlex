@@ -6,7 +6,9 @@ import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.generic.Cart;
 import com.groupproject.entity.generic.CartDetail;
 import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,23 +26,27 @@ import java.util.ResourceBundle;
 
 public class CartController implements Initializable {
     @FXML
-    VBox cartDetailContainer;
+    private VBox cartDetailContainer;
     @FXML
-    Label billTotalPriceBox;
+    private Label billTotalPriceBox;
     @FXML
-    Label userBalance;
+    private Label userBalance;
     @FXML
-    Label userBalancePoint;
+    private Label userBalancePoint;
     @FXML
-    Label statusBox;
+    private Label statusBox;
     @FXML
-    RadioButton rent7Day;
+    private RadioButton rent7Day;
     @FXML
-    Button payPoint;
+    private VBox loadingScreen;
+    @FXML
+    private Button payCash;
+    @FXML
+    private Button payPoint;
 
     private Cart cart;
     private Account cartOwner;
-    private ArrayList<CartDetailController> cartDetailControllerList = new ArrayList<>();
+    // private ArrayList<CartDetailController> cartDetailControllerList = new ArrayList<>();
 
 
     @Override
@@ -49,7 +55,7 @@ public class CartController implements Initializable {
         cartOwner = EntityHandler.getCurrentUser();
 
         initPayment();
-        refreshPage();
+        refreshCart();
     }
 
     public void initPayment(){
@@ -64,43 +70,55 @@ public class CartController implements Initializable {
         }
     }
 
-    public void refreshPage(){
-        refreshCart();
-        refreshBill();
-    }
-
     public void refreshCart(){
         //reset
         cartDetailContainer.getChildren().clear();
-        cartDetailControllerList = new ArrayList<>();
+        ViewHandler.toggleNode(loadingScreen, true);
 
         //add
-        for (CartDetail cartDetail : cart.getCartDetailList()){
-            try {
-                FXMLLoader cartItemLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentCartDetail()));
-                HBox cartDetailPane = cartItemLoader.load();
-                CartDetailController cartDetailController = cartItemLoader.getController();
-
-                //set data
-                cartDetailController.setData(cartDetail);
-                cartDetailController.setCartController(this);
-
-                //add to pane
-                cartDetailContainer.getChildren().add(cartDetailPane);
-                cartDetailControllerList.add(cartDetailController);
-            } catch (IOException err){
-                err.printStackTrace();
+        new Thread(() -> {
+            ArrayList<HBox> cartDetailPaneList = new ArrayList<>();
+            for (CartDetail cartDetail : cart.getCartDetailList()){
+                cartDetailPaneList.add(getCartDetailPane(cartDetail));
             }
+
+            for (long i = 0; i < 1e9; i++);
+
+            Platform.runLater(() -> {
+                cartDetailContainer.getChildren().addAll(cartDetailPaneList);
+                refreshBill(cart.getCartDetailList().isEmpty());
+                ViewHandler.toggleNode(loadingScreen, false);
+            });
+        }).start();
+    }
+
+    public HBox getCartDetailPane(CartDetail cartDetail){
+        try {
+            FXMLLoader cartItemLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentCartDetail()));
+            HBox cartDetailPane = cartItemLoader.load();
+            CartDetailController cartDetailController = cartItemLoader.getController();
+
+            //set data
+            cartDetailController.setData(cartDetail);
+            cartDetailController.setCartController(this);
+
+            return cartDetailPane;
+        } catch (IOException err){
+            err.printStackTrace();
+            return null;
         }
     }
 
-    public void refreshBill(){
+    public void refreshBill(boolean cartEmpty){
         //price
         billTotalPriceBox.setText("$" + cart.getTotalPrice());
 
         //balance
         userBalance.setText("$" + cartOwner.getBalance());
         userBalancePoint.setText(cartOwner.getRewardPoint() + "");
+
+        //button
+        payCash.setDisable(cartEmpty);
     }
 
     public void checkout(ActionEvent event){
@@ -113,7 +131,7 @@ public class CartController implements Initializable {
                 statusBox.setText("Checkout success");
 
                 EntityHandler.addOrder();
-                refreshPage();
+                refreshCart();
 
             } case INSUFFICIENT_BALANCE -> {
                 statusBox.setText("Insufficient balance");

@@ -140,6 +140,18 @@
                            </padding>
                         </Label>
                         <VBox fx:id="pageContainer" />
+                        <VBox fx:id="loadingScreen" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="1207.0" style="-fx-background-color: white;">
+                           <children>
+                              <ImageView fitHeight="81.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../media/image/loading.gif" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="40.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </content>

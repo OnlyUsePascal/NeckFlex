@@ -6,6 +6,7 @@ import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
@@ -47,6 +49,8 @@ public class AdminAccountController implements Initializable {
     private TextField searchField;
     @FXML
     private ComboBox<String> choiceList;
+    @FXML
+    private VBox loadingScreen;
 
     String optionAny;
 
@@ -54,7 +58,6 @@ public class AdminAccountController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         optionAny = "Any";
         initFilter();
-
         initColumnProperty();
         refreshTable();
     }
@@ -124,8 +127,17 @@ public class AdminAccountController implements Initializable {
     }
 
     public void refreshTable(){
-        tableView.setItems(getData());
-        tableView.refresh();
+        ViewHandler.toggleNode(loadingScreen, true);
+
+        new Thread(() -> {
+            ObservableList<Account> accounts = getData();
+
+            Platform.runLater(() -> {
+                tableView.setItems(accounts);
+                tableView.refresh();
+                ViewHandler.toggleNode(loadingScreen, false);
+            });
+        }).start();
     }
 
     public ObservableList<Account> getData() {

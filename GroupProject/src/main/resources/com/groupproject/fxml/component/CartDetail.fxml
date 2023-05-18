@@ -20,7 +20,7 @@
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="155.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="103.0">
+      <Rectangle fx:id="imgFrame" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="155.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="103.0">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin></Rectangle>
