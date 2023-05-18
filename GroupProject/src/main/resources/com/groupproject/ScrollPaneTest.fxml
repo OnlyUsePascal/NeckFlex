@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.ScrollPaneTestController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.ScrollPaneTest.ScrollPaneTestController">
    <content>
       <VBox prefWidth="250.0">
          <children>
@@ -39,6 +39,13 @@
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <children>
+                  <ImageView fx:id="image2" fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/Loading_icon.gif" />
+                     </image>
+                  </ImageView>
+               </children>
             </AnchorPane>
             <AnchorPane fx:id="root3" prefHeight="200.0" prefWidth="198.0" style="-fx-background-color: red;">
                <padding>
@@ -50,6 +57,13 @@
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
+               <children>
+                  <ImageView fx:id="image3" fitHeight="150.0" fitWidth="200.0" layoutX="39.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/Loading_icon.gif" />
+                     </image>
+                  </ImageView>
+               </children>
             </AnchorPane>
          </children>
       </VBox>

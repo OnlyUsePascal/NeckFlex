@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.ScrollPaneTest;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class ScrollPane extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ScrollPane.class.getResource("ScrollPaneTest.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ScrollPane.class.getResource("/com/groupproject/ScrollPaneTest.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
         stage.setTitle("Hello!");

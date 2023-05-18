@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.SplashScreenTest;
 
 import javafx.stage.Stage;
 

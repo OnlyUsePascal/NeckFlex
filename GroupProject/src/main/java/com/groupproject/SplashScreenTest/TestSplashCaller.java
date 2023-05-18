@@ -1,10 +1,8 @@
-package com.groupproject;
+package com.groupproject.SplashScreenTest;
 
 import com.groupproject.Item.ItemView;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
