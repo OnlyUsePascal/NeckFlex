@@ -10,7 +10,7 @@ public class scene2 extends Application {
     scene1Controller controller;
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(scene2.class.getResource("/com/groupproject/scene2.fxml"));
+        FXMLLoader loader = new FXMLLoader(scene2.class.getResource("/com/groupproject/scene2A.fxml"));
         Scene scene = new Scene(loader.load());
         controller = loader.getController();
         stage.setScene(scene);

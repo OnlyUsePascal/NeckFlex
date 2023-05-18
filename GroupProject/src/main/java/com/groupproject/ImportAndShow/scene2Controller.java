@@ -41,6 +41,7 @@ public class scene2Controller implements Initializable {
         scene1Controller.setLabel();
         scene1Controller.createAnchorPane(URL, count);
         scene1Controller.showItem();
+        scene1Controller.addLine(tempItem.getTitle());
         count++;
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(previousScene);
