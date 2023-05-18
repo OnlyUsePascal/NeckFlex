@@ -83,7 +83,7 @@ public abstract class Item {
         return price;
     }
 
-    public String getGenre() {
+    public String getGenreString() {
         return ConstantItem.genreList[genre];
     }
 
@@ -98,6 +98,11 @@ public abstract class Item {
     public int getYear() {
         return year;
     }
+
+    public boolean isAvailable() {
+        return stock > 0;
+    }
+
 
     public void setTitle(String title) {
         this.title = title;

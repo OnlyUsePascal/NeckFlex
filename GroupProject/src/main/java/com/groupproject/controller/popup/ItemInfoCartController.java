@@ -69,7 +69,7 @@ public class ItemInfoCartController implements Initializable {
     public void setData(Item _item) {
         item = _item;
         title.setText(item.getTitle());
-        genre.setText(item.getGenre());
+        genre.setText(item.getGenreString());
         quantity.setText(String.valueOf(item.getStock()));
         price.setText(String.valueOf(item.getPrice()));
 

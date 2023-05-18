@@ -42,6 +42,8 @@ public class DataHandler {
             Scanner my_reader = new Scanner(file);
             while (my_reader.hasNextLine()) {
                 String data = my_reader.nextLine();
+                if (data.length() == 0) break;
+
                 StringTokenizer st = new StringTokenizer(data, "|");
                 ArrayList<String> list = new ArrayList<>();
                 while (st.hasMoreTokens()) {
@@ -77,7 +79,7 @@ public class DataHandler {
             Scanner my_reader = new Scanner(file);
             while(my_reader.hasNextLine()){
                 String data = my_reader.nextLine();
-                // if (data.length() == 0) break;
+                if (data.length() == 0) break;
 
                 StringTokenizer st = new StringTokenizer(data, "|");
                 ArrayList<String> infoList = new ArrayList<>();
@@ -101,6 +103,7 @@ public class DataHandler {
             Scanner my_reader = new Scanner(file);
             while(my_reader.hasNextLine()){
                 String data = my_reader.nextLine();
+                if (data.length() == 0) break;
 
                 StringTokenizer st = new StringTokenizer(data, "|");
                 ArrayList<String> infoList = new ArrayList<>();
@@ -141,6 +144,7 @@ public class DataHandler {
             Scanner my_reader = new Scanner(file);
             while(my_reader.hasNextLine()){
                 String data = my_reader.nextLine();
+                if (data.length() == 0) break;
 
                 StringTokenizer st = new StringTokenizer(data, "@");
                 ArrayList<String> infoList = new ArrayList<>();

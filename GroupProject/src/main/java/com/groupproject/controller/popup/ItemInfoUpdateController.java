@@ -42,7 +42,7 @@ public class ItemInfoUpdateController implements Initializable {
         itemInfoId.setText(item.getId());
         itemInfoTitle.setText(item.getTitle());
         itemInfoQuantity.setText(Integer.toString(item.getStock()));
-        itemInfoGenre.setValue(item.getGenre());
+        itemInfoGenre.setValue(item.getGenreString());
     }
 
     public void updateItem(ActionEvent event){

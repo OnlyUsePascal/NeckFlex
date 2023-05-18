@@ -20,7 +20,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Popup;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
@@ -101,7 +100,7 @@ public class AdminItemController implements Initializable {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Item, String> itemStringCellDataFeatures) {
                 Item item = itemStringCellDataFeatures.getValue();
-                return new SimpleObjectProperty<>(item.getGenre());
+                return new SimpleObjectProperty<>(item.getGenreString());
             }
         });
 

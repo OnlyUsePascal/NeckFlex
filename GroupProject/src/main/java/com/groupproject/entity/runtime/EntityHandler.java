@@ -95,6 +95,10 @@ public class EntityHandler {
         return itemList.get(idx);
     }
 
+    static public int getItemListLength(){
+        return itemList.size();
+    }
+
     static public Item getItemDvd(int idx){
         return itemDvdList.get(idx);
     }
@@ -127,13 +131,13 @@ public class EntityHandler {
         int category = item.getCategory();
         switch (category) {
             case 0 -> {
-                return ItemDvd.getNewItemDvd(item.getTitle(), item.getGenre(), item.getPrice(), item.getYear(), item.getStock());
+                return ItemDvd.getNewItemDvd(item.getTitle(), item.getGenreString(), item.getPrice(), item.getYear(), item.getStock());
             }
             case 1 -> {
-                return ItemRecord.getNewItemRecord(item.getTitle(), item.getGenre(), item.getPrice(), item.getYear(), item.getStock());
+                return ItemRecord.getNewItemRecord(item.getTitle(), item.getGenreString(), item.getPrice(), item.getYear(), item.getStock());
             }
             case 2 -> {
-                return ItemGame.getNewItemGame(item.getTitle(), item.getGenre(), item.getPrice(), item.getYear(), item.getStock());
+                return ItemGame.getNewItemGame(item.getTitle(), item.getGenreString(), item.getPrice(), item.getYear(), item.getStock());
             }
         }
         return null;
