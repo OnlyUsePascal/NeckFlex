@@ -14,6 +14,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Shape;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -216,6 +218,15 @@ public class ViewHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    static public void fillShapeWithImage(String imgName, Shape frame){
+        String url = PathHandler.getFileImageItem(imgName);
+        Path path = Paths.get(url);
+
+        Image img = new Image(path.toUri().toString());
+        ImagePattern imgView = new ImagePattern(img);
+        frame.setFill(imgView);
     }
 
 

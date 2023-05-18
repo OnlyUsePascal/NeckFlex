@@ -4,23 +4,13 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="452.0" prefWidth="614.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.popup.ItemInfoUpdateController">
    <children>
-      <Pane layoutX="23.0" layoutY="25.0" prefHeight="384.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2px 2px 2px 2px;">
-         <children>
-            <ImageView fitHeight="397.0" fitWidth="208.0" layoutX="-4.0" layoutY="-6.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../media/image/banner1.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
+      <Rectangle fx:id="imgFrame" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="301.0" layoutX="24.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="201.0" />
       <TextField fx:id="itemInfoId" editable="false" layoutX="256.0" layoutY="32.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;" />
       <TextField fx:id="itemInfoTitle" layoutX="256.0" layoutY="103.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;" />
       <ChoiceBox fx:id="itemInfoGenre" layoutX="256.0" layoutY="177.0" prefHeight="49.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;" />

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -25,6 +26,8 @@ public class ItemInfoUpdateController implements Initializable {
     private ChoiceBox<String> itemInfoGenre;
     @FXML
     private TextField itemInfoQuantity;
+    @FXML
+    private Rectangle imgFrame;
 
     private Item item;
 
@@ -43,6 +46,7 @@ public class ItemInfoUpdateController implements Initializable {
         itemInfoTitle.setText(item.getTitle());
         itemInfoQuantity.setText(Integer.toString(item.getStock()));
         itemInfoGenre.setValue(item.getGenreString());
+        ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
     }
 
     public void updateItem(ActionEvent event){

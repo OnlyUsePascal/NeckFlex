@@ -44,12 +44,7 @@ public class ItemBoxController implements Initializable {
     }
 
     public void setImg() {
-        String url = PathHandler.getFileImageItem(item.getImgName());
-        Path path = Paths.get(url);
-
-        Image img = new Image(path.toUri().toString());
-        ImagePattern imgView = new ImagePattern(img);
-        imgFrame.setFill(imgView);
+        ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
     }
 
     public void setTitle(String titleNew) {
