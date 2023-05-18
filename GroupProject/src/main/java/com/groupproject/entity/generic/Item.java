@@ -17,16 +17,8 @@ public abstract class Item {
 
     static public int genericIdOrder = 1;
 
-    public Item(int year, String title, int category, int genre, int stock, double price) {
-        this.year = year;
-        this.id = getIdFromYear(year);
-        this.title = title;
-        this.category = category;
-        this.genre = genre;
-        this.stock = stock;
-        this.price = price;
-    }
 
+    //restore
     public Item(ArrayList<String> infoList) {
         this.id = infoList.get(ConstantItem.ItemInfo.ID.ordinal());
         this.title = infoList.get(ConstantItem.ItemInfo.TITLE.ordinal());
@@ -37,12 +29,33 @@ public abstract class Item {
         this.price = Double.parseDouble(infoList.get(ConstantItem.ItemInfo.PRICE.ordinal()));
     }
 
+    //copy
+    public Item(String id, String title, int category, int genre, int stock, double price) {
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.genre = genre;
+        this.stock = stock;
+        this.year = getYearFromId(id);
+        this.price = price;
+    }
+
+    // get new
+    public Item(String title, int category, int genre, int stock, int year, double price) {
+        this.id = getIdFromYear(year);
+        this.title = title;
+        this.category = category;
+        this.genre = genre;
+        this.stock = stock;
+        this.year = year;
+        this.price = price;
+    }
+
+
     public static String getIdFromYear(int year) {
         DecimalFormat df = new DecimalFormat("000");
         String code = df.format(genericIdOrder);
         String formattedYear = String.format("%04d", year);
-
-        genericIdOrder++;
         return "I" + code + "-" + formattedYear;
     }
 
@@ -58,6 +71,7 @@ public abstract class Item {
 
         System.out.println("genId:" + genericIdOrder);
     }
+
 
     public String getImgName(){
         return id + ".png";
@@ -129,5 +143,9 @@ public abstract class Item {
         return this.id + "|" + this.title + "|" +
                 this.category + "|" + this.genre + "|" +
                 this.stock + "|" + this.price;
+    }
+
+    public int getGenre() {
+        return genre;
     }
 }

@@ -87,7 +87,7 @@ public class DataHandler {
                     infoList.add(st.nextToken());
                 }
 
-                Item newItem = EntityHandler.getCategorizedItem(infoList);
+                Item newItem = EntityHandler.getRestoreItem(infoList);
                 EntityHandler.addItem(newItem);
             }
         } catch(FileNotFoundException err){
@@ -185,7 +185,7 @@ public class DataHandler {
                             itemInfoList.add(st4.nextToken());
                         }
 
-                        Item item = EntityHandler.getCategorizedItem(itemInfoList);
+                        Item item = EntityHandler.getRestoreItem(itemInfoList);
 
                         OrderDetail orderDetail1 = new OrderDetail(item, quantity, returned, order);
                         order.addOrderDetail(orderDetail1);
@@ -198,6 +198,7 @@ public class DataHandler {
             err.printStackTrace();
         }
     }
+
 
 
     //================== SAVE ===================

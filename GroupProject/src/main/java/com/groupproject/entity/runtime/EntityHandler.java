@@ -76,6 +76,75 @@ public class EntityHandler {
         Item.updateGenericId(item.getId());
     }
 
+    static public Item getRestoreItem(ArrayList<String> infoList) {
+        int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
+        switch (category) {
+            case 0 -> {
+                return new ItemDvd(infoList);
+            }
+            case 1 -> {
+                return new ItemRecord(infoList);
+            }
+            case 2 -> {
+                return new ItemGame(infoList);
+            }
+        }
+        return null;
+    }
+
+    static public Item getNewItem(String title, int category, int genre, int stock, int year, double price){
+        switch (category) {
+            case 0 -> {
+                return new ItemDvd(title, category, genre, stock, year, price);
+            }
+            case 1 -> {
+                return new ItemRecord(title, category, genre, stock, year, price);
+            }
+            case 2 -> {
+                return new ItemGame(title, category, genre, stock, year, price);
+            }
+        }
+        return null;
+    }
+
+    static public Item getCopyItem(Item item) {
+        int category = item.getCategory();
+        switch (category) {
+            case 0 -> {
+                return new ItemDvd(item.getId(), item.getTitle(),
+                        item.getCategory(), item.getGenre(),
+                        item.getStock(), item.getPrice());
+            }
+            case 1 -> {
+                return new ItemRecord(item.getId(), item.getTitle(),
+                        item.getCategory(), item.getGenre(),
+                        item.getStock(), item.getPrice());
+            }
+            case 2 -> {
+                return new ItemGame(item.getId(), item.getTitle(),
+                        item.getCategory(), item.getGenre(),
+                        item.getStock(), item.getPrice());
+            }
+        }
+        return null;
+    }
+
+    static public void removeItem(Item item) {
+        // instance
+        itemList.remove(item);
+        if (item instanceof ItemDvd)
+            itemDvdList.remove(item);
+        else if (item instanceof ItemRecord)
+            itemRecordList.remove(item);
+        else if (item instanceof ItemGame)
+            itemGameList.remove(item);
+
+        // cart
+        for (Account acc : accountList) {
+            acc.removeCartDetail(item);
+        }
+    }
+
     static public ArrayList<Item> getItemList() {
         return itemList;
     }
@@ -112,53 +181,6 @@ public class EntityHandler {
         return itemGameList.get(idx);
     }
 
-    static public Item getCategorizedItem(ArrayList<String> infoList) {
-        int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
-        switch (category) {
-            case 0 -> {
-                return new ItemDvd(infoList);
-            }
-            case 1 -> {
-                return new ItemRecord(infoList);
-            }
-            case 2 -> {
-                return new ItemGame(infoList);
-            }
-        }
-        return null;
-    }
-
-    static public Item getItemCopy(Item item) {
-        int category = item.getCategory();
-        switch (category) {
-            case 0 -> {
-                return ItemDvd.getNewItemDvd(item.getTitle(), item.getGenreString(), item.getPrice(), item.getYear(), item.getStock());
-            }
-            case 1 -> {
-                return ItemRecord.getNewItemRecord(item.getTitle(), item.getGenreString(), item.getPrice(), item.getYear(), item.getStock());
-            }
-            case 2 -> {
-                return ItemGame.getNewItemGame(item.getTitle(), item.getGenreString(), item.getPrice(), item.getYear(), item.getStock());
-            }
-        }
-        return null;
-    }
-
-    static public void removeItem(Item item) {
-        //instance
-        itemList.remove(item);
-        if (item instanceof ItemDvd)
-            itemDvdList.remove(item);
-        else if (item instanceof ItemRecord)
-            itemRecordList.remove(item);
-        else if (item instanceof ItemGame)
-            itemGameList.remove(item);
-
-        //cart
-        for (Account acc : accountList) {
-            acc.removeCartDetail(item);
-        }
-    }
 
     //===================== CART ======================
     static public Cart getCart() {

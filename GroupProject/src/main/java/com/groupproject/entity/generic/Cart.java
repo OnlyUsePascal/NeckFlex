@@ -86,7 +86,6 @@ public class Cart {
     public ConstantOrder.OrderStatus checkout(boolean payWithBalance) {
         // check limit
         if (!checkLimit()) {
-
             return ConstantOrder.OrderStatus.LIMITED_AMOUNT;
         }
 

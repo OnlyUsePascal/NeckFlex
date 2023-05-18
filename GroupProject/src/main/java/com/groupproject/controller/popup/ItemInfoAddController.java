@@ -4,8 +4,6 @@ import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
-import com.groupproject.toolkit.PathHandler;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,9 +18,6 @@ import javafx.stage.Popup;
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -80,22 +75,14 @@ public class ItemInfoAddController implements Initializable {
     public void addItem(ActionEvent event) {
         if (!checkAll()) return;
 
-        int year = Integer.parseInt(itemRegisterYear.getText());
         String title = itemRegisterTitle.getText();
-        String category = itemRegisterCategory.getValue();
-        String genre = itemRegisterGenre.getValue();
+        int category = ConstantItem.categoryToIndex(itemRegisterCategory.getValue());
+        int genre = ConstantItem.genreToIndex(itemRegisterGenre.getValue());
         int stock = Integer.parseInt(itemRegisterStock.getText());
+        int year = Integer.parseInt(itemRegisterYear.getText());
         double price = Double.parseDouble(itemRegisterPrice.getText());
 
-        ArrayList<String> infoList = new ArrayList<>();
-        infoList.add(Item.getIdFromYear(year));
-        infoList.add(title);
-        infoList.add(ConstantItem.categoryToIndex(category) + "");
-        infoList.add(ConstantItem.genreToIndex(genre) + "");
-        infoList.add(stock + "");
-        infoList.add(price + "");
-
-        Item item = EntityHandler.getCategorizedItem(infoList);
+        Item item = EntityHandler.getNewItem(title, category, genre, stock, year, price);
         EntityHandler.addItem(item);
 
         //copy image

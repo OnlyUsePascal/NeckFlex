@@ -5,23 +5,18 @@ import com.groupproject.entity.Constant.ConstantItem;
 import java.util.ArrayList;
 
 public class ItemGame extends Item{
-    public ItemGame(int year, String title, int category, int genre, int stock, double fee) {
-        super(year, title, category, genre, stock, fee);
-    }
-
+    //restore
     public ItemGame(ArrayList<String> infoList){
         super(infoList);
     }
 
-    public static ItemGame getNewItemGame(String title, String genre, double fee, int year, int stock){
-        ItemGame newItemGame = new ItemGame(
-                year,
-                title,
-                ConstantItem.ItemCategory.GAME.ordinal(),
-                ConstantItem.genreToIndex(genre),
-                stock,
-                fee);
+    //copy
+    public ItemGame(String id, String title, int category, int genre, int stock, double price) {
+        super(id, title, category, genre, stock, price);
+    }
 
-        return newItemGame;
+    //get new
+    public ItemGame(String title, int category, int genre, int stock, int year, double price) {
+        super(title, category, genre, stock, year, price);
     }
 }

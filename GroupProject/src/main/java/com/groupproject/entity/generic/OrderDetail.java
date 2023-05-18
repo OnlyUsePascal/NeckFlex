@@ -11,7 +11,7 @@ public class OrderDetail {
     private Order order;
 
     public OrderDetail(CartDetail cartDetail, Order order) {
-        this.item = EntityHandler.getItemCopy(cartDetail.getItem());
+        this.item = EntityHandler.getCopyItem(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
         this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
         this.isReturned = false;
@@ -35,7 +35,7 @@ public class OrderDetail {
     }
 
     public double getPrice() {
-        return price;
+        return ViewHandler.getDoubleRound(price);
     }
 
     public boolean isReturned() {

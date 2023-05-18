@@ -9,25 +9,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class OrderDetailController implements Initializable {
     @FXML
-    Label itemTitle;
+    private Label titleBox;
     @FXML
-    Label itemTotalPrice;
+    private Label priceBox;
     @FXML
-    Label itemAmount;
+    private Label amountBox;
     @FXML
-    CheckBox checkBox;
+    private CheckBox checkBox;
     @FXML
-    Button btn;
+    private Button btn;
     @FXML
-    HBox container;
+    private HBox container;
+    @FXML
+    private Rectangle imgFrame;
 
-    OrderDetail orderDetail;
+    private OrderDetail orderDetail;
     // UserRecordController userRecordController;
 
 
@@ -38,10 +41,11 @@ public class OrderDetailController implements Initializable {
     public void setData(OrderDetail orderDetail){
         this.orderDetail = orderDetail;
 
-        itemTitle.setText(orderDetail.getItem().getTitle());
-        itemTotalPrice.setText(String.valueOf(orderDetail.getPrice()));
-        itemAmount.setText(String.valueOf(orderDetail.isReturned()));
+        titleBox.setText(orderDetail.getItem().getTitle());
+        amountBox.setText(String.valueOf(orderDetail.getQuantity()));
+        priceBox.setText("$" + orderDetail.getPrice());
 
+        ViewHandler.fillShapeWithImage(orderDetail.getItem().getImgName(), imgFrame);
         checkIsReturned();
     }
 
