@@ -229,6 +229,16 @@ public class ViewHandler {
         frame.setFill(imgView);
     }
 
+    static public void deleteItemImage(String imgName){
+        String url = PathHandler.getFileImageItem(imgName);
+        Path path = Paths.get(url);
+        try {
+            Files.delete(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     //=========== STRING, NUMBER ============
     static public boolean checkStringCharacterOnly(String str){

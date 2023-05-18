@@ -89,7 +89,6 @@ public class DataHandler {
 
                 Item newItem = EntityHandler.getCategorizedItem(infoList);
                 EntityHandler.addItem(newItem);
-                // Item.genericId++;
             }
         } catch(FileNotFoundException err){
             err.printStackTrace();

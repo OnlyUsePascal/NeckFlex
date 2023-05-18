@@ -188,6 +188,10 @@ public class Account {
         status = ConstantAccount.AccountStatus.ADMIN;
     }
 
+    public void removeCartDetail(Item item){
+        cart.removeCartDetail(item);
+    }
+
 
     @Override
     public String toString() {

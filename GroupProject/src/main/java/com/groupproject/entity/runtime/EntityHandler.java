@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class EntityHandler {
-    //model
+    // model
     static private ArrayList<Account> accountList = new ArrayList<>();
     static private HashMap<String, Account> usernameToObject = new HashMap<>();
     static private Account currentUser;
@@ -23,13 +23,12 @@ public class EntityHandler {
 
 
     //===================== AUTH ======================
-    //logging
-    static public void logOut(){
+    // logging
+    static public void logOut() {
         AnchorPane loginPane = ViewHandler.getAnchorPane(PathHandler.getPageLoginMain());
         Scene scene = new Scene(loginPane);
         ViewHandler.getCurrentStage().setScene(scene);
     }
-
 
 
     //===================== ACCOUNT ======================
@@ -73,6 +72,8 @@ public class EntityHandler {
             itemRecordList.add(item);
         else if (item instanceof ItemGame)
             itemGameList.add(item);
+
+        Item.updateGenericId(item.getId());
     }
 
     static public ArrayList<Item> getItemList() {
@@ -91,23 +92,23 @@ public class EntityHandler {
         return itemGameList;
     }
 
-    static public Item getItem(int idx){
+    static public Item getItem(int idx) {
         return itemList.get(idx);
     }
 
-    static public int getItemListLength(){
+    static public int getItemListLength() {
         return itemList.size();
     }
 
-    static public Item getItemDvd(int idx){
+    static public Item getItemDvd(int idx) {
         return itemDvdList.get(idx);
     }
 
-    static public Item getItemRecord(int idx){
+    static public Item getItemRecord(int idx) {
         return itemRecordList.get(idx);
     }
 
-    static public Item getItemGame(int idx){
+    static public Item getItemGame(int idx) {
         return itemGameList.get(idx);
     }
 
@@ -141,6 +142,22 @@ public class EntityHandler {
             }
         }
         return null;
+    }
+
+    static public void removeItem(Item item) {
+        //instance
+        itemList.remove(item);
+        if (item instanceof ItemDvd)
+            itemDvdList.remove(item);
+        else if (item instanceof ItemRecord)
+            itemRecordList.remove(item);
+        else if (item instanceof ItemGame)
+            itemGameList.remove(item);
+
+        //cart
+        for (Account acc : accountList) {
+            acc.removeCartDetail(item);
+        }
     }
 
     //===================== CART ======================

@@ -37,6 +37,15 @@ public class Cart {
         cartDetailList.remove(cartDetail);
     }
 
+    public void removeCartDetail(Item item){
+        for (CartDetail cartDetail : cartDetailList){
+            if (cartDetail.getItem().equals(item)){
+                removeCartDetail(cartDetail);
+                return;
+            }
+        }
+    }
+
     public void WipeCart() {
         updateTotalPrice(-totalPrice);
         cartDetailList.clear();

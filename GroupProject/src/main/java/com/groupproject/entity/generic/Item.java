@@ -25,8 +25,6 @@ public abstract class Item {
         this.genre = genre;
         this.stock = stock;
         this.price = price;
-
-        updateGenericId();
     }
 
     public Item(ArrayList<String> infoList) {
@@ -37,8 +35,6 @@ public abstract class Item {
         this.genre = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.GENRE.ordinal()));
         this.stock = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.STOCK.ordinal()));
         this.price = Double.parseDouble(infoList.get(ConstantItem.ItemInfo.PRICE.ordinal()));
-
-        updateGenericId();
     }
 
     public static String getIdFromYear(int year) {
@@ -54,8 +50,8 @@ public abstract class Item {
         return Integer.parseInt(id.substring(id.length() - 4));
     }
 
-    public void updateGenericId(){
-        int curIdOrder = Integer.parseInt(id.substring(1,4));
+    public static void updateGenericId(String itemId){
+        int curIdOrder = Integer.parseInt(itemId.substring(1,4));
         if (curIdOrder >= genericIdOrder) {
             genericIdOrder = curIdOrder + 1;
         }
