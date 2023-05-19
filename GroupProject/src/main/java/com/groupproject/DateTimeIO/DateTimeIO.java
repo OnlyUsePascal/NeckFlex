@@ -30,7 +30,7 @@ public class DateTimeIO {
             PrintWriter printWriter = new PrintWriter(myfile);
             //save data with only year, month and day
             for(LocalDateTime date : dateList){
-                printWriter.println(date.getYear() + "|" + date.getMonthValue() + "|" + date.getDayOfMonth());
+                printWriter.println(date.getYear() + "," + date.getMonthValue() + "," + date.getDayOfMonth());
             }
             printWriter.close();
             System.out.println("Save data successfully!");
@@ -55,7 +55,7 @@ public class DateTimeIO {
                 Scanner my_reader = new Scanner(myfile);
                 while(my_reader.hasNextLine()){
                     String data = my_reader.nextLine();
-                    StringTokenizer st = new StringTokenizer(data, "|");
+                    StringTokenizer st = new StringTokenizer(data, ",");
                     ArrayList<String> list = new ArrayList<>();
                     while (st.hasMoreTokens()) {
                         list.add(st.nextToken());
