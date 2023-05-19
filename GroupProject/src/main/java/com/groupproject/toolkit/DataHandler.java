@@ -152,43 +152,28 @@ public class DataHandler {
                 }
 
                 //basic
-                String username = infoList.get(0);
-                // System.out.println(username);
-                Account user = EntityHandler.accountFromUsername(username);
+                Account user = EntityHandler.accountFromUsername(infoList.get(0));
 
                 //order
                 for (int i = 1; i < infoList.size(); i++){
-                    Order order = new Order(user);
+                    Order order = new Order();
 
                     StringTokenizer st2 = new StringTokenizer(infoList.get(i), "~");
-                    ArrayList<String> orderDetails = new ArrayList<>();
+                    ArrayList<String> orderInfo = new ArrayList<>();
                     while (st2.hasMoreTokens()) {
-                        orderDetails.add(st2.nextToken());
+                        orderInfo.add(st2.nextToken());
                     }
 
+                    order.setUser(user);
+                    order.setDate(orderInfo.get(0));
+                    order.setDuration(Integer.parseInt(orderInfo.get(1)));
+
                     //order detail
-                    for (String orderDetailInfo : orderDetails){
-                        StringTokenizer st3 = new StringTokenizer(orderDetailInfo, "/");
-                        ArrayList<String> orderDetail = new ArrayList<>();
-                        while (st3.hasMoreTokens()) {
-                            orderDetail.add(st3.nextToken());
-                        }
+                    for (int j = 2 ; j < orderInfo.size() ; j++){
+                        String orderDetailInfo = orderInfo.get(j);
+                        OrderDetail orderDetail = getOrderDetailFromString(orderDetailInfo);
 
-                        int quantity = Integer.parseInt(orderDetail.get(0));
-                        boolean returned = Boolean.parseBoolean(orderDetail.get(1));
-
-                        //item
-                        String itemInfo = orderDetail.get(2);
-                        StringTokenizer st4 = new StringTokenizer(itemInfo, "|");
-                        ArrayList<String> itemInfoList = new ArrayList<>();
-                        while (st4.hasMoreTokens()) {
-                            itemInfoList.add(st4.nextToken());
-                        }
-
-                        Item item = EntityHandler.getRestoreItem(itemInfoList);
-
-                        OrderDetail orderDetail1 = new OrderDetail(item, quantity, returned, order);
-                        order.addOrderDetail(orderDetail1);
+                        order.addOrderDetail(orderDetail);
                     }
 
                     user.addOrder(order);
@@ -197,6 +182,34 @@ public class DataHandler {
         } catch(FileNotFoundException err){
             err.printStackTrace();
         }
+    }
+
+    public static OrderDetail getOrderDetailFromString(String orderDetailInfo){
+        StringTokenizer st = new StringTokenizer(orderDetailInfo, "/");
+        ArrayList<String> orderDetailList = new ArrayList<>();
+        while (st.hasMoreTokens()) {
+            orderDetailList.add(st.nextToken());
+        }
+
+        int quantity = Integer.parseInt(orderDetailList.get(0));
+        boolean returned = Boolean.parseBoolean(orderDetailList.get(1));
+
+        //1 item
+        String itemInfo = orderDetailList.get(2);
+        Item item = getItemFromString(itemInfo);
+
+        OrderDetail orderDetail = new OrderDetail(item, quantity, returned);
+        return orderDetail;
+    }
+
+    public static Item getItemFromString(String itemInfo){
+        StringTokenizer st = new StringTokenizer(itemInfo, "|");
+        ArrayList<String> itemInfoList = new ArrayList<>();
+        while (st.hasMoreTokens()) {
+            itemInfoList.add(st.nextToken());
+        }
+
+        return EntityHandler.getRestoreItem(itemInfoList);
     }
 
 

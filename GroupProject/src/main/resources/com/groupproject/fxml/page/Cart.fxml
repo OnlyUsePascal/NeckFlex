@@ -81,7 +81,7 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="billTotalPriceBox" prefHeight="21.0" text="\$xxxx" textAlignment="RIGHT">
+                                    <Label fx:id="billTotalPriceBox" prefHeight="30.0" prefWidth="80.0" text="\$xxxx" textAlignment="RIGHT">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -95,7 +95,7 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="userBalance" prefHeight="21.0" text="\$xxxx" textAlignment="RIGHT">
+                                    <Label fx:id="userBalance" prefHeight="30.0" prefWidth="80.0" text="\$xxxx" textAlignment="RIGHT">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -109,7 +109,7 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="userBalancePoint" prefHeight="21.0" text="\$xxxx" textAlignment="RIGHT">
+                                    <Label fx:id="userBalancePoint" prefHeight="30.0" prefWidth="80.0" text="\$xxxx" textAlignment="RIGHT">
                                        <font>
                                           <Font size="20.0" />
                                        </font>

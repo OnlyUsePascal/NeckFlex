@@ -1,6 +1,7 @@
 package com.groupproject.entity.runtime;
 
 import com.groupproject.entity.Constant.ConstantItem;
+import com.groupproject.entity.Constant.ConstantOrder;
 import com.groupproject.entity.generic.*;
 import com.groupproject.toolkit.PathHandler;
 import javafx.scene.Scene;
@@ -230,8 +231,9 @@ public class EntityHandler {
 
 
     //===================== ORDER ======================
-    static public void addOrder() {
-        Order newOrder = Order.getNewOrder(currentCart.getCartDetailList());
+    static public void addOrder(ConstantOrder.OrderDuration duration) {
+        // Order newOrder = Order.getNewOrder(currentCart.getCartDetailList(), duration);
+        Order newOrder = new Order(currentUser, currentCart.getCartDetailList(), duration);
         currentUser.addOrder(newOrder);
         currentCart.finishCheckout();
     }

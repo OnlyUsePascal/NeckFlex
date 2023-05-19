@@ -1,72 +1,101 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.Constant.ConstantOrder;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Order {
-    private Account owner;
+    private Account user;
     private ArrayList<OrderDetail> orderDetailList;
+    private LocalDateTime date;
     private double totalPrice;
+    private ConstantOrder.OrderDuration duration;
 
-
-    public Order(Account user){
-        owner = user;
+    public Order() {
         orderDetailList = new ArrayList<>();
     }
 
-    public void addOrderDetail(OrderDetail orderDetail){
-        orderDetailList.add(orderDetail);
-    }
+    public Order(Account user, ArrayList<CartDetail> cartDetailList,
+                 ConstantOrder.OrderDuration duration) {
+        this.user = user;
+        this.duration = duration;
+        orderDetailList = new ArrayList<>();
+        date = LocalDateTime.now();
 
-    static public Order getNewOrder(ArrayList<CartDetail> cartDetailList){
-        Order newOrder = new Order(EntityHandler.getCurrentUser());
-
-        for (CartDetail cartDetail : cartDetailList){
-            OrderDetail orderDetail = new OrderDetail(cartDetail, newOrder);
-
-            newOrder.addOrderDetail(orderDetail);
-            newOrder.updateTotalPrice(cartDetail.getTotalPrice());
+        for (CartDetail cartDetail : cartDetailList) {
+            OrderDetail orderDetail = new OrderDetail(cartDetail);
+            addOrderDetail(orderDetail);
         }
-
-        return newOrder;
     }
 
-    public void updateTotalPrice(double price){
+    public void addOrderDetail(OrderDetail orderDetail) {
+        orderDetailList.add(orderDetail);
+        orderDetail.setRootOrder(this);
+        updateTotalPrice(orderDetail.getPrice());
+    }
+
+    public void updateTotalPrice(double price) {
         totalPrice += price;
     }
 
-    public ArrayList<OrderDetail> getOrderDetailList(){
+    public void setDate(String date) {
+        this.date = LocalDateTime.parse(date);
+    }
+
+    public void setDuration(int durationIndex) {
+        // this.duration = orderDuration;
+        duration = ConstantOrder.OrderDuration.values()[durationIndex];
+    }
+
+    public void setUser(Account user) {
+        this.user = user;
+    }
+
+
+    public int getDuration(){
+        return duration.getDurationValue();
+    }
+
+    public LocalDateTime getOrderTime() {
+        return date;
+    }
+
+    public String getDate() {
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MMMM-dd"));
+    }
+
+    public ArrayList<OrderDetail> getOrderDetailList() {
         return orderDetailList;
     }
 
-    public void setTotalPrice(double price){
-        totalPrice = price;
-    }
-
-    public String getOrderInfo(){
+    public String getOrderInfo() {
         String orderInfo = "";
-        for (OrderDetail orderDetail : orderDetailList){
+
+        orderInfo += date + "~";
+        orderInfo += duration.ordinal() + "~";
+        for (OrderDetail orderDetail : orderDetailList) {
             orderInfo += orderDetail.getOrderDetailInfo() + "~";
         }
 
         return orderInfo;
     }
 
-    public ArrayList<OrderDetail> getReturnedOrderDetailList(){
+    public ArrayList<OrderDetail> getReturnedOrderDetailList() {
         ArrayList<OrderDetail> returnedOrderDetailList = new ArrayList<>();
-        for (OrderDetail orderDetail : orderDetailList){
-            if (orderDetail.isReturned()){
+        for (OrderDetail orderDetail : orderDetailList) {
+            if (orderDetail.isReturned()) {
                 returnedOrderDetailList.add(orderDetail);
             }
         }
         return returnedOrderDetailList;
     }
 
-    public ArrayList<OrderDetail> getRentingOrderDetailList(){
+    public ArrayList<OrderDetail> getRentingOrderDetailList() {
         ArrayList<OrderDetail> rentingOrderDetailList = new ArrayList<>();
-        for (OrderDetail orderDetail : orderDetailList){
-            if (!orderDetail.isReturned()){
+        for (OrderDetail orderDetail : orderDetailList) {
+            if (!orderDetail.isReturned()) {
                 rentingOrderDetailList.add(orderDetail);
             }
         }
@@ -76,7 +105,7 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "orderOwner=" + owner +
+                "orderOwner=" + user +
                 ", orderDetailList=" + orderDetailList +
                 '}';
     }

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,20 +22,22 @@ import java.util.ResourceBundle;
 
 public class OrderController implements Initializable {
     @FXML
-    VBox orderDetailContainer;
+    private VBox orderDetailContainer;
     @FXML
-    CheckBox checkBox;
+    private CheckBox checkBox;
     @FXML
-    Button btn;
+    private Button btn;
     @FXML
-    HBox orderHeader;
+    private HBox orderHeader;
     @FXML
-    VBox loadingScreen;
+    private VBox loadingScreen;
     @FXML
-    AnchorPane orderPane;
+    private AnchorPane orderPane;
+    @FXML
+    private Label dateBox;
 
-    Order order;
-    ArrayList<OrderDetailController> orderDetailControllerList;
+    private Order order;
+    private ArrayList<OrderDetailController> orderDetailControllerList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -76,6 +79,7 @@ public class OrderController implements Initializable {
 
                 loadingScreen.setManaged(false);
                 ViewHandler.toggleNode(loadingScreen, false);
+                dateBox.setText(order.getDate());
 
                 orderDetailContainer.getChildren().addAll(orderDetailPaneList);
             });

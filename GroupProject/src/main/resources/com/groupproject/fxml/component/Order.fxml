@@ -30,7 +30,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="31.0" prefWidth="165.0" text="Deadline?">
+                  <Label fx:id="dateBox" alignment="CENTER" prefHeight="31.0" prefWidth="165.0" text="Date">
                      <font>
                         <Font size="20.0" />
                      </font>

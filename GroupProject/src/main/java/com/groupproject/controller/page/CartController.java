@@ -58,27 +58,27 @@ public class CartController implements Initializable {
         refreshCart();
     }
 
-    public void initPayment(){
+    public void initPayment() {
         rent7Day.setDisable(true);
         payPoint.setDisable(true);
 
-        if (!EntityHandler.getCurrentUser().isGuest()){
+        if (!EntityHandler.getCurrentUser().isGuest()) {
             rent7Day.setDisable(false);
         }
-        if (EntityHandler.getCurrentUser().isVIP()){
+        if (EntityHandler.getCurrentUser().isVIP()) {
             payPoint.setDisable(false);
         }
     }
 
-    public void refreshCart(){
-        //reset
+    public void refreshCart() {
+        // reset
         cartDetailContainer.getChildren().clear();
         ViewHandler.toggleNode(loadingScreen, true);
 
-        //add
+        // add
         new Thread(() -> {
             ArrayList<HBox> cartDetailPaneList = new ArrayList<>();
-            for (CartDetail cartDetail : cart.getCartDetailList()){
+            for (CartDetail cartDetail : cart.getCartDetailList()) {
                 cartDetailPaneList.add(getCartDetailPane(cartDetail));
             }
 
@@ -92,52 +92,61 @@ public class CartController implements Initializable {
         }).start();
     }
 
-    public HBox getCartDetailPane(CartDetail cartDetail){
+    public HBox getCartDetailPane(CartDetail cartDetail) {
         try {
             FXMLLoader cartItemLoader = new FXMLLoader(getClass().getResource(PathHandler.getComponentCartDetail()));
             HBox cartDetailPane = cartItemLoader.load();
             CartDetailController cartDetailController = cartItemLoader.getController();
 
-            //set data
+            // set data
             cartDetailController.setData(cartDetail);
             cartDetailController.setCartController(this);
 
             return cartDetailPane;
-        } catch (IOException err){
+        } catch (IOException err) {
             err.printStackTrace();
             return null;
         }
     }
 
-    public void refreshBill(boolean cartEmpty){
-        //price
+    public void refreshBill(boolean cartEmpty) {
+        // price
         billTotalPriceBox.setText("$" + cart.getTotalPrice());
 
-        //balance
+        // balance
         userBalance.setText("$" + cartOwner.getBalance());
         userBalancePoint.setText(cartOwner.getRewardPoint() + "");
 
-        //button
+        // button
         payCash.setDisable(cartEmpty);
     }
 
-    public void checkout(ActionEvent event){
+    public void checkout(ActionEvent event) {
         Button btn = (Button) event.getSource();
         ConstantOrder.OrderStatus status = cart.checkout(btn.getId().equals("payCash"));
+        ConstantOrder.OrderDuration duration = rent7Day.isSelected() ?
+                ConstantOrder.OrderDuration.ONE_WEEK : ConstantOrder.OrderDuration.TWO_DAYS;
 
         System.out.println(status);
-        switch (status){
+        switch (status) {
             case ACCEPTED -> {
-                statusBox.setText("Checkout success");
+                new Thread(() -> {
+                    EntityHandler.addOrder(duration);
 
-                EntityHandler.addOrder();
-                refreshCart();
+                    Platform.runLater(() -> {
+                        statusBox.setText("Checkout success");
+                        refreshCart();
 
-            } case INSUFFICIENT_BALANCE -> {
+                    });
+                }).start();
+            }
+            case INSUFFICIENT_BALANCE -> {
                 statusBox.setText("Insufficient balance");
-            } case INSUFFICIENT_POINT -> {
+            }
+            case INSUFFICIENT_POINT -> {
                 statusBox.setText("Insufficient point");
-            } case LIMITED_AMOUNT -> {
+            }
+            case LIMITED_AMOUNT -> {
                 statusBox.setText("You can only hold " + ConstantOrder.rentingLimit + " items");
             }
         }

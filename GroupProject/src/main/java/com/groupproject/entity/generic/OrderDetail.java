@@ -3,6 +3,9 @@ package com.groupproject.entity.generic;
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class OrderDetail {
     private Item item;
     private int quantity;
@@ -10,20 +13,45 @@ public class OrderDetail {
     private boolean isReturned;
     private Order order;
 
-    public OrderDetail(CartDetail cartDetail, Order order) {
+    public OrderDetail(CartDetail cartDetail) {
         this.item = EntityHandler.getCopyItem(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
         this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
         this.isReturned = false;
-        this.order = order;
+        // this.order = order;
     }
 
-    public OrderDetail(Item item, int quantity, boolean isReturned, Order order) {
+    public OrderDetail(Item item, int quantity, boolean isReturned) {
         this.item = item;
         this.quantity = quantity;
         this.price = ViewHandler.getDoubleRound(item.getPrice() * quantity);
         this.isReturned = isReturned;
+        // this.order = order;
+    }
+
+    public void setRootOrder(Order order){
         this.order = order;
+    }
+
+    public void setReturned(){
+        isReturned = true;
+
+        //check credit
+        updateUserCredit();
+        // EntityHandler.getCurrentUser().updateCredit();
+    }
+
+    private void updateUserCredit(){
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime orderTime = order.getOrderTime();
+
+        int offset = Duration.between(orderTime, now).compareTo(Duration.ofDays(order.getDuration()));
+        if (offset <= 0){
+            System.out.println("update credit");
+            EntityHandler.getCurrentUser().updateCredit();
+        } else {
+            System.out.println("Not update credit");
+        }
     }
 
     public Item getItem() {
@@ -44,11 +72,6 @@ public class OrderDetail {
 
     public boolean isReturned() {
         return isReturned;
-    }
-
-    public void setReturned(){
-        isReturned = true;
-        EntityHandler.getCurrentUser().updateCredit();
     }
 
     public String getOrderDetailInfo(){
