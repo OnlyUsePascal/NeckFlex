@@ -46,13 +46,13 @@ public class CartController implements Initializable {
 
     private Cart cart;
     private Account cartOwner;
-    // private ArrayList<CartDetailController> cartDetailControllerList = new ArrayList<>();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cart = EntityHandler.getCart();
         cartOwner = EntityHandler.getCurrentUser();
+        cart = cartOwner.getCart();
+        cart.refreshCart();
 
         initPayment();
         refreshCart();
@@ -82,7 +82,7 @@ public class CartController implements Initializable {
                 cartDetailPaneList.add(getCartDetailPane(cartDetail));
             }
 
-            for (long i = 0; i < 1e9; i++);
+            ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
                 cartDetailContainer.getChildren().addAll(cartDetailPaneList);

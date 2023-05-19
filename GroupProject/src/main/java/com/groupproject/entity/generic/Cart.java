@@ -32,6 +32,21 @@ public class Cart {
         updateTotalPrice(cartDetail.getTotalPrice());
     }
 
+    public void refreshCart(){
+        //wipe deleted item
+        for (int i = cartDetailList.size() - 1; i >= 0; i--){
+            CartDetail cartDetail = cartDetailList.get(i);
+
+            if (cartDetail.getItem().isDeleted()){
+                removeCartDetail(cartDetail);
+            }
+
+            if (!cartDetail.refreshQuantity()){
+                removeCartDetail(cartDetail);
+            }
+        }
+    }
+
     public void removeCartDetail(CartDetail cartDetail) {
         updateTotalPrice(-cartDetail.getTotalPrice());
         cartDetailList.remove(cartDetail);
@@ -46,8 +61,13 @@ public class Cart {
         }
     }
 
-    public void WipeCart() {
+    public void finishCheckout() {
         updateTotalPrice(-totalPrice);
+
+        for (CartDetail cartDetail : cartDetailList) {
+            cartDetail.updateStock();
+        }
+
         cartDetailList.clear();
     }
 
@@ -76,8 +96,8 @@ public class Cart {
         String cartInfo = "";
         cartInfo += (owner.getUsername() + "|");
         for (CartDetail cartDetail : cartDetailList){
-            cartInfo += (EntityHandler.getItemList().indexOf(cartDetail.getItem()) + "/"
-                    + cartDetail.getQuantity() + "|");
+            int itemIndex = EntityHandler.getItemIndex(cartDetail.getItem());
+            cartInfo += (itemIndex + "/" + cartDetail.getQuantity() + "|");
         }
 
         return cartInfo;

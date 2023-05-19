@@ -51,13 +51,13 @@ public class ItemTrendingController implements Initializable {
             addItemTile(ConstantItem.ItemCategory.DVD, EntityHandler.getItemDvdList());
         });
 
-        // Platform.runLater(() -> {
-        //     addItemTile(ConstantItem.ItemCategory.RECORD, EntityHandler.getItemRecordList());
-        // });
-        //
-        // Platform.runLater(() -> {
-        //     addItemTile(ConstantItem.ItemCategory.GAME, EntityHandler.getItemGameList());
-        // });
+        Platform.runLater(() -> {
+            addItemTile(ConstantItem.ItemCategory.RECORD, EntityHandler.getItemRecordList());
+        });
+
+        Platform.runLater(() -> {
+            addItemTile(ConstantItem.ItemCategory.GAME, EntityHandler.getItemGameList());
+        });
     }
 
     public void addItemTile(ConstantItem.ItemCategory category, ArrayList<Item> itemList){
@@ -66,8 +66,8 @@ public class ItemTrendingController implements Initializable {
             Node tile = loader.load();
             ItemTrendingTileController itemTrendingTileController = loader.getController();
 
-            tileContainer.getChildren().add(tile);
             itemTrendingTileController.setData(category, itemList);
+            tileContainer.getChildren().add(tile);
         } catch (IOException err) {
             err.printStackTrace();
         }

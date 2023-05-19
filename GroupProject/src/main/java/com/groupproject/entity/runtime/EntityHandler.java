@@ -129,6 +129,14 @@ public class EntityHandler {
         return null;
     }
 
+    static public Item findItem(String id){
+        for (Item item : itemList) {
+            if (item.getId().equals(id))
+                return item;
+        }
+        return null;
+    }
+
     static public void removeItem(Item item) {
         // instance
         itemList.remove(item);
@@ -140,9 +148,11 @@ public class EntityHandler {
             itemGameList.remove(item);
 
         // cart
-        for (Account acc : accountList) {
-            acc.removeCartDetail(item);
-        }
+        currentCart.refreshCart();
+    }
+
+    static public void updateStock(CartDetail cartDetail){
+        cartDetail.getItem().updateStock(-cartDetail.getQuantity());
     }
 
     static public ArrayList<Item> getItemList() {
@@ -181,6 +191,10 @@ public class EntityHandler {
         return itemGameList.get(idx);
     }
 
+    static public int getItemIndex(Item item) {
+        return itemList.indexOf(item);
+    }
+
 
     //===================== CART ======================
     static public Cart getCart() {
@@ -200,7 +214,7 @@ public class EntityHandler {
     static public void addOrder() {
         Order newOrder = Order.getNewOrder(currentCart.getCartDetailList());
         currentUser.addOrder(newOrder);
-        currentCart.WipeCart();
+        currentCart.finishCheckout();
     }
 
 }

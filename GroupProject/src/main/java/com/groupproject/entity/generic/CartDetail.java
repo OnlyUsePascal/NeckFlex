@@ -38,6 +38,16 @@ public class CartDetail {
         return quantity;
     }
 
+    public boolean refreshQuantity(){
+        if (!item.isAvailable()) return false;
+        quantity = Math.min(quantity, item.getStock());
+        return true;
+    }
+
+    public void updateStock(){
+        item.updateStock(-quantity);
+    }
+
     public boolean setQuantity(int newQuantity) {
         if (newQuantity < 1 || newQuantity > item.getStock()) {
             return false;

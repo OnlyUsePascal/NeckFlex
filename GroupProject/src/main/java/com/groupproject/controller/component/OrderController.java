@@ -18,7 +18,6 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class OrderController implements Initializable {
     @FXML
@@ -50,19 +49,26 @@ public class OrderController implements Initializable {
         //load
         loadingScreen.setManaged(true);
         ViewHandler.toggleNode(loadingScreen, true);
+
         new Thread(() -> {
-            //get order detail
+            //get order detail pane list
             ArrayList<OrderDetail> orderDetailList;
             if (isReturned) {
                 orderDetailList = order.getReturnedOrderDetailList();
             } else {
                 orderDetailList = order.getRentingOrderDetailList();
             }
-            // for (long i = 0; i < 1e9; i++);
 
-            //make detail pane -> add to order pane
+            ArrayList<AnchorPane> orderDetailPaneList = new ArrayList<>();
+            for (OrderDetail orderDetail : orderDetailList){
+                orderDetailPaneList.add(getOrderDetailPane(orderDetail));
+            }
+
+            ViewHandler.fakeLoading();
+
+            //add to order pane
             Platform.runLater(() -> {
-                if (orderDetailList.isEmpty()) {
+                if (orderDetailPaneList.isEmpty()) {
                     ViewHandler.toggleNode(orderPane, false);
                     orderPane.setManaged(false);
                     return;
@@ -71,9 +77,7 @@ public class OrderController implements Initializable {
                 loadingScreen.setManaged(false);
                 ViewHandler.toggleNode(loadingScreen, false);
 
-                for (OrderDetail orderDetail : orderDetailList){
-                    addOrderDetailPane(orderDetail);
-                }
+                orderDetailContainer.getChildren().addAll(orderDetailPaneList);
             });
         }).start();
     }
@@ -88,14 +92,7 @@ public class OrderController implements Initializable {
         }
     }
 
-    public void checkIsReturned(OrderDetail orderDetail) {
-        if (orderDetail.isReturned()) {
-            orderHeader.getChildren().remove(btn);
-            orderHeader.getChildren().remove(checkBox);
-        }
-    }
-
-    public void addOrderDetailPane(OrderDetail orderDetail) {
+    public AnchorPane getOrderDetailPane(OrderDetail orderDetail) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentOrderDetail()));
             AnchorPane pane = loader.load();
@@ -104,9 +101,10 @@ public class OrderController implements Initializable {
             orderDetailController.setData(orderDetail);
             orderDetailControllerList.add(orderDetailController);
 
-            orderDetailContainer.getChildren().add(pane);
+            return pane;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 

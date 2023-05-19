@@ -54,7 +54,7 @@ public class ItemInfoUpdateController implements Initializable {
 
         item.setTitle(itemInfoTitle.getText());
         item.setGenre(ConstantItem.genreToIndex(itemInfoGenre.getValue()));
-        item.setStock(Integer.parseInt(itemInfoQuantity.getText()));
+        item.updateStock(Integer.parseInt(itemInfoQuantity.getText()));
 
         ViewHandler.closePopup(event);
     }

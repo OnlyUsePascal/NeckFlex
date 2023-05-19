@@ -1,6 +1,7 @@
 package com.groupproject.entity.generic;
 
 import com.groupproject.entity.Constant.ConstantItem;
+import com.groupproject.entity.runtime.EntityHandler;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -113,6 +114,10 @@ public abstract class Item {
         return stock > 0;
     }
 
+    public boolean isDeleted(){
+        return EntityHandler.getItemIndex(this) == -1;
+    }
+
 
     public void setTitle(String title) {
         this.title = title;
@@ -126,8 +131,8 @@ public abstract class Item {
         this.genre = genre;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void updateStock(int amount) {
+        this.stock += amount;
     }
 
     public void setYear(int year) {

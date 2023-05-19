@@ -1,6 +1,8 @@
 package com.groupproject.controller.component;
 
+import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.generic.OrderDetail;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,11 +61,21 @@ public class OrderDetailController implements Initializable {
     public void returnItem(ActionEvent event){
         orderDetail.setReturned();
         ViewHandler.getUserRecordController().refreshPage();
+
+        updateItemStock();
     }
 
     public void returnItem(){
         orderDetail.setReturned();
 
+        updateItemStock();
+    }
+
+    public void updateItemStock(){
+        Item item = orderDetail.getItemFromDb();
+        if (item != null){
+            item.updateStock(orderDetail.getQuantity());
+        }
     }
 
     public void setCheckBox(boolean status){

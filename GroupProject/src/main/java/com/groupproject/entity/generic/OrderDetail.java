@@ -30,6 +30,10 @@ public class OrderDetail {
         return item;
     }
 
+    public Item getItemFromDb() {
+        return EntityHandler.findItem(item.getId());
+    }
+
     public int getQuantity() {
         return quantity;
     }

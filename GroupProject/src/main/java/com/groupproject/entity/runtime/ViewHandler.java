@@ -132,6 +132,10 @@ public class ViewHandler {
     }
 
     //=========== PANE, NODE ============
+    static public void fakeLoading(){
+        for (long i = 0; i < 1e9; i++);
+    }
+
     static public void toggleNode(Node node, boolean isShow) {
         node.setVisible(isShow);
         node.setManaged(isShow);

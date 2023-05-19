@@ -246,9 +246,9 @@ public class DataHandler {
             for (Account user : EntityHandler.getAccountList()) {
                 if (user.isAdmin()) continue;
 
+                user.getCart().refreshCart();
                 String cartInfo = user.getCart().getCartInfo();
                 printWriter.println(cartInfo);
-                // System.out.println(cartInfo);
             }
 
             printWriter.close();
