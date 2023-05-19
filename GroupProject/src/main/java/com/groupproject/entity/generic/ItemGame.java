@@ -16,7 +16,7 @@ public class ItemGame extends Item{
     }
 
     //get new
-    public ItemGame(String title, int category, int genre, int stock, int year, double price) {
+    public ItemGame(String title, int category, int genre, int stock, String year, double price) {
         super(title, category, genre, stock, year, price);
     }
 }

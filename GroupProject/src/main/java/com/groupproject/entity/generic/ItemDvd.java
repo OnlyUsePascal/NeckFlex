@@ -16,7 +16,7 @@ public class ItemDvd extends Item{
     }
 
     //get new
-    public ItemDvd(String title, int category, int genre, int stock, int year, double price) {
+    public ItemDvd(String title, int category, int genre, int stock, String year, double price) {
         super(title, category, genre, stock, year, price);
     }
 }

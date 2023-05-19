@@ -13,7 +13,8 @@ public abstract class Item {
     private int category;
     private int genre;
     private int stock;
-    private int year;
+    // private int year;
+    private String year;
     private double price;
 
     static public int genericIdOrder = 1;
@@ -42,7 +43,7 @@ public abstract class Item {
     }
 
     // get new
-    public Item(String title, int category, int genre, int stock, int year, double price) {
+    public Item(String title, int category, int genre, int stock, String year, double price) {
         this.id = getIdFromYear(year);
         this.title = title;
         this.category = category;
@@ -53,15 +54,15 @@ public abstract class Item {
     }
 
 
-    public static String getIdFromYear(int year) {
+    public static String getIdFromYear(String year) {
         DecimalFormat df = new DecimalFormat("000");
         String code = df.format(genericIdOrder);
-        String formattedYear = String.format("%04d", year);
+        String formattedYear = String.format("%04d", Integer.parseInt(year));
         return "I" + code + "-" + formattedYear;
     }
 
-    public static int getYearFromId(String id) {
-        return Integer.parseInt(id.substring(id.length() - 4));
+    public static String getYearFromId(String id) {
+        return id.substring(id.length() - 4);
     }
 
     public static void updateGenericId(String itemId){
@@ -106,7 +107,7 @@ public abstract class Item {
         return stock;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
@@ -133,10 +134,6 @@ public abstract class Item {
 
     public void updateStock(int amount) {
         this.stock += amount;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
     public void setPrice(double price) {

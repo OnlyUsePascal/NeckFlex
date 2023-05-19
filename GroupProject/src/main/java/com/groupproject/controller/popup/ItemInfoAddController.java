@@ -79,7 +79,7 @@ public class ItemInfoAddController implements Initializable {
         int category = ConstantItem.categoryToIndex(itemRegisterCategory.getValue());
         int genre = ConstantItem.genreToIndex(itemRegisterGenre.getValue());
         int stock = Integer.parseInt(itemRegisterStock.getText());
-        int year = Integer.parseInt(itemRegisterYear.getText());
+        String year = itemRegisterYear.getText();
         double price = Double.parseDouble(itemRegisterPrice.getText());
 
         Item item = EntityHandler.getNewItem(title, category, genre, stock, year, price);

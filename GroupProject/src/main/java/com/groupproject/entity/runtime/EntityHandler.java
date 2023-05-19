@@ -109,7 +109,9 @@ public class EntityHandler {
         return null;
     }
 
-    static public Item getNewItem(String title, int category, int genre, int stock, int year, double price){
+    static public Item getNewItem(String title, int category,
+                                  int genre, int stock,
+                                  String year, double price){
         switch (category) {
             case 0 -> {
                 return new ItemDvd(title, category, genre, stock, year, price);

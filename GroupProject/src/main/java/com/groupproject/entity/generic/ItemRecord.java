@@ -13,7 +13,7 @@ public class ItemRecord extends Item{
         super(id, title, category, genre, stock, fee);
     }
 
-    public ItemRecord(String title, int category, int genre, int stock, int year, double fee) {
+    public ItemRecord(String title, int category, int genre, int stock, String year, double fee) {
         super(title, category, genre, stock, year, fee);
     }
 
