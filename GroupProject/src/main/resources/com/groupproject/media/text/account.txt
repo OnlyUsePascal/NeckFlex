@@ -3,3 +3,4 @@ C001|pasha|123|jeff|joun|my house|090902|2|41.8|30
 C002|joun|123|dat|pham|my house|09213|2|281.28|70
 C003|johnson|123|dat|what|my house|02414|3|20.0|30
 C005|joun2|123|dat|pham|0123|address|1|30.0|0
+C006|joun3|123|dat|nguyen|house|0123|1|30.0|0

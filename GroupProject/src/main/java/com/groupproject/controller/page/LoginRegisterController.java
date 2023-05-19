@@ -5,6 +5,7 @@ import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,44 +21,44 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginRegisterController implements Initializable {
+    @FXML
+    private TextField RegistrationPageUsername = new TextField();
+    @FXML
+    private PasswordField RegistrationPagePassword = new PasswordField();
+    @FXML
+    private PasswordField RegistrationPageConfirmPassword = new PasswordField();
+    @FXML
+    private TextField RegistrationPageFirstName = new TextField();
+    @FXML
+    private TextField RegistrationPageLastName = new TextField();
+    @FXML
+    private TextField RegistrationPagePhoneNumber = new TextField();
+    @FXML
+    private TextField RegistrationPageAddress = new TextField();
+    @FXML
+    private Label RegistrationPageMessage = new Label();
+    @FXML
+    private Label requiredUsername = new Label();
+    @FXML
+    private Label requiredPassword = new Label();
+    @FXML
+    private Label requiredConfirmPassword = new Label();
+    @FXML
+    private Label requiredFirstName = new Label();
+    @FXML
+    private Label requiredLastName = new Label();
+    @FXML
+    private Label requiredPhoneNumber = new Label();
+    @FXML
+    private Label requiredAddress = new Label();
 
-    @FXML
-    TextField RegistrationPageUsername = new TextField();
-
-    @FXML
-    PasswordField RegistrationPagePassword = new PasswordField();
-
-    @FXML
-    PasswordField RegistrationPageConfirmPassword = new PasswordField();
-
-    @FXML
-    TextField RegistrationPageFirstName = new TextField();
-    @FXML
-    TextField RegistrationPageLastName = new TextField();
-
-    @FXML
-    TextField RegistrationPagePhoneNumber = new TextField();
-
-    @FXML
-    TextField RegistrationPageAddress = new TextField();
-
-    @FXML
-    Label RegistrationPageMessage = new Label();
-
-    @FXML
-    Label requiredUsername = new Label();
-    @FXML
-    Label requiredPassword = new Label();
-    @FXML
-    Label requiredConfirmPassword = new Label();
-    @FXML
-    Label requiredFirstName = new Label();
-    @FXML
-    Label requiredLastName = new Label();
-    @FXML
-    Label requiredPhoneNumber = new Label();
-    @FXML
-    Label requiredAddress = new Label();
+    private String username;
+    private String password;
+    private String confirmPassword;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String address;
 
 
     @Override
@@ -67,15 +68,47 @@ public class LoginRegisterController implements Initializable {
     }
 
     public void onCreateButtonClick(ActionEvent event) {
+        username = RegistrationPageUsername.getText();
+        password = RegistrationPagePassword.getText();
+        confirmPassword = RegistrationPageConfirmPassword.getText();
+        firstName = RegistrationPageFirstName.getText();
+        lastName = RegistrationPageLastName.getText();
+        phoneNumber = RegistrationPagePhoneNumber.getText();
+        address = RegistrationPageAddress.getText();
 
-        String username = RegistrationPageUsername.getText();
-        String password = RegistrationPagePassword.getText();
-        String confirmPassword = RegistrationPageConfirmPassword.getText();
-        String firstName = RegistrationPageFirstName.getText();
-        String lastName = RegistrationPageLastName.getText();
-        String phoneNumber = RegistrationPagePhoneNumber.getText();
-        String address = RegistrationPageAddress.getText();
+        if (!checkValid()){
+            RegistrationPageMessage.setText("Something gone wrong");
+            return;
+        }
 
+        if(!password.equals(confirmPassword)){
+            RegistrationPageMessage.setText("Password doesn't match!");
+            return;
+        }
+
+        if(EntityHandler.accountIsExist(username)){
+            RegistrationPageMessage.setText("Username already exists!");
+            return;
+        }
+
+        //legit
+        new Thread(() -> {
+            EntityHandler.registerAccount(username, password, firstName, lastName, address, phoneNumber);
+
+            Platform.runLater(() -> {
+                RegistrationPageMessage.setText("Register successfully!");
+                RegistrationPageMessage.setTextFill(Color.GREEN);
+
+                PauseTransition pause = new PauseTransition(Duration.millis(1500));
+                pause.setOnFinished(event2 -> {
+                    toPageLoginMain(event);
+                });
+                pause.play();
+            });
+        }).start();
+    }
+
+    public boolean checkValid(){
         boolean legit = true;
         boolean status = true;
         RegistrationPageMessage.setText("");
@@ -109,32 +142,7 @@ public class LoginRegisterController implements Initializable {
         requiredAddress.setVisible(!status);
         legit &= status;
 
-        if (!legit){
-            RegistrationPageMessage.setText("Something gone wrong");
-            return;
-        }
-
-        //extra err
-        if(EntityHandler.accountIsExist(username)){
-            RegistrationPageMessage.setText("Username already exists!");
-            return;
-        }
-
-        if(password.compareTo(confirmPassword) != 0){
-            RegistrationPageMessage.setText("Password doesn't match!");
-            return;
-        }
-
-        //legit
-        RegistrationPageMessage.setText("Register successfully!");
-        RegistrationPageMessage.setTextFill(Color.GREEN);
-        Account newAccount = Account.getNewAccount(username, password, firstName, lastName, phoneNumber, address);
-        EntityHandler.addAccount(newAccount);
-
-        PauseTransition pause = new PauseTransition(Duration.millis(2000));
-        pause.setOnFinished(event2 -> toPageLoginMain(event));
-        pause.play();
-
+        return legit;
     }
 
     public void toPageLoginMain(ActionEvent event){

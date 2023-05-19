@@ -30,6 +30,23 @@ public class EntityHandler {
         ViewHandler.getCurrentStage().setScene(scene);
     }
 
+    static public boolean logIn(String username, String pwd){
+        Account account = accountFromUsername(username);
+
+        if (account == null) return false;
+        if (!account.getPassword().equals(pwd)) return false;
+
+        setCurrentUser(account);
+        return true;
+    }
+
+    static public void registerAccount(String username, String password,
+                                       String firstName,String lastName,
+                                       String address,String phoneNumber){
+        Account account = Account.getNewAccount(username, password, firstName, lastName, address, phoneNumber);
+        addAccount(account);
+    }
+
 
     //===================== ACCOUNT ======================
     static public ArrayList<Account> getAccountList() {

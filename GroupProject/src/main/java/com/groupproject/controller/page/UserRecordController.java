@@ -36,7 +36,7 @@ public class UserRecordController implements Initializable {
 
         // order - renting / returned ->
         for (Order order : EntityHandler.getCurrentUser().getOrderList()) {
-            addOrderPane(order, returnwedContainer, true);
+            addOrderPane(order, returnedContainer, true);
             addOrderPane(order, rentingContainer, false);
         }
     }

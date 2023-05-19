@@ -2,6 +2,7 @@ package com.groupproject.controller.page;
 
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.generic.Account;
+import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -25,80 +26,85 @@ import java.util.ResourceBundle;
 public class LoginMainController implements Initializable {
     @FXML
     private Button button;
-
     @FXML
     private Button LoginPageRegister;
-
     @FXML
     private Label loginMessage;
-
     @FXML
     private TextField usernameBox;
-
     @FXML
     private PasswordField passwordBox;
 
+    private String username;
+    private String password;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Node pane = button.getParent().getParent();
         pane.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER){
+            if (event.getCode() == KeyCode.ENTER) {
                 actionLogin(null);
             }
         });
     }
 
     public void actionLogin(ActionEvent event) {
-        if(usernameBox.getText().isEmpty() || passwordBox.getText().isEmpty()){
-            loginMessage.setText("Please enter your username and password!");
+        username = usernameBox.getText();
+        password = passwordBox.getText();
+
+        if (!checkValid()) return;
+        if (!checkLogin()) return;
+
+        toHome();
+    }
+
+    public boolean checkValid() {
+        if (!ViewHandler.checkStringGeneral(usernameBox.getText()) ||
+                !ViewHandler.checkStringGeneral(passwordBox.getText())) {
+            loginMessage.setText("Please enter valid username and password!");
             loginMessage.setTextFill(Color.RED);
-            return;
+            return false;
         }
 
-        // System.out.println(ShopSystem.getAccountList().size());
-        String curUsername = usernameBox.getText();
-        String curPwd = passwordBox.getText();
-        Account sysAcc = EntityHandler.accountFromUsername(curUsername);
+        return true;
+    }
 
-        if (sysAcc == null || !sysAcc.getPassword().equals(curPwd)){
+    public boolean checkLogin() {
+        if (!EntityHandler.logIn(username, password)) {
             loginMessage.setText("Wrong username or password!");
             loginMessage.setTextFill(Color.RED);
-            return;
+            return false;
         }
 
-        EntityHandler.setCurrentUser(sysAcc);
+        return true;
+    }
+
+    public void toHome() {
         loginMessage.setText("Signing in...");
         loginMessage.setTextFill(Color.GREEN);
-        PauseTransition pause = new PauseTransition(Duration.millis(2000));
+
+        PauseTransition pause = new PauseTransition(Duration.millis(1500));
         pause.setOnFinished(event2 -> {
-            toHome();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageHome()));
+                Scene scene = button.getScene();
+                scene.setRoot(loader.load());
+            } catch (IOException err) {
+                err.printStackTrace();
+            }
         });
         pause.play();
     }
 
-    public void toHome(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageHome()));
-        Scene scene = button.getScene();
-        try {
-            scene.setRoot(loader.load());
-        } catch (IOException err){
-            err.printStackTrace();
-        }
-    }
-
-    public void toLoginRegister(ActionEvent event){
+    public void toLoginRegister(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageRegister()));
         Scene scene = button.getScene();
         try {
             scene.setRoot(loader.load());
-        } catch (IOException err){
+        } catch (IOException err) {
             err.printStackTrace();
         }
     }
-
-
-
 
 
 }
