@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -97,14 +98,13 @@ public class LoginMainController implements Initializable {
     }
 
     public void toLoginRegister(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageRegister()));
-        Scene scene = button.getScene();
         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageRegister()));
+            Scene scene = button.getScene();
+
             scene.setRoot(loader.load());
         } catch (IOException err) {
             err.printStackTrace();
         }
     }
-
-
 }

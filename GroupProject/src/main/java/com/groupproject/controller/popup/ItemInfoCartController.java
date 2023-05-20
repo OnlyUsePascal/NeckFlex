@@ -61,6 +61,7 @@ public class ItemInfoCartController implements Initializable {
         EntityHandler.addCartDetail(item, newCartQuantity);
 
         ViewHandler.closePopup(event);
+        ViewHandler.getNoti("Cart updated!", null);
     }
 
     public void updateCart(ActionEvent event) {
@@ -69,6 +70,7 @@ public class ItemInfoCartController implements Initializable {
         cartDetail.setQuantity(newCartQuantity);
 
         ViewHandler.closePopup(event);
+        ViewHandler.getNoti("Cart updated!", null);
     }
 
     public void setData(Item _item) {

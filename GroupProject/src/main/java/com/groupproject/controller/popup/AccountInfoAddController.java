@@ -129,6 +129,8 @@ public class AccountInfoAddController implements Initializable {
         EntityHandler.addAccount(newAccount);
 
         closePopup(event);
+        ViewHandler.getNoti("Add account successfully", null);
+
     }
 
     public void closePopup(ActionEvent event) {

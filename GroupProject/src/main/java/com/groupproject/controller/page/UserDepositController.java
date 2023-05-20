@@ -1,6 +1,7 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.entity.generic.BankAccount;
+import com.groupproject.entity.runtime.EntityHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -63,7 +64,7 @@ public class UserDepositController implements Initializable {
             if (bankAccount == null) {
                 message.setText("There's no such account.");
             } else {
-                if (bankAccount.transfer(bankAccount, dAmount)) {
+                if (bankAccount.transfer(EntityHandler.getCurrentUser(), dAmount)) {
                     message.setText("Successfully transferred " + dAmount + "USD");
                 } else {
                     message.setText("Not enough money. Current balance = " + bankAccount.getBalance() + "USD");

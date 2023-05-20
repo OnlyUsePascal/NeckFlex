@@ -57,6 +57,7 @@ public class ItemInfoUpdateController implements Initializable {
         item.updateStock(Integer.parseInt(itemInfoQuantity.getText()));
 
         ViewHandler.closePopup(event);
+        ViewHandler.getNoti("Update item successfully", null);
     }
 
     public void DecreaseStock(){

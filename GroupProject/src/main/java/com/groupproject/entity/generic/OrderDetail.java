@@ -13,7 +13,7 @@ public class OrderDetail {
     private boolean isReturned;
     private Order order;
 
-    public OrderDetail(CartDetail cartDetail) {
+    public OrderDetail(CartDetail cartDetail) { //new
         this.item = EntityHandler.getCopyItem(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
         this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
@@ -21,7 +21,7 @@ public class OrderDetail {
         // this.order = order;
     }
 
-    public OrderDetail(Item item, int quantity, boolean isReturned) {
+    public OrderDetail(Item item, int quantity, boolean isReturned) { //restore
         this.item = item;
         this.quantity = quantity;
         this.price = ViewHandler.getDoubleRound(item.getPrice() * quantity);

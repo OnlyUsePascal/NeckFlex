@@ -5,10 +5,14 @@ import com.groupproject.controller.component.NavBarController;
 import com.groupproject.controller.component.SidebarController;
 import com.groupproject.controller.page.HomeController;
 import com.groupproject.controller.page.UserRecordController;
+import com.groupproject.controller.popup.NotiController;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.toolkit.PathHandler;
+import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -23,6 +27,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,6 +89,12 @@ public class ViewHandler {
         currentStage = stage;
     }
 
+    static public Window getWindow(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        Window window = node.getScene().getWindow();
+        return window;
+    }
+
     static public void closePopup(ActionEvent event) {
         Node node = (Node) event.getSource();
         Window window = node.getScene().getWindow();
@@ -115,6 +126,45 @@ public class ViewHandler {
         return popup;
     }
 
+    static public void getNoti(String text, AnchorPane rootPane) {
+        //default
+        AnchorPane curRoot = (rootPane != null) ?
+                rootPane : homeController.getPageContent();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(ViewHandler.class.getResource(PathHandler.getPopupNoti()));
+            AnchorPane notiPane = loader.load();
+            NotiController notiController = loader.getController();
+
+            notiController.setText(text);
+            double offset = 10;
+            notiPane.setLayoutX(curRoot.getPrefWidth() - notiPane.getPrefWidth() - offset);
+            notiPane.setLayoutY(offset);
+            // notiPane.setOpacity(0);
+
+            curRoot.getChildren().add(notiPane);
+
+            long sleepTime = 3000;
+            new Thread(() -> {
+                Platform.runLater(() -> {
+                    toggleFadeNode(notiPane, true);
+                });
+
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException err) {
+                    err.printStackTrace();
+                }
+
+                Platform.runLater(() -> {
+                    toggleFadeNode(notiPane, false);
+                });
+            }).start();
+
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
 
     static public void setScene(Scene scene, String url) {
         FXMLLoader loader = new FXMLLoader(ViewHandler.class.getResource(url));
@@ -125,15 +175,10 @@ public class ViewHandler {
         }
     }
 
-    static public Window getWindow(ActionEvent event) {
-        Node node = (Node) event.getSource();
-        Window window = node.getScene().getWindow();
-        return window;
-    }
 
-    //=========== PANE, NODE ============
-    static public void fakeLoading(){
-        for (long i = 0; i < 1e9; i++);
+    //=========== NODE ============
+    static public void fakeLoading() {
+        for (long i = 0; i < 1e9; i++) ;
     }
 
     static public void toggleNode(Node node, boolean isShow) {
@@ -141,19 +186,16 @@ public class ViewHandler {
         node.setManaged(isShow);
     }
 
-    static public Button getItemBox(Item item) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(ViewHandler.class.getResource(PathHandler.getComponentItemBox()));
-            Button itemBox = (Button) fxmlLoader.load();
-            ItemBoxController itemBoxController = fxmlLoader.getController();
+    static public void toggleFadeNode(Node node, boolean show) {
+        FadeTransition fadeTransition = new FadeTransition();
 
-            itemBoxController.setData(item);
+        fadeTransition.setNode(node);
+        fadeTransition.setDuration(Duration.millis(1000));
 
-            return itemBox;
-        } catch (IOException err) {
-            err.printStackTrace();
-            return null;
-        }
+        fadeTransition.setFromValue(show ? 0 : 1);
+        fadeTransition.setToValue(show ? 1 : 0);
+
+        fadeTransition.play();
     }
 
     static public void setAnchorPane(AnchorPane frame, Node node) {
@@ -172,6 +214,21 @@ public class ViewHandler {
             setAnchorPane(frame, node);
         } catch (Exception err) {
             err.printStackTrace();
+        }
+    }
+
+    static public Button getItemBox(Item item) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(ViewHandler.class.getResource(PathHandler.getComponentItemBox()));
+            Button itemBox = (Button) fxmlLoader.load();
+            ItemBoxController itemBoxController = fxmlLoader.getController();
+
+            itemBoxController.setData(item);
+
+            return itemBox;
+        } catch (IOException err) {
+            err.printStackTrace();
+            return null;
         }
     }
 
@@ -195,6 +252,10 @@ public class ViewHandler {
                 }
             }
         });
+    }
+
+    static public AnchorPane getCurrentRoot() {
+        return (AnchorPane) getCurrentStage().getScene().getRoot();
     }
 
     //=========== FILE ============

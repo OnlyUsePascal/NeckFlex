@@ -8,17 +8,22 @@ import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class LoginRegisterController implements Initializable {
     @FXML
@@ -52,6 +57,7 @@ public class LoginRegisterController implements Initializable {
     @FXML
     private Label requiredAddress = new Label();
 
+
     private String username;
     private String password;
     private String confirmPassword;
@@ -59,6 +65,7 @@ public class LoginRegisterController implements Initializable {
     private String lastName;
     private String phoneNumber;
     private String address;
+    private AnchorPane loginContainer;
 
 
     @Override
@@ -96,14 +103,8 @@ public class LoginRegisterController implements Initializable {
             EntityHandler.registerAccount(username, password, firstName, lastName, address, phoneNumber);
 
             Platform.runLater(() -> {
-                RegistrationPageMessage.setText("Register successfully!");
-                RegistrationPageMessage.setTextFill(Color.GREEN);
-
-                PauseTransition pause = new PauseTransition(Duration.millis(1500));
-                pause.setOnFinished(event2 -> {
-                    toPageLoginMain(event);
-                });
-                pause.play();
+                toPageLoginMain(event);
+                ViewHandler.getNoti("Register successfully!", loginContainer);
             });
         }).start();
     }
@@ -146,8 +147,16 @@ public class LoginRegisterController implements Initializable {
     }
 
     public void toPageLoginMain(ActionEvent event){
-        Scene scene = ((Button) event.getSource()).getScene();
-        ViewHandler.setScene(scene, PathHandler.getPageLoginMain());
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageLoginMain()));
+            Scene scene = ((Node) event.getSource()).getScene();
+            AnchorPane loginMainContainer = loader.load();
+
+            scene.setRoot(loginMainContainer);
+            loginContainer = loginMainContainer;
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
     }
 
 }

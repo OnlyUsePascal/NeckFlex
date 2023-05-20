@@ -92,6 +92,7 @@ public class ItemInfoAddController implements Initializable {
         }).start();
 
         closePopup(event);
+        ViewHandler.getNoti("Add item successfully", null);
     }
 
     public void DecreaseStock() {

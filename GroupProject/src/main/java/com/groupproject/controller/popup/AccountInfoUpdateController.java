@@ -105,16 +105,8 @@ public class AccountInfoUpdateController implements Initializable {
     }
 
     public void returnHome(ActionEvent event){
-        //popup -> close
-        //other wise -> update navbar, back to home
-
-        Window window = ((Node) event.getSource()).getScene().getWindow();
         ViewHandler.refreshMenuButtonName();
-        window.hide();
-        // if (window instanceof Popup){
-        //     window.hide();
-        // } else {
-        //     ViewHandler.setPageContent(PathHandler.getPageItemTrending());
-        // }
+        ViewHandler.closePopup(event);
+        ViewHandler.getNoti("Update profile successfully", null);
     }
 }

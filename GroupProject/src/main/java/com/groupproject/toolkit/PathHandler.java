@@ -113,6 +113,10 @@ public class PathHandler {
         return popupRoot + "AccountInfoAdd.fxml";
     }
 
+    static public String getPopupNoti(){
+        return popupRoot + "Noti.fxml";
+    }
+
 
     static public String getMediaImage(String imgName) {
         return imgRoot + imgName;

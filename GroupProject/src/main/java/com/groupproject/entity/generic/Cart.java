@@ -133,7 +133,8 @@ public class Cart {
     }
 
     public boolean payWithPoint(){
-        if (owner.getRewardPoint() < totalPrice) {
+        int pointPrice = 100;
+        if (owner.getRewardPoint() >= pointPrice) {
             return false;
         }
 

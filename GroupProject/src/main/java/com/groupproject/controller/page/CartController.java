@@ -136,7 +136,6 @@ public class CartController implements Initializable {
                     Platform.runLater(() -> {
                         statusBox.setText("Checkout success");
                         refreshCart();
-
                     });
                 }).start();
             }

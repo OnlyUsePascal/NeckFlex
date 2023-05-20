@@ -151,7 +151,7 @@ public class Account {
         this.address = address;
     }
 
-    public void setBalance(double amount) {
+    public void updateBalance(double amount) {
         this.balance += amount;
     }
 

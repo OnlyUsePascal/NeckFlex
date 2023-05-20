@@ -50,4 +50,8 @@ public class HomeController implements Initializable {
         sidebarPanel.setTranslateX(-300);
         ViewHandler.setAnchorPane(navBar, url);
     }
+
+    public AnchorPane getPageContent() {
+        return pageContent;
+    }
 }
