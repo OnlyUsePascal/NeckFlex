@@ -15,10 +15,10 @@ import java.util.ResourceBundle;
 public class SidebarController implements Initializable {
 
     @FXML
-    AnchorPane menuPane;
+    private AnchorPane menuPane;
 
-    boolean menuIsOpen = false;
-    TranslateTransition menuToOpen, menuToClose;
+    private boolean menuIsOpen = false;
+    private TranslateTransition menuToOpen, menuToClose;
 
 
     @Override

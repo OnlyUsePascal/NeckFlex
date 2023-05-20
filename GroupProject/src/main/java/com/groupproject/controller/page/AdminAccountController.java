@@ -52,7 +52,7 @@ public class AdminAccountController implements Initializable {
     @FXML
     private VBox loadingScreen;
 
-    String optionAny;
+    private String optionAny;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -26,17 +26,17 @@ import java.util.ResourceBundle;
 public class ItemTrendingController implements Initializable {
 
     @FXML
-    HBox itemTileDvd;
+    private HBox itemTileDvd;
     @FXML
-    HBox itemTileRecord;
+    private HBox itemTileRecord;
     @FXML
-    HBox itemTileGame;
+    private HBox itemTileGame;
     @FXML
-    ScrollPane itemPageDvd;
+    private ScrollPane itemPageDvd;
     @FXML
-    ScrollPane itemPageRecord;
+    private ScrollPane itemPageRecord;
     @FXML
-    ScrollPane itemPageGame;
+    private ScrollPane itemPageGame;
     @FXML
     private VBox tileContainer;
 

@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 
 public class NavBarCustomerController extends NavBarController {
     @FXML
-    TextField searchField;
+    private TextField searchField;
 
     public void toCart(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageCart());

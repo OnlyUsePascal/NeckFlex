@@ -3,9 +3,9 @@ package com.groupproject.entity.generic;
 import com.groupproject.entity.runtime.ViewHandler;
 
 public class CartDetail {
-    Item item;
-    int quantity;
-    double totalPrice;
+    private Item item;
+    private int quantity;
+    private double totalPrice;
     private Cart cart;
 
     public CartDetail(Item item, int quantity) {

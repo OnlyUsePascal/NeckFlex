@@ -19,38 +19,37 @@ import java.util.ResourceBundle;
 
 public class AccountInfoAddController implements Initializable {
     @FXML
-    TextField RegistrationPageUsername = new TextField();
+    private TextField RegistrationPageUsername = new TextField();
     @FXML
-    PasswordField RegistrationPagePassword = new PasswordField();
+    private PasswordField RegistrationPagePassword = new PasswordField();
     @FXML
-    PasswordField RegistrationPageConfirmPassword = new PasswordField();
+    private PasswordField RegistrationPageConfirmPassword = new PasswordField();
     @FXML
-    TextField RegistrationPageFirstName = new TextField();
+    private TextField RegistrationPageFirstName = new TextField();
     @FXML
-    TextField RegistrationPageLastName = new TextField();
+    private TextField RegistrationPageLastName = new TextField();
     @FXML
-    TextField RegistrationPagePhoneNumber = new TextField();
+    private TextField RegistrationPagePhoneNumber = new TextField();
     @FXML
-    TextField RegistrationPageAddress = new TextField();
+    private TextField RegistrationPageAddress = new TextField();
     @FXML
-    Label RegistrationPageMessage = new Label();
-
+    private Label RegistrationPageMessage = new Label();
     @FXML
-    Label requiredUsername = new Label();
+    private Label requiredUsername = new Label();
     @FXML
-    Label requiredPassword = new Label();
+    private Label requiredPassword = new Label();
     @FXML
-    Label requiredConfirmPassword = new Label();
+    private Label requiredConfirmPassword = new Label();
     @FXML
-    Label requiredFirstName = new Label();
+    private Label requiredFirstName = new Label();
     @FXML
-    Label requiredLastName = new Label();
+    private Label requiredLastName = new Label();
     @FXML
-    Label requiredPhoneNumber = new Label();
+    private Label requiredPhoneNumber = new Label();
     @FXML
-    Label requiredAddress = new Label();
+    private Label requiredAddress = new Label();
     @FXML
-    ChoiceBox<String> choiceList;
+    private ChoiceBox<String> choiceList;
 
     private String[] choices = {"Admin", "Customer"};
 

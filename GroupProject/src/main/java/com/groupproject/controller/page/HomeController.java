@@ -15,17 +15,17 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     @FXML
-    Label labelSample;
+    private Label labelSample;
     @FXML
-    AnchorPane sidebarPanel;
+    private AnchorPane sidebarPanel;
     @FXML
-    AnchorPane pageContent;
+    private AnchorPane pageContent;
     @FXML
-    AnchorPane navBar;
+    private AnchorPane navBar;
 
-    SidebarController sidebarController;
-    NavBarCustomerController navBarCustomerController;
-    ItemAllController itemAllController;
+    private SidebarController sidebarController;
+    private NavBarCustomerController navBarCustomerController;
+    private ItemAllController itemAllController;
 
 
     @Override

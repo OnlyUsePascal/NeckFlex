@@ -14,9 +14,9 @@ import java.util.ResourceBundle;
 
 public class NavBarController implements Initializable {
     @FXML
-    TextField searchField;
+    private TextField searchField;
     @FXML
-    MenuButton menuButton;
+    private MenuButton menuButton;
 
 
     @Override

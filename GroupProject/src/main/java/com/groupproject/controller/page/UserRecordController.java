@@ -19,9 +19,9 @@ import java.util.ResourceBundle;
 
 public class UserRecordController implements Initializable {
     @FXML
-    VBox rentingContainer;
+    private VBox rentingContainer;
     @FXML
-    VBox returnedContainer;
+    private VBox returnedContainer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -28,7 +28,7 @@ public class UserDepositController implements Initializable {
     @FXML
     private Label message;
 
-    ArrayList<BankAccount> bankAccountsList;
+    private ArrayList<BankAccount> bankAccountsList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
