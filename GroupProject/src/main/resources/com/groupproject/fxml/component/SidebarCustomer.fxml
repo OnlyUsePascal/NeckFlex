@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -10,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="menuPane" prefHeight="820.0" prefWidth="290.0" style="-fx-background-color: #FEE8B0;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.SidebarCustomerController">
+<AnchorPane fx:id="menuPane" prefHeight="820.0" styleClass="sideBarFrame" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.SidebarCustomerController">
    <children>
-      <VBox prefHeight="210.0" prefWidth="290.0" spacing="10.0">
+      <VBox prefHeight="210.0" prefWidth="234.0" spacing="10.0">
          <children>
             <Button mnemonicParsing="false" onAction="#toHome" prefWidth="290.0">
                <graphic>
@@ -37,6 +38,9 @@
                      </children>
                   </HBox>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button mnemonicParsing="false" onAction="#toItemAll" prefWidth="290.0">
                <graphic>
@@ -64,6 +68,9 @@
                      </children>
                   </HBox>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button mnemonicParsing="false" onAction="#toRecord" prefWidth="290.0">
                <graphic>
@@ -91,10 +98,13 @@
                      </children>
                   </HBox>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
          <padding>
-            <Insets top="10.0" />
+            <Insets left="20.0" top="10.0" />
          </padding>
       </VBox>
    </children>

@@ -1,74 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.LoginRegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.LoginRegisterController">
    <children>
-      <AnchorPane layoutX="545.0" layoutY="255.0" prefHeight="462.0" prefWidth="515.0" style="-fx-background-color: yellow;">
+      <ImageView fitHeight="900.0" fitWidth="1600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../media/image/background.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="900.0" prefWidth="1600.0" styleClass="signUpGradient" />
+      <AnchorPane>
          <children>
-            <TextField fx:id="RegistrationPageUsername" layoutX="104.0" layoutY="66.0" prefHeight="29.0" prefWidth="323.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="RegistrationPagePassword" layoutX="104.0" layoutY="110.0" prefHeight="31.0" prefWidth="323.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="RegistrationPageConfirmPassword" layoutX="104.0" layoutY="157.0" prefHeight="31.0" prefWidth="323.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="RegistrationPageFirstName" layoutX="104.0" layoutY="202.0" prefHeight="29.0" prefWidth="323.0" promptText="FirstName" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="RegistrationPageLastName" layoutX="104.0" layoutY="247.0" prefHeight="31.0" prefWidth="323.0" promptText="LastName" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="RegistrationPagePhoneNumber" layoutX="104.0" layoutY="295.0" prefHeight="29.0" prefWidth="323.0" promptText="Phone Number" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="RegistrationPageAddress" layoutX="104.0" layoutY="342.0" prefHeight="29.0" prefWidth="323.0" promptText="Address" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="66.0" layoutY="390.0" mnemonicParsing="false" onAction="#toPageLoginMain" style="-fx-background-color: blue;" text="Cancel" textFill="WHITE" />
-            <Button layoutX="394.0" layoutY="390.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="27.0" prefWidth="64.0" style="-fx-background-color: blue;" text="Create" textFill="WHITE" />
-            <Label contentDisplay="CENTER" layoutX="139.0" layoutY="14.0" text="User Registration" textAlignment="CENTER" textFill="#366cc9">
-               <font>
-                  <Font name="System Bold" size="27.0" />
-               </font>
-            </Label>
-            <Label fx:id="requiredUsername" layoutX="105.0" layoutY="97.0" text="Invalid input!" textFill="RED" visible="false">
-               <font>
-                  <Font name="System Italic" size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="requiredConfirmPassword" layoutX="108.0" layoutY="188.0" text="Invalid input!" textFill="RED" visible="false">
-               <font>
-                  <Font name="System Italic" size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="requiredPassword" layoutX="105.0" layoutY="140.0" text="Invalid input!" textFill="RED" visible="false">
-               <font>
-                  <Font name="System Italic" size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="requiredFirstName" contentDisplay="BOTTOM" layoutX="108.0" layoutY="233.0" text="Invalid input!" textFill="RED" visible="false">
-               <font>
-                  <Font name="System Italic" size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="requiredLastName" layoutX="108.0" layoutY="278.0" text="Invalid input!" textFill="RED" visible="false">
-               <font>
-                  <Font name="System Italic" size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="requiredPhoneNumber" layoutX="108.0" layoutY="324.0" text="Invalid input!" textFill="RED" visible="false">
-               <font>
-                  <Font name="System Italic" size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="requiredAddress" layoutX="107.0" layoutY="371.0" text="Invalid input!" textFill="RED" visible="false">
-               <font>
-                  <Font name="System Italic" size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="RegistrationPageMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="379.0" prefHeight="14.0" prefWidth="238.0" textAlignment="CENTER">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
+            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="903.0" prefWidth="650.0" styleClass="loginMain">
+               <children>
+                  <AnchorPane prefHeight="110.0" prefWidth="554.0" />
+                  <Label fx:id="titlte" prefHeight="86.0" prefWidth="490.0" text="Sign up" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <VBox fillWidth="false">
+                     <children>
+                        <HBox alignment="CENTER" fillHeight="false">
+                           <children>
+                              <TextField fx:id="firstNameBox" prefHeight="57.0" prefWidth="222.0" promptText="First Name" styleClass="loginTextField">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <TextField fx:id="lastNameBox" prefHeight="57.0" prefWidth="224.0" promptText="Last Name" styleClass="loginTextField">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="28.0" styleClass="signUpNotice" text="*" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" fillHeight="false">
+                           <children>
+                              <TextField fx:id="usernameBox" prefHeight="57.0" prefWidth="456.0" promptText="Username" styleClass="loginTextField">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="28.0" styleClass="signUpNotice" text="*" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" fillHeight="false">
+                           <children>
+                              <PasswordField fx:id="pwdBox" prefHeight="56.0" prefWidth="457.0" promptText="Password" styleClass="loginTextField">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </PasswordField>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="28.0" styleClass="signUpNotice" text="*" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" fillHeight="false">
+                           <children>
+                              <PasswordField fx:id="pwdConfirmBox" prefHeight="56.0" prefWidth="457.0" promptText="Confirm Password" styleClass="loginTextField">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </PasswordField>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="28.0" styleClass="signUpNotice" text="*" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <TextField fx:id="phoneBox" prefHeight="58.0" prefWidth="458.0" promptText="Phone Number" styleClass="loginTextField">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="addressBox" prefHeight="58.0" prefWidth="458.0" promptText="Address" styleClass="loginTextField">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <Label fx:id="messBox" alignment="CENTER" contentDisplay="CENTER" prefHeight="19.0" prefWidth="283.0" styleClass="loginMessage" text="Negative sauna" textAlignment="CENTER" textFill="RED">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="button" mnemonicParsing="false" onAction="#actionSignUp" prefHeight="57.0" prefWidth="300.0" styleClass="loginBtnLogin" text="Sign Up">
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <HBox alignment="CENTER" fillHeight="false" prefHeight="25.0" prefWidth="297.0" styleClass="loginRegis">
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label styleClass="loginRegis" text="Already a member?">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink onAction="#toLoginMain" text="Sign in" underline="true">
+                           <styleClass>
+                              <String fx:value="loginRegis" />
+                              <String fx:value="btn" />
+                           </styleClass>
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>

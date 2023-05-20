@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="menuPane" prefHeight="820.0" prefWidth="290.0" style="-fx-background-color: #FEE8B0;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.SidebarAdminController">
+<AnchorPane fx:id="menuPane" prefHeight="820.0" styleClass="sideBarFrame" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.SidebarAdminController">
     <children>
-        <VBox prefHeight="210.0" prefWidth="290.0" spacing="10.0">
+        <VBox prefHeight="210.0" prefWidth="270.0" spacing="10.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#toHome" prefWidth="290.0">
+                <Button mnemonicParsing="false" onAction="#toHome" prefWidth="290.0" styleClass="sideBarBtn">
                     <graphic>
                         <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">
                             <children>
@@ -101,7 +101,7 @@
                               <Image url="@../../media/image/book-solid.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="33.0" prefWidth="195.0" text="Account manager">
+                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="34.0" prefWidth="198.0" text="Account manager">
                            <font>
                               <Font size="20.0" />
                            </font>

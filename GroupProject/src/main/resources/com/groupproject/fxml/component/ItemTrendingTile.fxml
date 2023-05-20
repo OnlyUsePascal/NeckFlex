@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -10,46 +12,54 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.ItemTrendingTileController">
+<AnchorPane stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.ItemTrendingTileController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="930.0" style="-fx-border-color: transparent;">
+      <VBox alignment="TOP_CENTER" prefWidth="1200.0" style="-fx-border-color: transparent;">
          <children>
-            <HBox prefHeight="9.0" prefWidth="931.0" style="-fx-background-color: #569DAA;">
+            <HBox alignment="CENTER_LEFT" prefWidth="931.0">
                <children>
-                  <Label fx:id="title" prefHeight="48.0" prefWidth="779.0" text="DVD">
+                  <Label fx:id="title" prefWidth="1055.0" styleClass="itemTileHeader" text="Categories">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Label>
-                  <Button fx:id="moveLeft" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
+                  <Button fx:id="moveLeft" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="70.0" styleClass="itemTileMoveBtn">
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../media/image/chevron-left-solid.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="67.0" stylesheets="@../../style.css">
+                  <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="69.0" styleClass="itemTileMoveBtn">
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../media/image/chevron-right-solid.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </graphic>
                   </Button>
                </children>
             </HBox>
-            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" prefWidth="1083.0" styleClass="itemTileScrollPane" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                <content>
-                  <HBox fx:id="container" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: transparent;" />
+                  <HBox fx:id="container" prefWidth="1082.0" spacing="40.0" />
                </content>
             </ScrollPane>
          </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
       </VBox>
-      <VBox fx:id="loadingScreen" alignment="CENTER" layoutY="50.0" prefHeight="300.0" prefWidth="931.0" style="-fx-background-color: white;">
+      <VBox fx:id="loadingScreen" alignment="CENTER" layoutY="50.0" prefHeight="300.0" prefWidth="931.0" visible="false">
          <children>
             <ImageView fitHeight="79.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                <image>

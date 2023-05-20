@@ -28,8 +28,6 @@ public class LoginMainController implements Initializable {
     @FXML
     private Button button;
     @FXML
-    private Button LoginPageRegister;
-    @FXML
     private Label loginMessage;
     @FXML
     private TextField usernameBox;
@@ -73,7 +71,7 @@ public class LoginMainController implements Initializable {
     public boolean checkLogin() {
         if (!EntityHandler.logIn(username, password)) {
             loginMessage.setText("Wrong username or password!");
-            loginMessage.setTextFill(Color.RED);
+            // loginMessage.setTextFill(Color.RED);
             return false;
         }
 
@@ -82,7 +80,7 @@ public class LoginMainController implements Initializable {
 
     public void toHome() {
         loginMessage.setText("Signing in...");
-        loginMessage.setTextFill(Color.GREEN);
+        // loginMessage.setTextFill(Color.GREEN);
 
         PauseTransition pause = new PauseTransition(Duration.millis(1500));
         pause.setOnFinished(event2 -> {

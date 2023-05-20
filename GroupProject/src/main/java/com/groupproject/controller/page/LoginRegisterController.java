@@ -1,10 +1,8 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,13 +10,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,35 +23,37 @@ import java.util.ResourceBundle;
 
 public class LoginRegisterController implements Initializable {
     @FXML
-    private TextField RegistrationPageUsername = new TextField();
+    private TextField usernameBox;
     @FXML
-    private PasswordField RegistrationPagePassword = new PasswordField();
+    private PasswordField pwdBox;
     @FXML
-    private PasswordField RegistrationPageConfirmPassword = new PasswordField();
+    private PasswordField pwdConfirmBox;
     @FXML
-    private TextField RegistrationPageFirstName = new TextField();
+    private TextField firstNameBox;
     @FXML
-    private TextField RegistrationPageLastName = new TextField();
+    private TextField lastNameBox;
     @FXML
-    private TextField RegistrationPagePhoneNumber = new TextField();
+    private TextField phoneBox;
     @FXML
-    private TextField RegistrationPageAddress = new TextField();
+    private TextField addressBox;
+
     @FXML
-    private Label RegistrationPageMessage = new Label();
-    @FXML
-    private Label requiredUsername = new Label();
-    @FXML
-    private Label requiredPassword = new Label();
-    @FXML
-    private Label requiredConfirmPassword = new Label();
-    @FXML
-    private Label requiredFirstName = new Label();
-    @FXML
-    private Label requiredLastName = new Label();
-    @FXML
-    private Label requiredPhoneNumber = new Label();
-    @FXML
-    private Label requiredAddress = new Label();
+    private Label messBox;
+
+    // @FXML
+    // private Label requiredUsername ;
+    // @FXML
+    // private Label requiredPassword ;
+    // @FXML
+    // private Label requiredConfirmPassword ;
+    // @FXML
+    // private Label requiredFirstName ;
+    // @FXML
+    // private Label requiredLastName ;
+    // @FXML
+    // private Label requiredPhoneNumber ;
+    // @FXML
+    // private Label requiredAddress ;
 
 
     private String username;
@@ -70,83 +68,88 @@ public class LoginRegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        RegistrationPageMessage.setText("");
-        RegistrationPageMessage.setTextFill(Color.RED);
+        // messBox.setText("");
+        // messBox.setTextFill(Color.RED);
     }
 
-    public void onCreateButtonClick(ActionEvent event) {
-        username = RegistrationPageUsername.getText();
-        password = RegistrationPagePassword.getText();
-        confirmPassword = RegistrationPageConfirmPassword.getText();
-        firstName = RegistrationPageFirstName.getText();
-        lastName = RegistrationPageLastName.getText();
-        phoneNumber = RegistrationPagePhoneNumber.getText();
-        address = RegistrationPageAddress.getText();
+    public void actionSignUp(ActionEvent event) {
+        username = usernameBox.getText();
+        password = pwdBox.getText();
+        confirmPassword = pwdConfirmBox.getText();
+        firstName = firstNameBox.getText();
+        lastName = lastNameBox.getText();
+        phoneNumber = phoneBox.getText();
+        if (phoneNumber.isBlank()) phoneNumber = "N/A";
+        address = addressBox.getText();
+        if (address.isBlank()) address = "N/A";
 
-        if (!checkValid()){
-            RegistrationPageMessage.setText("Something gone wrong");
-            return;
-        }
+        if (!checkValid()) return;
 
-        if(!password.equals(confirmPassword)){
-            RegistrationPageMessage.setText("Password doesn't match!");
-            return;
-        }
+        messBox.setText("Register successfully! Returning...");
+        messBox.setStyle("-fx-font-weight: bold; -fx-text-fill: green;");
 
-        if(EntityHandler.accountIsExist(username)){
-            RegistrationPageMessage.setText("Username already exists!");
-            return;
-        }
-
-        //legit
         new Thread(() -> {
-            EntityHandler.registerAccount(username, password, firstName, lastName, address, phoneNumber);
+            // EntityHandler.registerAccount(username, password, firstName, lastName, address, phoneNumber);
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             Platform.runLater(() -> {
-                toPageLoginMain(event);
-                ViewHandler.getNoti("Register successfully!", loginContainer);
+
+                toLoginMain(event);
+                // ViewHandler.getNoti("Register successfully!", loginContainer);
             });
         }).start();
     }
 
-    public boolean checkValid(){
-        boolean legit = true;
-        boolean status = true;
-        RegistrationPageMessage.setText("");
+    public boolean checkValid() {
+        if (!ViewHandler.checkStringCharacterOnly(firstName)) {
+            messBox.setText("First name is invalid!");
+            return false;
+        }
 
-        //format
-        status = ViewHandler.checkStringGeneral(username);
-        requiredUsername.setVisible(!status);
-        legit &= status;
+        if (!ViewHandler.checkStringCharacterOnly(lastName)) {
+            messBox.setText("Last name is invalid!");
+            return false;
+        }
 
-        status = ViewHandler.checkStringGeneral(password);
-        requiredPassword.setVisible(!status);
-        legit &= status;
+        if (!ViewHandler.checkStringGeneral(username)) {
+            messBox.setText("Username is invalid!");
+            return false;
+        }
 
-        status = ViewHandler.checkStringGeneral(confirmPassword);
-        requiredConfirmPassword.setVisible(!status);
-        legit &= status;
+        if (!ViewHandler.checkStringGeneral(password)) {
+            messBox.setText("Password is invalid!");
+            return false;
+        }
 
-        status = ViewHandler.checkStringCharacterOnly(firstName);
-        requiredFirstName.setVisible(!status);
-        legit &= status;
+        if (!phoneNumber.equals("N/A") && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
+            messBox.setText("Phone number is invalid!");
+            return false;
+        }
 
-        status = ViewHandler.checkStringCharacterOnly(lastName);
-        requiredLastName.setVisible(!status);
-        legit &= status;
+        if (!address.equals("N/A") && !ViewHandler.checkStringGeneral(address)) {
+            messBox.setText("Address is invalid!");
+            return false;
+        }
 
-        status = ViewHandler.checkStringNumberOnly(phoneNumber);
-        requiredPhoneNumber.setVisible(!status);
-        legit &= status;
+        if (!password.equals(confirmPassword)) {
+            messBox.setText("Password doesn't match!");
+            return false;
+        }
 
-        status = ViewHandler.checkStringGeneral(address);
-        requiredAddress.setVisible(!status);
-        legit &= status;
+        if (EntityHandler.accountIsExist(username)) {
+            messBox.setText("Username already exists!");
+            return false;
+        }
 
-        return legit;
+        return true;
     }
 
-    public void toPageLoginMain(ActionEvent event){
+    public void toLoginMain(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageLoginMain()));
             Scene scene = ((Node) event.getSource()).getScene();

@@ -3,37 +3,41 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="820.0" prefWidth="1600.0" style="-fx-background-color: #394867;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.ItemTrendingController">
+<AnchorPane prefHeight="820.0" prefWidth="1600.0" style="-fx-background-color: rgba(20,20,20);" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.ItemTrendingController">
    <children>
       <HBox fillHeight="false" prefHeight="820.0" prefWidth="1600.0">
          <children>
-            <AnchorPane prefHeight="820.0" prefWidth="200.0" style="-fx-background-color: teal;" />
-            <ScrollPane hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1300.0" style="-fx-background-color: #F1F6F9;">
+            <AnchorPane prefHeight="820.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="821.0" prefWidth="1370.0" styleClass="globalScrollPane">
                <content>
-                  <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="1300.0">
+                  <AnchorPane prefHeight="692.0" prefWidth="1345.0" style="-fx-background-color: rgba(20,20,20);">
                      <children>
-                        <Label contentDisplay="RIGHT" prefHeight="61.0" prefWidth="1300.0" style="-fx-background-color: #B9EDDD;" text="Home">
-                           <font>
-                              <Font size="40.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="30.0" />
-                           </padding>
-                        </Label>
-                        <VBox fx:id="tileContainer" fillWidth="false" prefWidth="1042.0" />
+                        <ImageView fitHeight="493.0" fitWidth="1369.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../media/image/poster.jpg" />
+                           </image></ImageView>
+                        <AnchorPane layoutY="453.0" prefHeight="46.0" prefWidth="1369.0" styleClass="itemAllFadePane" />
+                        <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="1366.0">
+                           <children>
+                              <Label prefHeight="70.0" prefWidth="1246.0" styleClass="itemAllHeader" text="Welcome Home!">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="30.0" />
+                                 </padding></Label>
+                              <AnchorPane prefHeight="357.0" prefWidth="200.0" />
+                              <VBox fx:id="tileContainer" fillWidth="false" />
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </AnchorPane>
                </content>
             </ScrollPane>
          </children>

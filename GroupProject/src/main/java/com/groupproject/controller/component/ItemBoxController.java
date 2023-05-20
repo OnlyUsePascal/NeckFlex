@@ -26,8 +26,8 @@ public class ItemBoxController implements Initializable {
     private Rectangle imgFrame;
     @FXML
     private Label itemTitle;
-    @FXML
-    private Label itemPrice;
+    // @FXML
+    // private Label itemPrice;
 
     private Item item;
 
@@ -38,7 +38,7 @@ public class ItemBoxController implements Initializable {
     public void setData(Item _item) {
         item = _item;
         setTitle(_item.getTitle());
-        setPrice(_item.getPrice());
+        // setPrice(_item.getPrice());
 
         setImg();
     }
@@ -51,9 +51,9 @@ public class ItemBoxController implements Initializable {
         itemTitle.setText(titleNew);
     }
 
-    public void setPrice(double price){
-        itemPrice.setText(String.valueOf(price));
-    }
+    // public void setPrice(double price){
+    //     itemPrice.setText(String.valueOf(price));
+    // }
 
     public void getPopup(ActionEvent event){
         System.out.println("popup");

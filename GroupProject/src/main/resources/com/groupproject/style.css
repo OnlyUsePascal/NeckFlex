@@ -1,54 +1,178 @@
-.button{
-    -fx-background-color: transparent;
-}
+/*.button{*/
+/*    -fx-background-color: transparent;*/
+/*}*/
 
-.button:hover{
-    -fx-background-color: #07f7f7;
-}
+/*.button:hover{*/
+/*    -fx-background-color: #07f7f7;*/
+/*}*/
 
-.button:pressed{
-    -fx-background-color: #239c9c;
-}
+/*.button:pressed{*/
+/*    -fx-background-color: #239c9c;*/
+/*}*/
 
 /*MENU BUTTON*/
-.menu-button{
-    -fx-background-color: transparent;
-}
+/*.menu-button{*/
+/*    -fx-background-color: transparent;*/
+/*}*/
 
-.menu-button:hover{
-    -fx-background-color: #07f7f7;
-}
+/*.menu-button:hover{*/
+/*    -fx-background-color: #07f7f7;*/
+/*}*/
 
-.menu-button:pressed{
-    -fx-background-color: #239c9c;
-}
+/*.menu-button:pressed{*/
+/*    -fx-background-color: #239c9c;*/
+/*}*/
 
-/*MENU ITEM*/
-.menu-item:hover{
-    -fx-background-color: grey;
-    /*-fx-translate-x: 10;*/
-}
+/*!*MENU ITEM*!*/
+/*.menu-item:hover{*/
+/*    -fx-background-color: grey;*/
+/*    !*-fx-translate-x: 10;*!*/
+/*}*/
 
-.context-menu{
-    -fx-background-color: white;
-    -fx-font-size: 20;
-    /*-fx-margin: 10 10 10 10;*/
-    -fx-background-radius: 10;
-}
+/*.context-menu{*/
+/*    -fx-background-color: white;*/
+/*    -fx-font-size: 20;*/
+/*    !*-fx-margin: 10 10 10 10;*!*/
+/*    -fx-background-radius: 10;*/
+/*}*/
 
-/*Img frame*/
-.imgFrame{
-    -fx-arc-height: 30;
-    -fx-arc-width: 30;
-    -fx-background-color: #07f7f7;
-}
+/*!*Img frame*!*/
+/*.imgFrame{*/
+/*    -fx-arc-height: 30;*/
+/*    -fx-arc-width: 30;*/
+/*    -fx-background-color: #07f7f7;*/
+/*}*/
 
 /*ITEM TILE*/
-.itemTile .viewport {
+/*.itemTile .viewport {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+
+/*.itemTile{*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+
+.globalScrollPane .viewport{
+    -fx-background-color: rgba(20,20,20);
+}
+
+.globalScrollPane{
+    -fx-background-color: rgba(20,20,20);
+}
+
+
+/*AUTH*/
+.loginGradient{
+    -fx-background-color: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+.loginMain{
+    -fx-background-color:  rgba(0, 0, 0, 0.7);
+}
+
+.loginTextField{
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+}
+
+.loginBtnLogin{
+    -fx-background-color: #e50914;
+    -fx-text-fill: white;
+}
+
+.loginMessage{
+    -fx-text-fill: #e87c03;
+}
+
+.loginRegis{
+    -fx-text-fill: white;
+}
+
+/*sign up*/
+.signUpGradient{
+    -fx-background-color: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+.signUpNotice{
+    -fx-text-fill: #e87c03;
+    -fx-font-weight: bold;
+    -fx-font-size: 30;
+    -fx-padding: 10 0 0 0;
+}
+
+
+/*ITEM ALL*/
+.itemAllHeader{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    -fx-font-size: 30;
+    -fx-padding: 0 0 0 10;
+}
+
+.itemAllFadePane{
+    -fx-background-color: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(20,20,20,1));
+}
+
+.itemTileHeader{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 22;
+    -fx-padding: 0 0 0 0;
+}
+
+.itemTileMoveBtn{
     -fx-background-color: transparent;
 }
 
-.itemTile{
+.itemTileScrollPane .viewport {
     -fx-background-color: transparent;
 }
+
+.itemTileScrollPane{
+    -fx-background-color: transparent;
+}
+
+/*ITEM BOX*/
+.itemBoxContainer{
+    -fx-background-color: rgba(20,20,20,1);
+}
+
+.itemBoxImage{
+    -fx-arc-width: 20;
+    -fx-arc-height: 20;
+    -fx-stroke-width: 0;
+}
+
+.itemBoxTitle{
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-padding: 2 0 0 0;
+    /*-fx-font-weight: bold;*/
+}
+
+
+/*SIDE BAR*/
+.sideBarFrame{
+    -fx-background-color:  rgba(0, 0, 0, 0.7);
+}
+
+.sideBarFrame .button{
+    -fx-background-color: transparent;
+}
+
+.sideBarFrame .button .label{
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+
+
+
+
+
+
+
+
+
+
 
