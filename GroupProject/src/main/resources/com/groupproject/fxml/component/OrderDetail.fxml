@@ -1,61 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #B0DAFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.OrderDetailController">
+
+<HBox fx:id="container" alignment="CENTER_LEFT" fillHeight="false" prefWidth="810.0" styleClass="orderDetail" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.OrderDetailController">
    <children>
-      <HBox fx:id="container" alignment="CENTER_LEFT" fillHeight="false" prefHeight="200.0" prefWidth="950.0">
-         <children>
-            <CheckBox fx:id="checkBox" mnemonicParsing="false">
-               <font>
-                  <Font size="17.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </HBox.margin>
-            </CheckBox>
-            <Rectangle fx:id="imgFrame" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="180.0" stroke="BLACK" strokeType="INSIDE" width="119.0">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Rectangle>
-            <Label fx:id="titleBox" prefHeight="30.0" prefWidth="383.0" text="Item Title">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="amountBox" text="Quantity">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="priceBox" text="Total price">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Label>
-            <Button fx:id="btn" mnemonicParsing="false" onAction="#returnItem" text="Return">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
+      <CheckBox fx:id="checkBox" mnemonicParsing="false">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin>
+      </CheckBox>
+      <Rectangle fx:id="imgFrame" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="115.0" stroke="BLACK" strokeType="INSIDE" styleClass="itemBoxImage" width="76.0">
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin>
+      </Rectangle>
+      <Label fx:id="titleBox" prefHeight="32.0" prefWidth="357.0" text="Lord of Leaves">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin>
+      </Label>
+      <Label fx:id="amountBox" prefHeight="23.0" prefWidth="111.0" text="Renting:1">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin>
+      </Label>
+      <Button fx:id="btn" mnemonicParsing="false" onAction="#returnItem" prefHeight="42.0" prefWidth="117.0" text=" Return">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../media/image/reply-solid.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="15.0" left="20.0" top="15.0" />
+   </padding>
+</HBox>

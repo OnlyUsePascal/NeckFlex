@@ -33,7 +33,7 @@ public class HomeController implements Initializable {
         ViewHandler.setHomeController(this);
 
         // setPageContent(PathHandler.getPageItemTrending());
-        setPageContent(PathHandler.getPageCart());
+        setPageContent(PathHandler.getPageUserRecord());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBar(PathHandler.getComponentNavBar());
     }

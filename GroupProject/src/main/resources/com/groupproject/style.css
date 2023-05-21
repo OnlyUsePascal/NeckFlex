@@ -389,6 +389,143 @@
     -fx-font-weight: bold;
 }
 
+/*ORDER DETAIL*/
+.orderDetail{
+    -fx-background-color: rgba(15, 15, 15, 1);
+    -fx-border-color: grey;
+    -fx-border-width: 1;
+    /*-fx-padding: 0 0 0 15;*/
+}
+
+.orderDetail .label{
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.orderDetail .button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+
+    -fx-border-color: white;
+}
+
+.orderDetail .button:hover{
+    -fx-font-weight: bold;
+}
+
+
+.orderDetail .check-box .box {
+    -fx-background-color: rgba(10, 10, 10, 0.9);
+    -fx-border-color: white;
+    -fx-border-width: 1;
+    -fx-padding: 2;
+}
+
+.orderDetail .check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+/*ORDER*/
+.order{
+    -fx-background-color: black;
+}
+
+.order .header{
+    -fx-background-color: #455D7A;
+    -fx-border-color: grey;
+    -fx-border-width: 1;
+    -fx-border-radius: 5 5 0 0;
+    -fx-background-radius: 5;
+    -fx-padding: 10 0 10 20;
+}
+
+.order .header .label{
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.order .header .button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+
+    -fx-border-color: white;
+}
+
+.order .header .button:hover{
+    -fx-font-weight: bold;
+}
+
+.order .header .check-box .box {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 1;
+    -fx-padding: 2;
+}
+
+.order .header .check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+
+/*RECORD*/
+.record{
+    -fx-background-color: black;
+}
+
+.record .tab-pane .tab-header-area .tab-header-background{
+    -fx-background-color: transparent;
+}
+
+.record .tab-pane .tab{
+    -fx-background-color: transparent;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+
+    /*-fx-background-insets: 0 1 0 1;*/
+    /*-fx-padding: ;*/
+}
+
+.record .tab-pane .tab .tab-label{
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+.record .tab-pane .tab:hover .tab-label{
+    -fx-font-weight: bold;
+}
+
+.record .tab-pane .tab:selected{
+    -fx-background-color: white;
+}
+
+.record .tab-pane .tab:selected .tab-label{
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.record .tab-pane .tab-content-area{
+    /*-fx-background-color: red;*/
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

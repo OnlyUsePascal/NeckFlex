@@ -6,32 +6,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="820.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.UserRecordController">
+<AnchorPane prefHeight="820.0" prefWidth="1600.0" styleClass="record" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.UserRecordController">
    <children>
-      <VBox fillWidth="false" prefWidth="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <TabPane tabClosingPolicy="UNAVAILABLE" tabMaxHeight="99.0" tabMaxWidth="99.0" tabMinHeight="50.0" tabMinWidth="70.0">
-              <tabs>
-                <Tab text="Renting">
+      <TabPane prefHeight="823.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="2000.0" tabMaxWidth="2000.0" tabMinHeight="50.0" tabMinWidth="70.0">
+        <tabs>
+          <Tab text="Renting">
+               <content>
+                  <ScrollPane fitToWidth="true" prefHeight="760.0" prefWidth="1600.0" styleClass="globalScrollPane">
                      <content>
-                        <ScrollPane fitToWidth="true" prefHeight="700.0" prefWidth="1500.0">
-                           <content>
-                              <VBox fx:id="rentingContainer" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" />
-                           </content>
-                        </ScrollPane>
+                        <VBox fx:id="rentingContainer" alignment="TOP_CENTER" fillWidth="false" />
                      </content>
-                </Tab>
-                <Tab text="Returned">
+                  </ScrollPane>
+               </content>
+          </Tab>
+          <Tab text="Returned">
+               <content>
+                  <ScrollPane fitToWidth="true" prefHeight="760.0" prefWidth="1600.0" styleClass="globalScrollPane">
                      <content>
-                        <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
-                           <content>
-                              <VBox fx:id="returnedContainer" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" />
-                           </content>
-                        </ScrollPane>
-                     </content></Tab>
-              </tabs>
-            </TabPane>
-         </children>
-      </VBox>
+                        <VBox fx:id="returnedContainer" alignment="TOP_CENTER" fillWidth="false" />
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

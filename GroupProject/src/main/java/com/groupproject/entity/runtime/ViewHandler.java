@@ -183,7 +183,7 @@ public class ViewHandler {
 
     static public void toggleNode(Node node, boolean isShow) {
         node.setVisible(isShow);
-        node.setManaged(isShow);
+        // node.setManaged(isShow);
     }
 
     static public void toggleFadeNode(Node node, boolean show) {

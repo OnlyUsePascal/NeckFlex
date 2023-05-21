@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -31,8 +32,8 @@ public class OrderController implements Initializable {
     private HBox orderHeader;
     @FXML
     private VBox loadingScreen;
-    @FXML
-    private AnchorPane orderPane;
+    // @FXML
+    // private AnchorPane orderPane;
     @FXML
     private Label dateBox;
 
@@ -62,7 +63,7 @@ public class OrderController implements Initializable {
                 orderDetailList = order.getRentingOrderDetailList();
             }
 
-            ArrayList<AnchorPane> orderDetailPaneList = new ArrayList<>();
+            ArrayList<Node> orderDetailPaneList = new ArrayList<>();
             for (OrderDetail orderDetail : orderDetailList){
                 orderDetailPaneList.add(getOrderDetailPane(orderDetail));
             }
@@ -72,8 +73,8 @@ public class OrderController implements Initializable {
             //add to order pane
             Platform.runLater(() -> {
                 if (orderDetailPaneList.isEmpty()) {
-                    ViewHandler.toggleNode(orderPane, false);
-                    orderPane.setManaged(false);
+                    ViewHandler.toggleNode(orderDetailContainer, false);
+                    orderDetailContainer.setManaged(false);
                     return;
                 }
 
@@ -87,19 +88,14 @@ public class OrderController implements Initializable {
     }
 
     public void toggleInteractiveNodes(boolean status) {
-        if (!status) {
-            ViewHandler.toggleNode(btn, true);
-            ViewHandler.toggleNode(checkBox, true);
-        } else {
-            ViewHandler.toggleNode(btn, false);
-            ViewHandler.toggleNode(checkBox, false);
-        }
+        btn.setDisable(status);
+        checkBox.setDisable(status);
     }
 
-    public AnchorPane getOrderDetailPane(OrderDetail orderDetail) {
+    public Node getOrderDetailPane(OrderDetail orderDetail) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentOrderDetail()));
-            AnchorPane pane = loader.load();
+            Node pane = loader.load();
             OrderDetailController orderDetailController = loader.getController();
 
             orderDetailController.setData(orderDetail);

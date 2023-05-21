@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 
@@ -19,8 +20,8 @@ import java.util.ResourceBundle;
 public class OrderDetailController implements Initializable {
     @FXML
     private Label titleBox;
-    @FXML
-    private Label priceBox;
+    // @FXML
+    // private Label priceBox;
     @FXML
     private Label amountBox;
     @FXML
@@ -43,9 +44,9 @@ public class OrderDetailController implements Initializable {
     public void setData(OrderDetail orderDetail){
         this.orderDetail = orderDetail;
 
-        titleBox.setText(orderDetail.getItem().getTitle());
-        amountBox.setText(String.valueOf(orderDetail.getQuantity()));
-        priceBox.setText("$" + orderDetail.getPrice());
+        titleBox.setText("     " + orderDetail.getItem().getTitle());
+        amountBox.setText("Renting: " + orderDetail.getQuantity());
+        // priceBox.setText("$" + orderDetail.getPrice());
 
         ViewHandler.fillShapeWithImage(orderDetail.getItem().getImgName(), imgFrame);
         checkIsReturned();
@@ -53,8 +54,11 @@ public class OrderDetailController implements Initializable {
 
     public void checkIsReturned(){
         if (orderDetail.isReturned()){
-            container.getChildren().remove(btn);
-            container.getChildren().remove(checkBox);
+            btn.setDisable(true);
+            checkBox.setDisable(true);
+            // ViewHandler.toggleNode(btn, false);
+            // ViewHandler.toggleNode(checkBox, false);
+            amountBox.setText("Rented: " + orderDetail.getQuantity());
         }
     }
 

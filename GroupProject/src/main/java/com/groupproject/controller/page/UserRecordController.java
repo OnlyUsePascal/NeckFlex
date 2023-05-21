@@ -9,6 +9,7 @@ import com.groupproject.toolkit.PathHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -44,7 +45,7 @@ public class UserRecordController implements Initializable {
     public void addOrderPane(Order order, VBox orderContainer, boolean isReturned) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentOrder()));
-            AnchorPane orderPane = loader.load();
+            Node orderPane = loader.load();
             OrderController orderController = loader.getController();
 
             orderController.setData(order, isReturned);
