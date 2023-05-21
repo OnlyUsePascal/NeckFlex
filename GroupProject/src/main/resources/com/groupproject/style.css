@@ -1,63 +1,28 @@
-/*.button{*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
-/*.button:hover{*/
-/*    -fx-background-color: #07f7f7;*/
-/*}*/
-
-/*.button:pressed{*/
-/*    -fx-background-color: #239c9c;*/
-/*}*/
-
-/*MENU BUTTON*/
-/*.menu-button{*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
-/*.menu-button:hover{*/
-/*    -fx-background-color: #07f7f7;*/
-/*}*/
-
-/*.menu-button:pressed{*/
-/*    -fx-background-color: #239c9c;*/
-/*}*/
-
-/*!*MENU ITEM*!*/
-/*.menu-item:hover{*/
-/*    -fx-background-color: grey;*/
-/*    !*-fx-translate-x: 10;*!*/
-/*}*/
-
-/*.context-menu{*/
-/*    -fx-background-color: white;*/
-/*    -fx-font-size: 20;*/
-/*    !*-fx-margin: 10 10 10 10;*!*/
-/*    -fx-background-radius: 10;*/
-/*}*/
-
-/*!*Img frame*!*/
-/*.imgFrame{*/
-/*    -fx-arc-height: 30;*/
-/*    -fx-arc-width: 30;*/
-/*    -fx-background-color: #07f7f7;*/
-/*}*/
-
-/*ITEM TILE*/
-/*.itemTile .viewport {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
-/*.itemTile{*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
 .globalScrollPane .viewport {
-    -fx-background-color: rgba(20, 20, 20);
+    -fx-background-color: transparent;
 }
 
 .globalScrollPane {
-    -fx-background-color: rgba(20, 20, 20);
+    -fx-background-color: transparent;
+}
+
+
+/*ITEM BOX*/
+.itemBoxContainer {
+    -fx-background-color: rgba(20, 20, 20, 0);
+}
+
+.itemBoxImage {
+    -fx-arc-width: 20;
+    -fx-arc-height: 20;
+    -fx-stroke-width: 0;
+}
+
+.itemBoxTitle {
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-padding: 2 0 0 0;
+    /*-fx-font-weight: bold;*/
 }
 
 
@@ -164,13 +129,13 @@
     -fx-background-radius: 10;
 }
 
-.menu-item{
+.menu-item {
     -fx-padding: 5 40 5 10;
 }
 
 .menu-item:hover {
     -fx-font-weight: bold;
-    -fx-background-color: rgba(255,255,255, 0.2);
+    -fx-background-color: rgba(255, 255, 255, 0.2);
 
 }
 
@@ -215,23 +180,7 @@
     -fx-background-color: transparent;
 }
 
-/*ITEM BOX*/
-.itemBoxContainer {
-    -fx-background-color: rgba(20, 20, 20, 0);
-}
 
-.itemBoxImage {
-    -fx-arc-width: 20;
-    -fx-arc-height: 20;
-    -fx-stroke-width: 0;
-}
-
-.itemBoxTitle {
-    -fx-text-fill: white;
-    -fx-font-size: 20;
-    -fx-padding: 2 0 0 0;
-    /*-fx-font-weight: bold;*/
-}
 
 
 /*ITEM ALL*/
@@ -240,72 +189,72 @@
 }
 
 /*setting pane*/
-.itemAll .settingPane{
+.itemAll .settingPane {
     -fx-background-color: linear-gradient(to right, rgba(255, 255, 255, 0.05), rgba(20, 20, 20, 1));
 }
 
-.settingPane .label.header{
+.itemAll .settingPane .label.header {
     -fx-font-weight: bold;
     -fx-font-size: 30;
 }
 
-.settingPane .label{
+.itemAll .settingPane .label {
     -fx-text-fill: white;
     -fx-font-size: 20;
 }
 
-.settingPane .vBox{
+.itemAll .settingPane .vBox {
     -fx-spacing: 10;
 }
 
-.settingPane .combo-box-base{
-    -fx-background-color: rgba(10,10,10, 0.9);
+.itemAll .settingPane .combo-box-base {
+    -fx-background-color: rgba(10, 10, 10, 0.9);
     -fx-border-color: white;
     -fx-border-width: 1;
 }
 
-.settingPane .combo-box-base .arrow{
+.itemAll .settingPane .combo-box-base .arrow {
     -fx-background-color: white;
 }
 
-.settingPane .combo-box-base .list-cell{
+.itemAll .settingPane .combo-box-base .list-cell {
     -fx-text-fill: white;
 }
 
-.settingPane .check-box .box{
-    -fx-background-color: rgba(10,10,10, 0.9);
+.itemAll .settingPane .check-box .box {
+    -fx-background-color: rgba(10, 10, 10, 0.9);
     -fx-border-color: white;
     -fx-border-width: 1;
     -fx-padding: 3;
 }
 
-.settingPane .check-box:selected .mark{
+.itemAll .settingPane .check-box:selected .mark {
     -fx-background-color: white;
 }
 
-.settingPane .button{
+.itemAll .settingPane .button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-size: 15;
 }
 
-.settingPane .button.apply{
+.itemAll .settingPane .button.apply {
     -fx-background-color: rgba(255, 255, 255);
-    -fx-text-fill: rgba(10,10,10, 0.9);
+    -fx-text-fill: rgba(10, 10, 10, 0.9);
     -fx-font-weight: bold;
     /*-fx-font-size: 20;*/
     /*-fx-padding: 5 20 5 20;*/
 }
 
-.itemAll .contentPane{
+.itemAll .contentPane {
     -fx-background-color: transparent;
 }
 
-.contentPane .viewport{
+.itemAll .contentPane .viewport {
     -fx-background-color: transparent;
 }
 
-.contentPane .header{
+.itemAll .contentPane .header {
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-color: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
@@ -313,10 +262,137 @@
     -fx-padding: 15 0 0 25;
 }
 
-.contentPane .itemTile{
+.itemAll .contentPane .itemTile {
     -fx-spacing: 50;
 }
 
-.contentPane .itemTileList{
+.itemAll .contentPane .itemTileList {
     -fx-spacing: 50;
 }
+
+
+/*CART*/
+.cart {
+    -fx-background-color: rgba(20, 20, 20, 0.95);
+}
+
+/*bill*/
+.cart .billSide {
+}
+
+.cart .billSide .container {
+    -fx-background-color: black;
+    -fx-border-color: rgba(250,250,250, 0.5);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    /*-fx-border-width: 1;*/
+    /*-fx-border-color: grey;*/
+}
+
+.cart .billSide .container .radio-button{
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+}
+
+.cart .billSide .container .radio-button .radio{
+    /*-fx-background-color: ;*/
+}
+
+.cart .billSide .container .label {
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.cart .billSide .container .label.header {
+    -fx-text-fill: #F0EEED;
+    -fx-font-weight: bold;
+}
+
+.cart .billSide .container .button{
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+
+.cart .billSide .container .button:disabled{
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+
+.cart .billSide .container .button.payCash{
+    -fx-background-color: #DF2E38;
+}
+
+.cart .billSide .container .button.payPoint{
+    -fx-background-color: #F79327;
+}
+
+.cart .billSide .container .label.mess{
+    -fx-font-size: 17;
+    -fx-font-style: italic;
+    -fx-text-fill: orange;
+}
+
+/*CART DETAIL*/
+.cartDetail {
+    -fx-background-color: rgba(15, 15, 15, 1);
+    -fx-border-color: grey;
+    -fx-border-width: 1;
+    /*-fx-spacing: ;*/
+}
+
+.cartDetail .label{
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.cartDetail .updateAmount{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+
+    -fx-border-color: white;
+    -fx-border-width: 1;
+}
+
+.cartDetail .updateAmount .button{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-background-radius: 0;
+}
+
+.cartDetail .updateAmount .button:hover{
+    /*-fx-padding: -1 0 0 0;*/
+    -fx-text-fill: black;
+    -fx-background-color: white;
+}
+
+.cartDetail .updateAmount.label{
+    -fx-font-size: 17;
+    -fx-border-color: white;
+    -fx-border-width: 0 1 0 1;
+}
+
+/*item list*/
+.cart .itemList .header{
+    -fx-background-color: rgba(20, 20, 20, 1);
+    -fx-border-color: grey;
+    -fx-border-width: 1;
+    -fx-border-radius: 5 5 0 0;
+    -fx-padding: 0 0 0 15;
+}
+
+.cart .itemList .header .label{
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+
+
+
+
+
+
+

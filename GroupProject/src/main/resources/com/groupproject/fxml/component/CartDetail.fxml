@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hboxContainer" alignment="CENTER_LEFT" fillHeight="false" prefHeight="180.0" prefWidth="800.0" styleClass="cartItem" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.CartDetailController">
+<HBox fx:id="hboxContainer" alignment="CENTER_LEFT" fillHeight="false" prefWidth="810.0" spacing="15.0" styleClass="cartDetail" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.CartDetailController">
    <children>
-      <CheckBox mnemonicParsing="false" onAction="#updateCheckBox" selected="true" style="-fx-padding: 0 10;">
+      <Rectangle fx:id="imgFrame" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="115.0" stroke="BLACK" strokeType="INSIDE" styleClass="itemBoxImage" width="76.0">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin></Rectangle>
+      <Label fx:id="titleBox" prefHeight="32.0" prefWidth="363.0" text="Title">
+         <font>
+            <Font size="21.0" />
+         </font>
          <HBox.margin>
             <Insets />
          </HBox.margin>
-         <font>
-            <Font size="16.0" />
-         </font>
-      </CheckBox>
-      <Rectangle fx:id="imgFrame" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="155.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="103.0">
-         <HBox.margin>
-            <Insets right="10.0" />
-         </HBox.margin></Rectangle>
-      <Label fx:id="titleBox" prefWidth="250.0" text="Title">
-         <font>
-            <Font size="21.0" />
-         </font>
       </Label>
-      <Label fx:id="unitPriceBox" text="Price">
+      <Label fx:id="unitPriceBox" prefHeight="35.0" prefWidth="97.0" text="\$Price">
          <font>
             <Font size="21.0" />
          </font>
          <HBox.margin>
-            <Insets right="20.0" />
+            <Insets />
          </HBox.margin>
       </Label>
-      <HBox alignment="CENTER">
+      <HBox alignment="CENTER" fillHeight="false" styleClass="updateAmount">
          <children>
-            <Button mnemonicParsing="false" onAction="#updateQuantity" text="-" />
-            <Label fx:id="quantityBox" text="Quantity">
+            <Button mnemonicParsing="false" onAction="#updateQuantity" prefHeight="30.0" prefWidth="27.0" text="-">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label fx:id="quantityBox" alignment="CENTER" prefHeight="32.0" prefWidth="42.0" styleClass="updateAmount" text="1">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Button mnemonicParsing="false" onAction="#updateQuantity" text="+" />
+            <Button mnemonicParsing="false" onAction="#updateQuantity" prefHeight="30.0" prefWidth="28.0" text="+">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
          <HBox.margin>
-            <Insets right="20.0" />
+            <Insets />
          </HBox.margin>
+         <padding>
+            <Insets top="-1.0" />
+         </padding>
       </HBox>
-      <Label fx:id="totalPriceBox" text="Total">
-         <font>
-            <Font size="21.0" />
-         </font>
-         <HBox.margin>
-            <Insets right="20.0" />
-         </HBox.margin>
-      </Label>
-      <Button mnemonicParsing="false" onAction="#removeCartDetail" style="-fx-background-color: transparent;">
+      <AnchorPane prefHeight="30.0" prefWidth="25.0" />
+      <Button mnemonicParsing="false" onAction="#removeCartDetail" prefHeight="51.0" prefWidth="47.0" style="-fx-background-color: transparent;">
          <graphic>
-            <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../media/image/trash-solid.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </graphic>
       </Button>
    </children>
+   <padding>
+      <Insets bottom="10.0" left="15.0" top="10.0" />
+   </padding>
 </HBox>

@@ -24,8 +24,8 @@ public class CartDetailController implements Initializable {
     private Label unitPriceBox;
     @FXML
     private Label quantityBox;
-    @FXML
-    private Label totalPriceBox;
+    // @FXML
+    // private Label totalPriceBox;
     @FXML
     private HBox hboxContainer;
     @FXML
@@ -44,9 +44,9 @@ public class CartDetailController implements Initializable {
     public void setData(CartDetail cartDetail) {
         this.cartDetail = cartDetail;
         titleBox.setText(this.cartDetail.getTitle());
-        unitPriceBox.setText(String.valueOf(this.cartDetail.getTotalPrice()));
+        unitPriceBox.setText("$" + this.cartDetail.getTotalPrice());
         quantityBox.setText(String.valueOf(this.cartDetail.getQuantity()));
-        totalPriceBox.setText(String.valueOf(this.cartDetail.getTotalPrice()));
+        // totalPriceBox.setText(String.valueOf(this.cartDetail.getTotalPrice()));
 
         ViewHandler.fillShapeWithImage(this.cartDetail.getItem().getImgName(), imgFrame);
     }
@@ -60,7 +60,7 @@ public class CartDetailController implements Initializable {
             cartController.refreshBill(false);
 
             quantityBox.setText(cartDetail.getQuantity() + "");
-            totalPriceBox.setText(cartDetail.getTotalPrice() + "");
+            // totalPriceBox.setText(cartDetail.getTotalPrice() + "");
         }
     }
 
@@ -73,15 +73,15 @@ public class CartDetailController implements Initializable {
         cartController.refreshCart();
     }
 
-    public void updateCheckBox(ActionEvent event){
-        CheckBox checkBox = (CheckBox) event.getSource();
-        double newPrice = cartDetail.getTotalPrice();
-
-        if (!checkBox.isSelected()) newPrice *= -1;
-        cartDetail.getCart().updateTotalPrice(newPrice);
-
-        cartController.refreshBill(false);
-    }
+    // public void updateCheckBox(ActionEvent event){
+    //     CheckBox checkBox = (CheckBox) event.getSource();
+    //     double newPrice = cartDetail.getTotalPrice();
+    //
+    //     if (!checkBox.isSelected()) newPrice *= -1;
+    //     cartDetail.getCart().updateTotalPrice(newPrice);
+    //
+    //     cartController.refreshBill(false);
+    // }
 
     public HBox getCartDetailPane() {
         return hboxContainer;
