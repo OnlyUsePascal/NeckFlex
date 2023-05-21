@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #F9E2AF;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.NavBarCustomerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1600.0" styleClass="navBar" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.NavBarCustomerController">
    <children>
       <HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" prefWidth="1600.0">
          <children>
-            <MenuButton fx:id="menuButton" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" text="Hello, Joun!">
+            <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="62.0" prefWidth="186.0" text=" Hello, Joun!">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#toUserProfile" text="User Profile xxxxxxx" />
                 <MenuItem mnemonicParsing="false" onAction="#toDeposit" text="Deposit" />
@@ -28,8 +28,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </MenuButton>
-            <Button fx:id="toCart" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#toCart" prefHeight="80.0" text="Shopping Cart">
+            <Button fx:id="toCart" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#toCart" prefHeight="64.0" prefWidth="99.0" text=" Cart">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,6 +40,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </HBox>
@@ -50,6 +56,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#toHome" prefHeight="80.0" prefWidth="89.0">
                <graphic>
@@ -59,12 +68,15 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <HBox alignment="CENTER" prefHeight="36.0" prefWidth="628.0">
                <children>
-                  <TextField fx:id="searchField" prefHeight="37.0" prefWidth="515.0" promptText="Something here" style="-fx-background-radius: 5 0 0 5; -fx-background-color: white;">
+                  <TextField fx:id="searchField" prefHeight="37.0" prefWidth="515.0" promptText="Something here">
                      <HBox.margin>
-                        <Insets />
+                        <Insets top="-1.0" />
                      </HBox.margin>
                   </TextField>
                   <Button mnemonicParsing="false" onAction="#toHomeWithSearch" prefHeight="35.0" style="-fx-background-color: #F7C04A; -fx-background-radius: 0 5 5 0;">

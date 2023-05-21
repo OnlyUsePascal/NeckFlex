@@ -7,7 +7,7 @@
     <children>
       <VBox prefHeight="900.0" prefWidth="1600.0">
          <children>
-              <AnchorPane fx:id="navBar" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #0A4D68;" />
+              <AnchorPane fx:id="navBar" prefHeight="80.0" prefWidth="1600.0" />
             <AnchorPane prefHeight="820.0" prefWidth="1600.0">
                <children>
                     <AnchorPane fx:id="pageContent" prefHeight="820.0" prefWidth="1600.0" />
