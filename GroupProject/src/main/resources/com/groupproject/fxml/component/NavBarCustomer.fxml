@@ -17,7 +17,7 @@
          <children>
             <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="62.0" prefWidth="186.0" text=" Hello, Joun!">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#toUserProfile" text="User Profile xxxxxxx" />
+                <MenuItem mnemonicParsing="false" onAction="#toUserProfile" text="User Profile" />
                 <MenuItem mnemonicParsing="false" onAction="#toDeposit" text="Deposit" />
                   <MenuItem mnemonicParsing="false" onAction="#toLogout" text="Log out" />
               </items>

@@ -22,10 +22,10 @@
                            <image>
                               <Image url="@../../media/image/poster.jpg" />
                            </image></ImageView>
-                        <AnchorPane layoutY="453.0" prefHeight="46.0" prefWidth="1369.0" styleClass="itemAllFadePane" />
+                        <AnchorPane layoutY="453.0" prefHeight="46.0" prefWidth="1369.0" styleClass="itemTrendingFadePane" />
                         <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="1366.0">
                            <children>
-                              <Label prefHeight="70.0" prefWidth="1246.0" styleClass="itemAllHeader" text="Welcome Home!">
+                              <Label prefHeight="70.0" prefWidth="1246.0" styleClass="itemTrendingHeader" text="Welcome Home!">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>

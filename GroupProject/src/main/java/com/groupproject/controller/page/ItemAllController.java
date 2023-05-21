@@ -100,12 +100,13 @@ public class ItemAllController implements Initializable {
     }
 
     public void refreshPage() {
+        String styleClass = "itemTile";
         pageContainer.getChildren().clear();
         ViewHandler.toggleNode(loadingScreen, true);
 
         new Thread(() -> {
             refreshData();
-            // for (long i = 0 ; i < 1e10; i++){}
+            ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
                 for (int i = 0; i < rowPerPage; i++) {
@@ -121,6 +122,7 @@ public class ItemAllController implements Initializable {
                         itemRow.getChildren().add(itemBox);
                     }
 
+                    itemRow.getStyleClass().add(styleClass);
                     pageContainer.getChildren().add(itemRow);
                 }
                 ViewHandler.toggleNode(loadingScreen, false);
