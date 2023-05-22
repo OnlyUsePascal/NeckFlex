@@ -1,67 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="452.0" prefWidth="614.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.popup.ItemInfoCartController">
+<AnchorPane styleClass="itemCart" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.popup.ItemInfoCartController">
    <children>
-      <Rectangle fx:id="imgFrame" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="279.0" layoutX="32.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="186.0" />
-      <Label fx:id="genre" layoutX="256.0" layoutY="103.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="price" layoutX="326.0" layoutY="177.0" prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: #5d5b6a;">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="quantity" layoutX="363.0" layoutY="252.0" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: #5d5b6a;">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Button fx:id="addToCart" layoutX="421.0" layoutY="366.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="43.0" prefWidth="131.0" style="-fx-background-color: #333f4e;" text="Add To Cart" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="updateCartBtn" layoutX="416.0" layoutY="365.0" mnemonicParsing="false" onAction="#updateCart" prefHeight="44.0" prefWidth="140.0" style="-fx-background-color: #333f4e;" text="Update Cart" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Label fx:id="title" layoutX="256.0" layoutY="35.0" prefHeight="43.0" prefWidth="307.0" style="-fx-background-color: #5d5b6a;">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="256.0" layoutY="177.0" prefHeight="49.0" prefWidth="58.0" text="Price">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="256.0" layoutY="249.0" prefHeight="49.0" prefWidth="99.0" text="Available">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Button layoutX="503.0" layoutY="319.0" mnemonicParsing="false" onAction="#incAmount" prefHeight="26.0" prefWidth="29.0" text="+" />
-      <Button layoutX="463.0" layoutY="319.0" mnemonicParsing="false" onAction="#decAmount" prefHeight="26.0" prefWidth="29.0" text="-" />
-      <Label layoutX="258.0" layoutY="307.0" prefHeight="49.0" prefWidth="99.0" text="Rent">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="cartResponse" alignment="TOP_LEFT" layoutX="258.0" layoutY="354.0" prefHeight="55.0" prefWidth="151.0" textOverrun="WORD_ELLIPSIS" wrapText="true">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="cartAmount" layoutX="363.0" layoutY="319.0" prefHeight="26.0" prefWidth="80.0" />
+      <Rectangle fx:id="imgFrame" fill="DODGERBLUE" height="356.0" layoutX="1.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="233.0" />
+      <HBox layoutY="1.0">
+         <children>
+            <AnchorPane prefHeight="356.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="356.0" prefWidth="40.0" styleClass="imgFade" />
+         </children>
+      </HBox>
+      <HBox fillHeight="false">
+         <children>
+            <AnchorPane prefHeight="166.0" prefWidth="274.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></AnchorPane>
+            <VBox styleClass="infoPane">
+               <children>
+                  <Label fx:id="titleBox" lineSpacing="2.0" prefHeight="60.0" prefWidth="290.0" styleClass="header" text="Harry Porter: Lord of the Shade of Grey" wrapText="true">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" fillHeight="false" styleClass="subInfo">
+                     <children>
+                        <Label fx:id="genre1" prefHeight="26.0" prefWidth="40.0" text="Dvd">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="27.0" prefWidth="14.0" text="/" />
+                        <Label fx:id="genreBox" text="Thrilling">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" fillHeight="false" />
+                  <Label prefHeight="100.0" prefWidth="346.0" styleClass="descript" text="A theme park showcasing genetically-engineered dinosaurs turns into a nightmare for its tourists when one of the dinosaurs escapes its enclosure." wrapText="true" />
+                  <AnchorPane prefHeight="32.0" prefWidth="347.0" />
+                  <HBox fillHeight="false">
+                     <children>
+                        <Label fx:id="messBox" alignment="CENTER" prefHeight="27.0" prefWidth="347.0" styleClass="messBox" text="wtf" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" fillHeight="false">
+                     <children>
+                        <Label prefWidth="250.0" />
+                        <Label fx:id="priceBox" prefWidth="95.0" styleClass="priceBox" text="\$69.96">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" fillHeight="false" />
+                  <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="46.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="31.0" prefWidth="183.0">
+                           <children>
+                              <HBox styleClass="updateAmount">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#decAmount" prefHeight="26.0" prefWidth="29.0" text="-">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                    <TextField fx:id="quantityBox" alignment="CENTER" prefHeight="26.0" prefWidth="40.0" text="1" />
+                                    <Button mnemonicParsing="false" onAction="#incAmount" prefHeight="26.0" prefWidth="29.0" text="+">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="stockBox" alignment="CENTER" prefHeight="26.0" prefWidth="47.0" text="/ 12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <AnchorPane>
+                           <children>
+                              <Button fx:id="addToCart" layoutX="29.0" layoutY="2.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="31.0" prefWidth="132.0" styleClass="cartBtn" text="Add To Cart" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="updateCartBtn" mnemonicParsing="false" onAction="#updateCart" prefHeight="36.0" prefWidth="161.0" styleClass="cartBtn" text="Update Cart" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
+   <padding>
+      <Insets left="15.0" />
+   </padding>
 </AnchorPane>

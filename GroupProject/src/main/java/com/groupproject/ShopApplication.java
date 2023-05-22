@@ -42,7 +42,7 @@ public class ShopApplication extends Application {
         try {
             ViewHandler.setCurrentStage(stage);
             String pageFile = PathHandler.getPageLoginMain();
-            // pageFile = PathHandler.getPageHome();
+            pageFile = PathHandler.getPageHome();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageFile));
             Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
             stage.setTitle("Hello!");

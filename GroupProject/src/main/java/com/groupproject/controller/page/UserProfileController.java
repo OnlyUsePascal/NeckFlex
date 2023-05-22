@@ -92,7 +92,7 @@ public class UserProfileController implements Initializable {
     }
 
     public void updateAccount(){
-        account.setPwd(pwd);
+        if (!pwd.isBlank()) account.setPwd(pwd);
 
         account.setFirstName(firstName);
         account.setLastName(lastName);

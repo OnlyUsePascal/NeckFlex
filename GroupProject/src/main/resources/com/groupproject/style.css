@@ -181,8 +181,6 @@
 }
 
 
-
-
 /*ITEM ALL*/
 .itemAll {
     -fx-background-color: rgba(20, 20, 20, 1);
@@ -282,19 +280,19 @@
 
 .cart .billSide .container {
     -fx-background-color: black;
-    -fx-border-color: rgba(250,250,250, 0.5);
+    -fx-border-color: rgba(250, 250, 250, 0.5);
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     /*-fx-border-width: 1;*/
     /*-fx-border-color: grey;*/
 }
 
-.cart .billSide .container .radio-button{
+.cart .billSide .container .radio-button {
     -fx-font-size: 17;
     -fx-text-fill: white;
 }
 
-.cart .billSide .container .radio-button .radio{
+.cart .billSide .container .radio-button .radio {
     /*-fx-background-color: ;*/
 }
 
@@ -308,27 +306,27 @@
     -fx-font-weight: bold;
 }
 
-.cart .billSide .container .button{
+.cart .billSide .container .button {
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-font-size: 20;
 }
 
-.cart .billSide .container .button:disabled{
+.cart .billSide .container .button:disabled {
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-font-size: 20;
 }
 
-.cart .billSide .container .button.payCash{
+.cart .billSide .container .button.payCash {
     -fx-background-color: #DF2E38;
 }
 
-.cart .billSide .container .button.payPoint{
+.cart .billSide .container .button.payPoint {
     -fx-background-color: #F79327;
 }
 
-.cart .billSide .container .label.mess{
+.cart .billSide .container .label.mess {
     -fx-font-size: 17;
     -fx-font-style: italic;
     -fx-text-fill: orange;
@@ -342,13 +340,13 @@
     /*-fx-spacing: ;*/
 }
 
-.cartDetail .label{
+.cartDetail .label {
     -fx-text-fill: white;
     -fx-font-size: 16;
     -fx-font-weight: bold;
 }
 
-.cartDetail .updateAmount{
+.cartDetail .updateAmount {
     -fx-background-color: transparent;
     -fx-text-fill: white;
 
@@ -356,26 +354,26 @@
     -fx-border-width: 1;
 }
 
-.cartDetail .updateAmount .button{
+.cartDetail .updateAmount .button {
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-background-radius: 0;
 }
 
-.cartDetail .updateAmount .button:hover{
+.cartDetail .updateAmount .button:hover {
     /*-fx-padding: -1 0 0 0;*/
     -fx-text-fill: black;
     -fx-background-color: white;
 }
 
-.cartDetail .updateAmount.label{
+.cartDetail .updateAmount.label {
     -fx-font-size: 17;
     -fx-border-color: white;
     -fx-border-width: 0 1 0 1;
 }
 
 /*item list*/
-.cart .itemList .header{
+.cart .itemList .header {
     -fx-background-color: rgba(20, 20, 20, 1);
     -fx-border-color: grey;
     -fx-border-width: 1;
@@ -383,27 +381,27 @@
     -fx-padding: 0 0 0 15;
 }
 
-.cart .itemList .header .label{
+.cart .itemList .header .label {
     -fx-text-fill: white;
     -fx-font-size: 16;
     -fx-font-weight: bold;
 }
 
 /*ORDER DETAIL*/
-.orderDetail{
+.orderDetail {
     -fx-background-color: rgba(15, 15, 15, 1);
     -fx-border-color: grey;
     -fx-border-width: 1;
     /*-fx-padding: 0 0 0 15;*/
 }
 
-.orderDetail .label{
+.orderDetail .label {
     -fx-text-fill: white;
     -fx-font-size: 16;
     -fx-font-weight: bold;
 }
 
-.orderDetail .button{
+.orderDetail .button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-size: 16;
@@ -411,7 +409,7 @@
     -fx-border-color: white;
 }
 
-.orderDetail .button:hover{
+.orderDetail .button:hover {
     -fx-font-weight: bold;
 }
 
@@ -428,11 +426,11 @@
 }
 
 /*ORDER*/
-.order{
+.order {
     -fx-background-color: black;
 }
 
-.order .header{
+.order .header {
     -fx-background-color: #455D7A;
     -fx-border-color: grey;
     -fx-border-width: 1;
@@ -441,13 +439,13 @@
     -fx-padding: 10 0 10 20;
 }
 
-.order .header .label{
+.order .header .label {
     -fx-text-fill: white;
     -fx-font-size: 16;
     -fx-font-weight: bold;
 }
 
-.order .header .button{
+.order .header .button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-size: 16;
@@ -455,7 +453,7 @@
     -fx-border-color: white;
 }
 
-.order .header .button:hover{
+.order .header .button:hover {
     -fx-font-weight: bold;
 }
 
@@ -472,15 +470,15 @@
 
 
 /*RECORD*/
-.record{
+.record {
     -fx-background-color: black;
 }
 
-.record .tab-pane .tab-header-area .tab-header-background{
+.record .tab-pane .tab-header-area .tab-header-background {
     -fx-background-color: transparent;
 }
 
-.record .tab-pane .tab{
+.record .tab-pane .tab {
     -fx-background-color: transparent;
     -fx-border-width: 1;
     -fx-border-color: white;
@@ -489,43 +487,43 @@
     /*-fx-padding: ;*/
 }
 
-.record .tab-pane .tab .tab-label{
+.record .tab-pane .tab .tab-label {
     -fx-font-size: 16;
     -fx-text-fill: white;
 }
 
-.record .tab-pane .tab:hover .tab-label{
+.record .tab-pane .tab:hover .tab-label {
     -fx-font-weight: bold;
 }
 
-.record .tab-pane .tab:selected{
+.record .tab-pane .tab:selected {
     -fx-background-color: white;
 }
 
-.record .tab-pane .tab:selected .tab-label{
+.record .tab-pane .tab:selected .tab-label {
     -fx-text-fill: black;
     -fx-font-weight: bold;
 }
 
-.record .tab-pane .tab-content-area{
+.record .tab-pane .tab-content-area {
     /*-fx-background-color: red;*/
     -fx-border-width: 1 0 0 0;
     -fx-border-color: white;
 }
 
 /*USER PROFILE*/
-.profile{
+.profile {
     -fx-background-color: transparent;
     -fx-font-size: 18;
 }
 
-.profile .header1{
+.profile .header1 {
     -fx-font-size: 30;
     -fx-font-weight: bold;
     -fx-padding: 0 0 20 -225;
 }
 
-.profile .container{
+.profile .container {
     -fx-background-color: #ffffff;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
@@ -533,50 +531,156 @@
     -fx-spacing: 10;
 }
 
-.profile .containerHorizon{
+.profile .containerHorizon {
     -fx-spacing: 60;
 }
 
-.profile .container .header.label{
+.profile .container .header.label {
     -fx-font-size: 20;
     -fx-font-weight: bold;
 }
 
-.profile .container .sectionRow{
+.profile .container .sectionRow {
     -fx-spacing: 20;
 }
 
-.profile .container .sectionCol{
+.profile .container .sectionCol {
     -fx-spacing: 40;
 }
 
-.profile .container .sectionCol2{
+.profile .container .sectionCol2 {
     -fx-spacing: 20;
 }
 
-.profile .container .inputSection{
+.profile .container .inputSection {
     -fx-spacing: 10;
 }
 
-.profile .container .inputField{
+.profile .container .inputField {
     -fx-spacing: 5;
 }
 
-.profile .container .button{
+.profile .container .button {
     -fx-background-color: #537FE7;
     -fx-text-fill: white;
     -fx-font-size: 18;
     -fx-font-weight: bold;
 }
 
-.profile .container .messBox{
-    -fx-padding: 70 0 0 0 ;
+.profile .container .messBox {
+    -fx-padding: 70 0 0 0;
     -fx-font-style: italic;
     -fx-font-size: 19;
     -fx-text-fill: red;
 }
 
 
+/*ITEM CART*/
+.itemCart {
+    -fx-background-color: #212121;
+    -fx-border-color: white;
+    -fx-border-width: 1;
+}
+
+.itemCart .label {
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+}
+
+.itemCart .imgFade {
+    -fx-background-color: linear-gradient(to right, rgba(33, 33, 33, 0.1), rgba(33, 33, 33));
+}
+
+.itemCart .infoPane{
+    /*-fx-spacing: 10;*/
+}
+
+.itemCart .infoPane .cartBtn {
+    -fx-background-color: #EEEEEE;
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
+.itemCart .infoPane .updateAmount{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 1;
+}
+
+.itemCart .infoPane .updateAmount .button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.itemCart .infoPane .updateAmount .button:hover{
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.itemCart .infoPane .updateAmount .text-field{
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-border-width: 0 1 0 1;
+    -fx-border-color: white;
+}
+
+.itemCart .infoPane .header.label{
+    -fx-font-size:18;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.itemCart .infoPane .subInfo .label{
+    /*-fx-padding: -10 0 0 0;*/
+    -fx-font-style: italic;
+    -fx-font-size: 15;
+    -fx-text-fill: #F3EFE0;
+}
+
+.itemCart .infoPane .messBox{
+-fx-font-style: italic;
+    -fx-font-size: 15;
+    -fx-text-fill: red;
+}
+
+.itemCart .infoPane .priceBox.label{
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FEE9D7;
+}
+
+.itemCart .infoPane .descript{
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+/*.cartDetail .updateAmount {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-text-fill: white;*/
+
+/*    -fx-border-color: white;*/
+/*    -fx-border-width: 1;*/
+/*}*/
+
+/*.cartDetail .updateAmount .button {*/
+/*    -fx-background-color: black;*/
+/*    -fx-text-fill: white;*/
+/*    -fx-background-radius: 0;*/
+/*}*/
+
+/*.cartDetail .updateAmount .button:hover {*/
+/*    !*-fx-padding: -1 0 0 0;*!*/
+/*    -fx-text-fill: black;*/
+/*    -fx-background-color: white;*/
+/*}*/
+
+/*.cartDetail .updateAmount.label {*/
+/*    -fx-font-size: 17;*/
+/*    -fx-border-color: white;*/
+/*    -fx-border-width: 0 1 0 1;*/
+/*}*/
 
 
 

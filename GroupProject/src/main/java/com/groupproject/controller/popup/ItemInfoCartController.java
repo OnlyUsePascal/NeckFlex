@@ -4,35 +4,30 @@ import com.groupproject.entity.generic.CartDetail;
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
-import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class ItemInfoCartController implements Initializable {
     @FXML
-    private Label title;
+    private Label titleBox;
     @FXML
-    private Label genre;
+    private Label genreBox;
     @FXML
-    private Label quantity;
+    private Label priceBox;
     @FXML
-    private Label price;
+    private Label messBox;
     @FXML
-    private Label cartResponse;
+    private Label stockBox;
     @FXML
-    private TextField cartAmount;
+    private TextField quantityBox;
     @FXML
     private Button updateCartBtn;
     @FXML
@@ -49,15 +44,15 @@ public class ItemInfoCartController implements Initializable {
     public void refreshPage() {
         CartDetail cartDetail = EntityHandler.getCartDetail(item);
         if (cartDetail != null) {
-            cartAmount.setText(String.valueOf(cartDetail.getQuantity()));
+            quantityBox.setText(String.valueOf(cartDetail.getQuantity()));
         } else {
-            cartAmount.setText("1");
+            quantityBox.setText("1");
             ViewHandler.toggleNode(updateCartBtn, false);
         }
     }
 
     public void addToCart(ActionEvent event) {
-        int newCartQuantity = Integer.parseInt(cartAmount.getText());
+        int newCartQuantity = Integer.parseInt(quantityBox.getText());
         EntityHandler.addCartDetail(item, newCartQuantity);
 
         ViewHandler.closePopup(event);
@@ -65,7 +60,7 @@ public class ItemInfoCartController implements Initializable {
     }
 
     public void updateCart(ActionEvent event) {
-        int newCartQuantity = Integer.parseInt(cartAmount.getText());
+        int newCartQuantity = Integer.parseInt(quantityBox.getText());
         CartDetail cartDetail = EntityHandler.getCartDetail(item);
         cartDetail.setQuantity(newCartQuantity);
 
@@ -75,20 +70,21 @@ public class ItemInfoCartController implements Initializable {
 
     public void setData(Item _item) {
         item = _item;
-        title.setText(item.getTitle());
-        genre.setText(item.getGenreString());
-        quantity.setText(String.valueOf(item.getStock()));
-        price.setText(String.valueOf(item.getPrice()));
+        titleBox.setText(item.getTitle());
+        genreBox.setText(item.getGenreString());
+        stockBox.setText("/ " + item.getStock());
+        priceBox.setText("$" + item.getPrice());
+
         ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
 
         refreshPage();
     }
 
     public void incAmount(ActionEvent e) {
-        cartAmount.setText(Integer.toString(Math.min(Integer.parseInt(cartAmount.getText()) + 1, item.getStock())));
+        quantityBox.setText(Integer.toString(Math.min(Integer.parseInt(quantityBox.getText()) + 1, item.getStock())));
     }
 
     public void decAmount(ActionEvent e) {
-        cartAmount.setText(Integer.toString(Math.max(Integer.parseInt(cartAmount.getText()) - 1, 1)));
+        quantityBox.setText(Integer.toString(Math.max(Integer.parseInt(quantityBox.getText()) - 1, 1)));
     }
 }
