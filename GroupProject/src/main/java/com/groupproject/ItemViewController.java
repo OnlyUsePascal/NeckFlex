@@ -83,17 +83,17 @@ public class ItemViewController implements Initializable {
         itemsToShow = itemsToShow.stream().filter(i -> i.getAmount() > 0).collect(Collectors.toCollection(ArrayList<Item>::new));
     }
 
-    static <T> Comparator<T> createComparatorChain(ArrayList<Comparator<T>> comparators) {
-        Comparator<T> result = null;
-        for (Comparator<T> comparator : comparators) {
-            if (result == null) {
-                result = comparator;
-            } else {
-                result = result.thenComparing(comparator);
+        static <T> Comparator<T> createComparatorChain(ArrayList<Comparator<T>> comparators) {
+            Comparator<T> result = null;
+            for (Comparator<T> comparator : comparators) {
+                if (result == null) {
+                    result = comparator;
+                } else {
+                    result = result.thenComparing(comparator);
+                }
             }
+            return result;
         }
-        return result;
-    }
 
     public void restoreContainerToDefault(Event e) {
         restoreShownItemsToDefault();
