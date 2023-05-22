@@ -135,7 +135,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <Label fx:id="messBox" alignment="CENTER" prefHeight="26.0" prefWidth="349.0" styleClass="messBox" text="Label" textAlignment="CENTER" />
+                              <Label fx:id="messBox" alignment="CENTER" prefHeight="26.0" prefWidth="349.0" styleClass="messBox" textAlignment="CENTER" />
                            </children>
                         </VBox>
                      </children>
