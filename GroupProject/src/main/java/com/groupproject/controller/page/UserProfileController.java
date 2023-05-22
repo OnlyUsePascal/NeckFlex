@@ -7,23 +7,27 @@ import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Popup;
-import javafx.stage.Window;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserProfileController implements Initializable {
     @FXML
-    private Label usernameBox;
-    @FXML
     private Label balanceBox;
     @FXML
-    private Label rewardPointBox;
+    private Label pointBox;
+    @FXML
+    private Label statusBox;
+
+    @FXML
+    private TextField usernameBox;
+    @FXML
+    private PasswordField pwdBox;
+    @FXML
+    private PasswordField pwdConfirmBox;
     @FXML
     private TextField firstNameBox;
     @FXML
@@ -33,29 +37,26 @@ public class UserProfileController implements Initializable {
     @FXML
     private TextField addressBox;
     @FXML
-    private Label requiredFirstName;
-    @FXML
-    private Label requiredLastName;
-    @FXML
-    private Label requiredPhoneNumber;
-    @FXML
-    private Label requiredAddress;
-    @FXML
-    private Label invalidMessage;
+    private Label messBox;
 
     private Account account;
 
-    // private NavBarController navBarController;
+    private String username;
+    private String pwd;
+    private String pwdConfirm;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String address;
+
+    private final String blankInput = "N/A";
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setData(EntityHandler.getCurrentUser());
         displayInfo();
     }
-
-    // public void setNavBarController(NavBarController navBarController) {
-    //     this.navBarController = navBarController;
-    // }
 
     public void setData(Account account) {
         this.account = account;
@@ -64,61 +65,83 @@ public class UserProfileController implements Initializable {
 
     public void displayInfo() {
         usernameBox.setText(account.getUsername());
-        balanceBox.setText(String.valueOf(account.getBalance()));
-        rewardPointBox.setText(String.valueOf(account.getRewardPoint()));
         firstNameBox.setText(account.getFirstName());
         lastNameBox.setText(account.getLastName());
         phoneNumberBox.setText(account.getPhoneNumber());
         addressBox.setText(account.getAddress());
+
+        statusBox.setText(account.getStatusString());
+        balanceBox.setText("$" + account.getBalance());
+        pointBox.setText(account.getRewardPoint() + "");
     }
 
     public void profileEdit(ActionEvent event) {
-        // System.out.println("toUserProfileEdit");
-        boolean legit = true;
-        boolean status = true;
+        // username = usernameBox.getText();
+        pwd = pwdBox.getText();
+        pwdConfirm = pwdConfirmBox.getText();
 
-        status = ViewHandler.checkStringCharacterOnly(firstNameBox.getText());
-        requiredFirstName.setVisible(!status);
-        legit &= status;
+        firstName = firstNameBox.getText();
+        lastName = lastNameBox.getText();
+        phoneNumber = phoneNumberBox.getText(); if (phoneNumber.isBlank()) phoneNumber = blankInput;
+        address = addressBox.getText(); if (address.isBlank()) address = blankInput;
 
-        status = ViewHandler.checkStringCharacterOnly(lastNameBox.getText());
-        requiredLastName.setVisible(!status);
-        legit &= status;
+        if (!checkValid()) return;
 
-        status = ViewHandler.checkStringNumberOnly(phoneNumberBox.getText());
-        requiredPhoneNumber.setVisible(!status);
-        legit &= status;
+        updateAccount();
+        returnHome(event);
+    }
 
-        status = ViewHandler.checkStringGeneral(addressBox.getText());
-        requiredAddress.setVisible(!status);
-        legit &= status;
+    public void updateAccount(){
+        account.setPwd(pwd);
 
-        if (!legit) {
-            invalidMessage.setVisible(true);
-            return;
+        account.setFirstName(firstName);
+        account.setLastName(lastName);
+        account.setPhoneNumber(phoneNumber);
+        account.setAddress(address);
+    }
+
+    public boolean checkValid() {
+        if (!ViewHandler.checkStringCharacterOnly(firstName)) {
+            messBox.setText("First name is invalid!");
+            return false;
         }
 
-        invalidMessage.setVisible(false);
+        if (!ViewHandler.checkStringCharacterOnly(lastName)) {
+            messBox.setText("Last name is invalid!");
+            return false;
+        }
 
-        // account
-        this.account.setFirstName(firstNameBox.getText());
-        this.account.setLastName(lastNameBox.getText());
-        this.account.setPhoneNumber(phoneNumberBox.getText());
-        this.account.setAddress(addressBox.getText());
+        if (!pwd.isBlank() && !ViewHandler.checkStringGeneral(pwd)) {
+            messBox.setText("New password is invalid!");
+            return false;
+        }
 
-        // System.out.println(this.account);
+        if (!phoneNumber.equals(blankInput) && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
+            messBox.setText("Phone number is invalid!");
+            return false;
+        }
 
-        // back to home
-        returnHome(event);
+        if (!address.equals(blankInput) && !ViewHandler.checkStringGeneral(address)) {
+            messBox.setText("Address is invalid!");
+            return false;
+        }
 
+        if (!pwd.equals(pwdConfirm)) {
+            messBox.setText("Password doesn't match!");
+            return false;
+        }
+
+        return true;
     }
+
 
     public void returnHome(ActionEvent event) {
         ViewHandler.refreshMenuButtonName();
-        ViewHandler.setPageContent(PathHandler.getPageItemTrending());
+        pwdBox.clear();
+        pwdConfirmBox.clear();
+        messBox.setText("");
+        ViewHandler.getNoti("Update Profile successfully!", null);
     }
-
-
 }
 
 

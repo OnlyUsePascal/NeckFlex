@@ -159,6 +159,10 @@ public class Account {
         orderList.add(order);
     }
 
+    public void setPwd(String pwd){
+        this.password = pwd;
+    }
+
     public void updateCredit(){
         rewardPoint += 10;
 

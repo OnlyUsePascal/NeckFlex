@@ -513,11 +513,68 @@
     -fx-border-color: white;
 }
 
+/*USER PROFILE*/
+.profile{
+    -fx-background-color: transparent;
+    -fx-font-size: 18;
+}
 
+.profile .header1{
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 20 -225;
+}
 
+.profile .container{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 30;
+    -fx-spacing: 10;
+}
 
+.profile .containerHorizon{
+    -fx-spacing: 60;
+}
 
+.profile .container .header.label{
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
 
+.profile .container .sectionRow{
+    -fx-spacing: 20;
+}
+
+.profile .container .sectionCol{
+    -fx-spacing: 40;
+}
+
+.profile .container .sectionCol2{
+    -fx-spacing: 20;
+}
+
+.profile .container .inputSection{
+    -fx-spacing: 10;
+}
+
+.profile .container .inputField{
+    -fx-spacing: 5;
+}
+
+.profile .container .button{
+    -fx-background-color: #537FE7;
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+.profile .container .messBox{
+    -fx-padding: 70 0 0 0 ;
+    -fx-font-style: italic;
+    -fx-font-size: 19;
+    -fx-text-fill: red;
+}
 
 
 

@@ -65,7 +65,8 @@ public class LoginRegisterController implements Initializable {
     private String address;
     private AnchorPane loginContainer;
 
-
+    private final String blankInput = "N/A";
+    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // messBox.setText("");
@@ -79,9 +80,9 @@ public class LoginRegisterController implements Initializable {
         firstName = firstNameBox.getText();
         lastName = lastNameBox.getText();
         phoneNumber = phoneBox.getText();
-        if (phoneNumber.isBlank()) phoneNumber = "N/A";
+        if (phoneNumber.isBlank()) phoneNumber = blankInput;
         address = addressBox.getText();
-        if (address.isBlank()) address = "N/A";
+        if (address.isBlank()) address = blankInput;
 
         if (!checkValid()) return;
 
@@ -126,12 +127,12 @@ public class LoginRegisterController implements Initializable {
             return false;
         }
 
-        if (!phoneNumber.equals("N/A") && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
+        if (!phoneNumber.equals(blankInput) && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
             messBox.setText("Phone number is invalid!");
             return false;
         }
 
-        if (!address.equals("N/A") && !ViewHandler.checkStringGeneral(address)) {
+        if (!address.equals(blankInput) && !ViewHandler.checkStringGeneral(address)) {
             messBox.setText("Address is invalid!");
             return false;
         }
