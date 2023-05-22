@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane mouseTransparent="true" prefHeight="809.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.AboutUs">
+   <children>
+      <AnchorPane layoutX="64.0" layoutY="60.0" mouseTransparent="true" prefHeight="715.0" prefWidth="1107.0" style="-fx-border-width: 2px 2px 2px 2px; -fx-border-color: black;">
+         <children>
+            <Label layoutX="36.0" layoutY="7.0" text="Our Vision">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextArea editable="false" layoutX="30.0" layoutY="44.0" mouseTransparent="true" prefHeight="272.0" prefWidth="1018.0" style="-fx-border-width: 0px 0px 0px 0px;" text="Neckfleck has a clear vision of combining nostalgia with modern convenience. As a small, locally run video rental shop, we have expanded our inventory to encompass a diverse range of items, including old movie records, DVDs, and video games. Recognizing the need to adapt to changing times, we have computerized our operations to offer a seamless rental experience for our customers.&#10;&#10;With our computer-based inventory system, customers can effortlessly explore our extensive collection and check the availability of their favorite movies, TV series, and games. Our focus on exceptional customer service ensures that our knowledgeable staff is always ready to provide personalized recommendations and assistance, fostering a warm and inviting environment.&#10;&#10;Our vision is to create a memorable and enjoyable experience for our customers, blending the nostalgia of the past with the convenience of modern technology. We take pride in offering a unique and comprehensive selection while maintaining a personalized touch that sets us apart. NeckFleck is committed to delivering top-notch customer service and being the go-to destination for all your movie and gaming needs." wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextArea>
+            <TextArea editable="false" layoutX="30.0" layoutY="373.0" mouseTransparent="true" prefHeight="311.0" prefWidth="1018.0" style="-fx-border-width: 0px 0px 0px 0px;" text="In the realm of e-commerce, Neckfleck faces competition from various online platforms and retailers offering similar products. Established online marketplaces such as Amazon, eBay, and Best Buy are prominent competitors that provide a vast selection of DVDs, movie records, and video games. These platforms leverage their extensive reach and logistical capabilities to offer competitive pricing and a convenient shopping experience.&#10;&#10;Furthermore, streaming services like Netflix, Hulu, and Disney+ present a unique challenge, as they offer a vast digital library of movies and TV shows for online streaming. While they operate in a different format, they compete for customers' attention and leisure time, as they provide an alternative way to access entertainment content.&#10;&#10;To stay competitive in the e-commerce landscape, Neckfleck differentiates itself by focusing on the nostalgia and charm of physical media. The personalized customer service, curated collection of old movie records, and a blend of classic and contemporary titles in DVDs and video games are the unique aspects that set Genie's Video Store apart from its competitors. By offering a seamless online shopping experience, attentive customer service, and a diverse selection, Genie's Video Store aims to carve out its niche in the competitive e-commerce market." wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextArea>
+            <Label layoutX="36.0" layoutY="331.0" text="E-Commerce Competitors">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="64.0" layoutY="14.0" text="About Us">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

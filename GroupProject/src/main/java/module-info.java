@@ -14,4 +14,6 @@ module com.groupproject {
     opens com.groupproject.SplashScreenTest to javafx.fxml;
     exports com.groupproject.ScrollPaneTest;
     opens com.groupproject.ScrollPaneTest to javafx.fxml;
+    exports com.groupproject.PaneTesting;
+    opens com.groupproject.PaneTesting to javafx.fxml;
 }

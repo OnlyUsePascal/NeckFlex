@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.PaneTesting;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class PaneTest extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PaneTest.class.getResource("PaneTest.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PaneTest.class.getResource("/com/groupproject/PaneTest.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
         stage.setTitle("Hello!");

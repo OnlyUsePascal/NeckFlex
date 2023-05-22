@@ -1,4 +1,4 @@
-package com.groupproject;
+package com.groupproject.PaneTesting;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
