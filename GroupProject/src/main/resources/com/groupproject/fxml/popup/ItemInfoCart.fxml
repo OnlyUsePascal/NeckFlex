@@ -74,18 +74,18 @@
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" fillHeight="false" />
-                  <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="46.0">
+                  <HBox fx:id="amountPane" alignment="CENTER_RIGHT" fillHeight="false" prefHeight="46.0">
                      <children>
                         <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="31.0" prefWidth="183.0">
                            <children>
                               <HBox styleClass="updateAmount">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#decAmount" prefHeight="26.0" prefWidth="29.0" text="-">
+                                    <Button fx:id="amountBtn" mnemonicParsing="false" onAction="#decAmount" prefHeight="26.0" prefWidth="29.0" text="-">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></Button>
                                     <TextField fx:id="quantityBox" alignment="CENTER" prefHeight="26.0" prefWidth="40.0" text="1" />
-                                    <Button mnemonicParsing="false" onAction="#incAmount" prefHeight="26.0" prefWidth="29.0" text="+">
+                                    <Button fx:id="amountBtn" mnemonicParsing="false" onAction="#incAmount" prefHeight="26.0" prefWidth="29.0" text="+">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></Button>

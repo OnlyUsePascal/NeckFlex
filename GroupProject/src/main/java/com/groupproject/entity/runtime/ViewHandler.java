@@ -12,12 +12,10 @@ import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
@@ -66,8 +64,12 @@ public class ViewHandler {
         ViewHandler.sidebarController = sidebarController;
     }
 
-    static public void setMenuActive() {
-        sidebarController.menuActive(null);
+    static public void setMenuActive(ActionEvent event) {
+        sidebarController.menuActive(event);
+    }
+
+    static public boolean sideBarIsOpen(){
+        return sidebarController.isOpen();
     }
 
     // user record

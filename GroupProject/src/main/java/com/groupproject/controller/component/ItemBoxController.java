@@ -2,6 +2,7 @@ package com.groupproject.controller.component;
 
 import com.groupproject.controller.popup.ItemInfoCartController;
 import com.groupproject.entity.generic.Item;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.entity.runtime.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
@@ -56,7 +57,6 @@ public class ItemBoxController implements Initializable {
     // }
 
     public void getPopup(ActionEvent event){
-        System.out.println("popup");
         FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoCart()));
         try {
             AnchorPane itemInfoPane = itemLoader.load();

@@ -31,7 +31,7 @@ public class NavBarController implements Initializable {
 
 
     public void setMenuActive(ActionEvent event){
-        ViewHandler.setMenuActive();
+        ViewHandler.setMenuActive(event);
     }
 
 

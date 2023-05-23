@@ -27,6 +27,10 @@ public class SidebarController implements Initializable {
         initTransition();
     }
 
+    public boolean isOpen(){
+        return menuIsOpen;
+    }
+
     public void initTransition(){
         double duration = 0.3;
         menuToOpen = new TranslateTransition(Duration.seconds(duration), menuPane);
@@ -37,6 +41,8 @@ public class SidebarController implements Initializable {
     }
 
     public void menuActive(ActionEvent event){
+        if (event != null) event.consume();
+
         if (menuIsOpen){
             menuIsOpen = false;
             menuToClose.play();

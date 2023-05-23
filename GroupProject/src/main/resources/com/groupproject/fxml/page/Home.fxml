@@ -3,11 +3,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.HomeController">
+<AnchorPane fx:id="homeContainer" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.HomeController">
     <children>
       <VBox prefHeight="900.0" prefWidth="1600.0">
          <children>
-              <AnchorPane fx:id="navBar" prefHeight="80.0" prefWidth="1600.0" />
+              <AnchorPane fx:id="navBarPane" prefHeight="80.0" prefWidth="1600.0" />
             <AnchorPane prefHeight="820.0" prefWidth="1600.0">
                <children>
                     <AnchorPane fx:id="pageContent" prefHeight="820.0" prefWidth="1600.0" />

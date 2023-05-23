@@ -1,6 +1,6 @@
 C000|admin|admin|admin|admin|google|01234|0|0.0|0
 C001|pasha|123|jeff|joun|my house|090902|2|41.8|30
-C002|joun|123|dat|pham|my house|09213|1|200.57|100
+C002|joun|123|dat|pham|my house|09213|3|189.02|110
 C003|johnson|123|dat|what|my house|02414|3|20.0|30
 C005|joun2|123|dat|pham|0123|address|1|30.0|0
 C006|huan1|123|huan|nguyen|housing|0223|1|30.0|0

@@ -48,7 +48,7 @@ public class AdminAccountController implements Initializable {
     @FXML
     private TextField searchField;
     @FXML
-    private ComboBox<String> choiceList;
+    private ComboBox<String> typeList;
     @FXML
     private VBox loadingScreen;
 
@@ -63,15 +63,9 @@ public class AdminAccountController implements Initializable {
     }
 
     public void initFilter(){
-        choiceList.getItems().addAll(Arrays.asList(ConstantAccount.statusList));
-        choiceList.getItems().add(optionAny);
-        choiceList.setValue(optionAny);
-
-        choiceList.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            refreshTable();
-        });
-
-
+        typeList.getItems().addAll(Arrays.asList(ConstantAccount.statusList));
+        typeList.getItems().add(optionAny);
+        typeList.setValue(optionAny);
     }
 
     public void initColumnProperty(){
@@ -132,6 +126,8 @@ public class AdminAccountController implements Initializable {
         new Thread(() -> {
             ObservableList<Account> accounts = getData();
 
+            ViewHandler.fakeLoading();
+
             Platform.runLater(() -> {
                 tableView.setItems(accounts);
                 tableView.refresh();
@@ -187,7 +183,7 @@ public class AdminAccountController implements Initializable {
     }
 
     public boolean filterType(Account account){
-        String option = choiceList.getValue();
+        String option = typeList.getValue();
         if (option.equals(optionAny)) return true;
         return account.getStatusString().equals(option);
     }
@@ -203,8 +199,13 @@ public class AdminAccountController implements Initializable {
 
     public void clearFilter(ActionEvent event){
         searchField.clear();
-        choiceList.setValue(optionAny);
+        typeList.setValue(optionAny);
+
         refreshTable();
+    }
+
+    public void changePage(ActionEvent event){
+
     }
 
 }

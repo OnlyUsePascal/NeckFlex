@@ -241,6 +241,4 @@ public class AdminItemController implements Initializable {
 
         refreshTable();
     }
-
-
 }

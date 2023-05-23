@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
@@ -32,13 +33,15 @@ public class ItemInfoCartController implements Initializable {
     private Button updateCartBtn;
     @FXML
     private Rectangle imgFrame;
+    @FXML
+    private HBox amountPane;
 
     private Item item;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        if (EntityHandler.getCurrentUser().isAdmin()) amountPane.setDisable(true);
     }
 
     public void refreshPage() {
