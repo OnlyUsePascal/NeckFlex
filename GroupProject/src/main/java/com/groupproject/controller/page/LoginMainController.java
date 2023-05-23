@@ -1,8 +1,7 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.generic.Account;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -16,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 

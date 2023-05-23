@@ -1,7 +1,7 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.entity.generic.BankAccount;
-import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.EntityHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

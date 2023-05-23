@@ -1,7 +1,5 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.entity.runtime.EntityHandler;
-
 public class BankAccount {
     private String number;
     private String brand;

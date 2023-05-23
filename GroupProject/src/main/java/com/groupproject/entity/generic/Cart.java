@@ -1,8 +1,8 @@
 package com.groupproject.entity.generic;
 
 import com.groupproject.entity.Constant.ConstantOrder;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 
 import java.util.ArrayList;
 

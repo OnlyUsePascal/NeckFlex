@@ -2,13 +2,11 @@ package com.groupproject.controller.component;
 
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.ViewHandler;
-import com.groupproject.toolkit.PathHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,7 +15,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -73,6 +70,14 @@ public class ItemTrendingTileController implements Initializable {
             for (int i = 0; i < Math.min(listSz, itemList.size()); i++) {
                 Button itemBox = ViewHandler.getItemBox(itemList.get(i));
                 itemBoxList.add(itemBox);
+            }
+
+            //shuffle itemBoxList
+            for (int i = 0; i < itemBoxList.size(); i++) {
+                int j = (int) (Math.random() * itemBoxList.size());
+                Button temp = itemBoxList.get(i);
+                itemBoxList.set(i, itemBoxList.get(j));
+                itemBoxList.set(j, temp);
             }
 
             ViewHandler.fakeLoading();

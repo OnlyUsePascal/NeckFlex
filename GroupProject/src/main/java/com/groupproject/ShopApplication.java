@@ -1,9 +1,9 @@
 package com.groupproject;
 
 import com.groupproject.entity.generic.Cart;
-import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.EntityHandler;
 import com.groupproject.toolkit.DataHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.controller.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -33,7 +33,7 @@ public class ShopApplication extends Application {
         EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(0));
 
         Cart cart = EntityHandler.getCart();
-        // cart.addCartDetail(EntityHandler.getItemList().get(12), 2);
+        // cart.addCartDetail(Enti\tyHandler.getItemList().get(12), 2);
         // cart.addCartDetail(EntityHandler.getItemList().get(60), 10);
         // EntityHandler.addOrder();
     }

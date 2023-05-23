@@ -1,9 +1,8 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.entity.generic.Account;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
-import com.groupproject.toolkit.PathHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

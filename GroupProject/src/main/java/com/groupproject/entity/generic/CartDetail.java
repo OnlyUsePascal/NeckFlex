@@ -1,6 +1,6 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.controller.ViewHandler;
 
 public class CartDetail {
     private Item item;

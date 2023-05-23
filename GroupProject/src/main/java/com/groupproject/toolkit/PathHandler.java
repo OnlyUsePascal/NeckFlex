@@ -1,6 +1,6 @@
 package com.groupproject.toolkit;
 
-import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.EntityHandler;
 
 public class PathHandler {
     final private static String pageRoot = "/com/groupproject/fxml/page/";

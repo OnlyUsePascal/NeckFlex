@@ -52,7 +52,7 @@
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" fillHeight="false" />
-                  <Label prefHeight="100.0" prefWidth="346.0" styleClass="descript" text="A theme park showcasing genetically-engineered dinosaurs turns into a nightmare for its tourists when one of the dinosaurs escapes its enclosure." wrapText="true" />
+                  <Label fx:id="descBox" alignment="TOP_LEFT" prefHeight="100.0" prefWidth="346.0" styleClass="descript" text="A theme park showcasing genetically-engineered dinosaurs turns into a nightmare for its tourists when one of the dinosaurs escapes its enclosure." wrapText="true" />
                   <AnchorPane prefHeight="32.0" prefWidth="347.0" />
                   <HBox fillHeight="false">
                      <children>
@@ -65,7 +65,11 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" fillHeight="false">
                      <children>
-                        <Label prefWidth="250.0" />
+                        <Label fx:id="stockBox" prefHeight="28.0" prefWidth="249.0" text="Stock: 12" textAlignment="CENTER">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
                         <Label fx:id="priceBox" prefWidth="95.0" styleClass="priceBox" text="\$69.96">
                            <font>
                               <Font size="21.0" />
@@ -91,11 +95,6 @@
                                        </cursor></Button>
                                  </children>
                               </HBox>
-                              <Label fx:id="stockBox" alignment="CENTER" prefHeight="26.0" prefWidth="47.0" text="/ 12" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font>
-                              </Label>
                            </children>
                         </HBox>
                         <AnchorPane>

@@ -2,13 +2,12 @@ package com.groupproject.controller.component;
 
 import com.groupproject.controller.page.CartController;
 import com.groupproject.entity.generic.CartDetail;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;

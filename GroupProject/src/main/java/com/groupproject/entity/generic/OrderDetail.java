@@ -1,7 +1,7 @@
 package com.groupproject.entity.generic;
 
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -46,11 +46,11 @@ public class OrderDetail {
         LocalDateTime orderTime = order.getOrderTime();
 
         int offset = Duration.between(orderTime, now).compareTo(Duration.ofDays(order.getDuration()));
-        if (offset <= 0){
-            System.out.println("update credit");
+        if (offset <= 0){ //on time
             EntityHandler.getCurrentUser().updateCredit();
+            ViewHandler.getNoti("Returned Successfully!\nYour credit point has been updated!", null);
         } else {
-            System.out.println("Not update credit");
+            ViewHandler.getNoti("Returned Successfully!",null);
         }
     }
 

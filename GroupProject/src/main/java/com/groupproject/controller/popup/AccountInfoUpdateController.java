@@ -1,16 +1,12 @@
 package com.groupproject.controller.popup;
 
 import com.groupproject.entity.generic.Account;
-import com.groupproject.entity.runtime.ViewHandler;
-import com.groupproject.toolkit.PathHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Popup;
-import javafx.stage.Window;
 
 import java.net.URL;
 import java.util.ResourceBundle;

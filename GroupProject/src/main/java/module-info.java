@@ -14,9 +14,6 @@ module com.groupproject {
     opens com.groupproject.entity.generic to javafx.fxml;
     exports com.groupproject.entity.generic;
 
-    opens com.groupproject.entity.runtime to javafx.fxml;
-    exports com.groupproject.entity.runtime;
-
     opens com.groupproject.toolkit to javafx.fxml;
     exports com.groupproject.toolkit;
 
@@ -25,4 +22,8 @@ module com.groupproject {
 
     opens com.groupproject.controller.popup to javafx.fxml;
     exports com.groupproject.controller.popup;
+    exports com.groupproject.controller;
+    opens com.groupproject.controller to javafx.fxml;
+    exports com.groupproject.entity;
+    opens com.groupproject.entity to javafx.fxml;
 }

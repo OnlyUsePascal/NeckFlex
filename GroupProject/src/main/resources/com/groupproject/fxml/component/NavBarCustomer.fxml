@@ -15,7 +15,7 @@
    <children>
       <HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" prefWidth="1600.0">
          <children>
-            <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="62.0" prefWidth="186.0" text=" Hello, Joun!">
+            <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="59.0" prefWidth="187.0" text=" Hello, Joun!">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#toPageUserProfile" text="User Profile" />
                 <MenuItem mnemonicParsing="false" onAction="#toDeposit" text="Deposit" />
@@ -32,7 +32,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </MenuButton>
-            <Button fx:id="toCart" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#toCart" prefHeight="64.0" prefWidth="99.0" text=" Cart">
+            <Button fx:id="toCart" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#toCart" prefHeight="52.0" prefWidth="100.0" text=" Cart">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,7 +48,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="80.0" prefWidth="1200.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#setMenuActive" prefHeight="80.0" prefWidth="84.0">
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#setMenuActive" prefHeight="51.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -60,7 +60,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#toPageHome" prefHeight="80.0" prefWidth="89.0">
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#toPageHome" prefHeight="61.0" prefWidth="184.0">
                <graphic>
                   <ImageView fitHeight="59.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -33,6 +33,7 @@ public class ConstantItem {
         CATEGORY,
         GENRE,
         STOCK,
-        PRICE
+        PRICE,
+        DESC
     }
 }

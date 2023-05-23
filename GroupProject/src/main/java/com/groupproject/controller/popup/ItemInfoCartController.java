@@ -2,8 +2,8 @@ package com.groupproject.controller.popup;
 
 import com.groupproject.entity.generic.CartDetail;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,6 +35,8 @@ public class ItemInfoCartController implements Initializable {
     private Rectangle imgFrame;
     @FXML
     private HBox amountPane;
+    @FXML
+    private Label descBox;
 
     private Item item;
 
@@ -75,8 +77,9 @@ public class ItemInfoCartController implements Initializable {
         item = _item;
         titleBox.setText(item.getTitle());
         genreBox.setText(item.getGenreString());
-        stockBox.setText("/ " + item.getStock());
+        stockBox.setText("Stock: " + item.getStock());
         priceBox.setText("$" + item.getPrice());
+        descBox.setText(item.getDesc());
 
         ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
 

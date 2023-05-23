@@ -1,26 +1,19 @@
 package com.groupproject.controller.page;
 
-import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
-import com.groupproject.toolkit.PathHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class ItemAllController implements Initializable {
     // @FXML

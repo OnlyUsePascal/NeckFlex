@@ -2,24 +2,18 @@ package com.groupproject.controller.component;
 
 import com.groupproject.controller.popup.ItemInfoCartController;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.controller.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class ItemBoxController implements Initializable {

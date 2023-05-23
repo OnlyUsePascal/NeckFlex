@@ -1,6 +1,6 @@
 package com.groupproject.controller.component;
 
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.controller.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -661,6 +661,7 @@
 .itemCart .infoPane .descript {
     -fx-font-size: 15;
     -fx-text-fill: white;
+    -fx-padding: 10 0 0 0;
 }
 
 
@@ -850,6 +851,9 @@
     -fx-background-color: #79E0EE;
     -fx-font-weight: bold;
 }
+
+
+/*account info add*/
 
 
 

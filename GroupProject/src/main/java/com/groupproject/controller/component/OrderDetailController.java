@@ -2,15 +2,13 @@ package com.groupproject.controller.component;
 
 import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.generic.OrderDetail;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 

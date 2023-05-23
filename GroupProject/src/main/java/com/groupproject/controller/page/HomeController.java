@@ -3,12 +3,11 @@ package com.groupproject.controller.page;
 import com.groupproject.controller.component.NavBarCustomerController;
 import com.groupproject.controller.component.SidebarController;
 import com.groupproject.toolkit.PathHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -40,7 +39,7 @@ public class HomeController implements Initializable {
         // } else {
         //     setPageContent(PathHandler.getPageItemTrending());
         // }
-        setPageContent(PathHandler.getPageUserRecord());
+        setPageContent(PathHandler.getPageAdminAccount());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBarPane(PathHandler.getComponentNavBar());
     }

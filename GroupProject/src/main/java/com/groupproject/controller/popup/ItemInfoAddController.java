@@ -2,8 +2,8 @@ package com.groupproject.controller.popup;
 
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +18,6 @@ import javafx.stage.Popup;
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 

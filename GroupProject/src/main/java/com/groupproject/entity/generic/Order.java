@@ -62,8 +62,12 @@ public class Order {
         return date;
     }
 
-    public String getDate() {
+    public String getDateString() {
         return date.format(DateTimeFormatter.ofPattern("yyyy-MMMM-dd"));
+    }
+
+    public String getDateEndString(){
+        return date.plusDays(duration.getDurationValue()).format(DateTimeFormatter.ofPattern("yyyy-MMMM-dd"));
     }
 
     public ArrayList<OrderDetail> getOrderDetailList() {
@@ -100,6 +104,10 @@ public class Order {
             }
         }
         return rentingOrderDetailList;
+    }
+
+    public boolean isLate(){
+        return LocalDateTime.now().isAfter(date.plusDays(duration.getDurationValue()));
     }
 
     @Override

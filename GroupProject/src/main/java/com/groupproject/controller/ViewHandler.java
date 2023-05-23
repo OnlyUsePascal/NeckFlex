@@ -1,4 +1,4 @@
-package com.groupproject.entity.runtime;
+package com.groupproject.controller;
 
 import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.controller.component.NavBarController;

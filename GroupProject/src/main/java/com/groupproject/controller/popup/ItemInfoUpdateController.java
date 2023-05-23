@@ -2,8 +2,8 @@ package com.groupproject.controller.popup;
 
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.generic.Item;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

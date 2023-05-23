@@ -1,17 +1,13 @@
 package com.groupproject.controller.popup;
 
 import com.groupproject.entity.generic.Account;
-import com.groupproject.entity.runtime.EntityHandler;
-import com.groupproject.entity.runtime.ViewHandler;
-import com.groupproject.toolkit.PathHandler;
-import javafx.animation.PauseTransition;
+import com.groupproject.entity.EntityHandler;
+import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.Arrays;

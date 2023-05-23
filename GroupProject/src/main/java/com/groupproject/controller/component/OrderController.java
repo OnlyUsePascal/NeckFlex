@@ -2,7 +2,7 @@ package com.groupproject.controller.component;
 
 import com.groupproject.entity.generic.Order;
 import com.groupproject.entity.generic.OrderDetail;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.controller.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -80,7 +79,15 @@ public class OrderController implements Initializable {
 
                 loadingScreen.setManaged(false);
                 ViewHandler.toggleNode(loadingScreen, false);
-                dateBox.setText(order.getDate());
+
+                if (isReturned){
+                    dateBox.setText("Order made: " + order.getDateString());
+                } else {
+                    dateBox.setText("Deadline: " + order.getDateEndString());
+                    if (order.isLate()) {
+                        dateBox.setStyle("-fx-text-fill: red");
+                    }
+                }
 
                 orderDetailContainer.getChildren().addAll(orderDetailPaneList);
             });

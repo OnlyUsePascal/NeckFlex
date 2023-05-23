@@ -1,5 +1,6 @@
-package com.groupproject.entity.runtime;
+package com.groupproject.entity;
 
+import com.groupproject.controller.ViewHandler;
 import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.Constant.ConstantOrder;
 import com.groupproject.entity.generic.*;

@@ -1,7 +1,7 @@
 package com.groupproject.entity.generic;
 
 import com.groupproject.entity.Constant.ConstantItem;
-import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.EntityHandler;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ public abstract class Item {
     // private int year;
     private String year;
     private double price;
+    private String desc = "Not Available";
 
     static public int genericIdOrder = 1;
 
@@ -29,6 +30,7 @@ public abstract class Item {
         this.genre = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.GENRE.ordinal()));
         this.stock = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.STOCK.ordinal()));
         this.price = Double.parseDouble(infoList.get(ConstantItem.ItemInfo.PRICE.ordinal()));
+        this.desc = infoList.get(ConstantItem.ItemInfo.DESC.ordinal());
     }
 
     //copy
@@ -119,6 +121,10 @@ public abstract class Item {
         return EntityHandler.getItemIndex(this) == -1;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
 
     public void setTitle(String title) {
         this.title = title;
@@ -144,7 +150,8 @@ public abstract class Item {
     public String toString() {
         return this.id + "|" + this.title + "|" +
                 this.category + "|" + this.genre + "|" +
-                this.stock + "|" + this.price;
+                this.stock + "|" + this.price + "|" +
+                this.desc;
     }
 
     public int getGenre() {

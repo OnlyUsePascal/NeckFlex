@@ -1,9 +1,9 @@
 package com.groupproject.toolkit;
 
 import com.groupproject.entity.generic.*;
-import com.groupproject.entity.runtime.EntityHandler;
+import com.groupproject.entity.EntityHandler;
 import com.groupproject.entity.Constant.ConstantAccount;
-import com.groupproject.entity.runtime.ViewHandler;
+import com.groupproject.controller.ViewHandler;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -87,6 +87,7 @@ public class DataHandler {
                     infoList.add(st.nextToken());
                 }
 
+                System.out.println(infoList);
                 Item newItem = EntityHandler.getRestoreItem(infoList);
                 EntityHandler.addItem(newItem);
             }
