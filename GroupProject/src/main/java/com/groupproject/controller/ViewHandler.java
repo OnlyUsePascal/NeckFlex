@@ -338,8 +338,9 @@ public class ViewHandler {
     }
 
     static public boolean checkStringGeneral(String str) {
-        // System.out.println(str);
-        return !str.matches(".*\\|.*") && str.length() != 0;
+        return !str.contains("|") && str.length() != 0
+                && !str.contains("~") && !str.contains("@")
+                && !str.contains("/");
     }
 
     static public double getDoubleRound(double num) {

@@ -853,12 +853,86 @@
 }
 
 
-/*account info add*/
+/*ITEM INFO UPDATE*/
+.itemUpdate{
+    background-color: #FFFAF4;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-padding: 20;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 
+    -fx-font-size: 16;
+}
 
+.itemUpdate .infoPane :disabled{
+    -fx-opacity: 0.8;
+}
 
+.itemUpdate .infoPane{
+    -fx-spacing: 15;
+}
 
+.itemUpdate .infoPane .inputField{
+    -fx-spacing: 3;
+}
 
+.itemUpdate .infoPane .inputField .label.note{
+    -fx-font-weight: bold;
+}
 
+.itemUpdate .infoPane .row{
+    -fx-spacing: 15;
+}
 
+.itemUpdate .infoPane .updateAmount{
+    -fx-border-width: 1;
+    -fx-border-color: black;
+}
 
+.itemUpdate .infoPane .updateAmount .text-field{
+    -fx-background-color: transparent;
+}
+
+.itemUpdate .infoPane .updateAmount .button{
+    -fx-background-color: transparent;
+}
+
+.itemUpdate .infoPane .updateAmount .button:hover {
+    /*-fx-background-color: #393646;*/
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+.itemUpdate .infoPane .updateAmount .button.button1{
+    -fx-border-width: 0 1 0 1;
+    -fx-border-color: black;
+}
+
+.itemUpdate .imgFrame{
+    -fx-stroke-width: 0;
+    -fx-arc-width: 10;
+    -fx-arc-height: 10;
+}
+
+.itemUpdate .applyRow{
+    -fx-spacing: 15;
+}
+
+.itemUpdate .applyRow .button{
+    -fx-background-color: transparent;
+}
+
+.itemUpdate .applyRow .apply {
+    -fx-background-color: #537FE7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.itemUpdate .infoPane .messBox.label{
+    -fx-text-fill: red;
+    -fx-font-size: 15;
+    -fx-font-style: italic;
+    -fx-padding: 0 0 -15 0;
+
+}

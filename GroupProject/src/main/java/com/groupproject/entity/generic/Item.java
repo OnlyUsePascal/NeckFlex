@@ -142,8 +142,16 @@ public abstract class Item {
         this.stock += amount;
     }
 
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     @Override

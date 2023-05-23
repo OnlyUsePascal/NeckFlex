@@ -120,7 +120,7 @@
                               </Line>
                               <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="210.0" spacing="5.0">
                                  <children>
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#getPopupCreate" prefHeight="33.0" prefWidth="95.0" styleClass="import" text="Import">
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#getPopupCreate" prefHeight="33.0" prefWidth="134.0" styleClass="import" text="Add Account">
                                        <font>
                                           <Font size="16.0" />
                                        </font>

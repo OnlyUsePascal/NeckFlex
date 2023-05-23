@@ -12,7 +12,7 @@
    <children>
       <AnchorPane layoutX="40.0" layoutY="41.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2;">
          <children>
-            <ImageView fx:id="itemRegisterImage" fitHeight="453.0" fitWidth="379.0" layoutX="-23.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: black;" />
+            <ImageView fx:id="itemRegisterImage" fitHeight="453.0" fitWidth="379.0" layoutX="-23.0" pickOnBounds="true" style="-fx-border-color: black;" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="520.0" layoutY="27.0" prefHeight="70.0" prefWidth="334.0" text="Item Registration" textFill="#4f00f8">
