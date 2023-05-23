@@ -30,7 +30,7 @@ public class ShopApplication extends Application {
         DataHandler.getData();
 
         // EntityHandler.setCurrentUser(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
-        EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(2));
+        EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(0));
 
         Cart cart = EntityHandler.getCart();
         // cart.addCartDetail(EntityHandler.getItemList().get(12), 2);

@@ -22,16 +22,7 @@ public class NavBarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ViewHandler.setNavBarController(this);
-        initSearchField();
         refreshMenuButtonName();
-    }
-
-    public void initSearchField(){
-        searchField.setOnKeyPressed(keyEvent -> {
-            if(keyEvent.getCode().toString().equals("ENTER")){
-                toHomeWithSearch(null);
-            }
-        });
     }
 
     public void refreshMenuButtonName(){
@@ -43,15 +34,12 @@ public class NavBarController implements Initializable {
         ViewHandler.setMenuActive();
     }
 
-    public void toHomeWithSearch(ActionEvent event){
-        System.out.println("To home with search");
-    }
 
-    public void toHome(ActionEvent event){
+    public void toPageHome(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemTrending());
     }
 
-    public void toUserProfile(ActionEvent event){
+    public void toPageUserProfile(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageUserProfile());
     }
 

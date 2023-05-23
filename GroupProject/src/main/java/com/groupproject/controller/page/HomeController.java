@@ -2,6 +2,7 @@ package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.NavBarCustomerController;
 import com.groupproject.controller.component.SidebarController;
+import com.groupproject.entity.runtime.EntityHandler;
 import com.groupproject.toolkit.PathHandler;
 import com.groupproject.entity.runtime.ViewHandler;
 import javafx.application.Platform;
@@ -32,9 +33,12 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ViewHandler.setHomeController(this);
 
-        setPageContent(PathHandler.getPageItemTrending());
-        // setPageContent(PathHandler.getPageUserProfil
-        // e());
+        // if (EntityHandler.getCurrentUser().isAdmin()) {
+        //     setPageContent(PathHandler.getPageAdminItem());
+        // } else {
+        //     setPageContent(PathHandler.getPageItemTrending());
+        // }
+        setPageContent(PathHandler.getPageAdminItem());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBar(PathHandler.getComponentNavBar());
     }

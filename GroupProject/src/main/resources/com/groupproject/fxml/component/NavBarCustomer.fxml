@@ -17,7 +17,7 @@
          <children>
             <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="62.0" prefWidth="186.0" text=" Hello, Joun!">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#toUserProfile" text="User Profile" />
+                <MenuItem mnemonicParsing="false" onAction="#toPageUserProfile" text="User Profile" />
                 <MenuItem mnemonicParsing="false" onAction="#toDeposit" text="Deposit" />
                   <MenuItem mnemonicParsing="false" onAction="#toLogout" text="Log out" />
               </items>
@@ -60,7 +60,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#toHome" prefHeight="80.0" prefWidth="89.0">
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#toPageHome" prefHeight="80.0" prefWidth="89.0">
                <graphic>
                   <ImageView fitHeight="59.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
                      <image>

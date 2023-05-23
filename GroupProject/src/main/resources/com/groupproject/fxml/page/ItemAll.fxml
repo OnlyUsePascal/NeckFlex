@@ -22,7 +22,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="280.0" styleClass="vBox">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="210.0" styleClass="header" text="Settings">
+                        <Label prefHeight="30.0" prefWidth="210.0" styleClass="header" text="Filter">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -37,7 +37,7 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="categoryList" prefHeight="27.0" prefWidth="97.0" />
+                              <ComboBox fx:id="categoryList" prefHeight="27.0" prefWidth="97.0" promptText="Dvd" />
                            </children>
                         </HBox>
                         <HBox prefHeight="28.0">

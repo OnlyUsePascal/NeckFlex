@@ -178,7 +178,7 @@ public class ViewHandler {
 
     //=========== NODE ============
     static public void fakeLoading() {
-        for (long i = 0; i < 1e9; i++) ;
+        for (long i = 0; i < 5e8; i++) ;
     }
 
     static public void toggleNode(Node node, boolean isShow) {

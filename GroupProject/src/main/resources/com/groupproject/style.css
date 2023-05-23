@@ -217,6 +217,12 @@
 
 .itemAll .settingPane .combo-box-base .list-cell {
     -fx-text-fill: white;
+    -fx-background-color: rgba(10, 10, 10, 0.9);
+}
+
+.itemAll .settingPane .combo-box-base .list-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: black;
 }
 
 .itemAll .settingPane .check-box .box {
@@ -511,6 +517,7 @@
     -fx-border-color: white;
 }
 
+
 /*USER PROFILE*/
 .profile {
     -fx-background-color: transparent;
@@ -591,7 +598,7 @@
     -fx-background-color: linear-gradient(to right, rgba(33, 33, 33, 0.1), rgba(33, 33, 33));
 }
 
-.itemCart .infoPane{
+.itemCart .infoPane {
     /*-fx-spacing: 10;*/
 }
 
@@ -602,95 +609,294 @@
     -fx-font-weight: bold;
 }
 
-.itemCart .infoPane .updateAmount{
+.itemCart .infoPane .updateAmount {
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-color: white;
     -fx-border-width: 1;
 }
 
-.itemCart .infoPane .updateAmount .button{
+.itemCart .infoPane .updateAmount .button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
 }
 
-.itemCart .infoPane .updateAmount .button:hover{
+.itemCart .infoPane .updateAmount .button:hover {
     -fx-background-color: white;
     -fx-text-fill: black;
 }
 
-.itemCart .infoPane .updateAmount .text-field{
+.itemCart .infoPane .updateAmount .text-field {
     -fx-text-fill: white;
     -fx-background-color: transparent;
     -fx-border-width: 0 1 0 1;
     -fx-border-color: white;
 }
 
-.itemCart .infoPane .header.label{
-    -fx-font-size:18;
+.itemCart .infoPane .header.label {
+    -fx-font-size: 18;
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
-.itemCart .infoPane .subInfo .label{
+.itemCart .infoPane .subInfo .label {
     /*-fx-padding: -10 0 0 0;*/
     -fx-font-style: italic;
     -fx-font-size: 15;
     -fx-text-fill: #F3EFE0;
 }
 
-.itemCart .infoPane .messBox{
--fx-font-style: italic;
+.itemCart .infoPane .messBox {
+    -fx-font-style: italic;
     -fx-font-size: 15;
     -fx-text-fill: red;
 }
 
-.itemCart .infoPane .priceBox.label{
+.itemCart .infoPane .priceBox.label {
     -fx-font-size: 30;
     -fx-font-weight: bold;
     -fx-text-fill: #FEE9D7;
 }
 
-.itemCart .infoPane .descript{
+.itemCart .infoPane .descript {
     -fx-font-size: 15;
     -fx-text-fill: white;
 }
 
-/*.cartDetail .updateAmount {*/
-/*    -fx-background-color: transparent;*/
-/*    -fx-text-fill: white;*/
 
+/*ADMIN ITEM*/
+.adminItem {
+    -fx-background-color: #f2f2f2;
+}
+
+.adminItem .header {
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    /*-fx-text-fill: #212121;*/
+}
+
+.adminItem .filter {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 30;
+    -fx-spacing: 12;
+}
+
+.adminItem .filter .combo-box-base {
+    -fx-background-color: #F6F6F6;
+    -fx-border-color: rgba(10, 10, 10, 0.8);
+    -fx-border-width: 1;
+}
+
+.itemAll .settingPane .combo-box-base .list-cell {
+    -fx-background-color: #F6F6F6;
+}
+
+.adminItem .filter .combo-box-base .list-view .list-cell:hover {
+    -fx-background-color: #8E8B82;
+    -fx-text-fill: white;
+}
+
+.adminItem .filter .combo-box-base .list-view .list-cell:selected {
+    -fx-background-color: #8E8B82;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.adminItem .filter .check-box .box {
+    -fx-background-color: #F6F6F6;
+    -fx-border-color: rgba(10, 10, 10, 0.8);
+    -fx-border-width: 1;
+    -fx-padding: 3;
+}
+
+.adminItem .filter .button {
+    -fx-background-color: transparent;
+}
+
+.adminItem .filter .button.apply {
+    -fx-background-color: #537FE7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.adminItem .filter .label {
+    -fx-font-size: 15;
+}
+
+.adminItem .filter .import{
+    -fx-background-color: #79E0EE;
+    -fx-font-weight: bold;
+}
+
+/*.adminItem .dashboard .table-view{*/
+/*}*/
+
+/*.itemAll .settingPane .check-box .box {*/
+/*    -fx-background-color: rgba(10, 10, 10, 0.9);*/
+/*    -fx-border-color: white;*/
+/*    -fx-border-width: 1;*/
+/*    -fx-padding: 3;*/
+/*}*/
+
+/*.itemAll .settingPane .check-box:selected .mark {*/
+/*    -fx-background-color: white;*/
+/*}*/
+
+
+/*USER PROFILE*/
+/*.profile {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-font-size: 18;*/
+/*}*/
+
+/*.profile .header1 {*/
+/*    -fx-font-size: 30;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-padding: 0 0 20 -225;*/
+/*}*/
+
+/*.profile .container {*/
+/*    -fx-background-color: #ffffff;*/
+/*    -fx-background-radius: 10;*/
+/*    -fx-border-radius: 10;*/
+/*    -fx-padding: 30;*/
+/*    -fx-spacing: 10;*/
+/*}*/
+
+/*.profile .containerHorizon {*/
+/*    -fx-spacing: 60;*/
+/*}*/
+
+/*.profile .container .header.label {*/
+/*    -fx-font-size: 20;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+/*.profile .container .sectionRow {*/
+/*    -fx-spacing: 20;*/
+/*}*/
+
+/*.profile .container .sectionCol {*/
+/*    -fx-spacing: 40;*/
+/*}*/
+
+/*.profile .container .sectionCol2 {*/
+/*    -fx-spacing: 20;*/
+/*}*/
+
+/*.profile .container .inputSection {*/
+/*    -fx-spacing: 10;*/
+/*}*/
+
+/*.profile .container .inputField {*/
+/*    -fx-spacing: 5;*/
+/*}*/
+
+/*.profile .container .button {*/
+/*    -fx-background-color: #537FE7;*/
+/*    -fx-text-fill: white;*/
+/*    -fx-font-size: 18;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+/*.profile .container .messBox {*/
+/*    -fx-padding: 70 0 0 0;*/
+/*    -fx-font-style: italic;*/
+/*    -fx-font-size: 19;*/
+/*    -fx-text-fill: red;*/
+/*}*/
+
+/*ITEM ALL*/
+/*.itemAll {*/
+/*    -fx-background-color: rgba(20, 20, 20, 1);*/
+/*}*/
+
+/*!*setting pane*!*/
+/*.itemAll .settingPane {*/
+/*    -fx-background-color: linear-gradient(to right, rgba(255, 255, 255, 0.05), rgba(20, 20, 20, 1));*/
+/*}*/
+
+/*.itemAll .settingPane .label.header {*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-font-size: 30;*/
+/*}*/
+
+/*.itemAll .settingPane .label {*/
+/*    -fx-text-fill: white;*/
+/*    -fx-font-size: 20;*/
+/*}*/
+
+/*.itemAll .settingPane .vBox {*/
+/*    -fx-spacing: 10;*/
+/*}*/
+
+/*.itemAll .settingPane .combo-box-base {*/
+/*    -fx-background-color: rgba(10, 10, 10, 0.9);*/
 /*    -fx-border-color: white;*/
 /*    -fx-border-width: 1;*/
 /*}*/
 
-/*.cartDetail .updateAmount .button {*/
-/*    -fx-background-color: black;*/
-/*    -fx-text-fill: white;*/
-/*    -fx-background-radius: 0;*/
-/*}*/
-
-/*.cartDetail .updateAmount .button:hover {*/
-/*    !*-fx-padding: -1 0 0 0;*!*/
-/*    -fx-text-fill: black;*/
+/*.itemAll .settingPane .combo-box-base .arrow {*/
 /*    -fx-background-color: white;*/
 /*}*/
 
-/*.cartDetail .updateAmount.label {*/
-/*    -fx-font-size: 17;*/
-/*    -fx-border-color: white;*/
-/*    -fx-border-width: 0 1 0 1;*/
+/*.itemAll .settingPane .combo-box-base .list-cell {*/
+/*    -fx-text-fill: white;*/
+/*    -fx-background-color: rgba(10, 10, 10, 0.9);*/
 /*}*/
 
+/*.itemAll .settingPane .combo-box-base .list-cell:hover{*/
+/*    -fx-background-color: rgba(255, 255, 255, 0.1);*/
+/*    -fx-text-fill: black;*/
+/*}*/
 
+/*.itemAll .settingPane .check-box .box {*/
+/*    -fx-background-color: rgba(10, 10, 10, 0.9);*/
+/*    -fx-border-color: white;*/
+/*    -fx-border-width: 1;*/
+/*    -fx-padding: 3;*/
+/*}*/
 
+/*.itemAll .settingPane .check-box:selected .mark {*/
+/*    -fx-background-color: white;*/
+/*}*/
 
+/*.itemAll .settingPane .button {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-text-fill: white;*/
+/*    -fx-font-size: 15;*/
+/*}*/
 
+/*.itemAll .settingPane .button.apply {*/
+/*    -fx-background-color: rgba(255, 255, 255);*/
+/*    -fx-text-fill: rgba(10, 10, 10, 0.9);*/
+/*    -fx-font-weight: bold;*/
+/*    !*-fx-font-size: 20;*!*/
+/*    !*-fx-padding: 5 20 5 20;*!*/
+/*}*/
 
+/*.itemAll .contentPane {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
 
+/*.itemAll .contentPane .viewport {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
 
+/*.itemAll .contentPane .header {*/
+/*    -fx-text-fill: white;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-background-color: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));*/
+/*    -fx-font-size: 35;*/
+/*    -fx-padding: 15 0 0 25;*/
+/*}*/
 
+/*.itemAll .contentPane .itemTile {*/
+/*    -fx-spacing: 50;*/
+/*}*/
 
-
-
-
+/*.itemAll .contentPane .itemTileList {*/
+/*    -fx-spacing: 50;*/
+/*}*/

@@ -14,30 +14,6 @@
     <children>
         <VBox prefHeight="210.0" prefWidth="270.0" spacing="10.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#toHome" prefWidth="290.0" styleClass="sideBarBtn">
-                    <graphic>
-                        <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">
-                            <children>
-                                <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../../media/image/house-solid.png" />
-                                    </image>
-                                </ImageView>
-                        <Label contentDisplay="BOTTOM" graphicTextGap="0.0" minHeight="-Infinity" prefHeight="30.0" prefWidth="195.0" text="Home">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets left="20.0" />
-                           </padding>
-                        </Label>
-                            </children>
-                        </HBox>
-                    </graphic>
-                </Button>
                 <Button mnemonicParsing="false" onAction="#toItemAll" prefWidth="290.0">
                     <graphic>
                         <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">

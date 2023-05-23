@@ -45,10 +45,13 @@ public class AdminItemController implements Initializable {
     private TableColumn<Item, String> genreColumn;
     @FXML
     private TableColumn<Item, Integer> stockColumn;
+
     @FXML
     private TextField searchField;
     @FXML
     private ComboBox<String> categoryList;
+    @FXML
+    private ComboBox<String> genreList;
     @FXML
     private VBox loadingScreen;
 
@@ -65,17 +68,15 @@ public class AdminItemController implements Initializable {
 
     }
 
+    public void changePage(ActionEvent event){
+
+    }
+
     public void initFilter() {
         // category
         categoryList.getItems().addAll(Arrays.asList(ConstantItem.categoryList));
         categoryList.getItems().add(optionAny);
         categoryList.setValue(optionAny);
-        categoryList.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                refreshTable();
-            }
-        });
 
         // search
         searchField.setOnKeyPressed(keyEvent -> {
@@ -83,6 +84,11 @@ public class AdminItemController implements Initializable {
                 refreshTable();
             }
         });
+
+        //genre
+        genreList.getItems().addAll(Arrays.asList(ConstantItem.genreList));
+        genreList.getItems().add(optionAny);
+        genreList.setValue(optionAny);
     }
 
     public void initColumnProperty() {
@@ -184,6 +190,8 @@ public class AdminItemController implements Initializable {
         new Thread(() -> {
             ObservableList<Item> items = getData();
 
+            ViewHandler.fakeLoading();
+
             Platform.runLater(() -> {
                 tableView.setItems(items);
                 tableView.refresh();
@@ -198,6 +206,7 @@ public class AdminItemController implements Initializable {
             boolean legit = true;
             legit &= filterCategory(item);
             legit &= filterSearch(item);
+            legit &= filterGenre(item);
 
             if (legit) {
                 items.add(item);
@@ -209,7 +218,7 @@ public class AdminItemController implements Initializable {
     public boolean filterCategory(Item item) {
         String option = categoryList.getValue();
         if (option.equals(optionAny)) return true;
-        return item.getCategoryString().equals(categoryList.getValue());
+        return item.getCategoryString().equals(option);
     }
 
     public boolean filterSearch(Item item) {
@@ -219,9 +228,17 @@ public class AdminItemController implements Initializable {
                 ViewHandler.checkStringSimilar(item.getTitle(), searchString);
     }
 
+    public boolean filterGenre(Item item){
+        String option = genreList.getValue();
+        if (option.equals(optionAny)) return true;
+        return item.getGenreString().equals(option);
+    }
+
     public void clearFilter(ActionEvent event) {
         searchField.clear();
+        genreList.setValue(optionAny);
         categoryList.setValue(optionAny);
+
         refreshTable();
     }
 
