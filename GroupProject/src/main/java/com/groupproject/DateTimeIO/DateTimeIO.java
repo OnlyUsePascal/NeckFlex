@@ -19,7 +19,8 @@ public class DateTimeIO {
     public static void saveData(){
         LocalDateTime now = LocalDateTime.now();
         dateList.add(now);
-        System.out.println(now);
+        //only print out year, month, day
+        System.out.println(now.getYear() + "," + now.getMonthValue() + "," + now.getDayOfMonth());
         //Get Absolute Path
         String filePath = new File("GroupProject/src/main/resources/data/Date.txt").getAbsolutePath();
 //        System.out.println(filePath);
@@ -65,7 +66,8 @@ public class DateTimeIO {
                     int day = Integer.parseInt(list.get(2));
                     LocalDate date = LocalDate.of(year, month, day);
                     LocalDateTime dateTime = date.atStartOfDay();
-                    System.out.println(dateTime);
+                    //print year, month, day
+                    System.out.println(dateTime.getYear() + "," + dateTime.getMonthValue() + "," + dateTime.getDayOfMonth());
                     dateList.add(dateTime);
                 }
             } catch(FileNotFoundException e){
