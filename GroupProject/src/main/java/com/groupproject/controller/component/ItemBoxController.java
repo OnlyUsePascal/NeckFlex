@@ -33,7 +33,6 @@ public class ItemBoxController implements Initializable {
     public void setData(Item _item) {
         item = _item;
         setTitle(_item.getTitle());
-        // setPrice(_item.getPrice());
 
         setImg();
     }
@@ -45,10 +44,6 @@ public class ItemBoxController implements Initializable {
     public void setTitle(String titleNew) {
         itemTitle.setText(titleNew);
     }
-
-    // public void setPrice(double price){
-    //     itemPrice.setText(String.valueOf(price));
-    // }
 
     public void getPopup(ActionEvent event){
         FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoCart()));

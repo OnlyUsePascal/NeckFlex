@@ -7,11 +7,14 @@ import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 
@@ -23,29 +26,43 @@ import java.util.ResourceBundle;
 
 public class ItemInfoAddController implements Initializable {
     @FXML
-    private ImageView itemRegisterImage;
+    private Rectangle imgFrame;
     @FXML
-    private TextField itemRegisterTitle;
+    private TextField titleBox;
     @FXML
-    private ChoiceBox<String> itemRegisterGenre;
+    private ComboBox<String> genreBox;
     @FXML
-    private ChoiceBox<String> itemRegisterCategory;
+    private ComboBox<String> categoryBox;
     @FXML
-    private TextField itemRegisterStock;
+    private TextField stockBox;
     @FXML
-    private TextField itemRegisterPrice;
+    private TextField priceBox;
     @FXML
-    private TextField itemRegisterYear;
+    private TextField yearBox;
     @FXML
-    private Label errorMessage;
+    private TextArea descBox;
+    @FXML
+    private Label messBox;
 
-    private URI imgPath;
+    private URI imgPath = null;
+    private ImageView itemRegisterImage;
+
+    private String title;
+    private String year;
+    private double price;
+    private String category;
+    private String genre;
+    private int stock;
+    private String desc;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        itemRegisterGenre.getItems().addAll(Arrays.asList(ConstantItem.genreList));
-        itemRegisterCategory.getItems().addAll(Arrays.asList(ConstantItem.categoryList));
+        genreBox.getItems().addAll(Arrays.asList(ConstantItem.genreList));
+        genreBox.setValue(ConstantItem.genreList[0]);
+
+        categoryBox.getItems().addAll(Arrays.asList(ConstantItem.categoryList));
+        categoryBox.setValue(ConstantItem.categoryList[0]);
     }
 
     public void loadImage(ActionEvent event) {
@@ -65,30 +82,24 @@ public class ItemInfoAddController implements Initializable {
 
         if (file != null) {
             Image image = new Image(file.toURI().toString());
-            itemRegisterImage.setImage(image);
+            ImagePattern imagePattern = new ImagePattern(image);
+            imgFrame.setFill(imagePattern);
 
+            // itemRegisterImage.setImage(image);
             imgPath = file.toURI();
         }
     }
 
     public void addItem(ActionEvent event) {
-        if (!checkAll()) return;
+        if (!checkValid()) return;
 
-        String title = itemRegisterTitle.getText();
-        int category = ConstantItem.categoryToIndex(itemRegisterCategory.getValue());
-        int genre = ConstantItem.genreToIndex(itemRegisterGenre.getValue());
-        int stock = Integer.parseInt(itemRegisterStock.getText());
-        String year = itemRegisterYear.getText();
-        double price = Double.parseDouble(itemRegisterPrice.getText());
-
-        Item item = EntityHandler.getNewItem(title, category, genre, stock, year, price);
+        Item item = EntityHandler.getNewItem(title, ConstantItem.categoryToIndex(category),
+                ConstantItem.genreToIndex(genre), stock, year, price);
         EntityHandler.addItem(item);
 
-        //copy image
-        new Thread(() -> {
-            String newName = item.getImgName();
-            ViewHandler.copyImageToResource(imgPath, newName);
-        }).start();
+        // copy image
+        String newName = item.getImgName();
+        ViewHandler.copyImageToResource(imgPath, newName);
 
         closePopup(event);
         ViewHandler.getNoti("Add item successfully", null);
@@ -96,9 +107,9 @@ public class ItemInfoAddController implements Initializable {
 
     public void DecreaseStock() {
         try {
-            int stock = Integer.parseInt(itemRegisterStock.getText());
+            int stock = Integer.parseInt(stockBox.getText());
             if (stock > 1) {
-                itemRegisterStock.setText(String.valueOf(stock - 1));
+                stockBox.setText(String.valueOf(stock - 1));
             }
         } catch (NumberFormatException e) {
             return;
@@ -107,114 +118,64 @@ public class ItemInfoAddController implements Initializable {
 
     public void IncreaseStock() {
         try {
-            int stock = Integer.parseInt(itemRegisterStock.getText());
-            itemRegisterStock.setText(String.valueOf(stock + 1));
+            int stock = Integer.parseInt(stockBox.getText());
+            stockBox.setText(String.valueOf(stock + 1));
         } catch (NumberFormatException e) {
             return;
         }
     }
 
-    public boolean checkTitle() {
-        if (itemRegisterTitle.getText().isEmpty()) {
-            errorMessage.setText("Title cannot be empty");
-            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
-            return false;
-        }
-        return true;
-    }
-
-    public boolean checkGenre() {
-        if (itemRegisterGenre.getValue() == null) {
-            errorMessage.setText("Genre cannot be empty");
-            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
-            return false;
-        }
-        return true;
-    }
-
-    public boolean checkCategory() {
-        if (itemRegisterCategory.getValue() == null) {
-            errorMessage.setText("Category cannot be empty");
-            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
-            return false;
-        }
-        return true;
-    }
-
-    public boolean checkStock() {
+    public boolean checkValid() {
+        title = titleBox.getText();
+        year = yearBox.getText();
+        category = categoryBox.getValue();
+        genre = genreBox.getValue();
         try {
-            Integer.parseInt(itemRegisterStock.getText());
+            price = Double.parseDouble(priceBox.getText());
         } catch (NumberFormatException e) {
-            errorMessage.setText("Stock must be a number");
-            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
+            messBox.setText("Price should be a decimal");
             return false;
         }
-        return true;
-    }
-
-    public boolean checkFee() {
         try {
-            Double.parseDouble(itemRegisterPrice.getText());
+            stock = Integer.parseInt(stockBox.getText());
         } catch (NumberFormatException e) {
-            errorMessage.setText("Invalid fee");
-            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
+            messBox.setText("Stock should be an integer");
             return false;
         }
+        desc = descBox.getText();
+
+        if (title.isEmpty()) {
+            messBox.setText("Title cannot be empty");
+            return false;
+        }
+
+        if (year.isEmpty()) {
+            messBox.setText("Year cannot be empty");
+            return false;
+        }
+
+        if (desc.isBlank()) {
+            messBox.setText("Description cannot be empty");
+            return false;
+        }
+
+        if (imgPath == null) {
+            messBox.setText("Image cannot be empty");
+            return false;
+        }
+
+        if (ViewHandler.checkStringNumberOnly(year)) {
+            messBox.setText("Year should be a number");
+            return false;
+        }
+
+        if (year.length() != 4){
+            messBox.setText("Year should be 4 digits");
+            return false;
+        }
+
         return true;
     }
-
-    public boolean checkImage() {
-        if (itemRegisterImage.getImage() == null) {
-            errorMessage.setText("Please load your image");
-            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
-            return false;
-        }
-        return true;
-    }
-
-    public boolean checkYear() {
-        try {
-            Integer.parseInt(itemRegisterYear.getText());
-        } catch (NumberFormatException e) {
-            errorMessage.setText("Invalid year");
-            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
-            return false;
-        }
-
-        if (itemRegisterYear.getText().length() != 4) {
-            errorMessage.setText("Invalid year");
-            errorMessage.setTextFill(javafx.scene.paint.Color.RED);
-            return false;
-        }
-
-        return true;
-    }
-
-    public boolean checkAll() {
-        if (checkTitle() == false) {
-            return false;
-        }
-        if (checkGenre() == false) {
-            return false;
-        }
-        if (checkCategory() == false) {
-            return false;
-        }
-        if (checkStock() == false) {
-            return false;
-        }
-        if (checkFee() == false) {
-            return false;
-        }
-        if (checkImage() == false) {
-            return false;
-        }
-        if (checkYear() == false) {
-            return false;
-        }
-        return true;
-    }
-
 
 
     public void closePopup(ActionEvent event) {

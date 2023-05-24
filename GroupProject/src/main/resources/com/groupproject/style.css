@@ -934,7 +934,11 @@
     -fx-font-size: 15;
     -fx-font-style: italic;
     -fx-padding: 0 0 -15 0;
+}
 
+.itemUpdate .loadImg{
+    -fx-background-color: transparent;
+    -fx-font-size: 15;
 }
 
 
@@ -1042,6 +1046,7 @@
     -fx-font-style: italic;
     -fx-padding: 0 0 -20 0;
 }
+
 
 
 /*.profile .container {*/
