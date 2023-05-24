@@ -2,6 +2,7 @@ package com.groupproject.controller;
 
 import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.controller.component.NavBarController;
+import com.groupproject.controller.component.NavBarCustomerController;
 import com.groupproject.controller.component.SidebarController;
 import com.groupproject.controller.page.HomeController;
 import com.groupproject.controller.page.UserRecordController;
@@ -57,6 +58,10 @@ public class ViewHandler {
 
     static public void refreshMenuButtonName() {
         navBarController.refreshMenuButtonName();
+    }
+
+    static public String getSearchText(){
+        return ((NavBarCustomerController) navBarController).getSearchText();
     }
 
     // sidebar

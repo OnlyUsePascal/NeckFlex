@@ -15,7 +15,7 @@
    <children>
       <VBox prefHeight="210.0" prefWidth="234.0" spacing="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#toHome" prefWidth="290.0">
+            <Button mnemonicParsing="false" onAction="#toPageHome" prefWidth="290.0">
                <graphic>
                   <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">
                      <children>

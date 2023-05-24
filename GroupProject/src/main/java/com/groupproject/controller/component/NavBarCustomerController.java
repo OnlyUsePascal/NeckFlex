@@ -24,22 +24,29 @@ public class NavBarCustomerController extends NavBarController {
     public void initSearchField(){
         searchField.setOnKeyPressed(keyEvent -> {
             if(keyEvent.getCode().toString().equals("ENTER")){
-                toHomeWithSearch(null);
+                toPageItemAllWithSearch(null);
             }
         });
     }
 
-    public void toCart(ActionEvent event){
+    public void toPageCart(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageCart());
     }
 
-    public void toDeposit(ActionEvent event){
+    public void toPageDeposit(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageUserDeposit());
     }
 
-    public void toHomeWithSearch(ActionEvent event){
-        System.out.println("To home with search");
+    public void toPageItemAllWithSearch(ActionEvent event){
+        ViewHandler.setPageContent(PathHandler.getPageItemAll());
+        clearSearchText();
     }
 
+    public String getSearchText(){
+        return searchField.getText();
+    }
 
+    public void clearSearchText(){
+        searchField.clear();
+    }
 }

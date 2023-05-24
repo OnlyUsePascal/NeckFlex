@@ -52,11 +52,6 @@ public class SidebarController implements Initializable {
         }
     }
 
-    public void toHome(ActionEvent event){
-        ViewHandler.setPageContent(PathHandler.getPageItemTrending());
-        menuActive(null);
-    }
-
     public void toItemAll(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemAll());
         menuActive(null);

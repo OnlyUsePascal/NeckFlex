@@ -18,7 +18,7 @@
             <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="59.0" prefWidth="187.0" text=" Hello, Joun!">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#toPageUserProfile" text="User Profile" />
-                <MenuItem mnemonicParsing="false" onAction="#toDeposit" text="Deposit" />
+                <MenuItem mnemonicParsing="false" onAction="#toPageDeposit" text="Deposit" />
                   <MenuItem mnemonicParsing="false" onAction="#toLogout" text="Log out" />
               </items>
                <graphic>
@@ -32,7 +32,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </MenuButton>
-            <Button fx:id="toCart" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#toCart" prefHeight="52.0" prefWidth="100.0" text=" Cart">
+            <Button fx:id="toCart" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#toPageCart" prefHeight="52.0" prefWidth="100.0" text=" Cart">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -79,7 +79,7 @@
                         <Insets top="-1.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#toHomeWithSearch" prefHeight="35.0" style="-fx-background-color: #F7C04A; -fx-background-radius: 0 5 5 0;">
+                  <Button mnemonicParsing="false" onAction="#toPageItemAllWithSearch" prefHeight="35.0" style="-fx-background-color: #F7C04A; -fx-background-radius: 0 5 5 0;">
                      <HBox.margin>
                         <Insets left="-1.0" top="-1.5" />
                      </HBox.margin>

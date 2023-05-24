@@ -118,6 +118,7 @@ public class ItemAllController implements Initializable {
                     itemRow.getStyleClass().add(styleClass);
                     pageContainer.getChildren().add(itemRow);
                 }
+
                 ViewHandler.toggleNode(loadingScreen, false);
             });
         }).start();
@@ -126,7 +127,14 @@ public class ItemAllController implements Initializable {
     public boolean checkItem(Item item) {
         return checkItemCategory(item) &&
                 checkItemGenre(item) &&
-                checkItemAvailable(item);
+                checkItemAvailable(item) &&
+                checkItemSearch(item);
+    }
+
+    public boolean checkItemSearch(Item item) {
+        String search = ViewHandler.getSearchText();
+        if (search.equals("")) return true;
+        return item.getTitle().toLowerCase().contains(search.toLowerCase());
     }
 
     public boolean checkItemCategory(Item item) {

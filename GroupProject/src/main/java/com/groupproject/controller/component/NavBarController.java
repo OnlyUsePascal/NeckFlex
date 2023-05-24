@@ -29,11 +29,9 @@ public class NavBarController implements Initializable {
         menuButton.setText("Hello, " + EntityHandler.getCurrentUser().getFirstName() + "!");
     }
 
-
     public void setMenuActive(ActionEvent event){
         ViewHandler.setMenuActive(event);
     }
-
 
     public void toPageHome(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemTrending());
