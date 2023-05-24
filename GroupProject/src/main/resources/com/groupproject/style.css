@@ -936,3 +936,62 @@
     -fx-padding: 0 0 -15 0;
 
 }
+
+
+/*ABOUT US*/
+.aboutUs{
+    -fx-background-color: rgba(20, 20, 20, 1);
+}
+
+.aboutUs .scroll-pane{
+    -fx-background-color: transparent;
+}
+
+.aboutUs .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.aboutUs .label{
+    -fx-text-fill: white;
+}
+
+.aboutUs .label.header1{
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 0 -22;
+}
+
+.aboutUs .label.header2{
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+}
+
+.aboutUs .text-area {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 0 -9;
+    -fx-font-size: 16;
+}
+
+.aboutUs .infoSection{
+    -fx-spacing: 12;
+}
+
+.aboutUs .text-area .content{
+    -fx-background-color: transparent;
+
+}
+
+.aboutUs .text-area .scroll-pane{
+    -fx-background-color: transparent;
+}
+
+.aboutUs .text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+
+
+
+

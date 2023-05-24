@@ -52,9 +52,12 @@ public class PathHandler {
         return pageRoot + "AdminItem.fxml";
     }
 
-
     static public String getPageCart() {
         return pageRoot + "Cart.fxml";
+    }
+
+    static public String getPageAboutUs() {
+        return pageRoot + "AboutUs2.fxml";
     }
 
 
