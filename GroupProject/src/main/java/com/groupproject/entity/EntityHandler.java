@@ -23,6 +23,8 @@ public class EntityHandler {
     static private ArrayList<Item> itemRecordList = new ArrayList<>();
     static private ArrayList<Item> itemGameList = new ArrayList<>();
 
+    static public String blankInput = "N/A";
+
 
     //===================== AUTH ======================
     // logging

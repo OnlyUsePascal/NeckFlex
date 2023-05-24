@@ -64,8 +64,8 @@ public class LoginRegisterController implements Initializable {
     private String address;
     private AnchorPane loginContainer;
 
-    private final String blankInput = "N/A";
-    
+    private final String blankInput = EntityHandler.blankInput;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // messBox.setText("");

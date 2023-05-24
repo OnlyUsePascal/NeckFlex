@@ -17,7 +17,7 @@ public class SidebarController implements Initializable {
     @FXML
     private AnchorPane menuPane;
 
-    private boolean menuIsOpen = false;
+    private boolean menuIsOpen = true;
     private TranslateTransition menuToOpen, menuToClose;
 
 
@@ -34,14 +34,13 @@ public class SidebarController implements Initializable {
     public void initTransition(){
         double duration = 0.3;
         menuToOpen = new TranslateTransition(Duration.seconds(duration), menuPane);
-        menuToOpen.setByX(+300);
+        menuToOpen.setToX(0);
 
         menuToClose = new TranslateTransition(Duration.seconds(duration), menuPane);
-        menuToClose.setByX(-300);
+        menuToClose.setToX(-300);
     }
 
-    public void menuActive(ActionEvent event){
-        if (event != null) event.consume();
+    public void menuActive(){
 
         if (menuIsOpen){
             menuIsOpen = false;
@@ -54,7 +53,7 @@ public class SidebarController implements Initializable {
 
     public void toItemAll(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemAll());
-        menuActive(null);
+        menuActive();
     }
 
 

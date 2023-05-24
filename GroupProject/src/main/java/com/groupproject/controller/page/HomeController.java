@@ -2,6 +2,7 @@ package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.NavBarCustomerController;
 import com.groupproject.controller.component.SidebarController;
+import com.groupproject.entity.EntityHandler;
 import com.groupproject.toolkit.PathHandler;
 import com.groupproject.controller.ViewHandler;
 import javafx.application.Platform;
@@ -12,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HomeController implements Initializable {
     @FXML
@@ -28,7 +30,7 @@ public class HomeController implements Initializable {
     private SidebarController sidebarController;
     private NavBarCustomerController navBarCustomerController;
     private ItemAllController itemAllController;
-    private boolean isOutside;
+    private AtomicBoolean isOutside = new AtomicBoolean(true);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,7 +41,7 @@ public class HomeController implements Initializable {
         // } else {
         //     setPageContent(PathHandler.getPageItemTrending());
         // }
-        setPageContent(PathHandler.getPageAdminItem());
+        setPageContent(PathHandler.getPageAdminAccount());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBarPane(PathHandler.getComponentNavBar());
     }
@@ -49,20 +51,24 @@ public class HomeController implements Initializable {
 
         //auto closed
         sidebarPanel.setOnMouseEntered(mouseEvent -> {
-            isOutside = false;
+            isOutside.set(false);
         });
 
         sidebarPanel.setOnMouseExited(mouseEvent -> {
-            isOutside = true;
+            if (!ViewHandler.sideBarIsOpen()) return;
+
+            isOutside.set(true);
             new Thread(() -> {
-                long tEnd = System.currentTimeMillis() + 2500;
+                long tEnd = System.currentTimeMillis() + 2000;
                 while (System.currentTimeMillis() < tEnd) {
-                    if (!isOutside) break;
+                    if (!isOutside.get()) {
+                        return;
+                    }
                 }
 
                 Platform.runLater(() -> {
-                    if (isOutside && ViewHandler.sideBarIsOpen()){
-                        ViewHandler.setMenuActive(null);
+                    if (isOutside.get() && ViewHandler.sideBarIsOpen()) {
+                        ViewHandler.setMenuActive();
                     }
                 });
             }).start();
@@ -75,7 +81,8 @@ public class HomeController implements Initializable {
 
     public void setNavBarPane(String url) {
         ViewHandler.setAnchorPane(navBarPane, url);
-        sidebarPanel.setTranslateX(-300);
+        ViewHandler.setMenuActive();
+        // sidebarPanel.setTranslateX(-300);
     }
 
     public AnchorPane getPageContent() {

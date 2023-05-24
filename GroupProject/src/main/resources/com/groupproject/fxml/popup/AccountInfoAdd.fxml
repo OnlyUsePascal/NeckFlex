@@ -1,69 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="520.0" prefWidth="528.0" style="-fx-background-color: yellow;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.popup.AccountInfoAddController">
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.popup.AccountInfoAddController">
    <children>
-      <TextField fx:id="RegistrationPageUsername" layoutX="104.0" layoutY="66.0" prefHeight="29.0" prefWidth="323.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <PasswordField fx:id="RegistrationPagePassword" layoutX="104.0" layoutY="110.0" prefHeight="31.0" prefWidth="323.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <PasswordField fx:id="RegistrationPageConfirmPassword" layoutX="104.0" layoutY="157.0" prefHeight="31.0" prefWidth="323.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="RegistrationPageFirstName" layoutX="104.0" layoutY="202.0" prefHeight="29.0" prefWidth="323.0" promptText="FirstName" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="RegistrationPagePhoneNumber" layoutX="104.0" layoutY="295.0" prefHeight="29.0" prefWidth="323.0" promptText="Phone Number" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="RegistrationPageAddress" layoutX="104.0" layoutY="342.0" prefHeight="29.0" prefWidth="323.0" promptText="Address" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button fx:id="cancelButton" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="52.0" layoutY="445.0" mnemonicParsing="false" onAction="#closePopup" style="-fx-background-color: blue;" text="Cancel" textFill="WHITE" />
-      <Button fx:id="createButton" layoutX="411.0" layoutY="445.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="27.0" prefWidth="64.0" style="-fx-background-color: blue;" text="Create" textFill="WHITE" />
-      <Label layoutX="105.0" layoutY="14.0" text="User Registration" textAlignment="CENTER" textFill="#366cc9">
-         <font>
-            <Font name="System Bold" size="27.0" />
-         </font>
-      </Label>
-      <Label fx:id="requiredUsername" layoutX="105.0" layoutY="97.0" text="*required" textFill="RED" visible="false">
-         <font>
-            <Font name="System Italic" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="requiredFirstName" contentDisplay="BOTTOM" layoutX="108.0" layoutY="233.0" text="*required" textFill="RED" visible="false">
-         <font>
-            <Font name="System Italic" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="RegistrationPageMessage" alignment="CENTER" layoutX="143.0" layoutY="449.0" prefHeight="19.0" prefWidth="238.0" textAlignment="CENTER">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="requiredPassword" layoutX="105.0" layoutY="140.0" text="*required" textFill="RED" visible="false">
-         <font>
-            <Font name="System Italic" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="requiredConfirmPassword" layoutX="108.0" layoutY="188.0" text="*required" textFill="RED" visible="false">
-         <font>
-            <Font name="System Italic" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="requiredLastName" layoutX="108.0" layoutY="278.0" text="*required" textFill="RED" visible="false">
-         <font>
-            <Font name="System Italic" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="requiredPhoneNumber" layoutX="108.0" layoutY="324.0" text="*required" textFill="RED" visible="false">
-         <font>
-            <Font name="System Italic" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="requiredAddress" layoutX="107.0" layoutY="371.0" text="*required" textFill="RED" visible="false">
-         <font>
-            <Font name="System Italic" size="11.0" />
-         </font>
-      </Label>
-      <TextField fx:id="RegistrationPageLastName" layoutX="104.0" layoutY="247.0" prefHeight="31.0" prefWidth="323.0" promptText="LastName" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-width: 0px 0px 2px 0px;" />
-      <ChoiceBox fx:id="choiceList" layoutX="108.0" layoutY="396.0" prefHeight="26.0" prefWidth="116.0" />
+      <VBox styleClass="accUpdate" stylesheets="@../../style.css">
+         <children>
+            <HBox styleClass="container">
+               <children>
+                  <VBox styleClass="sectionCol">
+                     <children>
+                        <VBox fillWidth="false" styleClass="sectionCol2">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="header" text="Authentication" />
+                                    <Line endX="200.0" startX="-100.0" />
+                                 </children>
+                              </VBox>
+                              <HBox styleClass="inputRow">
+                                 <children>
+                                    <VBox styleClass="inputField">
+                                       <children>
+                                          <Label text="Username *" />
+                                          <TextField fx:id="usernameBox" />
+                                       </children>
+                                    </VBox>
+                                    <VBox styleClass="inputField">
+                                       <children>
+                                          <Label text="Account Type" />
+                                          <ComboBox fx:id="typeList" prefWidth="150.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="inputRow">
+                                 <children>
+                                    <VBox styleClass="inputField">
+                                       <children>
+                                          <Label text="Password *" />
+                                          <PasswordField fx:id="pwdBox" />
+                                       </children>
+                                    </VBox>
+                                    <VBox styleClass="inputField">
+                                       <children>
+                                          <Label text="Confirm password *" />
+                                          <PasswordField fx:id="pwdConfirmBox" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox fillWidth="false" styleClass="sectionCol2">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label styleClass="header" text="Personal infomation" />
+                              <Line endX="200.0" startX="-100.0" />
+                           </children>
+                        </VBox>
+                        <VBox styleClass="sectionCol3">
+                           <children>
+                              <HBox styleClass="inputRow">
+                                 <children>
+                                    <VBox styleClass="inputField">
+                                       <children>
+                                          <Label text="First name *" />
+                                          <TextField fx:id="firstNameBox" />
+                                       </children>
+                                    </VBox>
+                                    <VBox styleClass="inputField">
+                                       <children>
+                                          <Label text="Last name *" />
+                                          <TextField fx:id="lastNameBox">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
+                              <VBox styleClass="inputField">
+                                 <children>
+                                    <Label text="Phone number" />
+                                    <TextField fx:id="phoneNumberBox" prefHeight="30.0" prefWidth="254.0" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="inputField">
+                                 <children>
+                                    <Label text="Address" />
+                                    <TextField fx:id="addressBox" prefHeight="30.0" prefWidth="254.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="10.0" prefWidth="727.0" />
+            <Label fx:id="messBox" alignment="CENTER" prefHeight="27.0" prefWidth="718.0" styleClass="messBox" text="oke then" textAlignment="CENTER" />
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#createAccount" prefHeight="39.0" prefWidth="111.0" styleClass="apply" text="Apply">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

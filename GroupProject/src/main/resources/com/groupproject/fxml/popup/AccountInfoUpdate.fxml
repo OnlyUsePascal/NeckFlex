@@ -63,13 +63,13 @@
                                        <children>
                                           <VBox styleClass="inputField">
                                              <children>
-                                                <Label text="First name" />
+                                                <Label text="First name *" />
                                                 <TextField fx:id="firstNameBox" />
                                              </children>
                                           </VBox>
                                           <VBox styleClass="inputField">
                                              <children>
-                                                <Label text="Last name" />
+                                                <Label text="Last name *" />
                                                 <TextField fx:id="lastNameBox">
                                                    <opaqueInsets>
                                                       <Insets />
@@ -136,7 +136,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Button mnemonicParsing="false" onAction="#profileEdit" prefHeight="50.0" prefWidth="110.0" text="Apply">
+                  <Button mnemonicParsing="false" onAction="#profileEdit" prefHeight="40.0" prefWidth="112.0" styleClass="apply" text="Apply">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

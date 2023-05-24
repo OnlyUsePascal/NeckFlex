@@ -15,110 +15,49 @@ import java.util.ResourceBundle;
 
 public class AccountInfoAddController implements Initializable {
     @FXML
-    private TextField RegistrationPageUsername = new TextField();
+    private TextField usernameBox = new TextField();
     @FXML
-    private PasswordField RegistrationPagePassword = new PasswordField();
+    private PasswordField pwdBox = new PasswordField();
     @FXML
-    private PasswordField RegistrationPageConfirmPassword = new PasswordField();
+    private PasswordField pwdConfirmBox = new PasswordField();
     @FXML
-    private TextField RegistrationPageFirstName = new TextField();
+    private TextField firstNameBox = new TextField();
     @FXML
-    private TextField RegistrationPageLastName = new TextField();
+    private TextField lastNameBox = new TextField();
     @FXML
-    private TextField RegistrationPagePhoneNumber = new TextField();
+    private TextField phoneNumberBox = new TextField();
     @FXML
-    private TextField RegistrationPageAddress = new TextField();
+    private TextField addressBox = new TextField();
     @FXML
-    private Label RegistrationPageMessage = new Label();
+    private Label messBox = new Label();
     @FXML
-    private Label requiredUsername = new Label();
-    @FXML
-    private Label requiredPassword = new Label();
-    @FXML
-    private Label requiredConfirmPassword = new Label();
-    @FXML
-    private Label requiredFirstName = new Label();
-    @FXML
-    private Label requiredLastName = new Label();
-    @FXML
-    private Label requiredPhoneNumber = new Label();
-    @FXML
-    private Label requiredAddress = new Label();
-    @FXML
-    private ChoiceBox<String> choiceList;
+    private ComboBox<String> typeList;
 
     private String[] choices = {"Admin", "Customer"};
+    private String username;
+    private String pwd;
+    private String pwdConfirm;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String address;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        RegistrationPageMessage.setText("");
-        RegistrationPageMessage.setTextFill(Color.RED);
+        messBox.setText("");
+        messBox.setTextFill(Color.RED);
 
-        choiceList.getItems().addAll(Arrays.asList(choices));
+        typeList.getItems().addAll(Arrays.asList(choices));
+        typeList.setValue(choices[1]);
     }
 
-    public void onCreateButtonClick(ActionEvent event) {
-        String username = RegistrationPageUsername.getText();
-        String password = RegistrationPagePassword.getText();
-        String confirmPassword = RegistrationPageConfirmPassword.getText();
-        String firstName = RegistrationPageFirstName.getText();
-        String lastName = RegistrationPageLastName.getText();
-        String phoneNumber = RegistrationPagePhoneNumber.getText();
-        String address = RegistrationPageAddress.getText();
+    public void createAccount(ActionEvent event) {
+        if (!checkValid()) return;
 
-        boolean legit = true;
-        boolean status = true;
-        RegistrationPageMessage.setText("");
+        // legit
+        Account newAccount = Account.getNewAccount(username, pwd, firstName, lastName, address, phoneNumber);
 
-        //format
-        status = ViewHandler.checkStringGeneral(username);
-        requiredUsername.setVisible(!status);
-        legit &= status;
-
-        status = ViewHandler.checkStringGeneral(password);
-        requiredPassword.setVisible(!status);
-        legit &= status;
-
-        status = ViewHandler.checkStringGeneral(confirmPassword);
-        requiredConfirmPassword.setVisible(!status);
-        legit &= status;
-
-        status = ViewHandler.checkStringCharacterOnly(firstName);
-        requiredFirstName.setVisible(!status);
-        legit &= status;
-
-        status = ViewHandler.checkStringCharacterOnly(lastName);
-        requiredLastName.setVisible(!status);
-        legit &= status;
-
-        status = ViewHandler.checkStringNumberOnly(phoneNumber);
-        requiredPhoneNumber.setVisible(!status);
-        legit &= status;
-
-        status = ViewHandler.checkStringGeneral(address);
-        requiredAddress.setVisible(!status);
-        legit &= status;
-
-        if (!legit){
-            RegistrationPageMessage.setText("Something gone wrong");
-            return;
-        }
-
-        //extra err
-        if(EntityHandler.accountIsExist(username)){
-            RegistrationPageMessage.setText("Username already exists!");
-            return;
-        }
-
-        if(password.compareTo(confirmPassword) != 0){
-            RegistrationPageMessage.setText("Password doesn't match!");
-            return;
-        }
-
-        //legit
-        Account newAccount = Account.getNewAccount(username, password, firstName, lastName, phoneNumber, address);
-
-        if (choiceList.getValue().equals(choices[0])){ //is admin
+        if (typeList.getValue().equals(choices[0])) { // is admin
             newAccount.makeAdmin();
         }
 
@@ -127,6 +66,70 @@ public class AccountInfoAddController implements Initializable {
         closePopup(event);
         ViewHandler.getNoti("Add account successfully", null);
 
+    }
+
+    public boolean checkValid() {
+        username = usernameBox.getText();
+        pwd = pwdBox.getText();
+        pwdConfirm = pwdConfirmBox.getText();
+
+        firstName = firstNameBox.getText();
+        lastName = lastNameBox.getText();
+        phoneNumber = phoneNumberBox.getText();
+        if (phoneNumber.isBlank()) phoneNumber = EntityHandler.blankInput;
+        address = addressBox.getText();
+        if (address.isBlank()) address = EntityHandler.blankInput;
+
+        if (username.isBlank()) {
+            messBox.setText("Username cannot be blank");
+            return false;
+        }
+        if (EntityHandler.accountIsExist(username)) {
+            messBox.setText("Username already exist");
+            return false;
+        }
+        if (!ViewHandler.checkStringGeneral(username)) {
+            messBox.setText("Username can only contain letter, number");
+            return false;
+        }
+
+        if (pwd.isBlank()) {
+            messBox.setText("Password cannot be blank");
+            return false;
+        }
+        if (!pwd.equals(pwdConfirm)) {
+            messBox.setText("Password doesn't match");
+            return false;
+        }
+
+        if (firstName.isBlank()) {
+            messBox.setText("First name cannot be blank");
+            return false;
+        }
+        if (!ViewHandler.checkStringCharacterOnly(firstName)) {
+            messBox.setText("First name cannot contain number or special character");
+            return false;
+        }
+
+        if (lastName.isBlank()) {
+            messBox.setText("Last name cannot be blank");
+            return false;
+        }
+        if (!ViewHandler.checkStringCharacterOnly(lastName)) {
+            messBox.setText("Last name cannot contain number or special character");
+            return false;
+        }
+
+        if (!phoneNumber.equals(EntityHandler.blankInput) && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
+            messBox.setText("Phone number must be number only");
+            return false;
+        }
+        if (!address.equals(EntityHandler.blankInput) && !ViewHandler.checkStringGeneral(address)) {
+            messBox.setText("Address cannot contain special character except , .");
+            return false;
+        }
+
+        return true;
     }
 
     public void closePopup(ActionEvent event) {

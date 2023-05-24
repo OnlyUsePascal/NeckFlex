@@ -4,3 +4,4 @@ C002|joun|123|dat|pham|my house|09213|3|169.9|130
 C003|johnson|123|dat|what oke|my house|234|3|20.0|30
 C005|joun2|123|dat|pham|0123|01234|1|30.0|0
 C006|huan1|123|huan|nguyen|housing|0223|1|30.0|0
+C007|joun3|123|dat|pham|sure thing|N/A|1|30.0|0

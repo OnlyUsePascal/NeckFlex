@@ -132,6 +132,7 @@ public class ItemAllController implements Initializable {
     }
 
     public boolean checkItemSearch(Item item) {
+        if (EntityHandler.getCurrentUser().isAdmin()) return true;
         String search = ViewHandler.getSearchText();
         if (search.equals("")) return true;
         return item.getTitle().toLowerCase().contains(search.toLowerCase());

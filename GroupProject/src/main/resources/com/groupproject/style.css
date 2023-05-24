@@ -1040,11 +1040,17 @@
     -fx-spacing: 3;
 }
 
-.accUpdate .container .messBox{
+.accUpdate .messBox{
     -fx-text-fill: red;
     -fx-font-size: 15;
     -fx-font-style: italic;
     -fx-padding: 0 0 -20 0;
+}
+
+.accUpdate .apply{
+    -fx-background-color: #537FE7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
 }
 
 

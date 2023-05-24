@@ -30,7 +30,7 @@ public class NavBarController implements Initializable {
     }
 
     public void setMenuActive(ActionEvent event){
-        ViewHandler.setMenuActive(event);
+        ViewHandler.setMenuActive();
     }
 
     public void toPageHome(ActionEvent event){

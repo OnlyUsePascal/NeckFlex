@@ -7,18 +7,18 @@ import javafx.event.ActionEvent;
 public class  SidebarCustomerController extends SidebarController{
     public void toPageHome(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemTrending());
-        menuActive(null);
+        menuActive();
 
     }
 
     public void toPageRecord(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageUserRecord());
-        menuActive(null);
+        menuActive();
     }
 
     public void toPageAboutUs(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageAboutUs());
-        menuActive(null);
+        menuActive();
     }
 
 }

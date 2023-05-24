@@ -48,7 +48,7 @@ public class UserProfileController implements Initializable {
     private String phoneNumber;
     private String address;
 
-    private final String blankInput = "N/A";
+    private final String blankInput = EntityHandler.blankInput;
 
 
     @Override

@@ -69,8 +69,8 @@ public class ViewHandler {
         ViewHandler.sidebarController = sidebarController;
     }
 
-    static public void setMenuActive(ActionEvent event) {
-        sidebarController.menuActive(event);
+    static public void setMenuActive() {
+        sidebarController.menuActive();
     }
 
     static public boolean sideBarIsOpen(){

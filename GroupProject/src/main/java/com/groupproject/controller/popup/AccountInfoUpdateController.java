@@ -1,5 +1,6 @@
 package com.groupproject.controller.popup;
 
+import com.groupproject.entity.EntityHandler;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.controller.ViewHandler;
 import javafx.event.ActionEvent;
@@ -38,7 +39,7 @@ public class AccountInfoUpdateController implements Initializable {
     private String lastName;
     private String phoneNumber;
     private String address;
-    private final String blankInput = "N/A";
+    private final String blankInput = EntityHandler.blankInput;
 
 
     @Override
