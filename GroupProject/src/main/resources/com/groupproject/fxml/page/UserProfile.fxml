@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1600.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.page.UserProfileController">
     <children>
-      <VBox layoutX="313.0" layoutY="37.0" styleClass="profile" stylesheets="@../../style.css">
+      <VBox layoutX="344.0" layoutY="12.0" styleClass="profile" stylesheets="@../../style.css">
          <children>
             <Label styleClass="header1" text="My Account">
                <VBox.margin>
@@ -21,7 +21,7 @@
                </VBox.margin></Label>
             <VBox styleClass="container">
                <children>
-                  <HBox styleClass="containerHorizon">
+                  <HBox styleClass="container">
                      <children>
                         <VBox styleClass="sectionCol">
                            <children>
@@ -150,6 +150,9 @@
                      </children>
                   </HBox>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </VBox>
          </children>
       </VBox>

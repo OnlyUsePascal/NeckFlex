@@ -534,11 +534,11 @@
     -fx-background-color: #ffffff;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
-    -fx-padding: 30;
-    -fx-spacing: 10;
+    -fx-padding: 20;
+    /*-fx-spacing: 10;*/
 }
 
-.profile .containerHorizon {
+.profile .container {
     -fx-spacing: 60;
 }
 
@@ -722,7 +722,7 @@
     -fx-font-size: 15;
 }
 
-.adminItem .filter .import{
+.adminItem .filter .import {
     -fx-background-color: #79E0EE;
     -fx-font-weight: bold;
 }
@@ -784,7 +784,7 @@
     -fx-font-size: 15;
 }
 
-.adminItem .filter .import{
+.adminItem .filter .import {
     -fx-background-color: #79E0EE;
     -fx-font-weight: bold;
 }
@@ -847,14 +847,14 @@
     -fx-font-size: 15;
 }
 
-.adminAcc .filter .import{
+.adminAcc .filter .import {
     -fx-background-color: #79E0EE;
     -fx-font-weight: bold;
 }
 
 
 /*ITEM INFO UPDATE*/
-.itemUpdate{
+.itemUpdate {
     background-color: #FFFAF4;
     -fx-border-color: black;
     -fx-border-width: 1;
@@ -865,36 +865,36 @@
     -fx-font-size: 16;
 }
 
-.itemUpdate .infoPane :disabled{
+.itemUpdate .infoPane :disabled {
     -fx-opacity: 0.8;
 }
 
-.itemUpdate .infoPane{
+.itemUpdate .infoPane {
     -fx-spacing: 15;
 }
 
-.itemUpdate .infoPane .inputField{
+.itemUpdate .infoPane .inputField {
     -fx-spacing: 3;
 }
 
-.itemUpdate .infoPane .inputField .label.note{
+.itemUpdate .infoPane .inputField .label.note {
     -fx-font-weight: bold;
 }
 
-.itemUpdate .infoPane .row{
+.itemUpdate .infoPane .row {
     -fx-spacing: 15;
 }
 
-.itemUpdate .infoPane .updateAmount{
+.itemUpdate .infoPane .updateAmount {
     -fx-border-width: 1;
     -fx-border-color: black;
 }
 
-.itemUpdate .infoPane .updateAmount .text-field{
+.itemUpdate .infoPane .updateAmount .text-field {
     -fx-background-color: transparent;
 }
 
-.itemUpdate .infoPane .updateAmount .button{
+.itemUpdate .infoPane .updateAmount .button {
     -fx-background-color: transparent;
 }
 
@@ -904,22 +904,22 @@
     -fx-text-fill: white;
 }
 
-.itemUpdate .infoPane .updateAmount .button.button1{
+.itemUpdate .infoPane .updateAmount .button.button1 {
     -fx-border-width: 0 1 0 1;
     -fx-border-color: black;
 }
 
-.itemUpdate .imgFrame{
+.itemUpdate .imgFrame {
     -fx-stroke-width: 0;
     -fx-arc-width: 10;
     -fx-arc-height: 10;
 }
 
-.itemUpdate .applyRow{
+.itemUpdate .applyRow {
     -fx-spacing: 15;
 }
 
-.itemUpdate .applyRow .button{
+.itemUpdate .applyRow .button {
     -fx-background-color: transparent;
 }
 
@@ -929,7 +929,7 @@
     -fx-font-weight: bold;
 }
 
-.itemUpdate .infoPane .messBox.label{
+.itemUpdate .infoPane .messBox.label {
     -fx-text-fill: red;
     -fx-font-size: 15;
     -fx-font-style: italic;
@@ -939,29 +939,29 @@
 
 
 /*ABOUT US*/
-.aboutUs{
+.aboutUs {
     -fx-background-color: rgba(20, 20, 20, 1);
 }
 
-.aboutUs .scroll-pane{
+.aboutUs .scroll-pane {
     -fx-background-color: transparent;
 }
 
-.aboutUs .scroll-pane .viewport{
+.aboutUs .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
 
-.aboutUs .label{
+.aboutUs .label {
     -fx-text-fill: white;
 }
 
-.aboutUs .label.header1{
+.aboutUs .label.header1 {
     -fx-font-size: 30;
     -fx-font-weight: bold;
     -fx-padding: 0 0 0 -22;
 }
 
-.aboutUs .label.header2{
+.aboutUs .label.header2 {
     -fx-font-size: 25;
     -fx-font-weight: bold;
 }
@@ -973,25 +973,124 @@
     -fx-font-size: 16;
 }
 
-.aboutUs .infoSection{
+.aboutUs .infoSection {
     -fx-spacing: 12;
 }
 
-.aboutUs .text-area .content{
+.aboutUs .text-area .content {
     -fx-background-color: transparent;
 
 }
 
-.aboutUs .text-area .scroll-pane{
+.aboutUs .text-area .scroll-pane {
     -fx-background-color: transparent;
 }
 
-.aboutUs .text-area .scroll-pane .viewport{
+.aboutUs .text-area .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
 
 
+/*ACCOUNT INFO UPDATE*/
+.accUpdate {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-spacing: 15;
+    -fx-padding: 30;
+}
+
+.accUpdate .container{
+    -fx-spacing: 60;
+}
+
+.accUpdate .container .sectionCol{
+    -fx-spacing: 65;
+}
+
+.accUpdate .container .sectionCol2{
+    -fx-spacing: 10;
+}
+
+.accUpdate .container .sectionCol3 {
+    -fx-spacing: 10;
+}
+
+.accUpdate .label {
+    -fx-font-size: 18;
+}
+
+.accUpdate .label.header {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.accUpdate .container .inputRow{
+    -fx-spacing: 20;
+}
+
+.accUpdate .container .inputField{
+    -fx-spacing: 3;
+}
+
+.accUpdate .container .messBox{
+    -fx-text-fill: red;
+    -fx-font-size: 15;
+    -fx-font-style: italic;
+    -fx-padding: 0 0 -20 0;
+}
 
 
+/*.profile .container {*/
+/*    -fx-background-color: #ffffff;*/
+/*    -fx-background-radius: 10;*/
+/*    -fx-border-radius: 10;*/
+/*    -fx-padding: 30;*/
+/*    -fx-spacing: 10;*/
+/*}*/
 
+/*.profile .containerHorizon {*/
+/*    -fx-spacing: 60;*/
+/*}*/
 
+/*.profile .container .header.label {*/
+/*    -fx-font-size: 20;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+/*.profile .container .sectionRow {*/
+/*    -fx-spacing: 20;*/
+/*}*/
+
+/*.profile .container .sectionCol {*/
+/*    -fx-spacing: 40;*/
+/*}*/
+
+/*.profile .container .sectionCol2 {*/
+/*    -fx-spacing: 20;*/
+/*}*/
+
+/*.profile .container .inputSection {*/
+/*    -fx-spacing: 10;*/
+/*}*/
+
+/*.profile .container .inputField {*/
+/*    -fx-spacing: 5;*/
+/*}*/
+
+/*.profile .container .button {*/
+/*    -fx-background-color: #537FE7;*/
+/*    -fx-text-fill: white;*/
+/*    -fx-font-size: 18;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+/*.profile .container .messBox {*/
+/*    -fx-padding: 70 0 0 0;*/
+/*    -fx-font-style: italic;*/
+/*    -fx-font-size: 19;*/
+/*    -fx-text-fill: red;*/
+/*}*/

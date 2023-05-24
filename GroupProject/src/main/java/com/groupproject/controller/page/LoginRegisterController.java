@@ -107,32 +107,32 @@ public class LoginRegisterController implements Initializable {
 
     public boolean checkValid() {
         if (!ViewHandler.checkStringCharacterOnly(firstName)) {
-            messBox.setText("First name is invalid!");
+            messBox.setText("First name can only contains characters!");
             return false;
         }
 
         if (!ViewHandler.checkStringCharacterOnly(lastName)) {
-            messBox.setText("Last name is invalid!");
+            messBox.setText("Last name can only contains characters!");
             return false;
         }
 
         if (!ViewHandler.checkStringGeneral(username)) {
-            messBox.setText("Username is invalid!");
+            messBox.setText("Username can only contain letters and number");
             return false;
         }
 
         if (!ViewHandler.checkStringGeneral(password)) {
-            messBox.setText("Password is invalid!");
+            messBox.setText("Password can only contain letters and number");
             return false;
         }
 
         if (!phoneNumber.equals(blankInput) && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
-            messBox.setText("Phone number is invalid!");
+            messBox.setText("Phone number can only contain numbers!");
             return false;
         }
 
         if (!address.equals(blankInput) && !ViewHandler.checkStringGeneral(address)) {
-            messBox.setText("Address is invalid!");
+            messBox.setText("Address can only contain letters and number");
             return false;
         }
 
