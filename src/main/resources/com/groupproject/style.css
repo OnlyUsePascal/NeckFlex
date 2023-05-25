@@ -517,6 +517,10 @@
     -fx-border-color: white;
 }
 
+.record .orderContainer{
+    -fx-spacing: 30;
+}
+
 
 /*USER PROFILE*/
 .profile {

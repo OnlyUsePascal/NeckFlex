@@ -13,7 +13,7 @@ public class OrderDetail {
     private boolean isReturned;
     private Order order;
 
-    public OrderDetail(CartDetail cartDetail) { //new
+    public OrderDetail(CartDetail cartDetail) { // new
         this.item = EntityHandler.getCopyItem(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
         this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
@@ -21,7 +21,7 @@ public class OrderDetail {
         // this.order = order;
     }
 
-    public OrderDetail(Item item, int quantity, boolean isReturned) { //restore
+    public OrderDetail(Item item, int quantity, boolean isReturned) { // restore
         this.item = item;
         this.quantity = quantity;
         this.price = ViewHandler.getDoubleRound(item.getPrice() * quantity);
@@ -29,28 +29,36 @@ public class OrderDetail {
         // this.order = order;
     }
 
-    public void setRootOrder(Order order){
+    public void setRootOrder(Order order) {
         this.order = order;
     }
 
-    public void setReturned(){
+    public void setReturned() {
         isReturned = true;
 
-        //check credit
+        // check credit
         updateUserCredit();
-        // EntityHandler.getCurrentUser().updateCredit();
+        updateItemStock();
     }
 
-    private void updateUserCredit(){
+    public void updateItemStock() {
+        Item item = getItemFromDb();
+        System.out.println(item);
+        if (item != null) {
+            item.updateStock(getQuantity());
+        }
+    }
+
+    public void updateUserCredit() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime orderTime = order.getOrderTime();
 
         int offset = Duration.between(orderTime, now).compareTo(Duration.ofDays(order.getDuration()));
-        if (offset <= 0){ //on time
+        if (offset <= 0) { // on time
             EntityHandler.getCurrentUser().updateCredit();
             ViewHandler.getNoti("Returned Successfully!\nYour credit point has been updated!", null);
         } else {
-            ViewHandler.getNoti("Returned Successfully!",null);
+            ViewHandler.getNoti("Returned Successfully!", null);
         }
     }
 
@@ -74,7 +82,7 @@ public class OrderDetail {
         return isReturned;
     }
 
-    public String getOrderDetailInfo(){
+    public String getOrderDetailInfo() {
         String orderDetailInfo = "";
 
         orderDetailInfo += quantity + "/";

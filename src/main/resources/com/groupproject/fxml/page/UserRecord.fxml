@@ -14,7 +14,7 @@
                <content>
                   <ScrollPane fitToWidth="true" prefHeight="760.0" prefWidth="1600.0" styleClass="globalScrollPane">
                      <content>
-                        <VBox fx:id="rentingContainer" alignment="TOP_CENTER" fillWidth="false" />
+                        <VBox fx:id="rentingContainer" alignment="TOP_CENTER" fillWidth="false" styleClass="orderContainer" />
                      </content>
                   </ScrollPane>
                </content>
@@ -23,7 +23,7 @@
                <content>
                   <ScrollPane fitToWidth="true" prefHeight="760.0" prefWidth="1600.0" styleClass="globalScrollPane">
                      <content>
-                        <VBox fx:id="returnedContainer" alignment="TOP_CENTER" fillWidth="false" />
+                        <VBox fx:id="returnedContainer" alignment="TOP_CENTER" fillWidth="false" styleClass="orderContainer" />
                      </content>
                   </ScrollPane>
                </content>

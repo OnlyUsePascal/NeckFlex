@@ -82,7 +82,7 @@ public class CartController implements Initializable {
                 cartDetailPaneList.add(getCartDetailPane(cartDetail));
             }
 
-            // ViewHandler.fakeLoading();
+            ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
                 cartDetailContainer.getChildren().addAll(cartDetailPaneList);
@@ -123,15 +123,16 @@ public class CartController implements Initializable {
 
     public void checkout(ActionEvent event) {
         Button btn = (Button) event.getSource();
-        ConstantOrder.OrderStatus status = cart.checkout(btn.getId().equals("payCash"));
         ConstantOrder.OrderDuration duration = rent7Day.isSelected() ?
                 ConstantOrder.OrderDuration.ONE_WEEK : ConstantOrder.OrderDuration.TWO_DAYS;
+
+        ConstantOrder.OrderStatus status = cart.checkout(btn.getId().equals("payCash"), duration);
 
         System.out.println(status);
         switch (status) {
             case ACCEPTED -> {
                 new Thread(() -> {
-                    EntityHandler.addOrder(duration);
+                    // EntityHandler.addOrder(duration);
 
                     Platform.runLater(() -> {
                         statusBox.setText("Checkout success");

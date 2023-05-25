@@ -1,5 +1,6 @@
 package com.groupproject.entity.generic;
 
+import com.groupproject.entity.Constant.ConstantItem;
 import com.groupproject.entity.Constant.ConstantOrder;
 import com.groupproject.entity.EntityHandler;
 import com.groupproject.controller.ViewHandler;
@@ -17,6 +18,28 @@ public class Cart {
         totalPrice = 0;
     }
 
+    // --- get info ---
+    public CartDetail findCartDetail(Item item) {
+        for (CartDetail cartDetail : cartDetailList) {
+            if (cartDetail.getItem().equals(item)) {
+                return cartDetail;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<CartDetail> getCartDetailList() {
+        return cartDetailList;
+    }
+
+    public int getCartItemNum(){
+        int quantity = 0;
+        for (CartDetail cartDetail : cartDetailList){
+            quantity += cartDetail.getQuantity();
+        }
+        return quantity;
+    }
+
     public Account getOwner() {
         return owner;
     }
@@ -25,6 +48,22 @@ public class Cart {
         return cartDetailList.size();
     }
 
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public String getCartInfo(){
+        String cartInfo = "";
+        cartInfo += (owner.getUsername() + "|");
+        for (CartDetail cartDetail : cartDetailList){
+            int itemIndex = EntityHandler.getItemIndex(cartDetail.getItem());
+            cartInfo += (itemIndex + "/" + cartDetail.getQuantity() + "|");
+        }
+
+        return cartInfo;
+    }
+
+    // --- changing ---
     public void addCartDetail(Item item, int quantity) {
         CartDetail cartDetail = new CartDetail(item, quantity);
         cartDetailList.add(cartDetail);
@@ -61,9 +100,28 @@ public class Cart {
         }
     }
 
+    public void updateTotalPrice(double price) {
+        totalPrice = ViewHandler.getDoubleRound(totalPrice + price);
+    }
+
+    // --- checkout ---
+    public ConstantOrder.OrderStatus checkout(boolean payWithBalance, ConstantOrder.OrderDuration duration) {
+        //validate
+        ConstantOrder.OrderStatus status = checkValid(payWithBalance);
+        if (status != ConstantOrder.OrderStatus.ACCEPTED) return status;
+
+        //make order
+        Order newOrder = new Order(owner, cartDetailList, duration);
+        owner.addOrder(newOrder);
+        finishCheckout();
+
+        return status;
+    }
+
     public void finishCheckout() {
         updateTotalPrice(-totalPrice);
 
+        //update stock
         for (CartDetail cartDetail : cartDetailList) {
             cartDetail.updateStock();
         }
@@ -71,40 +129,16 @@ public class Cart {
         cartDetailList.clear();
     }
 
-    public CartDetail findCartDetail(Item item) {
-        for (CartDetail cartDetail : cartDetailList) {
-            if (cartDetail.getItem().equals(item)) {
-                return cartDetail;
-            }
-        }
-        return null;
+    public boolean checkLimit() {
+        if (!owner.isGuest()) return true;
+
+        int curRenting = owner.getRentingItemNum();
+        int curCart = getCartItemNum();
+
+        return curRenting + curCart <= ConstantOrder.rentingLimit;
     }
 
-    public ArrayList<CartDetail> getCartDetailList() {
-        return cartDetailList;
-    }
-
-    public void updateTotalPrice(double price) {
-        totalPrice = ViewHandler.getDoubleRound(totalPrice + price);
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public String getCartInfo(){
-        String cartInfo = "";
-        cartInfo += (owner.getUsername() + "|");
-        for (CartDetail cartDetail : cartDetailList){
-            int itemIndex = EntityHandler.getItemIndex(cartDetail.getItem());
-            cartInfo += (itemIndex + "/" + cartDetail.getQuantity() + "|");
-        }
-
-        return cartInfo;
-    }
-
-    public ConstantOrder.OrderStatus checkout(boolean payWithBalance) {
-        // check limit
+    ConstantOrder.OrderStatus checkValid(boolean payWithBalance){
         if (!checkLimit()) {
             return ConstantOrder.OrderStatus.LIMITED_AMOUNT;
         }
@@ -124,51 +158,15 @@ public class Cart {
     }
 
     public boolean payWithBalance(){
-        if (owner.getBalance() < totalPrice) {
-            return false;
-        }
-
-        owner.deductBalance(totalPrice);
-        return true;
+        return owner.deductBalance(totalPrice);
     }
 
     public boolean payWithPoint(){
-        int pointPrice = 100;
-        if (owner.getRewardPoint() >= pointPrice) {
-            return false;
-        }
+        int curCartWeight = getCartWeight();
+        int price = (int) (curCartWeight * 10);
 
-        owner.deductRewardPoint();
-        return true;
+        return owner.deductRewardPoint(price);
     }
-
-    public boolean checkLimit() {
-        if (!owner.isGuest()) return true;
-
-        // renting + number in cart <= 2
-        int curQuantity = 0;
-        for (Order order : EntityHandler.getCurrentUser().getOrderList()) {
-            for (OrderDetail orderDetail : order.getOrderDetailList()) {
-                if (!orderDetail.isReturned()) {
-                    curQuantity += orderDetail.getQuantity();
-                    if (curQuantity > ConstantOrder.rentingLimit) {
-                        return false;
-                    }
-                }
-            }
-        }
-
-        for (CartDetail cartDetail : cartDetailList) {
-            curQuantity += cartDetail.getQuantity();
-            if (curQuantity > ConstantOrder.rentingLimit) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-
 
     @Override
     public String toString() {

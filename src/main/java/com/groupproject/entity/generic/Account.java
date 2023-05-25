@@ -193,12 +193,30 @@ public class Account {
         System.out.println(this);
     }
 
-    public void deductBalance(double amount) {
-        balance -= amount;
+    public boolean deductBalance(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            balance = ViewHandler.getDoubleRound(balance);
+            return true;
+        }
+        return false;
     }
 
-    public void deductRewardPoint() {
-        rewardPoint -= 100;
+    public boolean deductRewardPoint(int amount) {
+        // rewardPoint -= 100;
+        if (rewardPoint >= amount) {
+            rewardPoint -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    public int getRentingItemNum(){
+        int rentingItemNum = 0;
+        for (Order order : orderList){
+            rentingItemNum += order.getRentingItemNum();
+        }
+        return rentingItemNum;
     }
 
     public void makeAdmin() {

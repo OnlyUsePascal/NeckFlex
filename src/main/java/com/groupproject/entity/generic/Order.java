@@ -30,29 +30,20 @@ public class Order {
         }
     }
 
-    public void addOrderDetail(OrderDetail orderDetail) {
-        orderDetailList.add(orderDetail);
-        orderDetail.setRootOrder(this);
-        updateTotalPrice(orderDetail.getPrice());
-    }
-
+    // --- get info ---
     public void updateTotalPrice(double price) {
         totalPrice += price;
     }
 
-    public void setDate(String date) {
-        this.date = LocalDateTime.parse(date);
+    public int getRentingItemNum() {
+        int rentingQuantity = 0;
+        for (OrderDetail orderDetail : orderDetailList) {
+            if (!orderDetail.isReturned()) {
+                rentingQuantity += orderDetail.getQuantity();
+            }
+        }
+        return rentingQuantity;
     }
-
-    public void setDuration(int durationIndex) {
-        // this.duration = orderDuration;
-        duration = ConstantOrder.OrderDuration.values()[durationIndex];
-    }
-
-    public void setUser(Account user) {
-        this.user = user;
-    }
-
 
     public int getDuration(){
         return duration.getDurationValue();
@@ -108,6 +99,26 @@ public class Order {
 
     public boolean isLate(){
         return LocalDateTime.now().isAfter(date.plusDays(duration.getDurationValue()));
+    }
+
+    // --- set info ---
+    public void addOrderDetail(OrderDetail orderDetail) {
+        orderDetailList.add(orderDetail);
+        orderDetail.setRootOrder(this);
+        updateTotalPrice(orderDetail.getPrice());
+    }
+
+    public void setDate(String date) {
+        this.date = LocalDateTime.parse(date);
+    }
+
+    public void setDuration(int durationIndex) {
+        // this.duration = orderDuration;
+        duration = ConstantOrder.OrderDuration.values()[durationIndex];
+    }
+
+    public void setUser(Account user) {
+        this.user = user;
     }
 
     @Override

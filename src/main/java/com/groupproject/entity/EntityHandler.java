@@ -196,25 +196,25 @@ public class EntityHandler {
         return itemGameList;
     }
 
-    static public Item getItem(int idx) {
-        return itemList.get(idx);
-    }
-
-    static public int getItemListLength() {
-        return itemList.size();
-    }
-
-    static public Item getItemDvd(int idx) {
-        return itemDvdList.get(idx);
-    }
-
-    static public Item getItemRecord(int idx) {
-        return itemRecordList.get(idx);
-    }
-
-    static public Item getItemGame(int idx) {
-        return itemGameList.get(idx);
-    }
+    // static public Item getItem(int idx) {
+    //     return itemList.get(idx);
+    // }
+    //
+    // static public int getItemListLength() {
+    //     return itemList.size();
+    // }
+    //
+    // static public Item getItemDvd(int idx) {
+    //     return itemDvdList.get(idx);
+    // }
+    //
+    // static public Item getItemRecord(int idx) {
+    //     return itemRecordList.get(idx);
+    // }
+    //
+    // static public Item getItemGame(int idx) {
+    //     return itemGameList.get(idx);
+    // }
 
     static public int getItemIndex(Item item) {
         return itemList.indexOf(item);
@@ -236,19 +236,19 @@ public class EntityHandler {
 
 
     //===================== ORDER ======================
-    static public void addOrder(ConstantOrder.OrderDuration duration) {
-        // Order newOrder = Order.getNewOrder(currentCart.getCartDetailList(), duration);
-        Order newOrder = new Order(currentUser, currentCart.getCartDetailList(), duration);
-        currentUser.addOrder(newOrder);
-        currentCart.finishCheckout();
-    }
+    // static public void addOrder(ConstantOrder.OrderDuration duration) {
+    //     // Order newOrder = Order.getNewOrder(currentCart.getCartDetailList(), duration);
+    //     Order newOrder = new Order(currentUser, currentCart.getCartDetailList(), duration);
+    //     currentUser.addOrder(newOrder);
+    //     currentCart.finishCheckout();
+    // }
 
 
     //===================== BANK ======================
-    static public void addNewBankAcc(String number, String brand) {
-        BankAccount newBankAcc = new BankAccount(number, brand);
-        bankAccountList.add(newBankAcc);
-    }
+    // static public void addNewBankAcc(String number, String brand) {
+    //     BankAccount newBankAcc = new BankAccount(number, brand);
+    //     bankAccountList.add(newBankAcc);
+    // }
 
     static public void addRestoredBankAcc(String number, String branch, double balance){
         BankAccount newBankAcc = new BankAccount(number, branch, balance);

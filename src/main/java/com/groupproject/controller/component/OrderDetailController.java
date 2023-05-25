@@ -64,21 +64,12 @@ public class OrderDetailController implements Initializable {
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             orderDetail.setReturned();
-            updateItemStock();
         }
         ViewHandler.getUserRecordController().refreshPage();
     }
 
     public void returnItemMulti() {
         orderDetail.setReturned();
-        updateItemStock();
-    }
-
-    public void updateItemStock() {
-        Item item = orderDetail.getItemFromDb();
-        if (item != null) {
-            item.updateStock(orderDetail.getQuantity());
-        }
     }
 
     public void setCheckBox(boolean status) {
