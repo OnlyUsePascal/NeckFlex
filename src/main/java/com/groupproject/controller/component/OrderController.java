@@ -10,9 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -125,15 +123,22 @@ public class OrderController implements Initializable {
     }
 
     public void returnItemAll(ActionEvent event) {
-        int sz = orderDetailControllerList.size();
-        for (int i = sz - 1; i >= 0; i--) {
-            if (orderDetailControllerList.get(i).getCheckBox()) {
-                orderDetailControllerList.get(i).returnItem();
-                orderDetailControllerList.remove(i);
-            }
-        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Return all items?");
+        alert.setContentText("Are you sure you want to return all items?");
 
-        ViewHandler.getUserRecordController().refreshPage();
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            int sz = orderDetailControllerList.size();
+            for (int i = sz - 1; i >= 0; i--) {
+                if (orderDetailControllerList.get(i).getCheckBox()) {
+                    orderDetailControllerList.get(i).returnItemMulti();
+                    orderDetailControllerList.remove(i);
+                }
+            }
+
+            ViewHandler.getUserRecordController().refreshPage();
+        }
     }
 
 }
