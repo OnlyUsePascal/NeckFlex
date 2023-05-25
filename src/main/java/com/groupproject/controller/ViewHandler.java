@@ -110,6 +110,11 @@ public class ViewHandler {
         window.hide();
     }
 
+    static public void reOpenPopup(ActionEvent event) {
+        Popup popup = (Popup) getWindow(event);
+        popup.show(getCurrentStage());
+    }
+
     static public Popup getPopup(AnchorPane pane, EventHandler<WindowEvent> popupOnClose) {
         Stage stage = getCurrentStage();
 

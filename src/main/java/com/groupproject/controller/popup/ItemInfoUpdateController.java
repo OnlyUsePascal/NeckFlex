@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -141,9 +143,21 @@ public class ItemInfoUpdateController implements Initializable {
     }
 
     public void deleteItem(ActionEvent event) {
-        System.out.println("Deleting Item!!!");
-        EntityHandler.removeItem(item);
-        ViewHandler.closePopup(event);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Delete item?");
+        alert.setContentText("Are you sure you want to delete this item?");
+
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            EntityHandler.removeItem(item);
+            ViewHandler.closePopup(event);
+        } else {
+            ViewHandler.reOpenPopup(event);
+        }
     }
 
 

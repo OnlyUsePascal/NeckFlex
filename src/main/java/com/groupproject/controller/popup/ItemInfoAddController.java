@@ -77,15 +77,13 @@ public class ItemInfoAddController implements Initializable {
 
         // Show open file dialog
         File file = fileChooser.showOpenDialog(null);
-        Popup popup = (Popup) ViewHandler.getWindow(event);
-        popup.show(ViewHandler.getCurrentStage());
+        ViewHandler.reOpenPopup(event);
 
         if (file != null) {
             Image image = new Image(file.toURI().toString());
             ImagePattern imagePattern = new ImagePattern(image);
             imgFrame.setFill(imagePattern);
 
-            // itemRegisterImage.setImage(image);
             imgPath = file.toURI();
         }
     }
