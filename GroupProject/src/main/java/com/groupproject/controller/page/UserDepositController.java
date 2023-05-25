@@ -2,86 +2,64 @@ package com.groupproject.controller.page;
 
 import com.groupproject.entity.generic.BankAccount;
 import com.groupproject.entity.EntityHandler;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UserDepositController implements Initializable {
+    // @FXML
+    // private Label transferMoney;
     @FXML
-    private Label transferMoney;
-
+    private TextField numberBox;
     @FXML
-    private TextField accountNumber;
-
+    private TextField brandBox;
     @FXML
-    private TextField bankBrand;
-
+    private TextField amountBox;
     @FXML
-    private TextField amount;
-
-    @FXML
-    private Label message;
-
-    private ArrayList<BankAccount> bankAccountsList;
+    private Label messBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bankAccountsList = new ArrayList<>();
-        bankAccountsList.add(new BankAccount("a123", "TCB"));
-        bankAccountsList.add(new BankAccount("a124", "VCB"));
-        bankAccountsList.add(new BankAccount("a121", "ACB"));
-
-        setListener(accountNumber);
-        setListener(bankBrand);
-        setListener(amount);
+        setListener(numberBox);
+        setListener(brandBox);
+        setListener(amountBox);
     }
 
-    public void setListener(Node node){
+    public void setListener(Node node) {
         node.setOnKeyPressed(keyEvent -> {
-            if(keyEvent.getCode().toString().equals("ENTER")){
-                transfer(null);
+            if (keyEvent.getCode().toString().equals("ENTER")) {
+                transfer();
             }
         });
     }
 
-    public void transfer(ActionEvent e) {
-        String sAccountNumber = accountNumber.getText();
-        String sBankBrand = bankBrand.getText();
-
-
+    public void transfer() {
+        String number = numberBox.getText();
+        String brand = brandBox.getText();
         try {
-            Double dAmount = Double.parseDouble(amount.getText());
+            double amount = Double.parseDouble(this.amountBox.getText());
 
-            BankAccount bankAccount = findBankAccount(sAccountNumber, sBankBrand);
-
-            if (bankAccount == null) {
-                message.setText("There's no such account.");
+            BankAccount bankAcc = EntityHandler.findBankAccount(number, brand);
+            if (bankAcc == null) {
+                messBox.setText("Bank Account not found!.");
             } else {
-                if (bankAccount.transfer(EntityHandler.getCurrentUser(), dAmount)) {
-                    message.setText("Successfully transferred " + dAmount + "USD");
+                if (bankAcc.transfer(EntityHandler.getCurrentUser(), amount)) {
+                    messBox.setText("Successfully transferred $" + amount);
+                    messBox.setTextFill(Color.GREEN);
                 } else {
-                    message.setText("Not enough money. Current balance = " + bankAccount.getBalance() + "USD");
+                    messBox.setText("Not enough money. Current balance = " + bankAcc.getBalance() + "USD");
                 }
             }
         } catch (NumberFormatException exception) {
-            message.setText("Please only use numbers for Amount field.");
-        }
-    }
-
-    public BankAccount findBankAccount(String number, String brand){
-        for (BankAccount b: bankAccountsList) {
-            if (b.getNumber().equals(number) && b.getBrand().equals(brand)) {
-                return b;
-            }
+            messBox.setText("Please only use numbers for Amount field.");
         }
 
-        return null;
+
     }
 }

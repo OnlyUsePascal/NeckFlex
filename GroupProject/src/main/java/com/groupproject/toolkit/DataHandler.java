@@ -20,16 +20,18 @@ public class DataHandler {
         getItem();
         getCart();
         getOrder();
+        getBank();
         System.out.println("===== done =====");
 
     }
 
     public static void saveData(){
         System.out.println("===== save data =====");
-        saveAccount();
+        // saveAccount();
         // saveItem();
-        saveCart();
-        saveOrder();
+        // saveCart();
+        // saveOrder();
+        saveBank();
         System.out.println("===== done =====");
 
     }
@@ -213,6 +215,33 @@ public class DataHandler {
         return EntityHandler.getRestoreItem(itemInfoList);
     }
 
+    public static void getBank(){
+        File file = ViewHandler.getFile(PathHandler.getFileTextBank());
+
+        try {
+            Scanner my_reader = new Scanner(file);
+
+            while(my_reader.hasNextLine()){
+                String data = my_reader.nextLine();
+                if (data.length() == 0) break;
+
+                StringTokenizer st = new StringTokenizer(data, "|");
+                ArrayList<String> infoList = new ArrayList<>();
+                while (st.hasMoreTokens()) {
+                    infoList.add(st.nextToken());
+                }
+
+                String number = infoList.get(0);
+                String name = infoList.get(1);
+                double balance = Double.parseDouble(infoList.get(2));
+
+                EntityHandler.addRestoredBankAcc(number, name, balance);
+            }
+
+        } catch (FileNotFoundException err){
+            err.printStackTrace();
+        }
+    }
 
 
     //================== SAVE ===================
@@ -290,6 +319,23 @@ public class DataHandler {
             System.out.println("Save order successfully!");
         }catch(IOException e2){
             e2.printStackTrace();
+        }
+    }
+
+    public static void saveBank(){
+        File file = ViewHandler.getFile(PathHandler.getFileTextBank());
+
+        try {
+            PrintWriter printWriter = new PrintWriter(file);
+
+            for (BankAccount bankAccount : EntityHandler.getBankAccountList()) {
+                printWriter.println(bankAccount.getBankAccInfo());
+            }
+
+            printWriter.close();
+            System.out.println("Save bank successfully!");
+        } catch (IOException err){
+            err.printStackTrace();
         }
     }
 }

@@ -23,6 +23,8 @@ public class EntityHandler {
     static private ArrayList<Item> itemRecordList = new ArrayList<>();
     static private ArrayList<Item> itemGameList = new ArrayList<>();
 
+    static private ArrayList<BankAccount> bankAccountList = new ArrayList<>();
+
     static public String blankInput = "N/A";
 
 
@@ -239,6 +241,30 @@ public class EntityHandler {
         Order newOrder = new Order(currentUser, currentCart.getCartDetailList(), duration);
         currentUser.addOrder(newOrder);
         currentCart.finishCheckout();
+    }
+
+
+    //===================== BANK ======================
+    static public void addNewBankAcc(String number, String brand) {
+        BankAccount newBankAcc = new BankAccount(number, brand);
+        bankAccountList.add(newBankAcc);
+    }
+
+    static public void addRestoredBankAcc(String number, String branch, double balance){
+        BankAccount newBankAcc = new BankAccount(number, branch, balance);
+        bankAccountList.add(newBankAcc);
+    }
+
+    static public ArrayList<BankAccount> getBankAccountList() {
+        return bankAccountList;
+    }
+
+    static public BankAccount findBankAccount(String number, String brand){
+        for (BankAccount bankAccount : bankAccountList) {
+            if (bankAccount.correctInfo(number, brand))
+                return bankAccount;
+        }
+        return null;
     }
 
 }

@@ -41,7 +41,7 @@ public class HomeController implements Initializable {
         // } else {
         //     setPageContent(PathHandler.getPageItemTrending());
         // }
-        setPageContent(PathHandler.getPageAdminAccount());
+        setPageContent(PathHandler.getPageUserDeposit());
         setSidebar(PathHandler.getComponentSidebar());
         setNavBarPane(PathHandler.getComponentNavBar());
     }
@@ -82,7 +82,6 @@ public class HomeController implements Initializable {
     public void setNavBarPane(String url) {
         ViewHandler.setAnchorPane(navBarPane, url);
         ViewHandler.setMenuActive();
-        // sidebarPanel.setTranslateX(-300);
     }
 
     public AnchorPane getPageContent() {

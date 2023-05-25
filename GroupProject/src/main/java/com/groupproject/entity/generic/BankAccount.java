@@ -11,6 +11,12 @@ public class BankAccount {
         this.balance = 300000;
     }
 
+    public BankAccount(String number, String brand, double balance) {
+        this.number = number;
+        this.brand = brand;
+        this.balance = balance;
+    }
+
     public boolean transfer(Account user, double amount) {
         if (this.balance > amount && amount > 0) {
             user.updateBalance(amount);
@@ -28,6 +34,14 @@ public class BankAccount {
     }
     public double getBalance() {
         return balance;
+    }
+
+    public String getBankAccInfo(){
+        return number + "|" + brand + "|" + balance;
+    }
+
+    public boolean correctInfo(String number, String brand){
+        return this.number.equals(number) && this.brand.equals(brand);
     }
 
     @Override

@@ -936,7 +936,7 @@
     -fx-padding: 0 0 -15 0;
 }
 
-.itemUpdate .loadImg{
+.itemUpdate .loadImg {
     -fx-background-color: transparent;
     -fx-font-size: 15;
 }
@@ -1007,15 +1007,15 @@
     -fx-padding: 30;
 }
 
-.accUpdate .container{
+.accUpdate .container {
     -fx-spacing: 60;
 }
 
-.accUpdate .container .sectionCol{
+.accUpdate .container .sectionCol {
     -fx-spacing: 65;
 }
 
-.accUpdate .container .sectionCol2{
+.accUpdate .container .sectionCol2 {
     -fx-spacing: 10;
 }
 
@@ -1032,28 +1032,70 @@
     -fx-font-weight: bold;
 }
 
-.accUpdate .container .inputRow{
+.accUpdate .container .inputRow {
     -fx-spacing: 20;
 }
 
-.accUpdate .container .inputField{
+.accUpdate .container .inputField {
     -fx-spacing: 3;
 }
 
-.accUpdate .messBox{
+.accUpdate .messBox {
     -fx-text-fill: red;
     -fx-font-size: 15;
     -fx-font-style: italic;
     -fx-padding: 0 0 -20 0;
 }
 
-.accUpdate .apply{
+.accUpdate .apply {
     -fx-background-color: #537FE7;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
 
+/*BANK */
+.deposit {
+    -fx-background-color: #f2f2f2;
+    -fx-font-size: 18;
+}
+
+.deposit .container {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 30;
+    -fx-spacing: 10;
+}
+
+.deposit .header {
+    -fx-font-size: 40;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 0 -550;
+}
+
+.deposit .container .header2 {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+.deposit .container .apply {
+    -fx-background-color: #537FE7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.deposit .container .messBox{
+    -fx-text-fill: red;
+    -fx-font-size: 15;
+    -fx-font-style: italic;
+    /*-fx-padding: 0 0 -20 0;*/
+}
+
+.deposit .container .inputField{
+    -fx-spacing: 3;
+
+}
 
 /*.profile .container {*/
 /*    -fx-background-color: #ffffff;*/

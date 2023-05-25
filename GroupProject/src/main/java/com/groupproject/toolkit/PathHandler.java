@@ -150,6 +150,10 @@ public class PathHandler {
         return textFileRoot + "order.txt";
     }
 
+    static public String getFileTextBank(){
+        return textFileRoot + "bank.txt";
+    }
+
     static public String getFileImageItem(String imgName){
         return imgFileRoot + "item/" + imgName;
         // return imgFileRoot + imgName;
