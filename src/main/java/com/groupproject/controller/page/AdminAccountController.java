@@ -126,7 +126,7 @@ public class AdminAccountController implements Initializable {
         new Thread(() -> {
             ObservableList<Account> accounts = getData();
 
-            ViewHandler.fakeLoading();
+            // ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
                 tableView.setItems(accounts);

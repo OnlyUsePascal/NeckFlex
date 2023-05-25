@@ -82,7 +82,7 @@ public class CartController implements Initializable {
                 cartDetailPaneList.add(getCartDetailPane(cartDetail));
             }
 
-            ViewHandler.fakeLoading();
+            // ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
                 cartDetailContainer.getChildren().addAll(cartDetailPaneList);

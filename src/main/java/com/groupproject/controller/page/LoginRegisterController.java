@@ -35,29 +35,12 @@ public class LoginRegisterController implements Initializable {
     private TextField phoneBox;
     @FXML
     private TextField addressBox;
-
     @FXML
     private Label messBox;
 
-    // @FXML
-    // private Label requiredUsername ;
-    // @FXML
-    // private Label requiredPassword ;
-    // @FXML
-    // private Label requiredConfirmPassword ;
-    // @FXML
-    // private Label requiredFirstName ;
-    // @FXML
-    // private Label requiredLastName ;
-    // @FXML
-    // private Label requiredPhoneNumber ;
-    // @FXML
-    // private Label requiredAddress ;
-
-
     private String username;
-    private String password;
-    private String confirmPassword;
+    private String pwd;
+    private String pwdConfirm;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -68,20 +51,10 @@ public class LoginRegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // messBox.setText("");
-        // messBox.setTextFill(Color.RED);
     }
 
     public void actionSignUp(ActionEvent event) {
-        username = usernameBox.getText();
-        password = pwdBox.getText();
-        confirmPassword = pwdConfirmBox.getText();
-        firstName = firstNameBox.getText();
-        lastName = lastNameBox.getText();
-        phoneNumber = phoneBox.getText();
-        if (phoneNumber.isBlank()) phoneNumber = blankInput;
-        address = addressBox.getText();
-        if (address.isBlank()) address = blankInput;
+
 
         if (!checkValid()) return;
 
@@ -89,7 +62,7 @@ public class LoginRegisterController implements Initializable {
         messBox.setStyle("-fx-font-weight: bold; -fx-text-fill: green;");
 
         new Thread(() -> {
-            // EntityHandler.registerAccount(username, password, firstName, lastName, address, phoneNumber);
+            EntityHandler.registerAccount(username, pwd, firstName, lastName, address, phoneNumber);
 
             try {
                 Thread.sleep(2000);
@@ -100,49 +73,68 @@ public class LoginRegisterController implements Initializable {
             Platform.runLater(() -> {
 
                 toLoginMain(event);
-                // ViewHandler.getNoti("Register successfully!", loginContainer);
+                ViewHandler.getNoti("Register successfully!", loginContainer);
             });
         }).start();
     }
 
     public boolean checkValid() {
+        username = usernameBox.getText();
+        pwd = pwdBox.getText();
+        pwdConfirm = pwdConfirmBox.getText();
+        firstName = firstNameBox.getText();
+        lastName = lastNameBox.getText();
+        phoneNumber = phoneBox.getText();
+        if (phoneNumber.isBlank()) phoneNumber = blankInput;
+        address = addressBox.getText();
+        if (address.isBlank()) address = blankInput;
+
+        if (username.isBlank()) {
+            messBox.setText("Username cannot be blank");
+            return false;
+        }
+        if (EntityHandler.accountIsExist(username)) {
+            messBox.setText("Username already exist");
+            return false;
+        }
+        if (!ViewHandler.checkStringGeneral(username)) {
+            messBox.setText("Username can only contain letter, number");
+            return false;
+        }
+
+        if (pwd.isBlank()) {
+            messBox.setText("Password cannot be blank");
+            return false;
+        }
+        if (!pwd.equals(pwdConfirm)) {
+            messBox.setText("Password doesn't match");
+            return false;
+        }
+
+        if (firstName.isBlank()) {
+            messBox.setText("First name cannot be blank");
+            return false;
+        }
         if (!ViewHandler.checkStringCharacterOnly(firstName)) {
             messBox.setText("First name can only contains characters!");
             return false;
         }
 
+        if (lastName.isBlank()) {
+            messBox.setText("Last name cannot be blank");
+            return false;
+        }
         if (!ViewHandler.checkStringCharacterOnly(lastName)) {
             messBox.setText("Last name can only contains characters!");
             return false;
         }
 
-        if (!ViewHandler.checkStringGeneral(username)) {
-            messBox.setText("Username can only contain letters and number");
+        if (!phoneNumber.equals(EntityHandler.blankInput) && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
+            messBox.setText("Phone number must be number only");
             return false;
         }
-
-        if (!ViewHandler.checkStringGeneral(password)) {
-            messBox.setText("Password can only contain letters and number");
-            return false;
-        }
-
-        if (!phoneNumber.equals(blankInput) && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
-            messBox.setText("Phone number can only contain numbers!");
-            return false;
-        }
-
-        if (!address.equals(blankInput) && !ViewHandler.checkStringGeneral(address)) {
-            messBox.setText("Address can only contain letters and number");
-            return false;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            messBox.setText("Password doesn't match!");
-            return false;
-        }
-
-        if (EntityHandler.accountIsExist(username)) {
-            messBox.setText("Username already exists!");
+        if (!address.equals(EntityHandler.blankInput) && !ViewHandler.checkStringGeneral(address)) {
+            messBox.setText("Address cannot contain special character except , .");
             return false;
         }
 

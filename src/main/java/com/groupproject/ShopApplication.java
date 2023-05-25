@@ -28,14 +28,7 @@ public class ShopApplication extends Application {
 
     public void initData(){
         DataHandler.getData();
-
-        // EntityHandler.setCurrentUser(Account.getNewAccount("joun", "123", "dat", "pham", "google", "01234"));
         EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(1));
-
-        Cart cart = EntityHandler.getCart();
-        // cart.addCartDetail(Enti\tyHandler.getItemList().get(12), 2);
-        // cart.addCartDetail(EntityHandler.getItemList().get(60), 10);t
-        // EntityHandler.addOrder();
     }
 
     public void initView(Stage stage){

@@ -17,38 +17,21 @@ public class SidebarController implements Initializable {
     @FXML
     private AnchorPane menuPane;
 
-    private boolean menuIsOpen = true;
+    private boolean menuIsOpen = false;
     private TranslateTransition menuToOpen, menuToClose;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ViewHandler.setSidebarController(this);
-        initTransition();
     }
 
     public boolean isOpen(){
         return menuIsOpen;
     }
 
-    public void initTransition(){
-        double duration = 0.3;
-        menuToOpen = new TranslateTransition(Duration.seconds(duration), menuPane);
-        menuToOpen.setToX(0);
-
-        menuToClose = new TranslateTransition(Duration.seconds(duration), menuPane);
-        menuToClose.setToX(-300);
-    }
-
     public void menuActive(){
-
-        if (menuIsOpen){
-            menuIsOpen = false;
-            menuToClose.play();
-        } else {
-            menuIsOpen = true;
-            menuToOpen.play();
-        }
+        ViewHandler.setMenuActive();
     }
 
     public void toItemAll(ActionEvent event){

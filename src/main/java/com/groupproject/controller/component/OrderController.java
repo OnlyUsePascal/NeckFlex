@@ -67,7 +67,7 @@ public class OrderController implements Initializable {
                 orderDetailPaneList.add(getOrderDetailPane(orderDetail));
             }
 
-            ViewHandler.fakeLoading();
+            // ViewHandler.fakeLoading();
 
             //add to order pane
             Platform.runLater(() -> {

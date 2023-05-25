@@ -1,56 +1,96 @@
 target/
-out/
-cmake-build-*/
-.idea_modules/
-
-
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-*.iws
-*.iml
-*.ipr
-*.jar
-*.war
-*.ear
-*.class
-
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
-.idea/**/aws.xml
-.idea/**/contentModel.xml
+### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
-.idea/**/gradle.xml
-.idea/**/libraries
-.idea/artifacts
-.idea/compiler.xml
-.idea/jarRepositories.xml
-.idea/modules.xml
-.idea/*.iml
-.idea/modules
-.idea/mongoSettings.xml
-.idea/sonarlint/
-.idea/replstate.xml
-.idea/**/mongoSettings.xml
-.idea/httpRequests
-.idea/caches/build_file_checksums.ser
+*.iws
+*.iml
+*.ipr
 
-atlassian-ide-plugin.xml
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+
+# target/
+# out/
+# cmake-build-*/
+# .idea_modules/
+#
+#
+# !.mvn/wrapper/maven-wrapper.jar
+# !**/src/main/**/target/
+# !**/src/test/**/target/
+#
+# *.iws
+# *.iml
+# *.ipr
+# *.jar
+# *.war
+# *.ear
+# *.class
+#
+# # .idea/**/workspace.xml
+# .idea/**/tasks.xml
+# .idea/**/usage.statistics.xml
+# .idea/**/dictionaries
+# .idea/**/shelf
+# .idea/**/aws.xml
+# .idea/**/contentModel.xml
+# .idea/modules.xml
+# .idea/jarRepositories.xml
+# .idea/compiler.xml
+# .idea/libraries/
+# .idea/**/dataSources/
+# .idea/**/dataSources.ids
+# .idea/**/dataSources.local.xml
+# .idea/**/sqlDataSources.xml
+# .idea/**/dynamic.xml
+# .idea/**/uiDesigner.xml
+# .idea/**/dbnavigator.xml
+# .idea/**/gradle.xml
+# .idea/**/libraries
+# .idea/artifacts
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# .idea/mongoSettings.xml
+# .idea/sonarlint/
+# .idea/replstate.xml
+# .idea/**/mongoSettings.xml
+# .idea/httpRequests
+# .idea/caches/build_file_checksums.ser
+#
+# atlassian-ide-plugin.xml
+# com_crashlytics_export_strings.xml
+# crashlytics.properties
+# crashlytics-build.properties
+# fabric.properties

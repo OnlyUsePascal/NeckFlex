@@ -78,9 +78,8 @@ public class LoginMainController implements Initializable {
 
     public void toHome() {
         loginMessage.setText("Signing in...");
-        // loginMessage.setTextFill(Color.GREEN);
 
-        PauseTransition pause = new PauseTransition(Duration.millis(1500));
+        PauseTransition pause = new PauseTransition(Duration.millis(1000));
         pause.setOnFinished(event2 -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageHome()));

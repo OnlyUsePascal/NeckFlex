@@ -47,23 +47,12 @@ public class DataHandler {
                 if (data.length() == 0) break;
 
                 StringTokenizer st = new StringTokenizer(data, "|");
-                ArrayList<String> list = new ArrayList<>();
+                ArrayList<String> infoList = new ArrayList<>();
                 while (st.hasMoreTokens()) {
-                    list.add(st.nextToken());
+                    infoList.add(st.nextToken());
                 }
 
-                Account account = new Account(
-                        list.get(ConstantAccount.AccountInfo.ID.ordinal()),
-                        list.get(ConstantAccount.AccountInfo.USERNAME.ordinal()),
-                        list.get(ConstantAccount.AccountInfo.PASSWORD.ordinal()),
-                        list.get(ConstantAccount.AccountInfo.FIRSTNAME.ordinal()),
-                        list.get(ConstantAccount.AccountInfo.LASTNAME.ordinal()),
-                        list.get(ConstantAccount.AccountInfo.ADDRESS.ordinal()),
-                        list.get(ConstantAccount.AccountInfo.PHONE.ordinal()),
-                        Integer.parseInt(list.get(ConstantAccount.AccountInfo.STATUS.ordinal())),
-                        Double.parseDouble(list.get(ConstantAccount.AccountInfo.BALANCE.ordinal())),
-                        Integer.parseInt(list.get(ConstantAccount.AccountInfo.REWARDPOINT.ordinal()))
-                );
+                Account account = new Account(infoList);
 
                 EntityHandler.addAccount(account);
                 System.out.println(account);

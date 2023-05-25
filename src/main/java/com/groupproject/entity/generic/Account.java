@@ -43,6 +43,19 @@ public class Account {
         this.status = ConstantAccount.getStatus(status);
     }
 
+    public Account(ArrayList<String> infoList){
+        this(infoList.get(ConstantAccount.AccountInfo.ID.ordinal()),
+            infoList.get(ConstantAccount.AccountInfo.USERNAME.ordinal()),
+            infoList.get(ConstantAccount.AccountInfo.PASSWORD.ordinal()),
+            infoList.get(ConstantAccount.AccountInfo.FIRSTNAME.ordinal()),
+            infoList.get(ConstantAccount.AccountInfo.LASTNAME.ordinal()),
+            infoList.get(ConstantAccount.AccountInfo.ADDRESS.ordinal()),
+            infoList.get(ConstantAccount.AccountInfo.PHONE.ordinal()),
+            Integer.parseInt(infoList.get(ConstantAccount.AccountInfo.STATUS.ordinal())),
+            Double.parseDouble(infoList.get(ConstantAccount.AccountInfo.BALANCE.ordinal())),
+            Integer.parseInt(infoList.get(ConstantAccount.AccountInfo.REWARDPOINT.ordinal())));
+    }
+
     static public Account getNewAccount(String username, String password,
                                         String firstName, String lastName,
                                         String address, String phone) {

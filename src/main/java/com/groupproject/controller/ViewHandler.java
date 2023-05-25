@@ -70,7 +70,9 @@ public class ViewHandler {
     }
 
     static public void setMenuActive() {
-        sidebarController.menuActive();
+        homeController.setMenuActive();
+        // sidebarController.menuActive();
+        // homeController.setMenuActive();
     }
 
     static public boolean sideBarIsOpen(){

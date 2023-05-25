@@ -190,7 +190,7 @@ public class AdminItemController implements Initializable {
         new Thread(() -> {
             ObservableList<Item> items = getData();
 
-            ViewHandler.fakeLoading();
+            // ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
                 tableView.setItems(items);

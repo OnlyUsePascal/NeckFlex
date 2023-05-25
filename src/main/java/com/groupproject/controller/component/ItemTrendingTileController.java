@@ -80,7 +80,7 @@ public class ItemTrendingTileController implements Initializable {
                 itemBoxList.set(j, temp);
             }
 
-            ViewHandler.fakeLoading();
+            // ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
                 container.getChildren().addAll(itemBoxList);

@@ -99,26 +99,29 @@ public class ItemAllController implements Initializable {
 
         new Thread(() -> {
             refreshData();
+
+            ArrayList<HBox> itemRows = new ArrayList<>();
+            for (int i = 0; i < rowPerPage; i++) {
+                HBox itemRow = new HBox();
+
+                // item box
+                int min = currentPage * pageSize + i * rowSize;
+                int max = Math.min(currentPage * pageSize + (i + 1) * rowSize, itemCnt);
+                for (int j = min; j < max; j++) {
+                    Item item = itemsToShow.get(j);
+
+                    Button itemBox = ViewHandler.getItemBox(item);
+                    itemRow.getChildren().add(itemBox);
+                }
+
+                itemRow.getStyleClass().add(styleClass);
+                itemRows.add(itemRow);
+            }
+
             ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
-                for (int i = 0; i < rowPerPage; i++) {
-                    HBox itemRow = new HBox();
-
-                    // item box
-                    int min = currentPage * pageSize + i * rowSize;
-                    int max = Math.min(currentPage * pageSize + (i + 1) * rowSize, itemCnt);
-                    for (int j = min; j < max; j++) {
-                        Item item = itemsToShow.get(j);
-
-                        Button itemBox = ViewHandler.getItemBox(item);
-                        itemRow.getChildren().add(itemBox);
-                    }
-
-                    itemRow.getStyleClass().add(styleClass);
-                    pageContainer.getChildren().add(itemRow);
-                }
-
+                pageContainer.getChildren().addAll(itemRows);
                 ViewHandler.toggleNode(loadingScreen, false);
             });
         }).start();

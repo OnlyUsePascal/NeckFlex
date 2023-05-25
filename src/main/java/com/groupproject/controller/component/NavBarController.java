@@ -23,6 +23,7 @@ public class NavBarController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ViewHandler.setNavBarController(this);
         refreshMenuButtonName();
+
     }
 
     public void refreshMenuButtonName(){
