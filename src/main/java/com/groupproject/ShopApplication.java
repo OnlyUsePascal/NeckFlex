@@ -34,7 +34,7 @@ public class ShopApplication extends Application {
 
         Cart cart = EntityHandler.getCart();
         // cart.addCartDetail(Enti\tyHandler.getItemList().get(12), 2);
-        // cart.addCartDetail(EntityHandler.getItemList().get(60), 10);
+        // cart.addCartDetail(EntityHandler.getItemList().get(60), 10);t
         // EntityHandler.addOrder();
     }
 
