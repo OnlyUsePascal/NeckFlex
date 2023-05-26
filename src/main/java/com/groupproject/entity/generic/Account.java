@@ -7,27 +7,26 @@ import com.groupproject.controller.ViewHandler;
 import java.util.ArrayList;
 
 public class Account {
-    private String id;
-    private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String phoneNumber;
-    private double balance;
-    private int rewardPoint;
-    private ConstantAccount.AccountStatus status;
+    protected String id;
+    protected String username;
+    protected String password;
+    protected String firstName;
+    protected String lastName;
+    protected String address;
+    protected String phoneNumber;
+    protected ConstantAccount.AccountStatus status;
+    // private double balance;
+    // private int rewardPoint;
+    // private Cart cart;
+    // private ArrayList<Order> orderList;
 
-    private Cart cart;
-    private ArrayList<Order> orderList;
-    // private int type;
 
+    public Account(){}
 
     public Account(String id, String username,
                    String password, String firstName,
                    String lastName, String address,
-                   String phoneNumber, int status,
-                   double balance, int rewardPoint) {
+                   String phoneNumber, int status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -35,41 +34,52 @@ public class Account {
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.balance = balance;
-        this.rewardPoint = rewardPoint;
-
-        this.cart = new Cart(this);
-        this.orderList = new ArrayList<>();
         this.status = ConstantAccount.getStatus(status);
     }
 
-    public Account(ArrayList<String> infoList){
-        this(infoList.get(ConstantAccount.AccountInfo.ID.ordinal()),
-            infoList.get(ConstantAccount.AccountInfo.USERNAME.ordinal()),
-            infoList.get(ConstantAccount.AccountInfo.PASSWORD.ordinal()),
-            infoList.get(ConstantAccount.AccountInfo.FIRSTNAME.ordinal()),
-            infoList.get(ConstantAccount.AccountInfo.LASTNAME.ordinal()),
-            infoList.get(ConstantAccount.AccountInfo.ADDRESS.ordinal()),
-            infoList.get(ConstantAccount.AccountInfo.PHONE.ordinal()),
-            Integer.parseInt(infoList.get(ConstantAccount.AccountInfo.STATUS.ordinal())),
-            Double.parseDouble(infoList.get(ConstantAccount.AccountInfo.BALANCE.ordinal())),
-            Integer.parseInt(infoList.get(ConstantAccount.AccountInfo.REWARDPOINT.ordinal())));
-    }
+    // restore
+    // public Account(ArrayList<String> infoList){
+    //     this(infoList.get(ConstantAccount.AccountInfo.ID.ordinal()),
+    //         infoList.get(ConstantAccount.AccountInfo.USERNAME.ordinal()),
+    //         infoList.get(ConstantAccount.AccountInfo.PASSWORD.ordinal()),
+    //         infoList.get(ConstantAccount.AccountInfo.FIRSTNAME.ordinal()),
+    //         infoList.get(ConstantAccount.AccountInfo.LASTNAME.ordinal()),
+    //         infoList.get(ConstantAccount.AccountInfo.ADDRESS.ordinal()),
+    //         infoList.get(ConstantAccount.AccountInfo.PHONE.ordinal()),
+    //         Integer.parseInt(infoList.get(ConstantAccount.AccountInfo.STATUS.ordinal())),
+    //         Double.parseDouble(infoList.get(ConstantAccount.AccountInfo.BALANCE.ordinal())),
+    //         Integer.parseInt(infoList.get(ConstantAccount.AccountInfo.REWARDPOINT.ordinal())));
+    // }
 
     static public Account getNewAccount(String username, String password,
                                         String firstName, String lastName,
-                                        String address, String phone) {
-        // get id
+                                        String address, String phone, boolean isAdmin) {
         int accId = EntityHandler.accountListLength() + 1;
-        Account newAaccount = new Account("C" + String.format("%03d", accId),
+        if (isAdmin) {
+            return new AccountAdmin("C" + String.format("%03d", accId),
+                    username, password,
+                    firstName, lastName,
+                    address, phone,
+                    ConstantAccount.AccountStatus.ADMIN.ordinal());
+        }
+
+        return new AccountCustomer("C" + String.format("%03d", accId),
                 username, password,
                 firstName, lastName,
                 address, phone,
                 ConstantAccount.AccountStatus.GUEST.ordinal(),
                 30, 0);
-        return newAaccount;
     }
 
+    static public Account getRestoreAccount(ArrayList<String> infoList) {
+        int status = Integer.parseInt(infoList.get(ConstantAccount.AccountInfo.STATUS.ordinal()));
+        if (status == ConstantAccount.AccountStatus.ADMIN.ordinal()) {
+            return new AccountAdmin(infoList);
+        }
+        return new AccountCustomer(infoList);
+    }
+
+    // --- GET ---
     public String getUsername() {
         return username;
     }
@@ -78,13 +88,13 @@ public class Account {
         return password;
     }
 
-    public double getBalance() {
-        return ViewHandler.getDoubleRound(balance);
-    }
-
-    public int getRewardPoint() {
-        return this.rewardPoint;
-    }
+    // public double getBalancee() {
+    //     return ViewHandler.getDoubleRound(balance);
+    // }
+    //
+    // public int getRewardPoint() {
+    //     return this.rewardPoint;
+    // }
 
     public String getFirstName() {
         return this.firstName;
@@ -101,11 +111,6 @@ public class Account {
     public String getAddress() {
         return this.address;
     }
-
-    public Cart getCart() {
-        return cart;
-    }
-
     public String getId() {return id;}
 
     public String getStatusString() {
@@ -113,19 +118,6 @@ public class Account {
     }
 
     public ConstantAccount.AccountStatus getStatus() {return status;}
-
-    public ArrayList<Order> getOrderList() {
-        return orderList;
-    }
-
-    public String getOrderListInfo(){
-        String orderListInfo = username + "@";
-        for (Order order : orderList){
-            orderListInfo += order.getOrderInfo() + "@";
-        }
-
-        return orderListInfo;
-    }
 
     public boolean isAdmin() {
         return status == ConstantAccount.AccountStatus.ADMIN;
@@ -141,6 +133,7 @@ public class Account {
     }
 
 
+    // --- SET ---
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -157,62 +150,81 @@ public class Account {
         this.address = address;
     }
 
-    public void updateBalance(double amount) {
-        this.balance += amount;
-    }
-
-    public void addOrder(Order order) {
-        orderList.add(order);
-    }
-
     public void setPwd(String pwd){
         this.password = pwd;
     }
 
-    public boolean updateCredit(){
-        rewardPoint += 10;
+    // --- OTHER ---
+    // public Cart getCartt() {
+    //     return cart;
+    // }
 
-        //upgrade
-        if(status == ConstantAccount.AccountStatus.GUEST &&
-            rewardPoint >= 30){
-            status = ConstantAccount.AccountStatus.REGULAR;
-            return true;
-        } else if (status == ConstantAccount.AccountStatus.REGULAR &&
-            rewardPoint >= 60){
-            status = ConstantAccount.AccountStatus.VIP;
-            return false;
-        }
-        return false;
-    }
+    // public ArrayList<Order> getOrderList() {
+    //     return orderList;
+    // }
 
-    public boolean deductBalance(double amount) {
-        if (balance >= amount) {
-            balance -= amount;
-            balance = ViewHandler.getDoubleRound(balance);
-            return true;
-        }
-        return false;
-    }
+    // public String getOrderListInfo(){
+    //     String orderListInfo = username + "@";
+    //     for (Order order : orderList){
+    //         orderListInfo += order.getOrderInfo() + "@";
+    //     }
+    //
+    //     return orderListInfo;
+    // }
 
-    public boolean deductRewardPoint(int amount) {
-        if (rewardPoint >= amount) {
-            rewardPoint -= amount;
-            return true;
-        }
-        return false;
-    }
+    // public int getRentingItemNum(){
+    //     int rentingItemNum = 0;
+    //     for (Order order : orderList){
+    //         rentingItemNum += order.getRentingItemNum();
+    //     }
+    //     return rentingItemNum;
+    // }
 
-    public int getRentingItemNum(){
-        int rentingItemNum = 0;
-        for (Order order : orderList){
-            rentingItemNum += order.getRentingItemNum();
-        }
-        return rentingItemNum;
-    }
 
-    public void makeAdmin() {
-        status = ConstantAccount.AccountStatus.ADMIN;
-    }
+    // public void updateBalance(double amount) {
+    //     this.balance += amount;
+    // }
+
+    // public void addOrder(Order order) {
+    //     orderList.add(order);
+    // }
+
+    // public boolean updateCredit(){
+    //     rewardPoint += 10;
+    //
+    //     //upgrade
+    //     if(status == ConstantAccount.AccountStatus.GUEST &&
+    //         rewardPoint >= 30){
+    //         status = ConstantAccount.AccountStatus.REGULAR;
+    //         return true;
+    //     } else if (status == ConstantAccount.AccountStatus.REGULAR &&
+    //         rewardPoint >= 60){
+    //         status = ConstantAccount.AccountStatus.VIP;
+    //         return false;
+    //     }
+    //     return false;
+    // }
+
+    // public boolean deductBalance(double amount) {
+    //     if (balance >= amount) {
+    //         balance -= amount;
+    //         balance = ViewHandler.getDoubleRound(balance);
+    //         return true;
+    //     }
+    //     return false;
+    // }
+    //
+    // public boolean deductRewardPoint(int amount) {
+    //     if (rewardPoint >= amount) {
+    //         rewardPoint -= amount;
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
+    // public void makeAdmin() {
+    //     status = ConstantAccount.AccountStatus.ADMIN;
+    // }
 
 
     @Override
@@ -220,7 +232,7 @@ public class Account {
         return this.id + "|" + this.username + "|" +
                 this.password + "|" + this.firstName + "|" +
                 this.lastName + "|" + this.address +
-                "|" + this.phoneNumber + "|" + this.status.ordinal() +
-                "|" + ViewHandler.getDoubleRound(this.balance) + "|" + this.rewardPoint;
+                "|" + this.phoneNumber + "|" + this.status.ordinal();
+                // "|" + ViewHandler.getDoubleRound(this.balance) + "|" + this.rewardPoint;
     }
 }

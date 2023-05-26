@@ -2,7 +2,7 @@ package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.CartDetailController;
 import com.groupproject.entity.Constant.ConstantOrder;
-import com.groupproject.entity.generic.Account;
+import com.groupproject.entity.generic.AccountCustomer;
 import com.groupproject.entity.generic.Cart;
 import com.groupproject.entity.generic.CartDetail;
 import com.groupproject.entity.EntityHandler;
@@ -46,13 +46,13 @@ public class CartController implements Initializable {
     private Button payPoint;
 
     private Cart cart;
-    private Account cartOwner;
+    private AccountCustomer cartOwner;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cartOwner = EntityHandler.getCurrentUser();
-        cart = cartOwner.getCart();
+        cartOwner = (AccountCustomer) EntityHandler.getCurrentUser();
+        cart = cartOwner.getCart1();
         cart.refreshCart();
 
         initPayment();
@@ -116,8 +116,8 @@ public class CartController implements Initializable {
         billTotalPriceBox.setText("$" + cart.getTotalPrice());
 
         // balance
-        userBalance.setText("$" + cartOwner.getBalance());
-        userBalancePoint.setText(cartOwner.getRewardPoint() + "");
+        userBalance.setText("$" + cartOwner.getBalance1());
+        userBalancePoint.setText(cartOwner.getRewardPoint1() + "");
 
         // button
         payCash.setDisable(cartEmpty);

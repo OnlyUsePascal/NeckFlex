@@ -55,13 +55,8 @@ public class AccountInfoAddController implements Initializable {
         if (!checkValid()) return;
 
         // legit
-        Account newAccount = Account.getNewAccount(username, pwd, firstName, lastName, address, phoneNumber);
-
-        if (typeList.getValue().equals(choices[0])) { // is admin
-            newAccount.makeAdmin();
-        }
-
-        EntityHandler.addAccount(newAccount);
+        boolean isAdmin = typeList.getValue().equals(choices[0]);
+        EntityHandler.registerAccount(username, pwd, firstName, lastName, address, phoneNumber, isAdmin);
 
         closePopup(event);
         ViewHandler.getNoti("Add account successfully", null);

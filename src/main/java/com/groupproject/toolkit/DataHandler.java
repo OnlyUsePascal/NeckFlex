@@ -2,7 +2,6 @@ package com.groupproject.toolkit;
 
 import com.groupproject.entity.generic.*;
 import com.groupproject.entity.EntityHandler;
-import com.groupproject.entity.Constant.ConstantAccount;
 import com.groupproject.controller.ViewHandler;
 
 import java.io.File;
@@ -52,11 +51,7 @@ public class DataHandler {
                     infoList.add(st.nextToken());
                 }
 
-                Account account = new Account(infoList);
-
-                EntityHandler.addAccount(account);
-                System.out.println(account);
-                // System.out.println(list);
+                EntityHandler.restoreAccount(infoList);
             }
         } catch (FileNotFoundException err){
             err.printStackTrace();
@@ -78,9 +73,10 @@ public class DataHandler {
                     infoList.add(st.nextToken());
                 }
 
-                System.out.println(infoList);
-                Item newItem = EntityHandler.getRestoreItem(infoList);
-                EntityHandler.addItem(newItem);
+                EntityHandler.restoreItem(infoList);
+                // System.out.println(infoList);
+                // Item newItem = EntityHandler.getRestoreItem(infoList);
+                // EntityHandler.addItem(newItem);
             }
         } catch(FileNotFoundException err){
             err.printStackTrace();
@@ -105,8 +101,8 @@ public class DataHandler {
                 //basic
                 String username = infoList.get(0);
                 // System.out.println(username);
-                Account user = EntityHandler.accountFromUsername(username);
-                Cart cart = user.getCart();
+                AccountCustomer user = (AccountCustomer) EntityHandler.accountFromUsername(username);
+                Cart cart = user.getCart1();
 
                 //detail
                 for (int i = 1 ; i < infoList.size() ; i++) {
@@ -144,7 +140,7 @@ public class DataHandler {
                 }
 
                 //basic
-                Account user = EntityHandler.accountFromUsername(infoList.get(0));
+                AccountCustomer user = (AccountCustomer) EntityHandler.accountFromUsername(infoList.get(0));
 
                 //order
                 for (int i = 1; i < infoList.size(); i++){
@@ -156,7 +152,7 @@ public class DataHandler {
                         orderInfo.add(st2.nextToken());
                     }
 
-                    order.setUser(user);
+                    order.setOwner(user);
                     order.setDate(orderInfo.get(0));
                     order.setDuration(Integer.parseInt(orderInfo.get(1)));
 
@@ -168,7 +164,7 @@ public class DataHandler {
                         order.addOrderDetail(orderDetail);
                     }
 
-                    user.addOrder(order);
+                    user.addOrder1(order);
                 }
             }
         } catch(FileNotFoundException err){
@@ -278,8 +274,8 @@ public class DataHandler {
             for (Account user : EntityHandler.getAccountList()) {
                 if (user.isAdmin()) continue;
 
-                user.getCart().refreshCart();
-                String cartInfo = user.getCart().getCartInfo();
+                ((AccountCustomer) user).getCart1().refreshCart();
+                String cartInfo = ((AccountCustomer) user).getCart1().getCartInfo();
                 printWriter.println(cartInfo);
             }
 
@@ -300,7 +296,7 @@ public class DataHandler {
             for (Account user : EntityHandler.getAccountList()) {
                 if (user.isAdmin()) continue;
 
-                String orderInfo = user.getOrderListInfo();
+                String orderInfo = ((AccountCustomer) user).getOrderListInfo1();
                 printWriter.println(orderInfo);
             }
 

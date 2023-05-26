@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Order {
-    private Account user;
+    private AccountCustomer owner;
     private ArrayList<OrderDetail> orderDetailList;
     private LocalDateTime date;
     private double totalPrice;
@@ -17,9 +17,9 @@ public class Order {
         orderDetailList = new ArrayList<>();
     }
 
-    public Order(Account user, ArrayList<CartDetail> cartDetailList,
+    public Order(AccountCustomer owner, ArrayList<CartDetail> cartDetailList,
                  ConstantOrder.OrderDuration duration) {
-        this.user = user;
+        this.owner = owner;
         this.duration = duration;
         orderDetailList = new ArrayList<>();
         date = LocalDateTime.now();
@@ -101,6 +101,10 @@ public class Order {
         return LocalDateTime.now().isAfter(date.plusDays(duration.getDurationValue()));
     }
 
+    public AccountCustomer getOwner() {
+        return owner;
+    }
+
     // --- SET ---
     public void addOrderDetail(OrderDetail orderDetail) {
         orderDetailList.add(orderDetail);
@@ -117,14 +121,14 @@ public class Order {
         duration = ConstantOrder.OrderDuration.values()[durationIndex];
     }
 
-    public void setUser(Account user) {
-        this.user = user;
+    public void setOwner(AccountCustomer owner) {
+        this.owner = owner;
     }
 
     @Override
     public String toString() {
         return "Order{" +
-                "orderOwner=" + user +
+                "orderOwner=" + owner +
                 ", orderDetailList=" + orderDetailList +
                 '}';
     }

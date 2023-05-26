@@ -1,6 +1,7 @@
 package com.groupproject.controller.page;
 
 import com.groupproject.controller.component.OrderController;
+import com.groupproject.entity.generic.AccountCustomer;
 import com.groupproject.entity.generic.Order;
 import com.groupproject.entity.EntityHandler;
 import com.groupproject.controller.ViewHandler;
@@ -35,7 +36,7 @@ public class UserRecordController implements Initializable {
         returnedContainer.getChildren().clear();
 
         // order - renting / returned ->
-        for (Order order : EntityHandler.getCurrentUser().getOrderList()) {
+        for (Order order : ((AccountCustomer) EntityHandler.getCurrentUser()).getOrderList1()) {
             addOrderPane(order, returnedContainer, true);
             addOrderPane(order, rentingContainer, false);
         }

@@ -124,13 +124,13 @@
                                     <HBox>
                                        <children>
                                           <Label prefWidth="175.0" text="Balance" />
-                                          <Label fx:id="balanceBox" text="\$123" />
+                                          <Label fx:id="balanceBox" text="\$0" />
                                        </children>
                                     </HBox>
                                     <HBox>
                                        <children>
                                           <Label prefWidth="175.0" text="Reward Points" />
-                                          <Label fx:id="pointBox" text="69" />
+                                          <Label fx:id="pointBox" text="0" />
                                        </children>
                                     </HBox>
                                  </children>

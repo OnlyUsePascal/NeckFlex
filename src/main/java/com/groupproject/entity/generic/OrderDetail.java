@@ -55,7 +55,7 @@ public class OrderDetail {
 
         int offset = Duration.between(orderTime, now).compareTo(Duration.ofDays(order.getDuration()));
         if (offset <= 0) { // on time
-            if (EntityHandler.getCurrentUser().updateCredit()) {
+            if (order.getOwner().updateCredit1()) {
                 ViewHandler.getNoti("Returned Successfully!\nYour account has been promoted!", null);
             } else {
                 ViewHandler.getNoti("Returned Successfully!\nYour credit point has been updated!", null);

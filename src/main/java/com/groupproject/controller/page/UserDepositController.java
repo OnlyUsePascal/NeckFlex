@@ -1,5 +1,6 @@
 package com.groupproject.controller.page;
 
+import com.groupproject.entity.generic.AccountCustomer;
 import com.groupproject.entity.generic.BankAccount;
 import com.groupproject.entity.EntityHandler;
 import javafx.fxml.FXML;
@@ -49,7 +50,7 @@ public class UserDepositController implements Initializable {
             if (bankAcc == null) {
                 messBox.setText("Bank Account not found!.");
             } else {
-                if (bankAcc.transfer(EntityHandler.getCurrentUser(), amount)) {
+                if (bankAcc.transfer((AccountCustomer) EntityHandler.getCurrentUser(), amount)) {
                     messBox.setText("Successfully transferred $" + amount);
                     messBox.setTextFill(Color.GREEN);
 

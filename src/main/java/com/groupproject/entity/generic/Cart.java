@@ -8,11 +8,11 @@ import com.groupproject.controller.ViewHandler;
 import java.util.ArrayList;
 
 public class Cart {
-    private Account owner;
+    private AccountCustomer owner;
     private ArrayList<CartDetail> cartDetailList;
     private double totalPrice;
 
-    public Cart(Account owner) {
+    public Cart(AccountCustomer owner) {
         this.owner = owner;
         cartDetailList = new ArrayList<>();
         totalPrice = 0;
@@ -40,7 +40,7 @@ public class Cart {
         return quantity;
     }
 
-    public Account getOwner() {
+    public AccountCustomer getOwner() {
         return owner;
     }
 
@@ -112,7 +112,7 @@ public class Cart {
 
         //make order
         Order newOrder = new Order(owner, cartDetailList, duration);
-        owner.addOrder(newOrder);
+        owner.addOrder1(newOrder);
         finishCheckout();
 
         return status;
@@ -132,7 +132,7 @@ public class Cart {
     public boolean checkLimit() {
         if (!owner.isGuest()) return true;
 
-        int curRenting = owner.getRentingItemNum();
+        int curRenting = owner.getRentingItemNum1();
         int curCart = getCartItemNum();
 
         return curRenting + curCart <= ConstantOrder.rentingLimit;
@@ -158,14 +158,14 @@ public class Cart {
     }
 
     public boolean payWithBalance(){
-        return owner.deductBalance(totalPrice);
+        return owner.deductBalance1(totalPrice);
     }
 
     public boolean payWithPoint(){
         int curCartWeight = getCartWeight();
         int price = (int) (curCartWeight * 10);
 
-        return owner.deductRewardPoint(price);
+        return owner.deductRewardPoint1(price);
     }
 
     @Override

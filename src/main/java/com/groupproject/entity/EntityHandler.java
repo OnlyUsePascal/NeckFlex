@@ -2,7 +2,6 @@ package com.groupproject.entity;
 
 import com.groupproject.controller.ViewHandler;
 import com.groupproject.entity.Constant.ConstantItem;
-import com.groupproject.entity.Constant.ConstantOrder;
 import com.groupproject.entity.generic.*;
 import com.groupproject.toolkit.PathHandler;
 import javafx.scene.Scene;
@@ -46,13 +45,6 @@ public class EntityHandler {
         return true;
     }
 
-    static public void registerAccount(String username, String password,
-                                       String firstName,String lastName,
-                                       String address,String phoneNumber){
-        Account account = Account.getNewAccount(username, password, firstName, lastName, address, phoneNumber);
-        addAccount(account);
-    }
-
 
     //===================== ACCOUNT ======================
     static public ArrayList<Account> getAccountList() {
@@ -76,16 +68,34 @@ public class EntityHandler {
         usernameToObject.put(account.getUsername(), account);
     }
 
+    static public void registerAccount(String username, String password,
+                                       String firstName, String lastName,
+                                       String address, String phoneNumber,
+                                       boolean isAdmin){
+        Account account = Account.getNewAccount(username, password, firstName, lastName, address, phoneNumber, isAdmin);
+        addAccount(account);
+    }
+
+    static public void restoreAccount(ArrayList<String> infoList){
+        Account account = Account.getRestoreAccount(infoList);
+        addAccount(account);
+    }
+
     static public Account getCurrentUser() {
         return currentUser;
     }
 
     static public void setCurrentUser(Account acc) {
         currentUser = acc;
-        currentCart = currentUser.getCart();
+        if (!currentUser.isAdmin()) currentCart = ((AccountCustomer) currentUser).getCart1();
     }
 
     //===================== ITEM ======================
+    static public void restoreItem(ArrayList<String> infoList) {
+        Item item = getRestoreItem(infoList);
+        addItem(item);
+    }
+
     static public void addItem(Item item) {
         itemList.add(item);
 
@@ -223,7 +233,7 @@ public class EntityHandler {
 
     //===================== CART ======================
     static public Cart getCart() {
-        return currentUser.getCart();
+        return ((AccountCustomer) currentUser).getCart1();
     }
 
     static public CartDetail getCartDetail(Item item) {

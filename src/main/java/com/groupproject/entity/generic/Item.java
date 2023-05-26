@@ -17,10 +17,10 @@ public abstract class Item {
     private String year;
     private double price;
     private String desc = "Not Available";
-
     static public int genericIdOrder = 1;
 
 
+    public Item(){}
     //restore
     public Item(ArrayList<String> infoList) {
         this.id = infoList.get(ConstantItem.ItemInfo.ID.ordinal());

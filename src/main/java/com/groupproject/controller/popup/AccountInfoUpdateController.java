@@ -3,6 +3,7 @@ package com.groupproject.controller.popup;
 import com.groupproject.entity.EntityHandler;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.controller.ViewHandler;
+import com.groupproject.entity.generic.AccountCustomer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,43 +48,46 @@ public class AccountInfoUpdateController implements Initializable {
 
     }
 
-    public void setData(Account account){
+    public void setData(Account account) {
         this.account = account;
         displayInfo();
     }
 
-    public void displayInfo(){
+    public void displayInfo() {
         usernameBox.setText(account.getUsername());
-
-        statusBox.setText(account.getStatusString());
-        balanceBox.setText("$" + account.getBalance());
-        pointBox.setText(String.valueOf(account.getRewardPoint()));
-
         firstNameBox.setText(account.getFirstName());
         lastNameBox.setText(account.getLastName());
         phoneNumberBox.setText(account.getPhoneNumber());
         addressBox.setText(account.getAddress());
+        statusBox.setText(account.getStatusString());
+
+        if (!account.isAdmin()) {
+            balanceBox.setText("$" + ((AccountCustomer) account).getBalance1());
+            pointBox.setText("" + ((AccountCustomer) account).getRewardPoint1());
+        }
     }
 
 
-    public void profileEdit(ActionEvent event){
+    public void profileEdit(ActionEvent event) {
         if (!checkValid()) return;
 
-        //update profile
+        // update profile
         account.setFirstName(firstName);
         account.setLastName(lastName);
         account.setPhoneNumber(phoneNumber);
         account.setAddress(address);
 
-        //back to home
+        // back to home
         returnHome(event);
     }
 
-    public boolean checkValid(){
+    public boolean checkValid() {
         firstName = firstNameBox.getText();
         lastName = lastNameBox.getText();
-        phoneNumber = phoneNumberBox.getText(); if (phoneNumber.isBlank()) phoneNumber = blankInput;
-        address = addressBox.getText(); if (address.isBlank()) address = blankInput;
+        phoneNumber = phoneNumberBox.getText();
+        if (phoneNumber.isBlank()) phoneNumber = blankInput;
+        address = addressBox.getText();
+        if (address.isBlank()) address = blankInput;
 
         if (firstName.isBlank()) {
             messBox.setText("First name cannot be blank");
@@ -118,7 +122,7 @@ public class AccountInfoUpdateController implements Initializable {
         return true;
     }
 
-    public void returnHome(ActionEvent event){
+    public void returnHome(ActionEvent event) {
         ViewHandler.refreshMenuButtonName();
         ViewHandler.closePopup(event);
         ViewHandler.getNoti("Update profile successfully", null);

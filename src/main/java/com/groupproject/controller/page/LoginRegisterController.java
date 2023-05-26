@@ -62,7 +62,7 @@ public class LoginRegisterController implements Initializable {
         messBox.setStyle("-fx-font-weight: bold; -fx-text-fill: green;");
 
         new Thread(() -> {
-            EntityHandler.registerAccount(username, pwd, firstName, lastName, address, phoneNumber);
+            EntityHandler.registerAccount(username, pwd, firstName, lastName, address, phoneNumber, false);
 
             try {
                 Thread.sleep(2000);

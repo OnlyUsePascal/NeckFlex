@@ -3,6 +3,7 @@ package com.groupproject.controller.page;
 import com.groupproject.entity.generic.Account;
 import com.groupproject.entity.EntityHandler;
 import com.groupproject.controller.ViewHandler;
+import com.groupproject.entity.generic.AccountCustomer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -68,10 +69,12 @@ public class UserProfileController implements Initializable {
         lastNameBox.setText(account.getLastName());
         phoneNumberBox.setText(account.getPhoneNumber());
         addressBox.setText(account.getAddress());
-
         statusBox.setText(account.getStatusString());
-        balanceBox.setText("$" + account.getBalance());
-        pointBox.setText(account.getRewardPoint() + "");
+
+        if (!account.isAdmin()) {
+            balanceBox.setText("$" + ((AccountCustomer) account).getBalance1());
+            pointBox.setText("" + ((AccountCustomer) account).getRewardPoint1());
+        }
     }
 
     public void profileEdit(ActionEvent event) {

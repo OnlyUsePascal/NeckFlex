@@ -17,9 +17,9 @@ public class BankAccount {
         this.balance = balance;
     }
 
-    public boolean transfer(Account user, double amount) {
+    public boolean transfer(AccountCustomer user, double amount) {
         if (this.balance > amount && amount > 0) {
-            user.updateBalance(amount);
+            user.updateBalance1(amount);
             this.balance -= amount;
             return true;
         }
