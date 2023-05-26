@@ -18,7 +18,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" fillHeight="false">
                <children>
-                  <Label fx:id="title" prefWidth="1055.0" styleClass="itemTileHeader" text="Categories">
+                  <Label fx:id="title" prefWidth="1050.0" styleClass="itemTileHeader" text="Categories">
                      <font>
                         <Font size="27.0" />
                      </font>
@@ -55,9 +55,9 @@
                   </Button>
                </children>
             </HBox>
-            <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" prefWidth="1083.0" styleClass="itemTileScrollPane" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" styleClass="itemTileScrollPane" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                <content>
-                  <HBox fx:id="container" prefWidth="1082.0" spacing="40.0" />
+                  <HBox fx:id="container" prefWidth="1200.0" spacing="40.0" />
                </content>
             </ScrollPane>
          </children>

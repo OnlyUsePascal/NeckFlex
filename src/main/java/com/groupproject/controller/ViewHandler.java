@@ -64,6 +64,10 @@ public class ViewHandler {
         return ((NavBarCustomerController) navBarController).getSearchText();
     }
 
+    static public void clearSearchText(){
+        ((NavBarCustomerController) navBarController).clearSearchText();
+    }
+
     // sidebar
     static public void setSidebarController(SidebarController sidebarController) {
         ViewHandler.sidebarController = sidebarController;

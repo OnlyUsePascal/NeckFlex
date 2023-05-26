@@ -39,7 +39,7 @@ public class NavBarCustomerController extends NavBarController {
 
     public void toPageItemAllWithSearch(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemAll());
-        clearSearchText();
+        // clearSearchText();
     }
 
     public String getSearchText(){

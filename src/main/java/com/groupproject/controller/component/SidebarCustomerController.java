@@ -8,7 +8,6 @@ public class  SidebarCustomerController extends SidebarController{
     public void toPageHome(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemTrending());
         menuActive();
-
     }
 
     public void toPageRecord(ActionEvent event){

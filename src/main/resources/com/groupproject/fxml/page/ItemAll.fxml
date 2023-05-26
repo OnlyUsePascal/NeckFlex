@@ -150,17 +150,17 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <ScrollPane fx:id="pageContainerSrollPane" hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1300.0" styleClass="contentPane">
+            <ScrollPane fx:id="pageContainerSrollPane" hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1315.0" styleClass="contentPane">
                <content>
-                  <AnchorPane prefWidth="1271.0">
+                  <AnchorPane>
                      <children>
-                        <ImageView fitHeight="517.0" fitWidth="1200.0" pickOnBounds="true">
+                        <ImageView fitHeight="535.0" fitWidth="1315.0" pickOnBounds="true">
                            <image>
                               <Image url="@../../media/image/poster2.jpg" />
                            </image>
                         </ImageView>
-                        <AnchorPane prefHeight="517.0" prefWidth="1201.0" styleClass="itemTrendingFadePane" />
-                        <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="1200.0">
+                        <AnchorPane prefHeight="535.0" prefWidth="1315.0" styleClass="itemTrendingFadePane" />
+                        <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="1315.0">
                            <children>
                               <Label contentDisplay="RIGHT" prefHeight="61.0" prefWidth="1278.0" styleClass="header" text="Latest">
                                  <font>
@@ -176,7 +176,7 @@
                                     <Insets left="30.0" />
                                  </padding>
                               </Label>
-                              <AnchorPane prefHeight="302.0" prefWidth="200.0" />
+                              <AnchorPane prefHeight="330.0" prefWidth="200.0" />
                               <VBox fx:id="pageContainer" prefWidth="1144.0" styleClass="itemTileList" />
                               <VBox fx:id="loadingScreen" alignment="CENTER" prefHeight="238.0" prefWidth="1201.0">
                                  <children>
