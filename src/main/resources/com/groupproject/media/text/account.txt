@@ -1,2 +1,2 @@
 C000|admin|admin|admin|admin|google|01234|0|0.0|0
-C002|joun|123|dat|pham|N/A|N/A|3|6.65|90
+C002|joun|123|dat|pham|N/A|N/A|2|6.65|30

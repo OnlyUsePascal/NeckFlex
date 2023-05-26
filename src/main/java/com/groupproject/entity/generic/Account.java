@@ -169,21 +169,20 @@ public class Account {
         this.password = pwd;
     }
 
-    public void updateCredit(){
+    public boolean updateCredit(){
         rewardPoint += 10;
 
-        //status
-        if(status == ConstantAccount.AccountStatus.REGULAR ||
+        //upgrade
+        if(status == ConstantAccount.AccountStatus.GUEST &&
             rewardPoint >= 30){
             status = ConstantAccount.AccountStatus.REGULAR;
-        }
-
-        if (status == ConstantAccount.AccountStatus.VIP ||
+            return true;
+        } else if (status == ConstantAccount.AccountStatus.REGULAR &&
             rewardPoint >= 60){
             status = ConstantAccount.AccountStatus.VIP;
+            return false;
         }
-
-        System.out.println(this);
+        return false;
     }
 
     public boolean deductBalance(double amount) {
