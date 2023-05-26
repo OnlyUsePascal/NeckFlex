@@ -70,13 +70,11 @@ public class ViewHandler {
     }
 
     static public void setMenuActive() {
-        homeController.setMenuActive();
-        // sidebarController.menuActive();
-        // homeController.setMenuActive();
+        homeController.setSideBarActive();
     }
 
     static public boolean sideBarIsOpen(){
-        return sidebarController.isOpen();
+        return homeController.isSideBarOpen();
     }
 
     // user record

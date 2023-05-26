@@ -33,8 +33,9 @@ public class HomeController implements Initializable {
     private NavBarCustomerController navBarCustomerController;
     private ItemAllController itemAllController;
 
-    private AtomicBoolean isOutside = new AtomicBoolean(true);
-    private boolean menuIsOpen = true;
+    private AtomicBoolean isMouseOutside = new AtomicBoolean(true);
+    private AtomicBoolean isSidebarOpen = new AtomicBoolean(true);
+    // private boolean menuIsOpen = true;
     private TranslateTransition menuToOpen, menuToClose;
 
 
@@ -56,25 +57,27 @@ public class HomeController implements Initializable {
 
         //auto closed
         sidebarPane.setOnMouseEntered(mouseEvent -> {
-            isOutside.set(false);
+            if (!ViewHandler.sideBarIsOpen()) return;
+
+            isMouseOutside.set(false);
         });
 
         sidebarPane.setOnMouseExited(mouseEvent -> {
             if (!ViewHandler.sideBarIsOpen()) return;
 
-            isOutside.set(true);
+            isMouseOutside.set(true);
             new Thread(() -> {
                 long tEnd = System.currentTimeMillis() + 2000;
                 while (System.currentTimeMillis() < tEnd) {
-                    if (!isOutside.get()) {
+                    if (!isMouseOutside.get() || !isSideBarOpen()) {
                         return;
                     }
                 }
 
                 Platform.runLater(() -> {
-                    System.out.println(isOutside.get() + " " + ViewHandler.sideBarIsOpen());
-                    if (isOutside.get() && ViewHandler.sideBarIsOpen()) {
-                        setMenuActive();
+                    // System.out.println(isMouseOutside.get() + " " + ViewHandler.sideBarIsOpen());
+                    if (isMouseOutside.get() && isSideBarOpen()) {
+                        setSideBarActive();
                     }
                 });
             }).start();
@@ -88,18 +91,23 @@ public class HomeController implements Initializable {
         menuToClose.setToX(-300);
 
         //init
-        setMenuActive();
+        setSideBarActive();
     }
 
-    public void setMenuActive() {
-        if (menuIsOpen){
-            menuIsOpen = false;
+    public boolean isSideBarOpen() {
+        return isSidebarOpen.get();
+    }
+
+    public void setSideBarActive() {
+        if (isSidebarOpen.get()){
+            isSidebarOpen.set(false);
             menuToClose.play();
         } else {
-            menuIsOpen = true;
+            isSidebarOpen.set(true);
             menuToOpen.play();
         }
     }
+
 
     public void setPageContent(String url) {
         ViewHandler.setAnchorPane(pageContent, url);

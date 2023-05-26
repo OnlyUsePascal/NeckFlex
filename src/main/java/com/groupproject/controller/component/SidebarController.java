@@ -12,25 +12,13 @@ import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SidebarController implements Initializable {
-
-    @FXML
-    private AnchorPane menuPane;
-
-    private AtomicBoolean menuIsOpen = new AtomicBoolean(true);
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ViewHandler.setSidebarController(this);
     }
 
-    public boolean isOpen(){
-        return menuIsOpen.get();
-    }
-
     public void menuActive(){
         ViewHandler.setMenuActive();
-        menuIsOpen.set(!menuIsOpen.get());
     }
 
     public void toPageItemAll(ActionEvent event){
