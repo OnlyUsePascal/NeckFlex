@@ -72,6 +72,7 @@ public class HomeController implements Initializable {
                 }
 
                 Platform.runLater(() -> {
+                    System.out.println(isOutside.get() + " " + ViewHandler.sideBarIsOpen());
                     if (isOutside.get() && ViewHandler.sideBarIsOpen()) {
                         setMenuActive();
                     }

@@ -30,8 +30,8 @@ public class ItemTrendingTileController implements Initializable {
     private VBox loadingScreen;
 
     private TranslateTransition moveTileAnimation;
-    private final double moveSz = 2;
-    private final int listSz = 13;
+    private final double moveSz = 1;
+    private final int listSz = 9;
     private final int rowSz = 5;
     private int pgCnt;
     private int curPg = 1;
@@ -39,13 +39,12 @@ public class ItemTrendingTileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         moveTileAnimation = new TranslateTransition(Duration.seconds(0.3), container);
-        pgCnt = (((int) listSz) - rowSz) / (int) moveSz;
+        pgCnt = (((int) listSz) - rowSz) / (int) moveSz + 1;
         ViewHandler.lockHorizonScroll(scrollPane);
     }
 
     public void moveItemTile(ActionEvent event) {
-        // System.out.println("move item tile");
-        double offset = ((Button) container.getChildren().get(0)).getWidth() * moveSz;
+        double offset = ((Button) container.getChildren().get(0)).getWidth() * moveSz + container.getSpacing();
         Button btn = (Button) event.getSource();
 
         if (btn.getId().equals("moveLeft")) {
@@ -67,9 +66,15 @@ public class ItemTrendingTileController implements Initializable {
 
         new Thread(() -> {
             ArrayList<Button> itemBoxList = new ArrayList<>();
-            for (int i = 0; i < Math.min(listSz, itemList.size()); i++) {
-                Button itemBox = ViewHandler.getItemBox(itemList.get(i));
-                itemBoxList.add(itemBox);
+            //get available item
+            for (Item item : itemList){
+                if (item.isAvailable()){
+                    Button itemBox = ViewHandler.getItemBox(item);
+                    itemBoxList.add(itemBox);
+
+                    if (itemBoxList.size() == listSz) break;
+                }
+
             }
 
             //shuffle itemBoxList

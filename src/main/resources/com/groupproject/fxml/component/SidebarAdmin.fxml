@@ -14,7 +14,7 @@
     <children>
         <VBox prefHeight="210.0" prefWidth="270.0" spacing="10.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#toItemAll" prefWidth="290.0">
+                <Button mnemonicParsing="false" onAction="#toPageItemAll" prefWidth="290.0">
                     <graphic>
                         <HBox alignment="TOP_CENTER" fillHeight="false" prefWidth="200.0">
                             <children>

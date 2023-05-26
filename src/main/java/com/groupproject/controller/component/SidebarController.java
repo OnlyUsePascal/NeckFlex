@@ -2,23 +2,21 @@ package com.groupproject.controller.component;
 
 import com.groupproject.controller.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SidebarController implements Initializable {
 
     @FXML
     private AnchorPane menuPane;
 
-    private boolean menuIsOpen = false;
-    private TranslateTransition menuToOpen, menuToClose;
+    private AtomicBoolean menuIsOpen = new AtomicBoolean(true);
 
 
     @Override
@@ -27,14 +25,15 @@ public class SidebarController implements Initializable {
     }
 
     public boolean isOpen(){
-        return menuIsOpen;
+        return menuIsOpen.get();
     }
 
     public void menuActive(){
         ViewHandler.setMenuActive();
+        menuIsOpen.set(!menuIsOpen.get());
     }
 
-    public void toItemAll(ActionEvent event){
+    public void toPageItemAll(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemAll());
         menuActive();
     }

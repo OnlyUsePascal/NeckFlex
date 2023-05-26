@@ -28,7 +28,7 @@ public class ShopApplication extends Application {
 
     public void initData(){
         DataHandler.getData();
-        EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(0));
+        EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(1));
     }
 
     public void initView(Stage stage){
