@@ -60,11 +60,11 @@ public class ViewHandler {
         navBarController.refreshMenuButtonName();
     }
 
-    static public String getSearchText(){
+    static public String getSearchText() {
         return ((NavBarCustomerController) navBarController).getSearchText();
     }
 
-    static public void clearSearchText(){
+    static public void clearSearchText() {
         ((NavBarCustomerController) navBarController).clearSearchText();
     }
 
@@ -77,7 +77,7 @@ public class ViewHandler {
         homeController.setSideBarActive();
     }
 
-    static public boolean sideBarIsOpen(){
+    static public boolean sideBarIsOpen() {
         return homeController.isSideBarOpen();
     }
 
@@ -143,7 +143,7 @@ public class ViewHandler {
     }
 
     static public void getNoti(String text, AnchorPane rootPane) {
-        //default
+        // default
         AnchorPane curRoot = (rootPane != null) ?
                 rootPane : homeController.getPageContent();
 
@@ -160,20 +160,29 @@ public class ViewHandler {
 
             curRoot.getChildren().add(notiPane);
 
-            long sleepTime = 3000;
+            // long sleepTime = 3000;
             new Thread(() -> {
                 Platform.runLater(() -> {
                     toggleFadeNode(notiPane, true);
                 });
 
                 try {
-                    Thread.sleep(sleepTime);
+                    Thread.sleep(3000);
                 } catch (InterruptedException err) {
                     err.printStackTrace();
                 }
 
                 Platform.runLater(() -> {
                     toggleFadeNode(notiPane, false);
+                });
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException err) {
+                    err.printStackTrace();
+                }
+
+                Platform.runLater(() -> {
                     curRoot.getChildren().remove(notiPane);
                 });
             }).start();

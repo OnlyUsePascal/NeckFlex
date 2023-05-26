@@ -1,6 +1,6 @@
 I001-2018|Avengers: Infinity War|0|0|1|11.55|Avengers must stop Thanos an intergalactic warlord from getting his hands on all the infinity stones.
 I002-2021|Spider-Man: No Way Home|0|1|2|14.71|Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker
-I003-2015|Jurassic World|0|2|9|19.66|A theme park showcasing genetically-engineered dinosaurs turns into a nightmare for its tourists when one of the dinosaurs escapes its enclosure.
+I003-2015|Jurassic World|0|2|11|19.66|A theme park showcasing genetically-engineered dinosaurs turns into a nightmare for its tourists when one of the dinosaurs escapes its enclosure.
 I004-2019|The Lion King|0|3|2|11.36|As a cub Simba is forced to leave the Pride Lands after his father Mufasa is murdered by his wicked uncle Scar.
 I005-2012|The Avengers|0|4|8|16.77|Nick Fury is compelled to launch the Avengers Initiative when Loki poses a threat to planet Earth.
 I006-2015|Furious 7|0|0|6|16.21|Dominic and his family are caught in a quagmire when Shaw's brother seeks bloody revenge.
