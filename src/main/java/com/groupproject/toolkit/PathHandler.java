@@ -120,6 +120,14 @@ public class PathHandler {
         return popupRoot + "Noti.fxml";
     }
 
+    static public String getPopupInstructionCart(){
+        return popupRoot + "InstructionCart.fxml";
+    }
+
+    static public String getPopupInstructionRecord(){
+        return popupRoot + "InstructionRecord.fxml";
+    }
+
 
     static public String getMediaImage(String imgName) {
         return imgRoot + imgName;

@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -58,6 +59,7 @@ public class CartController implements Initializable {
         refreshCart();
     }
 
+    // --- cart ---
     public void initPayment() {
         rent7Day.setDisable(true);
         payPoint.setDisable(true);
@@ -121,6 +123,18 @@ public class CartController implements Initializable {
         payCash.setDisable(cartEmpty);
     }
 
+    public void getInstruction(ActionEvent event){
+        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupInstructionCart()));
+        try {
+            AnchorPane pane = itemLoader.load();
+
+            ViewHandler.getPopup(pane, null);
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+
+    // --- checkout ---
     public void checkout(ActionEvent event) {
         Button btn = (Button) event.getSource();
         ConstantOrder.OrderDuration duration = rent7Day.isSelected() ?
@@ -132,8 +146,6 @@ public class CartController implements Initializable {
         switch (status) {
             case ACCEPTED -> {
                 new Thread(() -> {
-                    // EntityHandler.addOrder(duration);
-
                     Platform.runLater(() -> {
                         statusBox.setText("Checkout success");
                         refreshCart();
@@ -151,5 +163,4 @@ public class CartController implements Initializable {
             }
         }
     }
-
 }

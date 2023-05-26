@@ -75,7 +75,6 @@ public class HomeController implements Initializable {
                 }
 
                 Platform.runLater(() -> {
-                    // System.out.println(isMouseOutside.get() + " " + ViewHandler.sideBarIsOpen());
                     if (isMouseOutside.get() && isSideBarOpen()) {
                         setSideBarActive();
                     }

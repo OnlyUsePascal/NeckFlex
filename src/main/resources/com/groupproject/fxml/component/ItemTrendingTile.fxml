@@ -14,9 +14,9 @@
 
 <AnchorPane stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.ItemTrendingTileController">
    <children>
-      <VBox alignment="TOP_CENTER" prefWidth="1200.0" style="-fx-border-color: transparent;">
+      <VBox alignment="TOP_CENTER" spacing="15.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefWidth="931.0">
+            <HBox alignment="CENTER_LEFT" fillHeight="false">
                <children>
                   <Label fx:id="title" prefWidth="1055.0" styleClass="itemTileHeader" text="Categories">
                      <font>
@@ -34,6 +34,9 @@
                            </cursor>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="moveRight" mnemonicParsing="false" onAction="#moveItemTile" prefHeight="48.0" prefWidth="69.0" styleClass="itemTileMoveBtn">
                      <graphic>
@@ -46,6 +49,9 @@
                            </cursor>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>

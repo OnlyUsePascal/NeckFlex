@@ -5,10 +5,12 @@ import com.groupproject.entity.generic.Order;
 import com.groupproject.entity.EntityHandler;
 import com.groupproject.controller.ViewHandler;
 import com.groupproject.toolkit.PathHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -47,6 +49,17 @@ public class UserRecordController implements Initializable {
 
             orderController.setData(order, isReturned);
             orderContainer.getChildren().add(0, orderPane); // add to start
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+
+    public void getInstruction(ActionEvent event) {
+        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupInstructionRecord()));
+        try {
+            AnchorPane pane = itemLoader.load();
+
+            ViewHandler.getPopup(pane, null);
         } catch (IOException err) {
             err.printStackTrace();
         }

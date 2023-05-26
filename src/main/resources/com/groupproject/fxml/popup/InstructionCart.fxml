@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" styleClass="globalInstructionPane" stylesheets="@../../style.css">
+         <children>
+            <Label prefHeight="44.0" text="----- CART INSTRUCTION -----" />
+            <TextArea editable="false" prefHeight="300.0" prefWidth="500.0" text="(?) Status Privilege&#10;Guest: &#10;+ Maximum amount for renting: 2 items.&#10;+ Available renting duration: 2 days.&#10;&#10;Regular: &#10;+ Unlimited amount of renting items.&#10;+ Can rent items up to 1 week.&#10;&#10;VIP:&#10;+ Can checkout with reward points, with the cost of 10 points/item.&#10;&#10;(?) How to upgrade my status?&#10;-&gt; Just remember to return your items on time!" wrapText="true" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

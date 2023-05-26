@@ -44,6 +44,7 @@ public class ItemTrendingTileController implements Initializable {
     }
 
     public void moveItemTile(ActionEvent event) {
+        if (container.getChildren().isEmpty()) return;
         double offset = ((Button) container.getChildren().get(0)).getWidth() * moveSz + container.getSpacing();
         Button btn = (Button) event.getSource();
 
