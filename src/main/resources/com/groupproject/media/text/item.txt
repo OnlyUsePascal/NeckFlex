@@ -1,6 +1,4 @@
-I001-1111|Avengers: Infinity War|0|0|1|11.55|send nudes
-I112-2222|Spider-Man: No Way Home|0|1|2|14.71|senpai
-I001-2018|Avengers: Infinity War|0|0|1|11.55|The Avengers must stop Thanos an intergalactic warlord from getting his hands on all the infinity stones.
+I001-2018|Avengers: Infinity War|0|0|1|11.55|Avengers must stop Thanos an intergalactic warlord from getting his hands on all the infinity stones.
 I002-2021|Spider-Man: No Way Home|0|1|2|14.71|Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker
 I003-2015|Jurassic World|0|2|9|19.66|A theme park showcasing genetically-engineered dinosaurs turns into a nightmare for its tourists when one of the dinosaurs escapes its enclosure.
 I004-2019|The Lion King|0|3|2|11.36|As a cub Simba is forced to leave the Pride Lands after his father Mufasa is murdered by his wicked uncle Scar.
@@ -11,7 +9,7 @@ I008-2019|Frozen II|0|2|7|15.77|Queen Elsa begins to hear a mysterious melodic v
 I009-2015|Avengers: Age of Ultron|0|3|8|19.12|Tony Stark builds an artificial intelligence system named Ultron with the help of Bruce Banner.
 I010-2018|Black Panther|0|4|6|17.92|The Black Panther film series is a cycle of films set in the Marvel Cinematic Universe focusing on the fictitious Kingdom of Wakanda.
 I011-2011|Harry Potter and the Deathly Hallows: Part 2|0|0|3|11.51|Harry Ron and Hermione race against time to destroy the remaining Horcruxes.
-I012-2017|Star Wars: Episode VIII - The Last Jedi|0|1|7|15.90|Rey seeks to learn the ways of the Jedi under Luke Skywalker its remaining member to reinvigorate the Resistance's war against the First Order.
+I012-2017|Star Wars: Episode VIII - The Last Jedi|0|1|7|15.9|Rey seeks to learn the ways of the Jedi under Luke Skywalker its remaining member to reinvigorate the Resistance's war against the First Order.
 I013-2018|Jurassic World: Fallen Kingdom|0|2|7|13.55|After a volcano eruption proves to be a threat for the dinosaurs Owen and Claire reach the defunct Jurassic World a theme park to save the animals from extinction.
 I014-2013|Frozen|0|3|2|17.59|Anna sets out on a journey with an iceman Kristoff and his reindeer Sven in order to find her sister Elsa who has the power to convert any object or person into ice.
 I015-2017|Beauty and the Beast|0|4|7|18.45|Belle a village girl embarks on a journey to save her father from a creature that has locked him in his dungeon.

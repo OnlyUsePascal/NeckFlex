@@ -66,26 +66,7 @@ public class ItemTrendingTileController implements Initializable {
         ViewHandler.toggleNode(loadingScreen, true);
 
         new Thread(() -> {
-            ArrayList<Button> itemBoxList = new ArrayList<>();
-            //get available item
-            for (Item item : itemList){
-                if (item.isAvailable()){
-                    Button itemBox = ViewHandler.getItemBox(item);
-                    itemBoxList.add(itemBox);
-
-                    if (itemBoxList.size() == listSz) break;
-                }
-
-            }
-
-            //shuffle itemBoxList
-            for (int i = 0; i < itemBoxList.size(); i++) {
-                int j = (int) (Math.random() * itemBoxList.size());
-                Button temp = itemBoxList.get(i);
-                itemBoxList.set(i, itemBoxList.get(j));
-                itemBoxList.set(j, temp);
-            }
-
+            ArrayList<Button> itemBoxList = getItemBoxList(itemList);
             // ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
@@ -95,5 +76,28 @@ public class ItemTrendingTileController implements Initializable {
         }).start();
     }
 
+    public ArrayList<Button> getItemBoxList(ArrayList<Item> itemList) {
+        ArrayList<Button> itemBoxList = new ArrayList<>();
+        // get available item
+        for (Item item : itemList) {
+            if (item.isAvailable()) {
+                Button itemBox = ViewHandler.getItemBox(item);
+                itemBoxList.add(itemBox);
+
+                if (itemBoxList.size() == listSz) break;
+            }
+
+        }
+
+        // shuffle itemBoxList
+        for (int i = 0; i < itemBoxList.size(); i++) {
+            int j = (int) (Math.random() * itemBoxList.size());
+            Button temp = itemBoxList.get(i);
+            itemBoxList.set(i, itemBoxList.get(j));
+            itemBoxList.set(j, temp);
+        }
+
+        return itemBoxList;
+    }
 
 }

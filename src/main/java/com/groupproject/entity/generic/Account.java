@@ -127,13 +127,6 @@ public class Account {
         return orderListInfo;
     }
 
-    public String getCartInfo(){
-        String cartInfo = username + "|";
-        cartInfo += cart.getCartInfo();
-        return cart.getCartInfo();
-    }
-
-
     public boolean isAdmin() {
         return status == ConstantAccount.AccountStatus.ADMIN;
     }
@@ -186,7 +179,7 @@ public class Account {
         }
 
         if (status == ConstantAccount.AccountStatus.VIP ||
-            rewardPoint >= 80){
+            rewardPoint >= 60){
             status = ConstantAccount.AccountStatus.VIP;
         }
 
@@ -203,7 +196,6 @@ public class Account {
     }
 
     public boolean deductRewardPoint(int amount) {
-        // rewardPoint -= 100;
         if (rewardPoint >= amount) {
             rewardPoint -= amount;
             return true;
@@ -221,10 +213,6 @@ public class Account {
 
     public void makeAdmin() {
         status = ConstantAccount.AccountStatus.ADMIN;
-    }
-
-    public void removeCartDetail(Item item){
-        cart.removeCartDetail(item);
     }
 
 

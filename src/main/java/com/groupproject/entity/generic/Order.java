@@ -30,7 +30,7 @@ public class Order {
         }
     }
 
-    // --- get info ---
+    // --- GET ---
     public void updateTotalPrice(double price) {
         totalPrice += price;
     }
@@ -101,7 +101,7 @@ public class Order {
         return LocalDateTime.now().isAfter(date.plusDays(duration.getDurationValue()));
     }
 
-    // --- set info ---
+    // --- SET ---
     public void addOrderDetail(OrderDetail orderDetail) {
         orderDetailList.add(orderDetail);
         orderDetail.setRootOrder(this);

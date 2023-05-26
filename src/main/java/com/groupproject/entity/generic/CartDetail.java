@@ -1,6 +1,7 @@
 package com.groupproject.entity.generic;
 
 import com.groupproject.controller.ViewHandler;
+import com.groupproject.entity.EntityHandler;
 
 public class CartDetail {
     private Item item;
@@ -14,28 +15,9 @@ public class CartDetail {
         this.totalPrice = ViewHandler.getDoubleRound(item.getPrice() * quantity);
     }
 
+    // --- SET ---
     public void setCart(Cart cart){
         this.cart = cart;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public String getTitle() {
-        return item.getTitle();
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public int getQuantity() {
-        return quantity;
     }
 
     public boolean refreshQuantity(){
@@ -58,7 +40,31 @@ public class CartDetail {
         totalPrice = ViewHandler.getDoubleRound(item.getPrice() * newQuantity);
         return true;
     }
+    // --- GET ---
+    public Cart getCart() {
+        return cart;
+    }
 
+    public String getTitle() {
+        return item.getTitle();
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getCartDetailInfo() {
+        int itemIndex = EntityHandler.getItemIndex(item);
+        return (itemIndex + "/" + quantity);
+    }
     @Override
     public String toString() {
         return "CartDetail{" +

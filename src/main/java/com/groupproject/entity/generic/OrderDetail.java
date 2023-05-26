@@ -26,9 +26,9 @@ public class OrderDetail {
         this.quantity = quantity;
         this.price = ViewHandler.getDoubleRound(item.getPrice() * quantity);
         this.isReturned = isReturned;
-        // this.order = order;
     }
 
+    // --- SET ---
     public void setRootOrder(Order order) {
         this.order = order;
     }
@@ -62,6 +62,7 @@ public class OrderDetail {
         }
     }
 
+    // --- GET ---
     public Item getItem() {
         return item;
     }

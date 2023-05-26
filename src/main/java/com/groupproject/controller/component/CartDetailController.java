@@ -36,17 +36,14 @@ public class CartDetailController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AnchorPane.setTopAnchor(hboxContainer, 10.0);
-        // String style = "-fx-border-width: 2px";
-        // itemContainer.setStyle("-fx-border-width: 2px;");
     }
 
     public void setData(CartDetail cartDetail) {
         this.cartDetail = cartDetail;
+
         titleBox.setText(this.cartDetail.getTitle());
         unitPriceBox.setText("$" + this.cartDetail.getTotalPrice());
         quantityBox.setText(String.valueOf(this.cartDetail.getQuantity()));
-        // totalPriceBox.setText(String.valueOf(this.cartDetail.getTotalPrice()));
-
         ViewHandler.fillShapeWithImage(this.cartDetail.getItem().getImgName(), imgFrame);
     }
 
@@ -59,7 +56,6 @@ public class CartDetailController implements Initializable {
             cartController.refreshBill(false);
 
             quantityBox.setText(cartDetail.getQuantity() + "");
-            // totalPriceBox.setText(cartDetail.getTotalPrice() + "");
         }
     }
 
@@ -70,23 +66,5 @@ public class CartDetailController implements Initializable {
     public void removeCartDetail(ActionEvent event){
         EntityHandler.getCart().removeCartDetail(cartDetail);
         cartController.refreshCart();
-    }
-
-    // public void updateCheckBox(ActionEvent event){
-    //     CheckBox checkBox = (CheckBox) event.getSource();
-    //     double newPrice = cartDetail.getTotalPrice();
-    //
-    //     if (!checkBox.isSelected()) newPrice *= -1;
-    //     cartDetail.getCart().updateTotalPrice(newPrice);
-    //
-    //     cartController.refreshBill(false);
-    // }
-
-    public HBox getCartDetailPane() {
-        return hboxContainer;
-    }
-
-    public CartDetail getCartDetail() {
-        return cartDetail;
     }
 }

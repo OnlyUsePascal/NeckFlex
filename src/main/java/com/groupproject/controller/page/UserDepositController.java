@@ -52,6 +52,10 @@ public class UserDepositController implements Initializable {
                 if (bankAcc.transfer(EntityHandler.getCurrentUser(), amount)) {
                     messBox.setText("Successfully transferred $" + amount);
                     messBox.setTextFill(Color.GREEN);
+
+                    numberBox.clear();
+                    brandBox.clear();
+                    amountBox.clear();
                 } else {
                     messBox.setText("Not enough money. Current balance = " + bankAcc.getBalance() + "USD");
                 }

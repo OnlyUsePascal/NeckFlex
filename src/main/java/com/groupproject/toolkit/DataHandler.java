@@ -27,10 +27,10 @@ public class DataHandler {
 
     public static void saveData(){
         System.out.println("===== save data =====");
-        // saveAccount();
-        // saveItem();
-        // saveCart();
-        // saveOrder();
+        saveAccount();
+        saveItem();
+        saveCart();
+        saveOrder();
         saveBank();
         System.out.println("===== done =====");
 

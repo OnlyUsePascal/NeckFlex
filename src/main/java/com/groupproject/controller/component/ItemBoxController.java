@@ -21,8 +21,6 @@ public class ItemBoxController implements Initializable {
     private Rectangle imgFrame;
     @FXML
     private Label itemTitle;
-    // @FXML
-    // private Label itemPrice;
 
     private Item item;
 
@@ -32,17 +30,8 @@ public class ItemBoxController implements Initializable {
 
     public void setData(Item _item) {
         item = _item;
-        setTitle(_item.getTitle());
-
-        setImg();
-    }
-
-    public void setImg() {
         ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
-    }
-
-    public void setTitle(String titleNew) {
-        itemTitle.setText(titleNew);
+        itemTitle.setText(_item.getTitle());
     }
 
     public void getPopup(ActionEvent event){
@@ -54,7 +43,6 @@ public class ItemBoxController implements Initializable {
             itemInfoCartController.setData(item);
 
             ViewHandler.getPopup(itemInfoPane, null);
-            // ShopSystem.showPopup(popup);
         } catch (IOException err){
             err.printStackTrace();
         }

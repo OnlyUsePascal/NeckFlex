@@ -16,8 +16,6 @@ import java.util.ResourceBundle;
 public class OrderDetailController implements Initializable {
     @FXML
     private Label titleBox;
-    // @FXML
-    // private Label priceBox;
     @FXML
     private Label amountBox;
     @FXML
@@ -30,7 +28,6 @@ public class OrderDetailController implements Initializable {
     private Rectangle imgFrame;
 
     private OrderDetail orderDetail;
-    // UserRecordController userRecordController;
 
 
     @Override
@@ -42,9 +39,8 @@ public class OrderDetailController implements Initializable {
 
         titleBox.setText("     " + orderDetail.getItem().getTitle());
         amountBox.setText("Renting: " + orderDetail.getQuantity());
-        // priceBox.setText("$" + orderDetail.getPrice());
-
         ViewHandler.fillShapeWithImage(orderDetail.getItem().getImgName(), imgFrame);
+
         checkIsReturned();
     }
 

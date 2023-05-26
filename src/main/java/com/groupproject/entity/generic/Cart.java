@@ -18,7 +18,7 @@ public class Cart {
         totalPrice = 0;
     }
 
-    // --- get info ---
+    // --- GET ---
     public CartDetail findCartDetail(Item item) {
         for (CartDetail cartDetail : cartDetailList) {
             if (cartDetail.getItem().equals(item)) {
@@ -56,18 +56,18 @@ public class Cart {
         String cartInfo = "";
         cartInfo += (owner.getUsername() + "|");
         for (CartDetail cartDetail : cartDetailList){
-            int itemIndex = EntityHandler.getItemIndex(cartDetail.getItem());
-            cartInfo += (itemIndex + "/" + cartDetail.getQuantity() + "|");
+            cartInfo += cartDetail.getCartDetailInfo() + "|";
         }
 
         return cartInfo;
     }
 
-    // --- changing ---
+    // --- SET ---
     public void addCartDetail(Item item, int quantity) {
         CartDetail cartDetail = new CartDetail(item, quantity);
         cartDetailList.add(cartDetail);
         cartDetail.setCart(this);
+
         updateTotalPrice(cartDetail.getTotalPrice());
     }
 

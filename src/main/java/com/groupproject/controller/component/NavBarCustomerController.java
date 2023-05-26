@@ -16,9 +16,8 @@ public class NavBarCustomerController extends NavBarController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ViewHandler.setNavBarController(this);
+        super.initialize(url, resourceBundle);
         initSearchField();
-        refreshMenuButtonName();
     }
 
     public void initSearchField(){
@@ -29,6 +28,15 @@ public class NavBarCustomerController extends NavBarController {
         });
     }
 
+    public String getSearchText(){
+        return searchField.getText();
+    }
+
+    public void clearSearchText(){
+        searchField.clear();
+    }
+
+    // --- navigation ---
     public void toPageCart(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageCart());
     }
@@ -39,14 +47,7 @@ public class NavBarCustomerController extends NavBarController {
 
     public void toPageItemAllWithSearch(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemAll());
-        // clearSearchText();
     }
 
-    public String getSearchText(){
-        return searchField.getText();
-    }
 
-    public void clearSearchText(){
-        searchField.clear();
-    }
 }

@@ -56,7 +56,7 @@
                   <AnchorPane prefHeight="32.0" prefWidth="347.0" />
                   <HBox fillHeight="false">
                      <children>
-                        <Label fx:id="messBox" alignment="CENTER" prefHeight="27.0" prefWidth="347.0" styleClass="messBox" text="wtf" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Label fx:id="messBox" alignment="CENTER" prefHeight="27.0" prefWidth="347.0" styleClass="messBox" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -103,6 +103,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                               <Button fx:id="updateCartBtn" mnemonicParsing="false" onAction="#updateCart" prefHeight="36.0" prefWidth="161.0" styleClass="cartBtn" text="Update Cart" textFill="WHITE">
                                  <font>

@@ -34,6 +34,7 @@ public class NavBarController implements Initializable {
         ViewHandler.setMenuActive();
     }
 
+    // --- navigation ---
     public void toPageHome(ActionEvent event){
         ViewHandler.setPageContent(PathHandler.getPageItemTrending());
     }

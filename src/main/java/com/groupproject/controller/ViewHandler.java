@@ -174,6 +174,7 @@ public class ViewHandler {
 
                 Platform.runLater(() -> {
                     toggleFadeNode(notiPane, false);
+                    curRoot.getChildren().remove(notiPane);
                 });
             }).start();
 

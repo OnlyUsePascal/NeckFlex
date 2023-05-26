@@ -52,20 +52,9 @@ public class OrderController implements Initializable {
         ViewHandler.toggleNode(loadingScreen, true);
 
         new Thread(() -> {
-            //get order detail pane list
-            ArrayList<OrderDetail> orderDetailList;
-            if (isReturned) {
-                orderDetailList = order.getReturnedOrderDetailList();
-            } else {
-                orderDetailList = order.getRentingOrderDetailList();
-            }
+            ArrayList<Node> orderDetailPaneList = getOrderDetailPaneList(order, isReturned);
 
-            ArrayList<Node> orderDetailPaneList = new ArrayList<>();
-            for (OrderDetail orderDetail : orderDetailList){
-                orderDetailPaneList.add(getOrderDetailPane(orderDetail));
-            }
-
-            // ViewHandler.fakeLoading();
+            ViewHandler.fakeLoading();
 
             //add to order pane
             Platform.runLater(() -> {
@@ -90,6 +79,23 @@ public class OrderController implements Initializable {
                 orderDetailContainer.getChildren().addAll(orderDetailPaneList);
             });
         }).start();
+    }
+
+    public ArrayList<Node> getOrderDetailPaneList(Order order, boolean isReturned) {
+        //get order detail pane list
+        ArrayList<OrderDetail> orderDetailList;
+        if (isReturned) {
+            orderDetailList = order.getReturnedOrderDetailList();
+        } else {
+            orderDetailList = order.getRentingOrderDetailList();
+        }
+
+        ArrayList<Node> orderDetailPaneList = new ArrayList<>();
+        for (OrderDetail orderDetail : orderDetailList){
+            orderDetailPaneList.add(getOrderDetailPane(orderDetail));
+        }
+
+        return orderDetailPaneList;
     }
 
     public void toggleInteractiveNodes(boolean status) {
