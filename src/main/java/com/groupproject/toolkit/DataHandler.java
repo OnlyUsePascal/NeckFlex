@@ -275,7 +275,7 @@ public class DataHandler {
                 if (user.isAdmin()) continue;
 
                 ((AccountCustomer) user).getCart1().refreshCart();
-                String cartInfo = ((AccountCustomer) user).getCart1().getCartInfo();
+                String cartInfo = ((AccountCustomer) user).getCart1().toString();
                 printWriter.println(cartInfo);
             }
 
@@ -314,7 +314,7 @@ public class DataHandler {
             PrintWriter printWriter = new PrintWriter(file);
 
             for (BankAccount bankAccount : EntityHandler.getBankAccountList()) {
-                printWriter.println(bankAccount.getBankAccInfo());
+                printWriter.println(bankAccount);
             }
 
             printWriter.close();

@@ -86,7 +86,8 @@ public class OrderDetail {
         return isReturned;
     }
 
-    public String getOrderDetailInfo() {
+    @Override
+    public String toString() {
         String orderDetailInfo = "";
 
         orderDetailInfo += quantity + "/";
@@ -94,14 +95,5 @@ public class OrderDetail {
         orderDetailInfo += item.toString();
 
         return orderDetailInfo;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "item=" + item.getTitle() +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                '}';
     }
 }

@@ -36,9 +36,9 @@ public class BankAccount {
         return balance;
     }
 
-    public String getBankAccInfo(){
-        return number + "|" + brand + "|" + balance;
-    }
+    // public String getBankAccInfo(){
+    //     return number + "|" + brand + "|" + balance;
+    // }
 
     public boolean correctInfo(String number, String brand){
         return this.number.equals(number) && this.brand.equals(brand);
@@ -46,10 +46,7 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return "BankAccount{" +
-                "brand='" + brand + '\'' +
-                ", balance=" + balance +
-                '}';
+        return number + "|" + brand + "|" + balance;
     }
 }
 

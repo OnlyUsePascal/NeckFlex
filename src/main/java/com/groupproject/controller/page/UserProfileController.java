@@ -78,7 +78,6 @@ public class UserProfileController implements Initializable {
     }
 
     public void profileEdit(ActionEvent event) {
-        // username = usernameBox.getText();
         pwd = pwdBox.getText();
         pwdConfirm = pwdConfirmBox.getText();
 

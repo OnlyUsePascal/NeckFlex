@@ -226,13 +226,13 @@ public class Account {
     //     status = ConstantAccount.AccountStatus.ADMIN;
     // }
 
-
-    @Override
-    public String toString() {
-        return this.id + "|" + this.username + "|" +
-                this.password + "|" + this.firstName + "|" +
-                this.lastName + "|" + this.address +
-                "|" + this.phoneNumber + "|" + this.status.ordinal();
-                // "|" + ViewHandler.getDoubleRound(this.balance) + "|" + this.rewardPoint;
-    }
+    //
+    // @Override
+    // public String toString() {
+    //     return this.id + "|" + this.username + "|" +
+    //             this.password + "|" + this.firstName + "|" +
+    //             this.lastName + "|" + this.address +
+    //             "|" + this.phoneNumber + "|" + this.status.ordinal();
+    //             // "|" + ViewHandler.getDoubleRound(this.balance) + "|" + this.rewardPoint;
+    // }
 }

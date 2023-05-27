@@ -61,16 +61,19 @@ public class CartDetail {
         return quantity;
     }
 
-    public String getCartDetailInfo() {
-        int itemIndex = EntityHandler.getItemIndex(item);
-        return (itemIndex + "/" + quantity);
-    }
+    // public String getCartDetailInfo() {
+    //     int itemIndex = EntityHandler.getItemIndex(item);
+    //     return (itemIndex + "/" + quantity);
+    // }
+
     @Override
     public String toString() {
-        return "CartDetail{" +
-                "item=" + item.getTitle() +
-                ", quantity=" + quantity +
-                ", totalPrice=" + totalPrice +
-                '}';
+        int itemIndex = EntityHandler.getItemIndex(item);
+        return (itemIndex + "/" + quantity);
+        // return "CartDetail{" +
+        //         "item=" + item.getTitle() +
+        //         ", quantity=" + quantity +
+        //         ", totalPrice=" + totalPrice +
+        //         '}';
     }
 }

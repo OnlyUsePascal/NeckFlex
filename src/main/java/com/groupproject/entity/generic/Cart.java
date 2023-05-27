@@ -52,15 +52,15 @@ public class Cart {
         return totalPrice;
     }
 
-    public String getCartInfo(){
-        String cartInfo = "";
-        cartInfo += (owner.getUsername() + "|");
-        for (CartDetail cartDetail : cartDetailList){
-            cartInfo += cartDetail.getCartDetailInfo() + "|";
-        }
-
-        return cartInfo;
-    }
+    // public String getCartInfo(){
+    //     String cartInfo = "";
+    //     cartInfo += (owner.getUsername() + "|");
+    //     for (CartDetail cartDetail : cartDetailList){
+    //         cartInfo += cartDetail.getCartDetailInfo() + "|";
+    //     }
+    //
+    //     return cartInfo;
+    // }
 
     // --- SET ---
     public void addCartDetail(Item item, int quantity) {
@@ -170,10 +170,17 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" +
-                "cartOwner=" + owner.getUsername() +
-                ", cartDetailList=" + cartDetailList +
-                ", totalPrice=" + totalPrice +
-                '}';
+        String cartInfo = "";
+        cartInfo += (owner.getUsername() + "|");
+        for (CartDetail cartDetail : cartDetailList){
+            cartInfo += cartDetail.toString() + "|";
+        }
+
+        return cartInfo;
+        // return "Cart{" +
+        //         "cartOwner=" + owner.getUsername() +
+        //         ", cartDetailList=" + cartDetailList +
+        //         ", totalPrice=" + totalPrice +
+        //         '}';
     }
 }

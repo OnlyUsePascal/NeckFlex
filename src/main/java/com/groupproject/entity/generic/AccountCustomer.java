@@ -60,7 +60,7 @@ public class AccountCustomer extends Account {
     public String getOrderListInfo1() {
         String orderListInfo = username + "@";
         for (Order order : orderList) {
-            orderListInfo += order.getOrderInfo() + "@";
+            orderListInfo += order.toString() + "@";
         }
 
         return orderListInfo;

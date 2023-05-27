@@ -65,17 +65,17 @@ public class Order {
         return orderDetailList;
     }
 
-    public String getOrderInfo() {
-        String orderInfo = "";
-
-        orderInfo += date + "~";
-        orderInfo += duration.ordinal() + "~";
-        for (OrderDetail orderDetail : orderDetailList) {
-            orderInfo += orderDetail.getOrderDetailInfo() + "~";
-        }
-
-        return orderInfo;
-    }
+    // public String getOrderInfo() {
+    //     String orderInfo = "";
+    //
+    //     orderInfo += date + "~";
+    //     orderInfo += duration.ordinal() + "~";
+    //     for (OrderDetail orderDetail : orderDetailList) {
+    //         orderInfo += orderDetail.getOrderDetailInfo() + "~";
+    //     }
+    //
+    //     return orderInfo;
+    // }
 
     public ArrayList<OrderDetail> getReturnedOrderDetailList() {
         ArrayList<OrderDetail> returnedOrderDetailList = new ArrayList<>();
@@ -127,9 +127,18 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "orderOwner=" + owner +
-                ", orderDetailList=" + orderDetailList +
-                '}';
+        String orderInfo = "";
+
+        orderInfo += date + "~";
+        orderInfo += duration.ordinal() + "~";
+        for (OrderDetail orderDetail : orderDetailList) {
+            orderInfo += orderDetail.toString() + "~";
+        }
+
+        return orderInfo;
+        // return "Order{" +
+        //         "orderOwner=" + owner +
+        //         ", orderDetailList=" + orderDetailList +
+        //         '}';
     }
 }
