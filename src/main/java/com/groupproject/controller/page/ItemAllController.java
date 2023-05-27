@@ -5,6 +5,7 @@ import com.groupproject.entity.generic.Item;
 import com.groupproject.entity.EntityHandler;
 import com.groupproject.controller.ViewHandler;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -102,20 +103,26 @@ public class ItemAllController implements Initializable {
         pageIndex.setText((currentPage + 1) + "");
     }
 
+    public void clearFilter() {
+        initFilter();
+        ViewHandler.clearSearchText();
+        refreshPage();
+    }
+
     // --- BACK ---
     public void initFilter() {
-        categoryList.getItems().addAll(Arrays.asList(ConstantItem.categoryList));
+        categoryList.setItems(FXCollections.observableArrayList(ConstantItem.categoryList));
         categoryList.getItems().add(0, optionAny);
         categoryList.setValue(optionAny);
 
-        genreList.getItems().addAll(Arrays.asList(ConstantItem.genreList));
+        genreList.setItems(FXCollections.observableArrayList(ConstantItem.genreList));
         genreList.getItems().add(0, optionAny);
         genreList.setValue(optionAny);
 
-        sortByList.getItems().addAll(Arrays.asList(sortByOptions));
+        sortByList.setItems(FXCollections.observableArrayList(sortByOptions));
         sortByList.setValue(sortByOptions[0]);
 
-        orderList.getItems().addAll(Arrays.asList(orderOptions));
+        orderList.setItems(FXCollections.observableArrayList(orderOptions));
         orderList.setValue(orderOptions[0]);
     }
 
@@ -192,11 +199,7 @@ public class ItemAllController implements Initializable {
         });
     }
 
-    public void clearFilter() {
-        initFilter();
-        ViewHandler.clearSearchText();
-        refreshPage();
-    }
+
 
 
 }

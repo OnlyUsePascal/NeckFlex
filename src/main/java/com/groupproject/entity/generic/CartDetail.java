@@ -40,6 +40,7 @@ public class CartDetail {
         totalPrice = ViewHandler.getDoubleRound(item.getPrice() * newQuantity);
         return true;
     }
+
     // --- GET ---
     public Cart getCart() {
         return cart;

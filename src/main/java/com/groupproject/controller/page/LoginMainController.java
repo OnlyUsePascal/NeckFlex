@@ -26,7 +26,7 @@ public class LoginMainController implements Initializable {
     @FXML
     private Button button;
     @FXML
-    private Label loginMessage;
+    private Label messBox;
     @FXML
     private TextField usernameBox;
     @FXML
@@ -37,6 +37,8 @@ public class LoginMainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        messBox.setText("");
+
         Node pane = button.getParent().getParent();
         pane.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
@@ -49,6 +51,7 @@ public class LoginMainController implements Initializable {
     public void actionLogin(ActionEvent event) {
         username = usernameBox.getText();
         password = passwordBox.getText();
+        messBox.setText("");
 
         // check valid
         if (!checkValid()) return;
@@ -72,8 +75,8 @@ public class LoginMainController implements Initializable {
     public boolean checkValid() {
         if (!ViewHandler.checkStringGeneral(usernameBox.getText()) ||
                 !ViewHandler.checkStringGeneral(passwordBox.getText())) {
-            loginMessage.setText("Please enter valid username and password!");
-            loginMessage.setTextFill(Color.RED);
+            messBox.setText("Please enter valid username and password!");
+            messBox.setTextFill(Color.RED);
             return false;
         }
 
@@ -82,7 +85,7 @@ public class LoginMainController implements Initializable {
 
     public boolean checkLogin() {
         if (!EntityHandler.logIn(username, password)) {
-            loginMessage.setText("Wrong username or password!");
+            messBox.setText("Wrong username or password!");
             // loginMessage.setTextFill(Color.RED);
             return false;
         }
@@ -91,7 +94,7 @@ public class LoginMainController implements Initializable {
     }
 
     public void toHome() {
-        loginMessage.setText("Signing in...");
+        messBox.setText("Signing in...");
 
         PauseTransition pause = new PauseTransition(Duration.millis(1000));
         pause.setOnFinished(event2 -> {

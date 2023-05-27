@@ -183,7 +183,7 @@ public class EntityHandler {
             itemGameList.remove(item);
 
         // cart
-        currentCart.refreshCart();
+        // currentCart.refreshCart();
     }
 
     static public ArrayList<Item> getItemList() {

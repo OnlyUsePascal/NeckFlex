@@ -43,7 +43,10 @@ public class ItemInfoCartController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (EntityHandler.getCurrentUser().isAdmin()) amountPane.setDisable(true);
+        if (EntityHandler.getCurrentUser().isAdmin()) {
+            amountPane.setDisable(true);
+            ViewHandler.toggleNode(updateCartBtn, false);
+        }
     }
 
     // --- MAIN ---
@@ -93,6 +96,6 @@ public class ItemInfoCartController implements Initializable {
 
         ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
 
-        refreshPage();
+        if (!EntityHandler.getCurrentUser().isAdmin()) refreshPage();
     }
 }

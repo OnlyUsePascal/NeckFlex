@@ -4,6 +4,7 @@ import com.groupproject.controller.component.ItemBoxController;
 import com.groupproject.controller.component.NavBarController;
 import com.groupproject.controller.component.NavBarCustomerController;
 import com.groupproject.controller.component.SidebarController;
+import com.groupproject.controller.page.AdminItemController;
 import com.groupproject.controller.page.HomeController;
 import com.groupproject.controller.page.UserRecordController;
 import com.groupproject.controller.popup.NotiController;
@@ -39,6 +40,7 @@ public class ViewHandler {
     static private SidebarController sidebarController;
     static private UserRecordController userRecordController;
     static private Stage currentStage;
+    static private AdminItemController adminItemController;
 
 
     //=========== CONTROLLER ============
@@ -90,6 +92,14 @@ public class ViewHandler {
         return userRecordController;
     }
 
+    // admin item
+    static public void setAdminItemController(AdminItemController controller) {
+        ViewHandler.adminItemController = controller;
+    }
+
+    static public void refreshTable(){
+        adminItemController.refreshTable();
+    }
 
     //=========== SCENE, PANE, .. ============
     static public Stage getCurrentStage() {

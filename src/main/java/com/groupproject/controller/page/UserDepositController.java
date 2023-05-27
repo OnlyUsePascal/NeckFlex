@@ -27,6 +27,8 @@ public class UserDepositController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        messBox.setText("");
+
         setListener(numberBox);
         setListener(brandBox);
         setListener(amountBox);

@@ -49,7 +49,7 @@ public class ItemInfoUpdateController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         genreBox.getItems().addAll(Arrays.asList(ConstantItem.genreList));
-        // itemInfoGenre.setItems(genreList);
+        messBox.setText("");
     }
 
     // --- MAIN ---
@@ -86,7 +86,7 @@ public class ItemInfoUpdateController implements Initializable {
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             EntityHandler.removeItem(item);
-            ViewHandler.closePopup(event);
+            ViewHandler.refreshTable();
         } else {
             ViewHandler.reOpenPopup(event);
         }

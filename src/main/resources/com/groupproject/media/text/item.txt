@@ -11,5 +11,3 @@ I010-2018|Black Panther|0|4|6|17.92|The Black Panther film series is a cycle of 
 I011-2011|Harry Potter and the Deathly Hallows: Part 2|0|0|3|11.51|Harry Ron and Hermione race against time to destroy the remaining Horcruxes.
 I012-2017|Star Wars: Episode VIII - The Last Jedi|0|1|7|15.9|Rey seeks to learn the ways of the Jedi under Luke Skywalker its remaining member to reinvigorate the Resistance's war against the First Order.
 I013-2018|Jurassic World: Fallen Kingdom|0|2|7|13.55|After a volcano eruption proves to be a threat for the dinosaurs Owen and Claire reach the defunct Jurassic World a theme park to save the animals from extinction.
-I014-2013|Frozen|0|3|2|17.59|Anna sets out on a journey with an iceman Kristoff and his reindeer Sven in order to find her sister Elsa who has the power to convert any object or person into ice.
-I015-2017|Beauty and the Beast|0|4|7|18.45|Belle a village girl embarks on a journey to save her father from a creature that has locked him in his dungeon.

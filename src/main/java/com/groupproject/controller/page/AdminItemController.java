@@ -66,6 +66,8 @@ public class AdminItemController implements Initializable {
         initColumnProperty();
         refreshTable();
 
+        ViewHandler.setAdminItemController(this);
+
     }
 
     // --- MAIN ---
@@ -78,6 +80,7 @@ public class AdminItemController implements Initializable {
 
             // refresh table when closed
             EventHandler<WindowEvent> popupOnClose = event -> {
+                System.out.println("done");
                 refreshTable();
             };
 
@@ -109,7 +112,7 @@ public class AdminItemController implements Initializable {
         new Thread(() -> {
             ObservableList<Item> items = getData();
 
-            // ViewHandler.fakeLoading();
+            ViewHandler.fakeLoading();
 
             Platform.runLater(() -> {
                 tableView.setItems(items);

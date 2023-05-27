@@ -56,6 +56,8 @@ public class ItemInfoAddController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        messBox.setText("");
+
         genreBox.getItems().addAll(Arrays.asList(ConstantItem.genreList));
         genreBox.setValue(ConstantItem.genreList[0]);
 
@@ -162,13 +164,18 @@ public class ItemInfoAddController implements Initializable {
             return false;
         }
 
-        if (ViewHandler.checkStringNumberOnly(year)) {
+        if (!ViewHandler.checkStringNumberOnly(year)) {
             messBox.setText("Year should be a number");
             return false;
         }
 
         if (year.length() != 4){
             messBox.setText("Year should be 4 digits");
+            return false;
+        }
+
+        if (price < 0) {
+            messBox.setText("Price should be positive");
             return false;
         }
 

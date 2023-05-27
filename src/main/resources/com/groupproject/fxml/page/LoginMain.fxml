@@ -58,7 +58,7 @@
                         <Font size="15.0" />
                      </font>
                   </PasswordField>
-                  <Label fx:id="loginMessage" alignment="CENTER" contentDisplay="CENTER" prefHeight="19.0" prefWidth="283.0" styleClass="loginMessage" text="Negative sauna" textAlignment="CENTER" textFill="RED">
+                  <Label fx:id="messBox" alignment="CENTER" contentDisplay="CENTER" prefHeight="19.0" prefWidth="283.0" styleClass="loginMessage" text="Negative sauna" textAlignment="CENTER" textFill="RED">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
