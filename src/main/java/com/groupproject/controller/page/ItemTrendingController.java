@@ -22,19 +22,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ItemTrendingController implements Initializable {
-
-    @FXML
-    private HBox itemTileDvd;
-    @FXML
-    private HBox itemTileRecord;
-    @FXML
-    private HBox itemTileGame;
-    @FXML
-    private ScrollPane itemPageDvd;
-    @FXML
-    private ScrollPane itemPageRecord;
-    @FXML
-    private ScrollPane itemPageGame;
     @FXML
     private VBox tileContainer;
 
@@ -58,6 +45,7 @@ public class ItemTrendingController implements Initializable {
         });
     }
 
+    // --- BACK ---
     public void addItemTile(ConstantItem.ItemCategory category, ArrayList<Item> itemList){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getComponentItemTrendingTile()));

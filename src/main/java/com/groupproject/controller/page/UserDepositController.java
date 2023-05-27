@@ -32,14 +32,7 @@ public class UserDepositController implements Initializable {
         setListener(amountBox);
     }
 
-    public void setListener(Node node) {
-        node.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode().toString().equals("ENTER")) {
-                transfer();
-            }
-        });
-    }
-
+    // --- MAIN ---
     public void transfer() {
         String number = numberBox.getText();
         String brand = brandBox.getText();
@@ -64,7 +57,16 @@ public class UserDepositController implements Initializable {
         } catch (NumberFormatException exception) {
             messBox.setText("Please only use numbers for Amount field.");
         }
-
-
     }
+
+    // --- BACK ---
+    public void setListener(Node node) {
+        node.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode().toString().equals("ENTER")) {
+                transfer();
+            }
+        });
+    }
+
+
 }

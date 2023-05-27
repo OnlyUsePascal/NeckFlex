@@ -46,16 +46,7 @@ public class ItemInfoCartController implements Initializable {
         if (EntityHandler.getCurrentUser().isAdmin()) amountPane.setDisable(true);
     }
 
-    public void refreshPage() {
-        CartDetail cartDetail = EntityHandler.getCartDetail(item);
-        if (cartDetail != null) {
-            quantityBox.setText(String.valueOf(cartDetail.getQuantity()));
-        } else {
-            quantityBox.setText("1");
-            ViewHandler.toggleNode(updateCartBtn, false);
-        }
-    }
-
+    // --- MAIN ---
     public void addToCart(ActionEvent event) {
         int newCartQuantity = Integer.parseInt(quantityBox.getText());
         EntityHandler.addCartDetail(item, newCartQuantity);
@@ -73,6 +64,25 @@ public class ItemInfoCartController implements Initializable {
         ViewHandler.getNoti("Cart updated!", null);
     }
 
+    public void incAmount(ActionEvent e) {
+        quantityBox.setText(Integer.toString(Math.min(Integer.parseInt(quantityBox.getText()) + 1, item.getStock())));
+    }
+
+    public void decAmount(ActionEvent e) {
+        quantityBox.setText(Integer.toString(Math.max(Integer.parseInt(quantityBox.getText()) - 1, 1)));
+    }
+
+    // --- BACK ---
+    public void refreshPage() {
+        CartDetail cartDetail = EntityHandler.getCartDetail(item);
+        if (cartDetail != null) {
+            quantityBox.setText(String.valueOf(cartDetail.getQuantity()));
+        } else {
+            quantityBox.setText("1");
+            ViewHandler.toggleNode(updateCartBtn, false);
+        }
+    }
+
     public void setData(Item _item) {
         item = _item;
         titleBox.setText(item.getTitle());
@@ -84,13 +94,5 @@ public class ItemInfoCartController implements Initializable {
         ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
 
         refreshPage();
-    }
-
-    public void incAmount(ActionEvent e) {
-        quantityBox.setText(Integer.toString(Math.min(Integer.parseInt(quantityBox.getText()) + 1, item.getStock())));
-    }
-
-    public void decAmount(ActionEvent e) {
-        quantityBox.setText(Integer.toString(Math.max(Integer.parseInt(quantityBox.getText()) - 1, 1)));
     }
 }

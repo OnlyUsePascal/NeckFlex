@@ -23,8 +23,6 @@ public class CartDetailController implements Initializable {
     private Label unitPriceBox;
     @FXML
     private Label quantityBox;
-    // @FXML
-    // private Label totalPriceBox;
     @FXML
     private HBox hboxContainer;
     @FXML
@@ -38,15 +36,7 @@ public class CartDetailController implements Initializable {
         AnchorPane.setTopAnchor(hboxContainer, 10.0);
     }
 
-    public void setData(CartDetail cartDetail) {
-        this.cartDetail = cartDetail;
-
-        titleBox.setText(this.cartDetail.getTitle());
-        unitPriceBox.setText("$" + this.cartDetail.getTotalPrice());
-        quantityBox.setText(String.valueOf(this.cartDetail.getQuantity()));
-        ViewHandler.fillShapeWithImage(this.cartDetail.getItem().getImgName(), imgFrame);
-    }
-
+    // --- MAIN ---
     public void updateQuantity(ActionEvent event){
         Button btn = (Button) event.getSource();
         String btnText = btn.getText();
@@ -59,12 +49,22 @@ public class CartDetailController implements Initializable {
         }
     }
 
-    public void setCartController(CartController cartController) {
-        this.cartController = cartController;
-    }
-
     public void removeCartDetail(ActionEvent event){
         EntityHandler.getCart().removeCartDetail(cartDetail);
         cartController.refreshCart();
+    }
+
+    // --- BACK ---
+    public void setData(CartDetail cartDetail) {
+        this.cartDetail = cartDetail;
+
+        titleBox.setText(this.cartDetail.getTitle());
+        unitPriceBox.setText("$" + this.cartDetail.getTotalPrice());
+        quantityBox.setText(String.valueOf(this.cartDetail.getQuantity()));
+        ViewHandler.fillShapeWithImage(this.cartDetail.getItem().getImgName(), imgFrame);
+    }
+
+    public void setCartController(CartController cartController) {
+        this.cartController = cartController;
     }
 }

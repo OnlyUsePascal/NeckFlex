@@ -46,5 +46,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <VBox fx:id="loadingScreen" alignment="CENTER" layoutX="92.0" layoutY="69.0" prefHeight="648.0" prefWidth="1409.0" visible="false">
+         <children>
+            <ImageView fitHeight="92.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../media/image/loading.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

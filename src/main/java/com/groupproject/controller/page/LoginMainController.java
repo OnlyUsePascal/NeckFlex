@@ -45,16 +45,30 @@ public class LoginMainController implements Initializable {
         });
     }
 
+    // --- MAIN ACTIONS ---
     public void actionLogin(ActionEvent event) {
         username = usernameBox.getText();
         password = passwordBox.getText();
 
+        // check valid
         if (!checkValid()) return;
         if (!checkLogin()) return;
 
         toHome();
     }
 
+    public void toLoginRegister(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageRegister()));
+            Scene scene = button.getScene();
+
+            scene.setRoot(loader.load());
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+
+    // --- BACK SIDE ---
     public boolean checkValid() {
         if (!ViewHandler.checkStringGeneral(usernameBox.getText()) ||
                 !ViewHandler.checkStringGeneral(passwordBox.getText())) {
@@ -92,14 +106,5 @@ public class LoginMainController implements Initializable {
         pause.play();
     }
 
-    public void toLoginRegister(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageRegister()));
-            Scene scene = button.getScene();
 
-            scene.setRoot(loader.load());
-        } catch (IOException err) {
-            err.printStackTrace();
-        }
-    }
 }

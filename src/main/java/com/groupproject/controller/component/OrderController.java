@@ -26,11 +26,7 @@ public class OrderController implements Initializable {
     @FXML
     private Button btn;
     @FXML
-    private HBox orderHeader;
-    @FXML
     private VBox loadingScreen;
-    // @FXML
-    // private AnchorPane orderPane;
     @FXML
     private Label dateBox;
 
@@ -42,6 +38,36 @@ public class OrderController implements Initializable {
         orderDetailControllerList = new ArrayList<>();
     }
 
+    // --- MAIN ---
+    public void setCheckBoxAll(ActionEvent event) {
+        CheckBox btn = (CheckBox) event.getSource();
+        boolean status = btn.isSelected();
+
+        for (OrderDetailController orderDetailController : orderDetailControllerList) {
+            orderDetailController.setCheckBox(status);
+        }
+    }
+
+    public void returnItemAll(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Return all items?");
+        alert.setContentText("Are you sure you want to return all items?");
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            int sz = orderDetailControllerList.size();
+            for (int i = sz - 1; i >= 0; i--) {
+                if (orderDetailControllerList.get(i).getCheckBox()) {
+                    orderDetailControllerList.get(i).returnItemMulti();
+                    orderDetailControllerList.remove(i);
+                }
+            }
+
+            ViewHandler.getUserRecordController().refreshPage();
+        }
+    }
+
+    // --- BACK ---
     public void setData(Order order, boolean isReturned) {
         //init
         this.order = order;
@@ -54,7 +80,7 @@ public class OrderController implements Initializable {
         new Thread(() -> {
             ArrayList<Node> orderDetailPaneList = getOrderDetailPaneList(order, isReturned);
 
-            ViewHandler.fakeLoading();
+            // ViewHandler.fakeLoading();
 
             //add to order pane
             Platform.runLater(() -> {
@@ -118,33 +144,4 @@ public class OrderController implements Initializable {
             return null;
         }
     }
-
-    public void setCheckBoxAll(ActionEvent event) {
-        CheckBox btn = (CheckBox) event.getSource();
-        boolean status = btn.isSelected();
-
-        for (OrderDetailController orderDetailController : orderDetailControllerList) {
-            orderDetailController.setCheckBox(status);
-        }
-    }
-
-    public void returnItemAll(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Return all items?");
-        alert.setContentText("Are you sure you want to return all items?");
-
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            int sz = orderDetailControllerList.size();
-            for (int i = sz - 1; i >= 0; i--) {
-                if (orderDetailControllerList.get(i).getCheckBox()) {
-                    orderDetailControllerList.get(i).returnItemMulti();
-                    orderDetailControllerList.remove(i);
-                }
-            }
-
-            ViewHandler.getUserRecordController().refreshPage();
-        }
-    }
-
 }

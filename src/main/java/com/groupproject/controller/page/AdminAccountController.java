@@ -62,64 +62,7 @@ public class AdminAccountController implements Initializable {
         refreshTable();
     }
 
-    public void initFilter(){
-        typeList.getItems().addAll(Arrays.asList(ConstantAccount.statusList));
-        typeList.getItems().add(optionAny);
-        typeList.setValue(optionAny);
-    }
-
-    public void initColumnProperty(){
-        idColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("id"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("username"));
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("firstName"));
-        rewardPointsColumn.setCellValueFactory(new PropertyValueFactory<Account, Double>("lastName"));
-
-        //account type
-        accountTypeColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Account, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Account, String> accountStringCellDataFeatures) {
-                Account account = accountStringCellDataFeatures.getValue();
-                return new SimpleObjectProperty<>(account.getStatusString());
-            }
-        });
-
-        //image
-        imageColumn.setStyle("-fx-alignment: center;");
-        imageColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Account, ImageView>, ObservableValue<ImageView>>() {
-            @Override
-            public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Account, ImageView> itemImageViewCellDataFeatures) {
-                Image img = ViewHandler.getImage(PathHandler.getMediaImageMagnifyGlass());
-                ImageView imageView = new ImageView(img);
-                imageView.setFitWidth(25);
-                imageView.setFitHeight(25);
-                return new SimpleObjectProperty<ImageView>(imageView);
-            }
-        });
-
-        imageColumn.setCellFactory(column -> {
-            return new TableCell<Account, ImageView>() {
-                private final ImageView imageView = new ImageView();
-
-                {
-                    imageView.setFitWidth(25);
-                    imageView.setFitHeight(25);
-                    imageView.setMouseTransparent(true);
-                    setGraphic(imageView);
-                }
-
-                @Override
-                protected void updateItem(ImageView imageView, boolean empty) {
-                    super.updateItem(imageView, empty);
-                    this.imageView.setImage((empty || imageView == null) ? null : imageView.getImage());
-                    setOnMouseClicked(event -> {
-                        Account account = getTableView().getItems().get(getIndex());
-                        getPopupUpdate(account);
-                    });
-                }
-            };
-        });
-    }
-
+    // --- MAIN ---
     public void refreshTable(){
         ViewHandler.toggleNode(loadingScreen, true);
 
@@ -136,18 +79,11 @@ public class AdminAccountController implements Initializable {
         }).start();
     }
 
-    public ObservableList<Account> getData() {
-        ObservableList<Account> accounts = FXCollections.observableArrayList();
-        for (Account account : EntityHandler.getAccountList()){
-            boolean legit = true;
-            legit &= filterType(account);
-            legit &= filterSearch(account);
+    public void clearFilter(ActionEvent event){
+        searchField.clear();
+        typeList.setValue(optionAny);
 
-            if (legit){
-                accounts.add(account);
-            }
-        }
-        return accounts;
+        refreshTable();
     }
 
     public void getPopupUpdate(Account account){
@@ -182,6 +118,82 @@ public class AdminAccountController implements Initializable {
         }
     }
 
+    // --- BACK ---
+    public void initFilter(){
+        typeList.getItems().addAll(Arrays.asList(ConstantAccount.statusList));
+        typeList.getItems().add(optionAny);
+        typeList.setValue(optionAny);
+    }
+
+    public void initColumnProperty(){
+        //set column property
+        idColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("id"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("username"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("firstName"));
+        rewardPointsColumn.setCellValueFactory(new PropertyValueFactory<Account, Double>("lastName"));
+
+        //account type
+        accountTypeColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Account, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Account, String> accountStringCellDataFeatures) {
+                Account account = accountStringCellDataFeatures.getValue();
+                return new SimpleObjectProperty<>(account.getStatusString());
+            }
+        });
+
+        //set image column
+        imageColumn.setStyle("-fx-alignment: center;");
+        imageColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Account, ImageView>, ObservableValue<ImageView>>() {
+            @Override
+            public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Account, ImageView> itemImageViewCellDataFeatures) {
+                Image img = ViewHandler.getImage(PathHandler.getMediaImageMagnifyGlass());
+                ImageView imageView = new ImageView(img);
+                imageView.setFitWidth(25);
+                imageView.setFitHeight(25);
+                return new SimpleObjectProperty<ImageView>(imageView);
+            }
+        });
+
+        imageColumn.setCellFactory(column -> {
+            return new TableCell<Account, ImageView>() {
+                private final ImageView imageView = new ImageView();
+
+                {
+                    imageView.setFitWidth(25);
+                    imageView.setFitHeight(25);
+                    imageView.setMouseTransparent(true);
+                    setGraphic(imageView);
+                }
+
+                // get popup when click
+                @Override
+                protected void updateItem(ImageView imageView, boolean empty) {
+                    super.updateItem(imageView, empty);
+                    this.imageView.setImage((empty || imageView == null) ? null : imageView.getImage());
+                    setOnMouseClicked(event -> {
+                        Account account = getTableView().getItems().get(getIndex());
+                        getPopupUpdate(account);
+                    });
+                }
+            };
+        });
+    }
+
+    public ObservableList<Account> getData() {
+        ObservableList<Account> accounts = FXCollections.observableArrayList();
+        for (Account account : EntityHandler.getAccountList()){
+            //check valid
+            boolean legit = true;
+            legit &= filterType(account);
+            legit &= filterSearch(account);
+
+            if (legit){
+                accounts.add(account);
+            }
+        }
+        return accounts;
+    }
+
     public boolean filterType(Account account){
         String option = typeList.getValue();
         if (option.equals(optionAny)) return true;
@@ -196,16 +208,4 @@ public class AdminAccountController implements Initializable {
                 ViewHandler.checkStringSimilar(account.getFirstName(), searchKeyword) ||
                 ViewHandler.checkStringSimilar(account.getLastName(), searchKeyword);
     }
-
-    public void clearFilter(ActionEvent event){
-        searchField.clear();
-        typeList.setValue(optionAny);
-
-        refreshTable();
-    }
-
-    public void changePage(ActionEvent event){
-
-    }
-
 }

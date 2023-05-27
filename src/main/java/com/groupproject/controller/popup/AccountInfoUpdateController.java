@@ -48,6 +48,22 @@ public class AccountInfoUpdateController implements Initializable {
 
     }
 
+    // --- MAIN ---
+    public void profileEdit(ActionEvent event) {
+        if (!checkValid()) return;
+
+        // update profile
+        account.setFirstName(firstName);
+        account.setLastName(lastName);
+        account.setPhoneNumber(phoneNumber);
+        account.setAddress(address);
+
+        // back to home
+        returnHome(event);
+    }
+
+
+    // --- BACK ---
     public void setData(Account account) {
         this.account = account;
         displayInfo();
@@ -65,20 +81,6 @@ public class AccountInfoUpdateController implements Initializable {
             balanceBox.setText("$" + ((AccountCustomer) account).getBalance1());
             pointBox.setText("" + ((AccountCustomer) account).getRewardPoint1());
         }
-    }
-
-
-    public void profileEdit(ActionEvent event) {
-        if (!checkValid()) return;
-
-        // update profile
-        account.setFirstName(firstName);
-        account.setLastName(lastName);
-        account.setPhoneNumber(phoneNumber);
-        account.setAddress(address);
-
-        // back to home
-        returnHome(event);
     }
 
     public boolean checkValid() {

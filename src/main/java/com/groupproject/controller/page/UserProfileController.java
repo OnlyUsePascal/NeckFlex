@@ -58,6 +58,23 @@ public class UserProfileController implements Initializable {
         displayInfo();
     }
 
+    // --- MAIN ---
+    public void profileEdit(ActionEvent event) {
+        pwd = pwdBox.getText();
+        pwdConfirm = pwdConfirmBox.getText();
+
+        firstName = firstNameBox.getText();
+        lastName = lastNameBox.getText();
+        phoneNumber = phoneNumberBox.getText(); if (phoneNumber.isBlank()) phoneNumber = blankInput;
+        address = addressBox.getText(); if (address.isBlank()) address = blankInput;
+
+        if (!checkValid()) return;
+
+        updateAccount();
+        returnHome(event);
+    }
+
+    // --- BACK ---
     public void setData(Account account) {
         this.account = account;
         displayInfo();
@@ -75,21 +92,6 @@ public class UserProfileController implements Initializable {
             balanceBox.setText("$" + ((AccountCustomer) account).getBalance1());
             pointBox.setText("" + ((AccountCustomer) account).getRewardPoint1());
         }
-    }
-
-    public void profileEdit(ActionEvent event) {
-        pwd = pwdBox.getText();
-        pwdConfirm = pwdConfirmBox.getText();
-
-        firstName = firstNameBox.getText();
-        lastName = lastNameBox.getText();
-        phoneNumber = phoneNumberBox.getText(); if (phoneNumber.isBlank()) phoneNumber = blankInput;
-        address = addressBox.getText(); if (address.isBlank()) address = blankInput;
-
-        if (!checkValid()) return;
-
-        updateAccount();
-        returnHome(event);
     }
 
     public void updateAccount(){
@@ -134,7 +136,6 @@ public class UserProfileController implements Initializable {
 
         return true;
     }
-
 
     public void returnHome(ActionEvent event) {
         ViewHandler.refreshMenuButtonName();

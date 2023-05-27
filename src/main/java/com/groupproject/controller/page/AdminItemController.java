@@ -68,10 +68,66 @@ public class AdminItemController implements Initializable {
 
     }
 
-    public void changePage(ActionEvent event){
+    // --- MAIN ---
+    public void getPopupUpdate(Item item) {
+        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoUpdate()));
+        try {
+            AnchorPane itemPane = itemLoader.load();
+            ItemInfoUpdateController controller = itemLoader.getController();
+            controller.setData(item);
 
+            // refresh table when closed
+            EventHandler<WindowEvent> popupOnClose = event -> {
+                refreshTable();
+            };
+
+            ViewHandler.getPopup(itemPane, popupOnClose);
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
     }
 
+    public void getPopupCreate() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoAdd()));
+            AnchorPane pane = loader.load();
+
+            // refresh table when closed
+            EventHandler<WindowEvent> popupOnClose = event2 -> {
+                refreshTable();
+            };
+
+            ViewHandler.getPopup(pane, popupOnClose);
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+
+    public void refreshTable() {
+        ViewHandler.toggleNode(loadingScreen,  true);
+
+        new Thread(() -> {
+            ObservableList<Item> items = getData();
+
+            // ViewHandler.fakeLoading();
+
+            Platform.runLater(() -> {
+                tableView.setItems(items);
+                tableView.refresh();
+                ViewHandler.toggleNode(loadingScreen, false);
+            });
+        }).start();
+    }
+
+    public void clearFilter(ActionEvent event) {
+        searchField.clear();
+        genreList.setValue(optionAny);
+        categoryList.setValue(optionAny);
+
+        refreshTable();
+    }
+
+    // --- BACK ---
     public void initFilter() {
         // category
         categoryList.getItems().addAll(Arrays.asList(ConstantItem.categoryList));
@@ -92,6 +148,7 @@ public class AdminItemController implements Initializable {
     }
 
     public void initColumnProperty() {
+        // column property
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         stockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
@@ -138,66 +195,19 @@ public class AdminItemController implements Initializable {
                     setGraphic(imageView);
                 }
 
+                // image clickable
                 @Override
                 protected void updateItem(ImageView imageView, boolean empty) {
                     super.updateItem(imageView, empty);
                     this.imageView.setImage((empty || imageView == null) ? null : imageView.getImage());
                     setOnMouseClicked(event -> {
-                        System.out.println("testing");
+                        // System.out.println("testing");
                         Item item = getTableView().getItems().get(getIndex());
                         getPopupUpdate(item);
                     });
                 }
             };
         });
-    }
-
-    public void getPopupUpdate(Item item) {
-        FXMLLoader itemLoader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoUpdate()));
-        try {
-            AnchorPane itemPane = itemLoader.load();
-            ItemInfoUpdateController controller = itemLoader.getController();
-            controller.setData(item);
-
-            EventHandler<WindowEvent> popupOnClose = event -> {
-                refreshTable();
-            };
-
-            ViewHandler.getPopup(itemPane, popupOnClose);
-        } catch (IOException err) {
-            err.printStackTrace();
-        }
-    }
-
-    public void getPopupCreate() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPopupItemInfoAdd()));
-            AnchorPane pane = loader.load();
-
-            EventHandler<WindowEvent> popupOnClose = event2 -> {
-                refreshTable();
-            };
-
-            ViewHandler.getPopup(pane, popupOnClose);
-        } catch (IOException err) {
-            err.printStackTrace();
-        }
-    }
-
-    public void refreshTable() {
-        ViewHandler.toggleNode(loadingScreen,  true);
-
-        new Thread(() -> {
-            ObservableList<Item> items = getData();
-
-            // ViewHandler.fakeLoading();
-
-            Platform.runLater(() -> {
-                tableView.setItems(items);
-                tableView.refresh();
-                ViewHandler.toggleNode(loadingScreen, false);
-            });
-        }).start();
     }
 
     public ObservableList<Item> getData() {
@@ -232,13 +242,5 @@ public class AdminItemController implements Initializable {
         String option = genreList.getValue();
         if (option.equals(optionAny)) return true;
         return item.getGenreString().equals(option);
-    }
-
-    public void clearFilter(ActionEvent event) {
-        searchField.clear();
-        genreList.setValue(optionAny);
-        categoryList.setValue(optionAny);
-
-        refreshTable();
     }
 }

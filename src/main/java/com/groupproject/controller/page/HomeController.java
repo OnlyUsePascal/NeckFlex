@@ -43,6 +43,7 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ViewHandler.setHomeController(this);
 
+        // init page component
         if (EntityHandler.getCurrentUser().isAdmin()) {
             setPageContent(PathHandler.getPageAdminItem());
         } else {
@@ -52,10 +53,14 @@ public class HomeController implements Initializable {
         setNavBarPane(PathHandler.getComponentNavBar());
     }
 
+    // --- MAIN ---
+
+
+    // --- BACK ---
     public void setSidebar(String url) {
         ViewHandler.setAnchorPane(sidebarPane, url);
 
-        //auto closed
+        //enable auto closed
         sidebarPane.setOnMouseEntered(mouseEvent -> {
             if (!ViewHandler.sideBarIsOpen()) return;
 
@@ -82,7 +87,7 @@ public class HomeController implements Initializable {
             }).start();
         });
 
-        //transition
+        //animation
         double duration = 0.3;
         menuToOpen = new TranslateTransition(Duration.seconds(duration), sidebarPane);
         menuToOpen.setToX(0);
@@ -106,7 +111,6 @@ public class HomeController implements Initializable {
             menuToOpen.play();
         }
     }
-
 
     public void setPageContent(String url) {
         ViewHandler.setAnchorPane(pageContent, url);

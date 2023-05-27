@@ -52,6 +52,47 @@ public class ItemInfoUpdateController implements Initializable {
         // itemInfoGenre.setItems(genreList);
     }
 
+    // --- MAIN ---
+    public void updateItem(ActionEvent event) {
+        if (!checkValid()) return;
+
+        item.setTitle(title);
+        item.setGenre(ConstantItem.genreToIndex(genre));
+        item.setPrice(ViewHandler.getDoubleRound(price));
+        item.setStock(stock);
+        item.setDesc(desc);
+
+        ViewHandler.closePopup(event);
+        ViewHandler.getNoti("Update item successfully", null);
+    }
+
+    public void DecreaseStock() {
+        stockBox.setText(Integer.toString(Math.max(Integer.parseInt(stockBox.getText()) - 1, 0)));
+    }
+
+    public void IncreaseStock() {
+        stockBox.setText(Integer.toString(Integer.parseInt(stockBox.getText()) + 1));
+    }
+
+    public void deleteItem(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Delete item?");
+        alert.setContentText("Are you sure you want to delete this item?");
+
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            EntityHandler.removeItem(item);
+            ViewHandler.closePopup(event);
+        } else {
+            ViewHandler.reOpenPopup(event);
+        }
+    }
+
+    // --- BACK ---
     public void setData(Item _item) {
         item = _item;
 
@@ -70,18 +111,7 @@ public class ItemInfoUpdateController implements Initializable {
         ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
     }
 
-    public void updateItem(ActionEvent event) {
-        if (!checkValid()) return;
 
-        item.setTitle(title);
-        item.setGenre(ConstantItem.genreToIndex(genre));
-        item.setPrice(ViewHandler.getDoubleRound(price));
-        item.setStock(stock);
-        item.setDesc(desc);
-
-        ViewHandler.closePopup(event);
-        ViewHandler.getNoti("Update item successfully", null);
-    }
 
     public boolean checkValid() {
         title = titleBox.getText();
@@ -133,32 +163,4 @@ public class ItemInfoUpdateController implements Initializable {
         }
         return true;
     }
-
-    public void DecreaseStock() {
-        stockBox.setText(Integer.toString(Math.max(Integer.parseInt(stockBox.getText()) - 1, 0)));
-    }
-
-    public void IncreaseStock() {
-        stockBox.setText(Integer.toString(Integer.parseInt(stockBox.getText()) + 1));
-    }
-
-    public void deleteItem(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Delete item?");
-        alert.setContentText("Are you sure you want to delete this item?");
-
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.setAlwaysOnTop(true);
-        stage.toFront();
-
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            EntityHandler.removeItem(item);
-            ViewHandler.closePopup(event);
-        } else {
-            ViewHandler.reOpenPopup(event);
-        }
-    }
-
-
 }

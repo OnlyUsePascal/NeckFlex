@@ -45,8 +45,6 @@ public class ItemInfoAddController implements Initializable {
     private Label messBox;
 
     private URI imgPath = null;
-    private ImageView itemRegisterImage;
-
     private String title;
     private String year;
     private double price;
@@ -65,6 +63,7 @@ public class ItemInfoAddController implements Initializable {
         categoryBox.setValue(ConstantItem.categoryList[0]);
     }
 
+    // --- MAIN ---
     public void loadImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         String[] extensions = new String[]{"*.jpg", "*.png"};
@@ -123,6 +122,7 @@ public class ItemInfoAddController implements Initializable {
         }
     }
 
+    // --- BACK ---
     public boolean checkValid() {
         title = titleBox.getText();
         year = yearBox.getText();
@@ -179,6 +179,4 @@ public class ItemInfoAddController implements Initializable {
     public void closePopup(ActionEvent event) {
         ViewHandler.closePopup(event);
     }
-
-
 }

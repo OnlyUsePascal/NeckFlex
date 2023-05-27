@@ -51,6 +51,7 @@ public class AccountInfoAddController implements Initializable {
         typeList.setValue(choices[1]);
     }
 
+    // --- MAIN ---
     public void createAccount(ActionEvent event) {
         if (!checkValid()) return;
 
@@ -63,6 +64,7 @@ public class AccountInfoAddController implements Initializable {
 
     }
 
+    // --- BACK ---
     public boolean checkValid() {
         username = usernameBox.getText();
         pwd = pwdBox.getText();

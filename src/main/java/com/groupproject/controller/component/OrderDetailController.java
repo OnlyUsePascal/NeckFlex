@@ -32,8 +32,23 @@ public class OrderDetailController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkBox.setSelected(true);
     }
 
+    // --- MAIN ---
+    public void returnItem(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Return your item?");
+        alert.setContentText("Are you sure you want to return this item?");
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            orderDetail.setReturned();
+        }
+        ViewHandler.getUserRecordController().refreshPage();
+    }
+
+    // --- BACK ---
     public void setData(OrderDetail orderDetail) {
         this.orderDetail = orderDetail;
 
@@ -50,18 +65,6 @@ public class OrderDetailController implements Initializable {
             checkBox.setDisable(true);
             amountBox.setText("Rented: " + orderDetail.getQuantity());
         }
-    }
-
-    public void returnItem(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Return your item?");
-        alert.setContentText("Are you sure you want to return this item?");
-
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            orderDetail.setReturned();
-        }
-        ViewHandler.getUserRecordController().refreshPage();
     }
 
     public void returnItemMulti() {

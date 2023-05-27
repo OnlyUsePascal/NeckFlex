@@ -43,6 +43,7 @@ public class ItemTrendingTileController implements Initializable {
         ViewHandler.lockHorizonScroll(scrollPane);
     }
 
+    // --- MAIN ---
     public void moveItemTile(ActionEvent event) {
         if (container.getChildren().isEmpty()) return;
         double offset = ((Button) container.getChildren().get(0)).getWidth() * moveSz + container.getSpacing();
@@ -61,6 +62,7 @@ public class ItemTrendingTileController implements Initializable {
         moveTileAnimation.play();
     }
 
+    // --- BACK ---
     public void setData(ConstantItem.ItemCategory category, ArrayList<Item> itemList) {
         title.setText(category.toString());
         ViewHandler.toggleNode(loadingScreen, true);

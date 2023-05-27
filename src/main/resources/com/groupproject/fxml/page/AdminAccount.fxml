@@ -47,38 +47,9 @@
                                  </children>
                               </HBox>
                               <AnchorPane prefHeight="50.0" prefWidth="215.0" />
-                              <HBox alignment="CENTER" prefHeight="28.0">
+                              <HBox alignment="CENTER" prefHeight="28.0" visible="false">
                                  <children>
                                     <Label prefHeight="34.0" prefWidth="139.0" text="Page" />
-                                    <Button fx:id="pagePrev" mnemonicParsing="false" onAction="#changePage" prefHeight="41.0" prefWidth="35.0" stylesheets="@../../style.css">
-                                       <graphic>
-                                          <ImageView blendMode="DIFFERENCE" fitHeight="26.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../media/image/chevron-left-solid.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                    <Label fx:id="pageIndex" text="1">
-                                       <font>
-                                          <Font size="22.0" />
-                                       </font>
-                                    </Label>
-                                    <Button fx:id="pageNext" mnemonicParsing="false" onAction="#changePage" prefHeight="34.0" prefWidth="35.0" stylesheets="@../../style.css">
-                                       <graphic>
-                                          <ImageView blendMode="DIFFERENCE" fitHeight="26.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../media/image/chevron-right-solid.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
                                  </children>
                                  <VBox.margin>
                                     <Insets right="-10.0" />

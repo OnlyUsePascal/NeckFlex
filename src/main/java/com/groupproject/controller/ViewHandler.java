@@ -134,11 +134,6 @@ public class ViewHandler {
         popup.setX(x);
         popup.setY(y);
 
-        // System.out.println(window.getX() + " " + window.getY() + " " + window.getWidth() + " " + window.getHeight());
-        // System.out.println(pane.getWidth() + " " + pane.getHeight());
-        // System.out.println(stage.getScene().getWidth());
-        // System.out.println(popup.getWidth());
-        // System.out.println(x + " " + y);
         return popup;
     }
 
@@ -153,14 +148,14 @@ public class ViewHandler {
             NotiController notiController = loader.getController();
 
             notiController.setText(text);
+
+            // position
             double offset = 10;
             notiPane.setLayoutX(curRoot.getPrefWidth() - notiPane.getPrefWidth() - offset);
             notiPane.setLayoutY(offset);
-            // notiPane.setOpacity(0);
 
+            // show -> hold -> fade
             curRoot.getChildren().add(notiPane);
-
-            // long sleepTime = 3000;
             new Thread(() -> {
                 Platform.runLater(() -> {
                     toggleFadeNode(notiPane, true);
@@ -191,16 +186,6 @@ public class ViewHandler {
             err.printStackTrace();
         }
     }
-
-    static public void setScene(Scene scene, String url) {
-        FXMLLoader loader = new FXMLLoader(ViewHandler.class.getResource(url));
-        try {
-            scene.setRoot(loader.load());
-        } catch (IOException err) {
-            err.printStackTrace();
-        }
-    }
-
 
     //=========== NODE ============
     static public void fakeLoading() {
@@ -280,10 +265,6 @@ public class ViewHandler {
         });
     }
 
-    static public AnchorPane getCurrentRoot() {
-        return (AnchorPane) getCurrentStage().getScene().getRoot();
-    }
-
     //=========== FILE ============
     static public File getFile(String url) {
         System.out.println(url);
@@ -300,16 +281,6 @@ public class ViewHandler {
         try {
             String url = PathHandler.getMediaImage(imgName);
             Image img = new Image(ViewHandler.class.getResourceAsStream(PathHandler.getMediaImage(imgName)));
-            return img;
-        } catch (Exception err) {
-            err.printStackTrace();
-            return null;
-        }
-    }
-
-    static public Image getImageItem(String imgName) {
-        try {
-            Image img = new Image(ViewHandler.class.getResourceAsStream(PathHandler.getMediaImageItem(imgName)));
             return img;
         } catch (Exception err) {
             err.printStackTrace();
@@ -338,17 +309,6 @@ public class ViewHandler {
         ImagePattern imgView = new ImagePattern(img);
         frame.setFill(imgView);
     }
-
-    static public void deleteItemImage(String imgName) {
-        String url = PathHandler.getFileImageItem(imgName);
-        Path path = Paths.get(url);
-        try {
-            Files.delete(path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     //=========== STRING, NUMBER ============
     static public boolean checkStringCharacterOnly(String str) {

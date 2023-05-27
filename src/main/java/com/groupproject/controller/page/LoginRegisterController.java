@@ -53,6 +53,7 @@ public class LoginRegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
+    // --- MAIN ACTIONS ---
     public void actionSignUp(ActionEvent event) {
 
 
@@ -78,6 +79,20 @@ public class LoginRegisterController implements Initializable {
         }).start();
     }
 
+    public void toLoginMain(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageLoginMain()));
+            Scene scene = ((Node) event.getSource()).getScene();
+            AnchorPane loginMainContainer = loader.load();
+
+            scene.setRoot(loginMainContainer);
+            loginContainer = loginMainContainer;
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+
+    // --- BACK SIDE ---
     public boolean checkValid() {
         username = usernameBox.getText();
         pwd = pwdBox.getText();
@@ -140,18 +155,4 @@ public class LoginRegisterController implements Initializable {
 
         return true;
     }
-
-    public void toLoginMain(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathHandler.getPageLoginMain()));
-            Scene scene = ((Node) event.getSource()).getScene();
-            AnchorPane loginMainContainer = loader.load();
-
-            scene.setRoot(loginMainContainer);
-            loginContainer = loginMainContainer;
-        } catch (IOException err) {
-            err.printStackTrace();
-        }
-    }
-
 }
