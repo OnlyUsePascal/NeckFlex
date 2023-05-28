@@ -14,7 +14,7 @@ public class OrderDetail {
     private Order order;
 
     public OrderDetail(CartDetail cartDetail) { // new
-        this.item = EntityHandler.getCopyItem(cartDetail.getItem());
+        this.item = Item.getCopyItem(cartDetail.getItem());
         this.quantity = cartDetail.getQuantity();
         this.price = ViewHandler.getDoubleRound(cartDetail.getTotalPrice());
         this.isReturned = false;

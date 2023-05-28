@@ -57,7 +57,62 @@ public abstract class Item {
         this.desc = desc;
     }
 
+    static public Item getRestoreItem(ArrayList<String> infoList) {
+        int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
+        switch (category) {
+            case 0 -> {
+                return new ItemDvd(infoList);
+            }
+            case 1 -> {
+                return new ItemRecord(infoList);
+            }
+            case 2 -> {
+                return new ItemGame(infoList);
+            }
+        }
+        return null;
+    }
 
+    static public Item getNewItem(String title, int category,
+                                  int genre, int stock,
+                                  String year, double price, String desc){
+        switch (category) {
+            case 0 -> {
+                return new ItemDvd(title, category, genre, stock, year, price, desc);
+            }
+            case 1 -> {
+                return new ItemRecord(title, category, genre, stock, year, price, desc);
+            }
+            case 2 -> {
+                return new ItemGame(title, category, genre, stock, year, price, desc);
+            }
+        }
+        return null;
+    }
+
+    static public Item getCopyItem(Item item) {
+        int category = item.getCategory();
+        switch (category) {
+            case 0 -> {
+                return new ItemDvd(item.getId(), item.getTitle(),
+                        item.getCategory(), item.getGenre(),
+                        item.getStock(), item.getPrice(), item.getDesc());
+            }
+            case 1 -> {
+                return new ItemRecord(item.getId(), item.getTitle(),
+                        item.getCategory(), item.getGenre(),
+                        item.getStock(), item.getPrice(), item.getDesc());
+            }
+            case 2 -> {
+                return new ItemGame(item.getId(), item.getTitle(),
+                        item.getCategory(), item.getGenre(),
+                        item.getStock(), item.getPrice(), item.getDesc());
+            }
+        }
+        return null;
+    }
+
+    // --- GET ---
     public static String getIdFromYear(String year) {
         DecimalFormat df = new DecimalFormat("000");
         String code = df.format(genericIdOrder);
@@ -68,16 +123,6 @@ public abstract class Item {
     public static String getYearFromId(String id) {
         return id.substring(id.length() - 4);
     }
-
-    public static void updateGenericId(String itemId){
-        int curIdOrder = Integer.parseInt(itemId.substring(1,4));
-        if (curIdOrder >= genericIdOrder) {
-            genericIdOrder = curIdOrder + 1;
-        }
-
-        System.out.println("genId:" + genericIdOrder);
-    }
-
 
     public String getImgName(){
         return id + ".png";
@@ -127,6 +172,15 @@ public abstract class Item {
         return desc;
     }
 
+    // --- SET ---
+    public static void updateGenericId(String itemId){
+        int curIdOrder = Integer.parseInt(itemId.substring(1,4));
+        if (curIdOrder >= genericIdOrder) {
+            genericIdOrder = curIdOrder + 1;
+        }
+
+        System.out.println("genId:" + genericIdOrder);
+    }
 
     public void setTitle(String title) {
         this.title = title;

@@ -194,7 +194,7 @@ public class DataHandler {
             itemInfoList.add(st.nextToken());
         }
 
-        return EntityHandler.getRestoreItem(itemInfoList);
+        return Item.getRestoreItem(itemInfoList);
     }
 
     public static void getBank(){

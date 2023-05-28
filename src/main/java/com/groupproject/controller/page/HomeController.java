@@ -43,15 +43,14 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ViewHandler.setHomeController(this);
 
-        // init page component
+        setSidebar(PathHandler.getComponentSidebar());
+        setNavBarPane(PathHandler.getComponentNavBar());
         if (EntityHandler.getCurrentUser().isAdmin()) {
             setPageContent(PathHandler.getPageAdminItem());
         } else {
             setPageContent(PathHandler.getPageItemTrending());
             // setPageContent(PathHandler.getPageItemAll());
         }
-        setSidebar(PathHandler.getComponentSidebar());
-        setNavBarPane(PathHandler.getComponentNavBar());
     }
 
     // --- MAIN ---

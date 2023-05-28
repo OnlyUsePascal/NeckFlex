@@ -92,7 +92,7 @@ public class ItemInfoAddController implements Initializable {
     public void addItem(ActionEvent event) {
         if (!checkValid()) return;
 
-        Item item = EntityHandler.getNewItem(title, ConstantItem.categoryToIndex(category),
+        Item item = Item.getNewItem(title, ConstantItem.categoryToIndex(category),
                 ConstantItem.genreToIndex(genre), stock,
                 year, price, desc);
         EntityHandler.addItem(item);

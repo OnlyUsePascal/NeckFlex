@@ -92,7 +92,7 @@ public class EntityHandler {
 
     //===================== ITEM ======================
     static public void restoreItem(ArrayList<String> infoList) {
-        Item item = getRestoreItem(infoList);
+        Item item = Item.getRestoreItem(infoList);
         addItem(item);
     }
 
@@ -108,61 +108,6 @@ public class EntityHandler {
 
         System.out.println("Item added:" + item);
         Item.updateGenericId(item.getId());
-    }
-
-    static public Item getRestoreItem(ArrayList<String> infoList) {
-        int category = Integer.parseInt(infoList.get(ConstantItem.ItemInfo.CATEGORY.ordinal()));
-        switch (category) {
-            case 0 -> {
-                return new ItemDvd(infoList);
-            }
-            case 1 -> {
-                return new ItemRecord(infoList);
-            }
-            case 2 -> {
-                return new ItemGame(infoList);
-            }
-        }
-        return null;
-    }
-
-    static public Item getNewItem(String title, int category,
-                                  int genre, int stock,
-                                  String year, double price, String desc){
-        switch (category) {
-            case 0 -> {
-                return new ItemDvd(title, category, genre, stock, year, price, desc);
-            }
-            case 1 -> {
-                return new ItemRecord(title, category, genre, stock, year, price, desc);
-            }
-            case 2 -> {
-                return new ItemGame(title, category, genre, stock, year, price, desc);
-            }
-        }
-        return null;
-    }
-
-    static public Item getCopyItem(Item item) {
-        int category = item.getCategory();
-        switch (category) {
-            case 0 -> {
-                return new ItemDvd(item.getId(), item.getTitle(),
-                        item.getCategory(), item.getGenre(),
-                        item.getStock(), item.getPrice(), item.getDesc());
-            }
-            case 1 -> {
-                return new ItemRecord(item.getId(), item.getTitle(),
-                        item.getCategory(), item.getGenre(),
-                        item.getStock(), item.getPrice(), item.getDesc());
-            }
-            case 2 -> {
-                return new ItemGame(item.getId(), item.getTitle(),
-                        item.getCategory(), item.getGenre(),
-                        item.getStock(), item.getPrice(), item.getDesc());
-            }
-        }
-        return null;
     }
 
     static public Item findItem(String id){
@@ -182,9 +127,6 @@ public class EntityHandler {
             itemRecordList.remove(item);
         else if (item instanceof ItemGame)
             itemGameList.remove(item);
-
-        // cart
-        // currentCart.refreshCart();
     }
 
     static public ArrayList<Item> getItemList() {
