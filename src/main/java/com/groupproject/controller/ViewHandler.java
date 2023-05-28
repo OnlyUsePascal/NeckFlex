@@ -334,7 +334,7 @@ public class ViewHandler {
     static public boolean checkStringGeneral(String str) {
         return !str.contains("|") && str.length() != 0
                 && !str.contains("~") && !str.contains("@")
-                && !str.contains("/");
+                && !str.contains("#");
     }
 
     static public double getDoubleRound(double num) {

@@ -1,0 +1,42 @@
+----- Contribution Information -----
+| Name                  | Student_Id  | Individual Contribution (%) |
+| --------------------- | ----------- | --------------------------- |
+| Pham Xuan Dat         | s3927188    | 25%                         |
+| Nguyen Dang Huan      | s3927467    | 25%                         |
+| Truong Vo Thien Nhan  | s3929215    | 25%                         |
+| Pavel Potemkin        | s3963284    | 25%                         |
+
+----- Project Brief -----
+* Save file sample
++ Location: "src/main/resources/com/groupproject/media/text/"
+item.txt
+account.txt
+bank.txt
+cart.txt
+order.txt
+
+* Account Sample
+
+* GitHub Repo
+
+* Shopping & Renting rules:
+- Cart & Payment:
+    - Status Privilege
+        Guest:
+        + Maximum amount for renting: 2 items.
+        + Available renting duration: 2 days.
+
+        Regular:
+        + Unlimited amount of renting items.
+        + Can rent items up to 1 week.
+
+        VIP:
+        + Can checkout with reward points, with the cost of 10 points/item.
+
+    - How to upgrade my status?
+        + Just remember to return your items on time
+
+- Renting
+    + User will get awarded with credit points when they return their items on time.
+    + The more points accumulated, the higher chance a user will be upgraded to higher status.
+

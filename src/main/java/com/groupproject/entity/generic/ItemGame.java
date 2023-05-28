@@ -11,12 +11,12 @@ public class ItemGame extends Item{
     }
 
     //copy
-    public ItemGame(String id, String title, int category, int genre, int stock, double price) {
-        super(id, title, category, genre, stock, price);
+    public ItemGame(String id, String title, int category, int genre, int stock, double price, String desc) {
+        super(id, title, category, genre, stock, price, desc);
     }
 
     //get new
-    public ItemGame(String title, int category, int genre, int stock, String year, double price) {
-        super(title, category, genre, stock, year, price);
+    public ItemGame(String title, int category, int genre, int stock, String year, double price, String desc) {
+        super(title, category, genre, stock, year, price, desc);
     }
 }

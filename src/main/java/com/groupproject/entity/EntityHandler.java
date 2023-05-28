@@ -106,6 +106,7 @@ public class EntityHandler {
         else if (item instanceof ItemGame)
             itemGameList.add(item);
 
+        System.out.println("Item added:" + item);
         Item.updateGenericId(item.getId());
     }
 
@@ -127,16 +128,16 @@ public class EntityHandler {
 
     static public Item getNewItem(String title, int category,
                                   int genre, int stock,
-                                  String year, double price){
+                                  String year, double price, String desc){
         switch (category) {
             case 0 -> {
-                return new ItemDvd(title, category, genre, stock, year, price);
+                return new ItemDvd(title, category, genre, stock, year, price, desc);
             }
             case 1 -> {
-                return new ItemRecord(title, category, genre, stock, year, price);
+                return new ItemRecord(title, category, genre, stock, year, price, desc);
             }
             case 2 -> {
-                return new ItemGame(title, category, genre, stock, year, price);
+                return new ItemGame(title, category, genre, stock, year, price, desc);
             }
         }
         return null;
@@ -148,17 +149,17 @@ public class EntityHandler {
             case 0 -> {
                 return new ItemDvd(item.getId(), item.getTitle(),
                         item.getCategory(), item.getGenre(),
-                        item.getStock(), item.getPrice());
+                        item.getStock(), item.getPrice(), item.getDesc());
             }
             case 1 -> {
                 return new ItemRecord(item.getId(), item.getTitle(),
                         item.getCategory(), item.getGenre(),
-                        item.getStock(), item.getPrice());
+                        item.getStock(), item.getPrice(), item.getDesc());
             }
             case 2 -> {
                 return new ItemGame(item.getId(), item.getTitle(),
                         item.getCategory(), item.getGenre(),
-                        item.getStock(), item.getPrice());
+                        item.getStock(), item.getPrice(), item.getDesc());
             }
         }
         return null;

@@ -1,13 +1,110 @@
-I001-2018|Avengers: Infinity War|0|0|1|11.55|Avengers must stop Thanos an intergalactic warlord from getting his hands on all the infinity stones.
+I001-2018|Avengers: Infinity War|0|0|1|11.55|The Avengers must stop Thanos an intergalactic warlord from getting his hands on all the infinity stones.
 I002-2021|Spider-Man: No Way Home|0|1|2|14.71|Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker
-I003-2015|Jurassic World|0|2|13|19.66|A theme park showcasing genetically-engineered dinosaurs turns into a nightmare for its tourists when one of the dinosaurs escapes its enclosure.
+I003-2015|Jurassic World|0|2|9|19.66|A theme park showcasing genetically-engineered dinosaurs turns into a nightmare for its tourists when one of the dinosaurs escapes its enclosure.
 I004-2019|The Lion King|0|3|2|11.36|As a cub Simba is forced to leave the Pride Lands after his father Mufasa is murdered by his wicked uncle Scar.
-I005-2012|The Avengers|0|4|8|16.77|Nick Fury is compelled to launch the Avengers Initiative when Loki poses a threat to planet Earth.
+I005-2012|The Avengers|0|4|7|16.77|Nick Fury is compelled to launch the Avengers Initiative when Loki poses a threat to planet Earth.
 I006-2015|Furious 7|0|0|6|16.21|Dominic and his family are caught in a quagmire when Shaw's brother seeks bloody revenge.
 I007-2022|Top Gun: Maverick|0|1|5|16.57|"Pete ""Maverick"" Mitchell is where he belongs pushing the envelope as a courageous test pilot"
 I008-2019|Frozen II|0|2|7|15.77|Queen Elsa begins to hear a mysterious melodic voice calling to her. Unsettled she answers it thus awakening the elemental spirits
-I009-2015|Avengers: Age of Ultron|0|3|10|19.12|Tony Stark builds an artificial intelligence system named Ultron with the help of Bruce Banner.
+I009-2015|Avengers: Age of Ultron|0|3|8|19.12|Tony Stark builds an artificial intelligence system named Ultron with the help of Bruce Banner.
 I010-2018|Black Panther|0|4|6|17.92|The Black Panther film series is a cycle of films set in the Marvel Cinematic Universe focusing on the fictitious Kingdom of Wakanda.
 I011-2011|Harry Potter and the Deathly Hallows: Part 2|0|0|3|11.51|Harry Ron and Hermione race against time to destroy the remaining Horcruxes.
 I012-2017|Star Wars: Episode VIII - The Last Jedi|0|1|7|15.9|Rey seeks to learn the ways of the Jedi under Luke Skywalker its remaining member to reinvigorate the Resistance's war against the First Order.
 I013-2018|Jurassic World: Fallen Kingdom|0|2|7|13.55|After a volcano eruption proves to be a threat for the dinosaurs Owen and Claire reach the defunct Jurassic World a theme park to save the animals from extinction.
+I014-2013|Frozen|0|3|2|17.59|Anna sets out on a journey with an iceman Kristoff and his reindeer Sven in order to find her sister Elsa who has the power to convert any object or person into ice.
+I015-2017|Beauty and the Beast|0|4|7|18.45|Belle a village girl embarks on a journey to save her father from a creature that has locked him in his dungeon.
+I016-2018|Incredibles 2|0|0|9|16.58|Entrusted with a task to restore public faith in superheroes Helen sets off on a mission to catch a supervillain while Bob faces the challenges of stay-at-home parenting.
+I017-2017|The Fate of the Furious|0|1|7|14.52|Dom encounters a mysterious woman Cipher who gets him involved in the world of terrorism.
+I018-2013|Iron Man 3|0|2|5|10.53|Tony Stark encounters a formidable foe called the Mandarin. After failing to defeat his enemy Tony embarks on a journey of self-discovery
+I019-2015|Minions|0|3|8|15.95|Minions Kevin Stuart and Bob decide to find a new master
+I020-2016|Captain America: Civil War|0|4|2|17.1|Friction arises between the Avengers when one group supports the government's decision to implement a law to control their powers
+I021-2018|Aquaman|0|0|6|13.64|Half-human half-Atlantean Arthur is born with the ability to communicate with marine creatures.
+I022-2003|The Lord of the Rings: The Return of the King|0|1|4|14.63|The former Fellowship members prepare for the final battle. While Frodo and Sam approach Mount Doom to destroy the One Ring
+I023-2012|Skyfall|0|2|7|11.11|An ex-MI6 agent steals a hard drive with top-secret information to carry out a vendetta on Bond's overseer M. Bond must face his past in a bid to try and save M.
+I024-2019|Spider-Man: Far from Home|0|3|2|15.29|Peter Parker the beloved superhero Spider-Man faces four destructive elemental monsters while on holiday in Europe.
+I025-2019|Captain Marvel|0|4|4|12.39|Carol Danvers becomes one of the universe's most powerful heroes when Earth is caught in the middle of a galactic war between two alien races.
+I026-2011|Transformers: Dark of the Moon|0|0|1|13.08|Sam Witwicky and the Autobots must unravel the secrets of a Cybertronian spacecraft hidden on the Moon before the Decepticons can use it for their own evil schemes.
+I027-1993|Jurassic Park|0|1|2|15.61|A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids
+I028-2014|Transformers: Age of Extinction|0|2|8|18.5|The Autobots a faction of robots from the planet Cybertron are hunted down by an elite CIA black ops unit
+I029-2012|The Dark Knight Rises|0|3|0|15.63|Bane an imposing terrorist attacks Gotham City and disrupts its eight-year-long period of peace.
+I030-2019|Star Wars: Episode IX - The Rise of Skywalker|0|4|5|10.83|The revival of Emperor Palpatine resurrects the battle between the Resistance and the First Order while the Jedi's legendary conflict with the Sith Lord
+I031-2019|Joker|0|0|5|14.9|Forever alone in a crowd failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City.
+I032-2019|Toy Story 4|0|1|0|16.95|Woody attempts to make Forky a toy suffering from existential crisis realise his importance in the life of Bonnie their owner
+I033-2010|Toy Story 3|0|2|4|14.38|Before Andy leaves for college his toys are mistakenly delivered to a day care centre. Woody convinces the other toys that they were not dumped
+I034-2006|Pirates of the Caribbean: Dead Man's Chest|0|3|1|11.55|Captain Jack Sparrow seeks the heart of Davy Jones a mythical pirate in order to avoid being enslaved to him.
+I035-2016|Rogue One: A Star Wars Story|0|4|5|14.21|Jyn's father is forcibly taken by the Galactic Empire to help them complete the Death Star.
+I036-2019|Aladdin|0|0|4|16.3|A kind-hearted street urchin and a power-hungry Grand Vizier vie for a magic lamp that has the power to make their deepest wishes come true.
+I037-2011|Pirates of the Caribbean: On Stranger Tides|0|1|3|10.39|Captain Jack Sparrow sets sail in search of the legendary fountain of youth. His mission puts him up against a mysterious woman from his past
+I038-2017|Despicable Me 3|0|2|5|16.98|Gru meets his long-lost twin brother Dru after getting fired from the Anti-Villain League.
+I039-2016|Finding Dory|0|3|1|13.23|With vague memories of her past an amnesiac blue tang fish Dory sets off in search of her long-lost parents with Nemo
+I040-1999|Star Wars: Episode I - The Phantom Menace|1|4|7|17.16|Jedi Knights Qui-Gon Jinn and Obi-Wan Kenobi set out to stop the Trade Federation from invading Naboo.
+I041-2016|Zootopia|1|0|6|10.74|When Judy Hopps a rookie officer in the Zootopia Police Department sniffs out a sinister plot she enlists the help of a con artist
+I042-2010|Alice in Wonderland|1|1|9|19.32|Nineteen-year-old Alice returns to the magical world from her childhood adventure where she reunites with her old friends and learns of her true destiny: to end the Red Queen's reign of terror.
+I043-2001|Harry Potter and the Sorcerer's Stone|1|2|8|17.12|Harry Potter an eleven-year-old orphan discovers that he is a wizard and is invited to study at Hogwarts.
+I044-2012|The Hobbit: An Unexpected Journey|1|3|1|18.72|Bilbo Baggins a hobbit is persuaded into accompanying a wizard and a group of dwarves on a journey to reclaim the city of Erebor
+I045-2008|The Dark Knight|1|4|8|18.34|After Gordon Dent and Batman begin an assault on Gotham's organised crime
+I046-2022|Jurassic World: Dominion|1|0|5|10.34|Four years after the destruction of Isla Nublar dinosaurs now live and hunt alongside humans all over the world.
+I047-2017|Jumanji: Welcome to the Jungle|1|1|3|12.96|When four students play with a magical video game they are drawn to the jungle world of Jumanji where they are trapped as their avatars.
+I048-2010|Harry Potter and the Deathly Hallows: Part 1|1|2|0|12.73|After Voldemort takes over the Ministry of Magic Harry Ron and Hermione are forced into hiding.
+I049-2013|Despicable Me 2|1|3|8|12.57|When a new criminal comes to town the Anti-Villain League decides to hire Gru in order to fight him off.
+I050-1994|The Lion King|1|4|7|18.14|As a cub Simba is forced to leave the Pride Lands after his father Mufasa is murdered by his wicked uncle Scar.
+I051-2016|The Jungle Book|1|0|0|19.34|Mowgli is a boy brought up in the jungle by a pack of wolves.
+I052-2014|The Hobbit: The Battle of the Five Armies|1|1|0|11.85|Bilbo fights against a number of enemies to save the life of his Dwarf friends and protects the Lonely Mountain after a conflict arises.
+I053-2007|Pirates of the Caribbean: At World's End|1|2|9|15.25|Captain Barbossa Will Turner and Elizabeth Swann must save Jack Sparrow and form an alliance with the pirates
+I054-2013|The Hobbit: The Desolation of Smaug|1|3|4|13.4|Bilbo Baggins a hobbit and his companions face great dangers on their journey to Laketown
+I055-2022|Doctor Strange in the Multiverse of Madness|1|4|1|11.75|Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses to battle multiple threats
+I056-2002|The Lord of the Rings: The Two Towers|1|0|0|13.22|Frodo and Sam arrive in Mordor with the help of Gollum. A number of new allies join their former companions to defend Isengard as Saruman launches an assault from his domain.
+I057-2007|Harry Potter and the Order of the Phoenix|1|1|0|18.77|Harry Potter and Dumbledore's warning about the return of Lord Voldemort is not heeded by the wizard authorities who in turn
+I058-2003|Finding Nemo|1|2|3|12.32|After his son gets abducted from the Great Barrier Reef and is dispatched to Sydney Marlin a meek clownfish enlists the help
+I059-2022|Minions: The Rise of Gru|1|3|4|17.94|In the 1970s young Gru tries to join a group of supervillains called the Vicious 6 after they oust their leader -- the legendary fighter Wild Knuckles.
+I060-2009|Harry Potter and the Half-Blood Prince|1|4|8|14.17|Dumbledore and Harry Potter learn more about Voldemort's past and his rise to power. Harry stumbles upon an old potion textbook belonging to a person calling himself the Half-Blood Prince.
+I061-2004|Shrek 2|1|0|5|16.89|When Shrek and Fiona return from their honeymoon her parents the rulers of Far Far Away invite them over. But as the king does not like Shrek
+I062-2002|Harry Potter and the Chamber of Secrets|1|1|2|12.69|A house-elf warns Harry against returning to Hogwarts but he decides to ignore it. When students and creatures at the school begin to get petrified
+I063-2018|Bohemian Rhapsody|1|2|5|15.49|With his impeccable vocal abilities Freddie Mercury and his rock band Queen achieve superstardom.
+I064-2023|The Super Mario Bros. Movie|1|3|9|12.12|With help from Princess Peach Mario gets ready to square off against the all-powerful Bowser to stop his plans from conquering the world.
+I065-2021|The Battle at Lake Changjin|1|4|7|14.03|Chinese soldiers won the battle at Lake Changjin (also known as battle of Chosin Reservoir) in extreme weather conditions
+I066-2001|The Lord of the Rings: The Fellowship of the Ring|1|0|5|12.82|A young hobbit Frodo who has found the One Ring that belongs to the Dark Lord Sauron begins his journey with eight companions to Mount Doom
+I067-2005|Harry Potter and the Goblet of Fire|1|1|8|18.53|When Harry gets chosen as the fourth participant in the inter-school Triwizard Tournament he is unwittingly pulled into a dark conspiracy that slowly unveils its dangerous agenda.
+I068-2007|Spider-Man 3|1|2|6|14.62|Peter Parker becomes one with a symbiotic alien that bolsters his Spider-Man avatar and affects his psyche. He also has to deal with Sandman
+I069-2016|The Secret Life of Pets|1|3|7|15.14|Max a pet dog is not very pleased when his master brings home another dog named Duke.
+I070-2009|Ice Age: Dawn of the Dinosaurs|1|4|4|10.51|Manny and Ellie are expecting their first child while Diego plans to move out
+I071-2015|Spectre|1|0|3|11.79|James Bond receives an obscure message from M about a sinister organisation
+I072-2017|Spider-Man: Homecoming|1|1|3|18.79|Peter Parker balances his life as an ordinary high school student in Queens with his superhero alter-ego Spider-Man and finds himself on the trail of a new challenging.
+I073-2012|Ice Age: Continental Drift|1|2|5|16.94|Scrat causes a monumental disaster when his nut chasing leads to a continental drift
+I074-2016|Batman v Superman: Dawn of Justice|1|3|1|10.61|Bruce Wayne a billionaire believes that Superman is a threat to humanity after his battle in Metropolis
+I075-2017|Wolf Warrior 2|1|4|6|17.81|China's deadliest special forces operative settles into a quiet life on the sea but when sadistic mercenaries begin targeting nearby civilians
+I076-2010|Inception|1|0|3|11.76|Cobb steals information from his targets by entering their dreams. Saito offers to wipe clean Cobb's criminal history as payment for performing an inception
+I077-2005|Star Wars: Episode III - Revenge of the Sith|1|1|2|10.85|Anakin joins forces with Obi-Wan and sets Palpatine free from the evil clutches of Count Doku.
+I078-2013|The Hunger Games: Catching Fire|1|2|4|15.33|After Katniss and Peeta's victory sparks hope and possible rebellion from the citizens of Panem the two are targeted by the Capitol that wants to quell the revolution
+I079-2017|Guardians of the Galaxy Vol. 2|1|3|1|17.75|After a successful mission Quill and his team of galactic defenders meet Ego
+I080-2022|Black Panther: Wakanda Forever|1|4|0|14.7|Queen Ramonda Shuri M'Baku Okoye and the Dora Milaje fight to protect their nation from intervening world powers in the wake of King T'Challa's death
+I081-2018|God of War|2|0|1|13.23|God of War is an action-adventure game franchise created by David Jaffe at Sony's Santa Monica Studio. It began in 2005 on the PlayStation 2 video game console
+I082-2018|Red Dead Redemption 2|2|1|2|17.16|The game is the third entry in the Red Dead series and a prequel to the 2010 game Red Dead Redemption.
+I083-2017|Super Mario Odyssey|2|2|9|10.74|Explore incredible places far from the Mushroom Kingdom as you join Mario and his new ally Cappy on a massive globe-trotting 3D adventure.
+I084-2017|The Legend of Zelda: Breath of the Wild|2|3|2|19.32|Set at the end of the Zelda timeline the player controls an amnesiac Link as he sets out to save Princess Zelda and prevent Calamity Ganon from further destroying Hyrule
+I085-2016|Inside|2|4|8|17.12|Hunted and alone a boy finds himself drawn into the center of a dark project. INSIDE is a dark narrative-driven platformer combining intense action with challenging puzzles
+I086-2016|Overwatch|2|0|6|18.72|Overwatch was a 2016 team-based multiplayer first-person shooter game by Blizzard Entertainment.
+I087-2016|Stardew Valley|2|1|5|18.34|Players take the role of a character who inherits their deceased grandfather's dilapidated farm in a place known as Stardew Valley
+I088-2016|Uncharted 4: A Thief's End|2|2|7|10.34|On the hunt for Captain Henry Avery's long-lost treasure Sam and Drake set off to find Libertalia the pirate utopia deep in the forests of Madagascar.
+I089-2015|Bloodborne|2|3|8|12.96|Bloodborne is a third-person action RPG. Just like the Souls games the core mechanic of the game is that it uses death to teach players how to react in perilous  environment.
+I090-2015|Rocket League|2|4|6|12.73|is a vehicular soccer video game developed and published by Psyonix.
+I091-2015|The Witcher 3: Wild Hunt|2|0|3|12.57|You are Geralt of Rivia mercenary monster slayer. Before you stands a war-torn monster-infested continent you can explore at will.
+I092-2015|Undertale|2|1|7|18.14|The player controls a child who has fallen into the Underground: a large secluded region under the surface of the Earth
+I093-2014|Destiny|2|2|7|19.34|an action MMO with a single evolving world that you and your friends can join anytime anywhere absolutely free.
+I094-2014|Hearthstone|2|3|2|11.85|Hearthstone builds upon the existing lore of the Warcraft series by using the same elements characters and relics
+I095-2014|Shovel Knight|2|4|7|15.25|Run jump and battle as Shovel Knight wielder of the Shovel Blade in a quest for his lost beloved. Take down the nefarious knights of the Order of No Quarter
+I096-2013|BioShock Infinite|2|0|9|13.4|is a first-person shooter with role-playing elements. Infinite adapts the gameplay formula of BioShock with weapons powers and upgrades
+I097-2013|Dota 2|2|1|7|11.75|The game is a sequel to Defense of the Ancients a community-created mod for Blizzard Entertainment's Warcraft III: Reign of Chaos
+I098-2013|Grand Theft Auto V|2|2|5|13.22|offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond
+I099-2013|The Last of Us|2|3|8|18.77|Joel and Ellie a pair connected through the harshness of the world they live in are forced to endure brutal circumstances and ruthless killers
+I100-2012|Dishonored|2|4|2|12.32|is an immersive first-person action game that casts you as a supernatural assassin driven by revenge
+I101-2012|Far Cry 3|2|0|6|17.94|is an open world first-person shooter set on an island unlike any other. A place where heavily armed warlords traffic in slaves.
+I102-2012|Fire Emblem: Awakening|2|1|4|14.17|is a Japanese tactical role-playing game for the Nintendo 3DS developed by Intelligent Systems and published by Nintendo
+I103-2012|Hotline Miami|2|2|7|16.89|is a high-octane action game overflowing with raw brutality hard-boiled gunplay and skull crushing close combat.
+I104-2012|Journey|2|3|2|12.69|Explore the ancient mysterious world of Journey as you soar above ruins and glide across sands to discover its secrets.
+I105-2012|The Walking Dead|2|4|4|15.49|is an episodic graphic adventure game series developed and published by Telltale Games and Skybound Games
+I106-2012|XCOM: Enemy Unknown|2|0|1|12.12|"is a 2012 turn-based tactical video game developed by Firaxis Games and published by 2K. The game is a ""reimagined"" remake of the 1994 cult classic strategy game X-COM: UFO Defense"
+I107-2011|Batman: Arkham City|2|1|2|14.03|is a 2011 action-adventure game developed by Rocksteady Studios and published by Warner Bros. Interactive Entertainment.
+I108-2011|Dark Souls|2|2|8|12.82|The series began with the release of Dark Souls and has seen two sequels Dark Souls II and Dark Souls III
+I109-2009|League of Legends|2|3|0|18.53|2009 multiplayer online battle arena video game developed and published by Riot Games. Inspired by Defense of the Ancients a custom map for Warcraft III
+I110-2003|test movie|1|4|1|12.4|Not Available

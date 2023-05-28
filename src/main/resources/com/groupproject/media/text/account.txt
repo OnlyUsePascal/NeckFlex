@@ -1,3 +1,5 @@
-C000|admin|admin|admin|admin|google|01234|0|0|0
-C002|joun|123|dat|sex|N/A|N/A|2|6.65|30
-C003|huan|sexy|huan|huan|lmao|1|1|30.0|0
+C001|admin|admin|admin|admin|google|01234|0|0|0
+C002|joun|123|dat|pham|N/A|N/A|2|49.88|30
+C003|guestAcc|123|guest|account|N/A|N/A|1|66.65|0
+C004|regularAcc|123|regular|account|N/A|N/A|2|66.65|30
+C005|vipAcc|123|vip|account|N/A|N/A|3|66.65|80

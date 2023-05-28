@@ -84,7 +84,7 @@ public class AccountCustomer extends Account {
             status = ConstantAccount.AccountStatus.REGULAR;
             return true;
         } else if (status == ConstantAccount.AccountStatus.REGULAR &&
-                rewardPoint >= 60) {
+                rewardPoint >= 80) {
             status = ConstantAccount.AccountStatus.VIP;
             return false;
         }

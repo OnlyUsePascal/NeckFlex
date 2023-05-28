@@ -9,12 +9,12 @@ public class ItemRecord extends Item{
         super(infoList);
     }
 
-    public ItemRecord(String id, String title, int category, int genre, int stock, double fee) {
-        super(id, title, category, genre, stock, fee);
+    public ItemRecord(String id, String title, int category, int genre, int stock, double fee, String desc) {
+        super(id, title, category, genre, stock, fee, desc);
     }
 
-    public ItemRecord(String title, int category, int genre, int stock, String year, double fee) {
-        super(title, category, genre, stock, year, fee);
+    public ItemRecord(String title, int category, int genre, int stock, String year, double fee, String desc) {
+        super(title, category, genre, stock, year, fee, desc);
     }
 
 }

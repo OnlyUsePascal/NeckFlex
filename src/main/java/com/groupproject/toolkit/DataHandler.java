@@ -74,9 +74,6 @@ public class DataHandler {
                 }
 
                 EntityHandler.restoreItem(infoList);
-                // System.out.println(infoList);
-                // Item newItem = EntityHandler.getRestoreItem(infoList);
-                // EntityHandler.addItem(newItem);
             }
         } catch(FileNotFoundException err){
             err.printStackTrace();
@@ -173,7 +170,7 @@ public class DataHandler {
     }
 
     public static OrderDetail getOrderDetailFromString(String orderDetailInfo){
-        StringTokenizer st = new StringTokenizer(orderDetailInfo, "/");
+        StringTokenizer st = new StringTokenizer(orderDetailInfo, "#");
         ArrayList<String> orderDetailList = new ArrayList<>();
         while (st.hasMoreTokens()) {
             orderDetailList.add(st.nextToken());

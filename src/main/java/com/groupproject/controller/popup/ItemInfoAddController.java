@@ -93,7 +93,8 @@ public class ItemInfoAddController implements Initializable {
         if (!checkValid()) return;
 
         Item item = EntityHandler.getNewItem(title, ConstantItem.categoryToIndex(category),
-                ConstantItem.genreToIndex(genre), stock, year, price);
+                ConstantItem.genreToIndex(genre), stock,
+                year, price, desc);
         EntityHandler.addItem(item);
 
         // copy image

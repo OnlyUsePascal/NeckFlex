@@ -10,7 +10,7 @@
       <VBox alignment="TOP_CENTER" styleClass="globalInstructionPane" stylesheets="@../../style.css">
          <children>
             <Label prefHeight="44.0" text="----- RENTING INSTRUCTION -----" />
-            <TextArea editable="false" prefHeight="75.0" prefWidth="500.0" text="(?) Return item rules:&#10;+ User will get awarded with credit points when returning on time.&#10;+ Otherwise, a $10-penalty will be fined." wrapText="true" />
+            <TextArea editable="false" prefHeight="100.0" prefWidth="500.0" text="(?) Return item rules:&#10;+ User will get awarded with credit points when returning on&#10;+ The more points accumulated, the higher chance a user will be upgraded to higher status." wrapText="true" />
          </children>
       </VBox>
    </children>

@@ -14,7 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ItemAllController implements Initializable {
     @FXML
@@ -48,18 +47,17 @@ public class ItemAllController implements Initializable {
     @Override
     public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
         initFilter();
-        refreshPage();
+        applyFilter();
     }
 
     // --- MAIN ---
-    public void refreshPage() {
+    public void refreshContent() {
         String styleClass = "itemTile";
         pageContainer.getChildren().clear();
         ViewHandler.toggleNode(loadingScreen, true);
 
         new Thread(() -> {
-            refreshData();
-
+            // refreshData();
             ArrayList<HBox> itemRows = new ArrayList<>();
             for (int i = 0; i < rowPerPage; i++) {
                 HBox itemRow = new HBox();
@@ -99,14 +97,19 @@ public class ItemAllController implements Initializable {
             currentPage++;
         }
 
-        refreshPage();
+        refreshContent();
         pageIndex.setText((currentPage + 1) + "");
     }
 
     public void clearFilter() {
         initFilter();
         ViewHandler.clearSearchText();
-        refreshPage();
+        applyFilter();
+    }
+
+    public void applyFilter() {
+        refreshData();
+        refreshContent();
     }
 
     // --- BACK ---
@@ -129,7 +132,11 @@ public class ItemAllController implements Initializable {
     public void refreshLayout() {
         itemCnt = itemsToShow.size();
         pageCnt = itemCnt / pageSize;
+
         currentPage = 0;
+        Platform.runLater(() -> {
+            pageIndex.setText((currentPage + 1) + "");
+        });
     }
 
     public void refreshData() {
@@ -198,8 +205,6 @@ public class ItemAllController implements Initializable {
             }
         });
     }
-
-
 
 
 }

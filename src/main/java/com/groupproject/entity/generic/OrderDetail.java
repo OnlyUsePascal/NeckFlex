@@ -90,8 +90,8 @@ public class OrderDetail {
     public String toString() {
         String orderDetailInfo = "";
 
-        orderDetailInfo += quantity + "/";
-        orderDetailInfo += isReturned + "/";
+        orderDetailInfo += quantity + "#";
+        orderDetailInfo += isReturned + "#";
         orderDetailInfo += item.toString();
 
         return orderDetailInfo;

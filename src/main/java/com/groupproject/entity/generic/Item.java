@@ -16,7 +16,7 @@ public abstract class Item {
     // private int year;
     private String year;
     private double price;
-    private String desc = "Not Available";
+    private String desc;
     static public int genericIdOrder = 1;
 
 
@@ -34,7 +34,7 @@ public abstract class Item {
     }
 
     //copy
-    public Item(String id, String title, int category, int genre, int stock, double price) {
+    public Item(String id, String title, int category, int genre, int stock, double price, String desc) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -42,10 +42,11 @@ public abstract class Item {
         this.stock = stock;
         this.year = getYearFromId(id);
         this.price = price;
+        this.desc = desc;
     }
 
     // get new
-    public Item(String title, int category, int genre, int stock, String year, double price) {
+    public Item(String title, int category, int genre, int stock, String year, double price, String desc) {
         this.id = getIdFromYear(year);
         this.title = title;
         this.category = category;
@@ -53,6 +54,7 @@ public abstract class Item {
         this.stock = stock;
         this.year = year;
         this.price = price;
+        this.desc = desc;
     }
 
 

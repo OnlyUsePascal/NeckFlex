@@ -48,6 +48,7 @@ public class HomeController implements Initializable {
             setPageContent(PathHandler.getPageAdminItem());
         } else {
             setPageContent(PathHandler.getPageItemTrending());
+            // setPageContent(PathHandler.getPageItemAll());
         }
         setSidebar(PathHandler.getComponentSidebar());
         setNavBarPane(PathHandler.getComponentNavBar());

@@ -130,7 +130,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#refreshPage" styleClass="apply" text="Apply">
+                              <Button mnemonicParsing="false" onAction="#applyFilter" styleClass="apply" text="Apply">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
