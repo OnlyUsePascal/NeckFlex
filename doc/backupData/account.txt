@@ -36,7 +36,7 @@ C035|amber856|856|Amber|Rogers|HCM|3607496495|1|232.0|20
 C036|briony878|878|Briony|Nelson|VungTau|5824268590|1|308.0|20
 C037|adele826|826|Adele|Stevens|HCM|4938870085|1|703.0|20
 C038|adison895|895|Adison|Murphy|HaNoi|2497342488|1|312.0|20
-C039|david469|469|David|Owens|BinhDuong|1064121394|2|786.0|20
+C039|david469|469|David|Owen|BinhDuong|1064121394|2|786.0|20
 C040|bruce878|878|Bruce|Stewart|DaNang|5452511671|2|154.0|20
 C041|kirsten372|372|Kirsten|Moore|VungTau|2082181090|2|151.0|20
 C042|hailey561|561|Hailey|Williams|DaNang|3676908085|2|312.0|20
@@ -76,7 +76,7 @@ C075|owen636|636|Owen|Gibson|HCM|8365286741|2|168.0|20
 C076|lily272|272|Lily|Crawford|DaNang|5658505804|2|738.0|20
 C077|leonardo294|294|Leonardo|Bailey|HaNoi|9828834899|2|248.0|20
 C078|victor466|466|Victor|Parker|HCM|7720551309|2|821.0|20
-C079|jasmine334|334|Jasmine|Barnes|HaNoi|9982786688|3|387.0|20
+C079|jasmine334|334|Jasmine|Barnes|HaNoi|9982786688|3|370.23|20
 C080|jessica150|150|Jessica|Johnson|DaNang|9759743479|3|626.0|20
 C081|agata897|897|Agata|Crawford|VungTau|2615015882|3|318.0|20
 C082|samantha124|124|Samantha|Turner|HCM|4209874217|3|755.0|20
@@ -97,5 +97,5 @@ C096|samantha984|984|Samantha|Tucker|HaNoi|5170201350|3|728.0|20
 C097|tess385|385|Tess|Myers|HCM|2426723711|3|568.0|20
 C098|rubie408|408|Rubie|Harris|BinhDuong|4640853089|3|552.0|20
 C099|stuart974|974|Stuart|Miller|HCM|5586144919|3|705.0|20
-C0100|edgar944|944|Edgar|Baker|DaNang|7920611984|3|648.0|20
-C0101|kelvin551|551|Kelvin|Adams|BinhDuong|5148840975|3|341.0|20
+C100|edgar944|944|Edgar|Baker|DaNang|7920611984|3|648.0|20
+C101|kelvin551|551|Kelvin|Adams|BinhDuong|5148840975|3|341.0|20

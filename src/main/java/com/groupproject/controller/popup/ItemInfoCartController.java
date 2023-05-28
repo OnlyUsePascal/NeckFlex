@@ -88,14 +88,19 @@ public class ItemInfoCartController implements Initializable {
 
     public void setData(Item _item) {
         item = _item;
+
         titleBox.setText(item.getTitle());
         genreBox.setText(item.getGenreString());
         stockBox.setText("Stock: " + item.getStock());
         priceBox.setText("$" + item.getPrice());
         descBox.setText(item.getDesc());
-
         ViewHandler.fillShapeWithImage(item.getImgName(), imgFrame);
 
+
+        if (!item.isAvailable()){
+            amountPane.setDisable(true);
+            ViewHandler.toggleNode(updateCartBtn, false);
+        }
         if (!EntityHandler.getCurrentUser().isAdmin()) refreshPage();
     }
 }

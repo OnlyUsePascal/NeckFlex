@@ -59,7 +59,7 @@ public class CartDetailController implements Initializable {
         this.cartDetail = cartDetail;
 
         titleBox.setText(this.cartDetail.getTitle());
-        unitPriceBox.setText("$" + this.cartDetail.getTotalPrice());
+        unitPriceBox.setText("$" + this.cartDetail.getItem().getPrice());
         quantityBox.setText(String.valueOf(this.cartDetail.getQuantity()));
         ViewHandler.fillShapeWithImage(this.cartDetail.getItem().getImgName(), imgFrame);
     }

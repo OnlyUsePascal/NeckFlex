@@ -109,10 +109,6 @@ public class UserProfileController implements Initializable {
 
     public boolean checkValid() {
         // blank
-        if (pwd.isBlank()) {
-            messBox.setText("Password cannot be blank");
-            return false;
-        }
         if (firstName.isBlank()) {
             messBox.setText("First name cannot be blank");
             return false;
@@ -123,9 +119,15 @@ public class UserProfileController implements Initializable {
         }
 
         // valid
-        if (!ViewHandler.checkStringAuth(pwd)) {
-            messBox.setText("Password must only contain letter, number");
-            return false;
+        if (!pwd.isBlank()){
+            if (!ViewHandler.checkStringAuth(pwd)) {
+                messBox.setText("Password must only contain letter, number");
+                return false;
+            }
+            if (!pwd.equals(pwdConfirm)) {
+                messBox.setText("Password doesn't match");
+                return false;
+            }
         }
 
         if (!ViewHandler.checkStringName(firstName)) {
@@ -147,10 +149,7 @@ public class UserProfileController implements Initializable {
         }
 
         // valid 2
-        if (!pwd.equals(pwdConfirm)) {
-            messBox.setText("Password doesn't match");
-            return false;
-        }
+
         return true;
     }
 

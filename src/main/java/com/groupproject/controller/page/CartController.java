@@ -165,5 +165,6 @@ public class CartController implements Initializable {
 
         // button
         payCash.setDisable(cartEmpty);
+        payPoint.setDisable(cartEmpty);
     }
 }
