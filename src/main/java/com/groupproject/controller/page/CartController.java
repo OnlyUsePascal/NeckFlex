@@ -165,6 +165,8 @@ public class CartController implements Initializable {
 
         // button
         payCash.setDisable(cartEmpty);
-        payPoint.setDisable(cartEmpty);
+        if (EntityHandler.getCurrentUser().isVIP()) {
+            payPoint.setDisable(cartEmpty);
+        }
     }
 }
