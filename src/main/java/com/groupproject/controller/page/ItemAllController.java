@@ -189,6 +189,8 @@ public class ItemAllController implements Initializable {
         String sortBy = sortByList.getValue();
         String order = orderList.getValue();
 
+        System.out.println(sortBy + " " + order);
+
         itemList.sort((item1, item2) -> {
             if (sortBy.equals(sortByOptions[0])) {
                 if (order.equals(orderOptions[0])) {
@@ -198,9 +200,9 @@ public class ItemAllController implements Initializable {
                 }
             } else {
                 if (order.equals(orderOptions[0])) {
-                    return (int) (item1.getPrice() - item2.getPrice());
+                    return Double.compare(item1.getPrice(), item2.getPrice());
                 } else {
-                    return (int) (item2.getPrice() - item1.getPrice());
+                    return Double.compare(item2.getPrice(), item1.getPrice());
                 }
             }
         });

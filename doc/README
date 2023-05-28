@@ -8,16 +8,37 @@
 
 ----- Project Brief -----
 * Save file sample
-+ Location: "src/main/resources/com/groupproject/media/text/"
+- Location: "src/main/resources/com/groupproject/media/text/"
+- Back up file location: "doc/backupData"
+- Save files:
 item.txt
 account.txt
 bank.txt
 cart.txt
 order.txt
 
+
 * Account Sample
+- Admin:
++ username:joun123
++ password:123
+
+- Guest:
+steven101
+101
+
+- Regular:
+david469
+469
+
+- VIP:
+jasmine334
+334
+
 
 * GitHub Repo
+- URL: https://github.com/OnlyUsePascal/OOP-Group-Project
+
 
 * Shopping & Renting rules:
 - Cart & Payment:

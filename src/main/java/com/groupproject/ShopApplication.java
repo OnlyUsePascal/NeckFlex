@@ -28,14 +28,14 @@ public class ShopApplication extends Application {
 
     public void initData(){
         DataHandler.getData();
-        EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(1));
+        // EntityHandler.setCurrentUser(EntityHandler.getAccountList().get(1));
     }
 
     public void initView(Stage stage){
         try {
             ViewHandler.setCurrentStage(stage);
             String pageFile = PathHandler.getPageLoginMain();
-            pageFile = PathHandler.getPageHome();
+            // pageFile = PathHandler.getPageHome();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageFile));
             Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
             stage.setTitle("Hello!");
