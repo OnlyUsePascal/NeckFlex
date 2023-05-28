@@ -8,14 +8,20 @@
 
 ----- Project Brief -----
 * Save file sample
-- Location: "src/main/resources/com/groupproject/media/text/"
-- Back up file location: "doc/backupData"
-- Save files:
-item.txt
-account.txt
-bank.txt
-cart.txt
-order.txt
+- txt files
+    + Location: "src/main/resources/com/groupproject/media/text/"
+    + Back up file location: "doc/backupData"
+    + Save files:
+        item.txt
+        account.txt
+        bank.txt
+        cart.txt
+        order.txt
+
+- image files:
+    + Location: "src/main/resources/com/groupproject/media/image/"
+    + Back up file location: "doc/backupData/item/"
+    + Name format: <item_id>.png
 
 
 * Account Sample

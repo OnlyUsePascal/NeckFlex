@@ -1,0 +1,73 @@
+----- Contribution Information -----
+| Name                  | Student_Id  | Individual Contribution (%) |
+| --------------------- | ----------- | --------------------------- |
+| Pham Xuan Dat         | s3927188    | 25%                         |
+| Nguyen Dang Huan      | s3927467    | 25%                         |
+| Truong Vo Thien Nhan  | s3929215    | 25%                         |
+| Pavel Potemkin        | s3963284    | 25%                         |
+
+----- Project Brief -----
+* Save file sample
+- txt files
+    + Location: "src/main/resources/com/groupproject/media/text/"
+    + Back up file location: "doc/backupData"
+    + Save files:
+        item.txt
+        account.txt
+        bank.txt
+        cart.txt
+        order.txt
+
+- image files:
+    + Location: "src/main/resources/com/groupproject/media/image/"
+    + Back up file location: "doc/backupData/item/"
+    + Name format: <item_id>.png
+
+
+* Account Sample
+- Admin:
+joun123
+password:123
+
+- Guest:
+steven101
+101
+
+- Regular:
+david469
+469
+
+- VIP:
+jasmine334
+334
+
+
+* GitHub Repo
+- URL: https://github.com/OnlyUsePascal/OOP-Group-Project
+
+
+* Shopping & Renting rules:
+- Cart & Payment:
+    - Status Privilege
+        Guest:
+        + Maximum amount for renting: 2 items.
+        + Available renting duration: 2 days.
+
+        Regular:
+        + Unlimited amount of renting items.
+        + Can rent items up to 1 week.
+
+        VIP:
+        + Can checkout with reward points, with the cost of 10 points/item.
+
+    - How to upgrade my status?
+        + Just remember to return your items on time
+
+- Renting
+    + User will get awarded with credit points when they return their items on time.
+    + The more points accumulated, the higher chance a user will be upgraded to higher status.
+
+- Other:
+    + When an admin delete an item, it is still recorded in user's order list.
+        However, when a user return an item that is already deleted by admin,
+        it will not be restored to be shown on store
