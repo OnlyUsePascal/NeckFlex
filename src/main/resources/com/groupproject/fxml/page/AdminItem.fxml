@@ -57,7 +57,7 @@
                                     <ComboBox fx:id="genreList" prefHeight="29.0" prefWidth="102.0" promptText="Thrilling" />
                                  </children>
                               </HBox>
-                              <HBox prefHeight="30.0" prefWidth="211.0">
+                              <HBox disable="true" prefHeight="30.0" prefWidth="211.0" visible="false">
                                  <children>
                                     <Label prefHeight="27.0" prefWidth="112.0" text="Available">
                                        <font>

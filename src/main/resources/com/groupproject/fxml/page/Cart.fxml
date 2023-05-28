@@ -159,7 +159,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Label fx:id="messBox" alignment="CENTER" prefHeight="21.0" prefWidth="282.0" styleClass="mess" text="Status message" textAlignment="CENTER">
+                                    <Label fx:id="messBox" alignment="CENTER" prefHeight="21.0" prefWidth="282.0" styleClass="mess" textAlignment="CENTER">
                                        <font>
                                           <Font size="20.0" />
                                        </font>

@@ -72,17 +72,6 @@ public class LoginMainController implements Initializable {
     }
 
     // --- BACK SIDE ---
-    // public boolean checkValid() {
-    //     if (!ViewHandler.checkStringGeneral(usernameBox.getText()) ||
-    //             !ViewHandler.checkStringGeneral(passwordBox.getText())) {
-    //         messBox.setText("Please enter valid username and password!");
-    //         messBox.setTextFill(Color.RED);
-    //         return false;
-    //     }
-    //
-    //     return true;
-    // }
-
     public boolean checkLogin() {
         if (!EntityHandler.logIn(username, password)) {
             messBox.setText("Wrong username or password!");
