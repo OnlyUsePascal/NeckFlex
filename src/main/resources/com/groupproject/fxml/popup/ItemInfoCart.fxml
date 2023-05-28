@@ -88,7 +88,7 @@
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></Button>
-                                    <TextField fx:id="quantityBox" alignment="CENTER" prefHeight="26.0" prefWidth="40.0" text="1" />
+                                    <TextField fx:id="quantityBox" alignment="CENTER" editable="false" prefHeight="26.0" prefWidth="40.0" text="1" />
                                     <Button fx:id="amountBtn" mnemonicParsing="false" onAction="#incAmount" prefHeight="26.0" prefWidth="29.0" text="+">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />

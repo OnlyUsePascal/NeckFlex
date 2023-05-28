@@ -10,12 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox fx:id="orderDetailContainer" alignment="TOP_CENTER" fillWidth="false" styleClass="order" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupproject.controller.component.OrderController">
    <children>
       <HBox fx:id="orderHeader" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="810.0" styleClass="header">
          <children>
-            <CheckBox fx:id="checkBox" alignment="CENTER" mnemonicParsing="false" onAction="#setCheckBoxAll">
+            <CheckBox fx:id="checkBox" alignment="CENTER" mnemonicParsing="false" onAction="#setCheckBoxAll" selected="true">
                <font>
                   <Font size="17.0" />
                </font>

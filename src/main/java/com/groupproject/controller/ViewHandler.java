@@ -320,21 +320,40 @@ public class ViewHandler {
         frame.setFill(imgView);
     }
 
-    //=========== STRING, NUMBER ============
-    static public boolean checkStringCharacterOnly(String str) {
-        // System.out.println(str);
-        return str.matches("[a-zA-Z ]+");
+    //=========== STRING, NUMBER ===============
+    static public boolean checkStringSafe(String str){
+        return !str.contains("|") && !str.contains("~")
+                && !str.contains("@") && !str.contains("#")
+                && !str.contains("$");
     }
 
-    static public boolean checkStringNumberOnly(String str) {
-        // System.out.println(str);
+    static public boolean checkStringNumber(String str, boolean isDouble){
+        //year, price, stock
+        if (isDouble) {
+            try {
+                Double.parseDouble(str);
+                return true;
+            } catch (NumberFormatException err) {
+                return false;
+            }
+        }
+
         return str.matches("[0-9]+");
     }
 
-    static public boolean checkStringGeneral(String str) {
-        return !str.contains("|") && str.length() != 0
-                && !str.contains("~") && !str.contains("@")
-                && !str.contains("#");
+    static public boolean checkStringAuth(String str){
+        //username, password
+        return str.matches("[a-zA-Z0-9]+");
+    }
+
+    static public boolean checkStringNormal(String str){
+        //title, address, desc,
+        return str.matches("[a-zA-Z0-9,.\\-: ]+");
+    }
+
+    static public boolean checkStringName(String str){
+        //first name, last name,
+        return str.matches("[a-zA-Z0-9 ]+");
     }
 
     static public double getDoubleRound(double num) {
@@ -344,4 +363,6 @@ public class ViewHandler {
     static public boolean checkStringSimilar(String frame, String target) {
         return frame.toLowerCase().contains(target.toLowerCase());
     }
+
+
 }

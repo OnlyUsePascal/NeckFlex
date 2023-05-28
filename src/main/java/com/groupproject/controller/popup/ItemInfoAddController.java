@@ -47,10 +47,10 @@ public class ItemInfoAddController implements Initializable {
     private URI imgPath = null;
     private String title;
     private String year;
-    private double price;
+    private String price;
     private String category;
     private String genre;
-    private int stock;
+    private String stock;
     private String desc;
 
 
@@ -93,8 +93,9 @@ public class ItemInfoAddController implements Initializable {
         if (!checkValid()) return;
 
         Item item = Item.getNewItem(title, ConstantItem.categoryToIndex(category),
-                ConstantItem.genreToIndex(genre), stock,
-                year, price, desc);
+                ConstantItem.genreToIndex(genre), Integer.parseInt(stock),
+                year, ViewHandler.getDoubleRound(Double.parseDouble(price)),
+                desc);
         EntityHandler.addItem(item);
 
         // copy image
@@ -128,35 +129,65 @@ public class ItemInfoAddController implements Initializable {
     // --- BACK ---
     public boolean checkValid() {
         title = titleBox.getText();
+        price = priceBox.getText();
         year = yearBox.getText();
-        category = categoryBox.getValue();
-        genre = genreBox.getValue();
-        try {
-            price = Double.parseDouble(priceBox.getText());
-        } catch (NumberFormatException e) {
-            messBox.setText("Price should be a decimal");
-            return false;
-        }
-        try {
-            stock = Integer.parseInt(stockBox.getText());
-        } catch (NumberFormatException e) {
-            messBox.setText("Stock should be an integer");
-            return false;
-        }
+        stock = stockBox.getText();
         desc = descBox.getText();
 
-        if (title.isEmpty()) {
+        category = categoryBox.getValue();
+        genre = genreBox.getValue();
+
+        // blank
+        if (title.isBlank()) {
             messBox.setText("Title cannot be empty");
             return false;
         }
-
-        if (year.isEmpty()) {
+        if (year.isBlank()) {
             messBox.setText("Year cannot be empty");
             return false;
         }
-
+        if (price.isBlank()) {
+            messBox.setText("Price cannot be empty");
+            return false;
+        }
+        if (stock.isBlank()) {
+            messBox.setText("Stock cannot be empty");
+            return false;
+        }
         if (desc.isBlank()) {
             messBox.setText("Description cannot be empty");
+            return false;
+        }
+        if (imgPath == null) {
+            messBox.setText("Image cannot be empty");
+            return false;
+        }
+
+        // valid
+        if (!ViewHandler.checkStringNormal(title)) {
+            messBox.setText("Title must contain only letters, numbers, space, comma, dot, and -");
+            return false;
+        }
+
+        if (!ViewHandler.checkStringNumber(year, false)) {
+            messBox.setText("Year must contain only numbers");
+            return false;
+        }
+        if (year.length() != 4) {
+            messBox.setText("Year must be 4 digits");
+            return false;
+        }
+        if (Integer.parseInt(year) <= 0) {
+            messBox.setText("Year must be positive");
+            return false;
+        }
+
+        if (!ViewHandler.checkStringNumber(price, true)) {
+            messBox.setText("Price must be a decimal");
+            return false;
+        }
+        if (Double.parseDouble(price) <= 0) {
+            messBox.setText("Price must be positive");
             return false;
         }
 
@@ -165,18 +196,17 @@ public class ItemInfoAddController implements Initializable {
             return false;
         }
 
-        if (!ViewHandler.checkStringNumberOnly(year)) {
-            messBox.setText("Year should be a number");
+        if (!ViewHandler.checkStringNumber(stock, false)) {
+            messBox.setText("Stock must be a number");
+            return false;
+        }
+        if (Integer.parseInt(stock) < 0) {
+            messBox.setText("Stock must be at least 0");
             return false;
         }
 
-        if (year.length() != 4){
-            messBox.setText("Year should be 4 digits");
-            return false;
-        }
-
-        if (price < 0) {
-            messBox.setText("Price should be positive");
+        if (!ViewHandler.checkStringNormal(desc)) {
+            messBox.setText("Description must contain only letters, numbers, space, comma, dot, and -");
             return false;
         }
 

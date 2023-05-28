@@ -105,52 +105,59 @@ public class LoginRegisterController implements Initializable {
         address = addressBox.getText();
         if (address.isBlank()) address = blankInput;
 
+        //blank
         if (username.isBlank()) {
             messBox.setText("Username cannot be blank");
             return false;
         }
-        if (EntityHandler.accountIsExist(username)) {
-            messBox.setText("Username already exist");
-            return false;
-        }
-        if (!ViewHandler.checkStringGeneral(username)) {
-            messBox.setText("Username can only contain letter, number");
-            return false;
-        }
-
         if (pwd.isBlank()) {
             messBox.setText("Password cannot be blank");
             return false;
         }
-        if (!pwd.equals(pwdConfirm)) {
-            messBox.setText("Password doesn't match");
-            return false;
-        }
-
         if (firstName.isBlank()) {
             messBox.setText("First name cannot be blank");
             return false;
         }
-        if (!ViewHandler.checkStringCharacterOnly(firstName)) {
-            messBox.setText("First name can only contains characters!");
-            return false;
-        }
-
         if (lastName.isBlank()) {
             messBox.setText("Last name cannot be blank");
             return false;
         }
-        if (!ViewHandler.checkStringCharacterOnly(lastName)) {
-            messBox.setText("Last name can only contains characters!");
+
+        //valid
+        if (!ViewHandler.checkStringAuth(username)) {
+            messBox.setText("Username must only contain letter, number");
+            return false;
+        }
+        if (!ViewHandler.checkStringAuth(pwd)) {
+            messBox.setText("Password must only contain letter, number");
             return false;
         }
 
-        if (!phoneNumber.equals(EntityHandler.blankInput) && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
-            messBox.setText("Phone number must be number only");
+        if (!ViewHandler.checkStringName(firstName)) {
+            messBox.setText("First name must only contain letter and space");
             return false;
         }
-        if (!address.equals(EntityHandler.blankInput) && !ViewHandler.checkStringGeneral(address)) {
-            messBox.setText("Address cannot contain special character except , .");
+        if (!ViewHandler.checkStringName(lastName)) {
+            messBox.setText("Last name must only contain letter and space");
+            return false;
+        }
+
+        if (!ViewHandler.checkStringNumber(phoneNumber, false) && !phoneNumber.equals(blankInput)){
+            messBox.setText("Phone number must only contain number");
+            return false;
+        }
+        if (!ViewHandler.checkStringNormal(address) && !address.equals(blankInput)){
+            messBox.setText("Address must only contain letter, number, space, comma, dot, and -");
+            return false;
+        }
+
+        //valid 2
+        if (EntityHandler.accountIsExist(username)) {
+            messBox.setText("Username already exist");
+            return false;
+        }
+        if (!pwd.equals(pwdConfirm)) {
+            messBox.setText("Password doesn't match");
             return false;
         }
 

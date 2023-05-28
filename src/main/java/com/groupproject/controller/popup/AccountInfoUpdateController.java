@@ -91,33 +91,32 @@ public class AccountInfoUpdateController implements Initializable {
         address = addressBox.getText();
         if (address.isBlank()) address = blankInput;
 
+        //blank
         if (firstName.isBlank()) {
             messBox.setText("First name cannot be blank");
             return false;
         }
-
         if (lastName.isBlank()) {
             messBox.setText("Last name cannot be blank");
             return false;
         }
 
-        if (!ViewHandler.checkStringCharacterOnly(firstName)) {
-            messBox.setText("First name must contain only characters");
+        //valid
+        if (!ViewHandler.checkStringName(firstName)) {
+            messBox.setText("First name must only contain letter and space");
+            return false;
+        }
+        if (!ViewHandler.checkStringName(lastName)) {
+            messBox.setText("Last name must only contain letter and space");
             return false;
         }
 
-        if (!ViewHandler.checkStringCharacterOnly(lastName)) {
-            messBox.setText("Last name must contain only characters");
+        if (!ViewHandler.checkStringNumber(phoneNumber, false) && !phoneNumber.equals(blankInput)){
+            messBox.setText("Phone number must only contain number");
             return false;
         }
-
-        if (!phoneNumber.equals(blankInput) && !ViewHandler.checkStringNumberOnly(phoneNumber)) {
-            messBox.setText("Phone number must contain only numbers");
-            return false;
-        }
-
-        if (!address.equals(blankInput) && !ViewHandler.checkStringGeneral(address)) {
-            messBox.setText("Address must contain only characters and numbers");
+        if (!ViewHandler.checkStringNormal(address) && !address.equals(blankInput)){
+            messBox.setText("Address must only contain letter, number, space, comma, dot, and -");
             return false;
         }
 

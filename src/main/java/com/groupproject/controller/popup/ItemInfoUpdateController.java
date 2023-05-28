@@ -41,8 +41,8 @@ public class ItemInfoUpdateController implements Initializable {
     private Item item;
     private String title;
     private String genre;
-    private double price;
-    private int stock;
+    private String price;
+    private String stock;
     private String desc;
 
 
@@ -58,8 +58,8 @@ public class ItemInfoUpdateController implements Initializable {
 
         item.setTitle(title);
         item.setGenre(ConstantItem.genreToIndex(genre));
-        item.setPrice(ViewHandler.getDoubleRound(price));
-        item.setStock(stock);
+        item.setPrice(ViewHandler.getDoubleRound(Double.parseDouble(price)));
+        item.setStock(Integer.parseInt(stock));
         item.setDesc(desc);
 
         ViewHandler.closePopup(event);
@@ -115,50 +115,56 @@ public class ItemInfoUpdateController implements Initializable {
 
     public boolean checkValid() {
         title = titleBox.getText();
-        genre = genreBox.getValue();
+        price = priceBox.getText();
+        stock = stockBox.getText();
         desc = descBox.getText();
 
-        try {
-            stock = Integer.parseInt(stockBox.getText());
-        } catch (NumberFormatException e) {
+        genre = genreBox.getValue();
+
+        // blank
+        if (title.isBlank()) {
+            messBox.setText("Title cannot be empty");
+            return false;
+        }
+        if (price.isBlank()) {
+            messBox.setText("Price cannot be empty");
+            return false;
+        }
+        if (stock.isBlank()) {
+            messBox.setText("Stock cannot be empty");
+            return false;
+        }
+        if (desc.isBlank()) {
+            messBox.setText("Description cannot be empty");
+            return false;
+        }
+
+        // valid
+        if (!ViewHandler.checkStringNormal(title)) {
+            messBox.setText("Title must contain only letters, numbers, space, comma, dot, and -");
+            return false;
+        }
+
+        if (!ViewHandler.checkStringNumber(price, true)) {
+            messBox.setText("Price must be a decimal");
+            return false;
+        }
+        if (Double.parseDouble(price) <= 0) {
+            messBox.setText("Price must be positive");
+            return false;
+        }
+
+        if (!ViewHandler.checkStringNumber(stock, false)) {
             messBox.setText("Stock must be a number");
             return false;
         }
-
-        try {
-            price = Double.parseDouble(priceBox.getText());
-        } catch (NumberFormatException e) {
-            messBox.setText("Price must be a number");
+        if (Integer.parseInt(stock) < 0) {
+            messBox.setText("Stock must be at least 0");
             return false;
         }
 
-        if (title.isBlank()) {
-            messBox.setText("Title cannot be blank");
-            return false;
-        }
-
-        if (desc.isBlank()) {
-            messBox.setText("Description cannot be blank");
-            return false;
-        }
-
-        if (price < 0) {
-            messBox.setText("Price cannot be negative");
-            return false;
-        }
-
-        if (stock < item.getStock()) {
-            messBox.setText("Stock cannot be less than current stock");
-            return false;
-        }
-
-        if (!ViewHandler.checkStringGeneral(title)) {
-            messBox.setText("Title cannot contain special characters other than . and ,");
-            return false;
-        }
-
-        if (!ViewHandler.checkStringGeneral(desc)) {
-            messBox.setText("Description cannot contain special characters other than . and ,");
+        if (!ViewHandler.checkStringNormal(desc)) {
+            messBox.setText("Description must contain only letters, numbers, space, comma, dot, and -");
             return false;
         }
         return true;

@@ -35,7 +35,7 @@ public class CartController implements Initializable {
     @FXML
     private Label userBalancePoint;
     @FXML
-    private Label statusBox;
+    private Label messBox;
     @FXML
     private RadioButton rent7Day;
     @FXML
@@ -57,6 +57,8 @@ public class CartController implements Initializable {
 
         initPayment();
         refreshCart();
+
+        messBox.setText("");
     }
 
     // --- MAIN ---
@@ -73,19 +75,19 @@ public class CartController implements Initializable {
             case ACCEPTED -> {
                 new Thread(() -> {
                     Platform.runLater(() -> {
-                        statusBox.setText("Checkout success");
+                        messBox.setText("Checkout success");
                         refreshCart();
                     });
                 }).start();
             }
             case INSUFFICIENT_BALANCE -> {
-                statusBox.setText("Insufficient balance");
+                messBox.setText("Insufficient balance");
             }
             case INSUFFICIENT_POINT -> {
-                statusBox.setText("Insufficient point");
+                messBox.setText("Insufficient point");
             }
             case LIMITED_AMOUNT -> {
-                statusBox.setText("You can only hold " + ConstantOrder.rentingLimit + " items");
+                messBox.setText("You can only hold " + ConstantOrder.rentingLimit + " items");
             }
         }
     }

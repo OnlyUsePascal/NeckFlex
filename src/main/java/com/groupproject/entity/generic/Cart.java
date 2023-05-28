@@ -177,10 +177,5 @@ public class Cart {
         }
 
         return cartInfo;
-        // return "Cart{" +
-        //         "cartOwner=" + owner.getUsername() +
-        //         ", cartDetailList=" + cartDetailList +
-        //         ", totalPrice=" + totalPrice +
-        //         '}';
     }
 }
