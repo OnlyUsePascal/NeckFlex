@@ -189,7 +189,7 @@ public class ItemAllController implements Initializable {
         String sortBy = sortByList.getValue();
         String order = orderList.getValue();
 
-        System.out.println(sortBy + " " + order);
+        // System.out.println(sortBy + " " + order);
 
         itemList.sort((item1, item2) -> {
             if (sortBy.equals(sortByOptions[0])) {

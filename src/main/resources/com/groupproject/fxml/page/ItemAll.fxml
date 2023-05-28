@@ -150,7 +150,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <ScrollPane fx:id="pageContainerSrollPane" hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1315.0" styleClass="contentPane">
+            <ScrollPane fx:id="pageContainerSrollPane" hbarPolicy="NEVER" prefHeight="820.0" prefWidth="1320.0" styleClass="contentPane">
                <content>
                   <AnchorPane>
                      <children>

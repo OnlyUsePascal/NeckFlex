@@ -61,3 +61,7 @@ jasmine334
     + User will get awarded with credit points when they return their items on time.
     + The more points accumulated, the higher chance a user will be upgraded to higher status.
 
+- Other:
+    + When an admin delete an item, it is still recorded in user's order list.
+        However, when a user return an item that is already deleted by admin,
+        it will not be restored to be shown on store

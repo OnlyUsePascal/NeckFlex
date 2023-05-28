@@ -99,3 +99,4 @@ C098|rubie408|408|Rubie|Harris|BinhDuong|4640853089|3|552.0|20
 C099|stuart974|974|Stuart|Miller|HCM|5586144919|3|705.0|20
 C0100|edgar944|944|Edgar|Baker|DaNang|7920611984|3|648.0|20
 C0101|kelvin551|551|Kelvin|Adams|BinhDuong|5148840975|3|341.0|20
+C102|user123|user123|what|oke|N/A|0123|1|30.0|0

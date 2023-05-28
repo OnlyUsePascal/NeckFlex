@@ -38,7 +38,7 @@ public class ShopApplication extends Application {
             // pageFile = PathHandler.getPageHome();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageFile));
             Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
-            stage.setTitle("Hello!");
+            stage.setTitle("NeckFlex");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

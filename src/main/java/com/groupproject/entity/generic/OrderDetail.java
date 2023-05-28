@@ -43,7 +43,7 @@ public class OrderDetail {
 
     public void updateItemStock() {
         Item item = getItemFromDb();
-        System.out.println(item);
+        // System.out.println(item);
         if (item != null) {
             item.updateStock(getQuantity());
         }
