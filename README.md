@@ -65,38 +65,9 @@ There are 2 types of save files - text & images
 
 ## Contributors
 <a href="https://github.com/OnlyUsePascal/NeckFlex/graphs/contributors">
-    <svg width="300" height="70" viewBox="812 540" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <svg x="0" y="0" width="64" height="64">\n<title>lacolaco</title>
-        <circle cx="32" cy="32" r="32" stroke="#c0c0c0" stroke-width="1" fill="url(#fill0)"></circle>
-        <defs>
-        <pattern id="fill0" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
-        <image x="0" y="0" width="64" height="64" xlink:href="https://avatars.githubusercontent.com/u/62138004?v=4"></image>
-        </pattern>
-        </defs>
-        </svg>
-      <svg x="68" y="0" width="64" height="64">\n<title>big-stream</title>
-        <circle cx="32" cy="32" r="32" stroke="#c0c0c0" stroke-width="1" fill="url(#fill1)"></circle>
-        <defs>
-        <pattern id="fill1" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
-        <image x="0" y="0" width="64" height="64" xlink:href="https://avatars.githubusercontent.com/u/17351940?v=4"></image>
-        </pattern>
-        </defs>
-        </svg>
-      <svg x="136" y="0" width="64" height="64">\n<title>silverskyvicto</title>
-        <circle cx="32" cy="32" r="32" stroke="#c0c0c0" stroke-width="1" fill="url(#fill2)"></circle>
-        <defs>
-        <pattern id="fill2" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
-        <image x="0" y="0" width="64" height="64" xlink:href="https://avatars.githubusercontent.com/u/68006452?v=4"></image>
-        </pattern>
-        </defs>
-        </svg>
-      <svg x="204" y="0" width="64" height="64">\n<title>mitsuhisaT</title>
-        <circle cx="32" cy="32" r="32" stroke="#c0c0c0" stroke-width="1" fill="url(#fill3)"></circle>
-        <defs>
-        <pattern id="fill3" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
-        <image x="0" y="0" width="64" height="64" xlink:href="https://avatars.githubusercontent.com/u/100990206?v=4"></image>
-        </pattern>
-        </defs>
-        </svg>
-    </svg>
-  </a>
+  <img width="64" height="64" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/62138004?v=4" alt="">
+  <img width="64" height="64" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/17351940?v=4" alt="">
+  <img width="64" height="64" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/68006452?v=4" alt="">
+  <img width="64" height="64" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/100990206?v=4" alt="">
+</a>
+ 
